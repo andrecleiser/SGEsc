@@ -1,0 +1,349 @@
+object DataModuleApp: TDataModuleApp
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  OldCreateOrder = False
+  Height = 1030
+  HorizontalOffset = 0
+  VerticalOffset = 0
+  Width = 1870
+  PPI = 120
+  object MySQL57Connection: TMySQL57Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'sgesc'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = '23101990'
+    Transaction = sqlTransactionAluno
+    UserName = 'sgesc_adm'
+    CharSet = 'UTF8'
+    HostName = 'localhost'
+    SkipLibraryVersionCheck = False
+    left = 80
+    top = 30
+  end
+  object sqlQueryAlunos: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'data_nascimento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'endereco'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'bairro'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'cidade'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end    
+      item
+        Name = 'estado'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'cep'
+        DataType = ftString
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'telefone'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'celular'
+        DataType = ftString
+        Precision = -1
+        Size = 11
+      end    
+      item
+        Name = 'nome_pai'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'nome_mae'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionAluno
+    SQL.Strings = (
+      'select id,'
+      '       nome,'
+      '       data_nascimento,'
+      '       endereco,'
+      '       bairro,'
+      '       cidade,'
+      '       estado,'
+      '       cep,'
+      '       telefone,'
+      '       celular,'
+      '       nome_pai,'
+      '       nome_mae'
+      'from   aluno'
+    )
+    DeleteSQL.Strings = (
+      'delete from aluno where id = :id'
+    )
+    Params = <>
+    UpdateMode = upWhereAll
+    left = 80
+    top = 120
+    object sqlQueryAlunosid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryAlunosnome: TStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 70
+    end
+    object sqlQueryAlunosdata_nascimento: TDateField
+      FieldKind = fkData
+      FieldName = 'data_nascimento'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      DisplayFormat = 'dd/mm/yyyy'
+      EditMask = 'dd/mm/yyyy'
+    end
+    object sqlQueryAlunosendereco: TStringField
+      FieldKind = fkData
+      FieldName = 'endereco'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqlQueryAlunosbairro: TStringField
+      FieldKind = fkData
+      FieldName = 'bairro'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object sqlQueryAlunoscidade: TStringField
+      FieldKind = fkData
+      FieldName = 'cidade'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object sqlQueryAlunosestado: TStringField
+      FieldKind = fkData
+      FieldName = 'estado'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2
+    end
+    object sqlQueryAlunoscep: TStringField
+      FieldKind = fkData
+      FieldName = 'cep'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object sqlQueryAlunostelefone: TStringField
+      FieldKind = fkData
+      FieldName = 'telefone'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      EditMask = '(99) 9999-9999'
+      Size = 10
+    end
+    object sqlQueryAlunoscelular: TStringField
+      FieldKind = fkData
+      FieldName = 'celular'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      EditMask = '(99) 9999-9999'
+      Size = 11
+    end
+    object sqlQueryAlunosnome_pai: TStringField
+      FieldKind = fkData
+      FieldName = 'nome_pai'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+    object sqlQueryAlunosnome_mae: TStringField
+      FieldKind = fkData
+      FieldName = 'nome_mae'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+  end
+  object sqlTransactionAluno: TSQLTransaction
+    Active = False
+    Action = caNone
+    Database = MySQL57Connection
+    left = 120
+    top = 32
+  end
+  object dsMotivo_Matricula: TDataSource
+    AutoEdit = False
+    DataSet = sqlQueryMotivo_Matricula
+    left = 1200
+    top = 64
+  end
+  object dsDoenca_Pre_Existente: TDataSource
+    AutoEdit = False
+    DataSet = sqlQueryDoenca_Pre_Existente
+    left = 1200
+    top = 136
+  end
+  object sqlQueryMotivo_Matricula: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionAluno
+    SQL.Strings = (
+      'select * from motivo_matricula order by descricao'
+    )
+    Params = <>
+    left = 1240
+    top = 64
+    object sqlQueryMotivo_Matriculaid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryMotivo_Matriculadescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+  object sqlQueryDoenca_Pre_Existente: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'Nome'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionAluno
+    SQL.Strings = (
+      'select * from doenca_pre_existente order by nome'
+    )
+    Params = <>
+    left = 1240
+    top = 136
+    object sqlQueryDoenca_Pre_Existenteid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryDoenca_Pre_ExistenteNome: TStringField
+      FieldKind = fkData
+      FieldName = 'Nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+end

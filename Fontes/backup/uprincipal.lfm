@@ -1,0 +1,58 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 173
+  Height = 600
+  Top = 212
+  Width = 1200
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'SGEsc'
+  DesignTimePPI = 120
+  Menu = mainMenu
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.8.2.0'
+  Visible = True
+  object mainMenu: TMainMenu
+    left = 10
+    top = 10
+    object menuItemCadastros: TMenuItem
+      Caption = 'Cadastros'
+      object MenuItem3: TMenuItem
+        Caption = 'Aluno'
+        OnClick = MenuItem3Click
+      end
+    end
+    object menuItemSair: TMenuItem
+      Caption = 'Sair'
+      OnClick = menuItemSairClick
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    left = 39
+    top = 10
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Database = DataModuleApp.MySQL57Connection
+    Transaction = DataModuleApp.sqlTransactionAluno
+    SQL.Strings = (
+      'SELECT * FROM motivo_matricula'
+    )
+    Params = <>
+    left = 68
+    top = 10
+  end
+end

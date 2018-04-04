@@ -1,0 +1,79 @@
+object frmCadAluno: TfrmCadAluno
+  Left = 2710
+  Height = 637
+  Top = 180
+  Width = 1464
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastro de aluno'
+  ClientHeight = 637
+  ClientWidth = 1464
+  DesignTimePPI = 120
+  Font.CharSet = ANSI_CHARSET
+  Font.Height = -17
+  Font.Name = 'Verdana'
+  Font.Pitch = fpVariable
+  Font.Quality = fqDraft
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poScreenCenter
+  LCLVersion = '1.8.2.0'
+  object Panel3: TPanel
+    Left = 0
+    Height = 63
+    Top = 574
+    Width = 1464
+    Align = alBottom
+    ClientHeight = 63
+    ClientWidth = 1464
+    TabOrder = 0
+    object Button1: TButton
+      Left = 983
+      Height = 38
+      Hint = 'Salvar dados'
+      Top = 8
+      Width = 209
+      BorderSpacing.Around = 2
+      Caption = 'Salvar dados'
+      Color = clBlue
+      OnClick = Button1Click
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 47
+    Top = 0
+    Width = 1464
+    Align = alTop
+    ClientHeight = 47
+    ClientWidth = 1464
+    TabOrder = 1
+    object dbNavAlunos: TDBNavigator
+      Left = 1
+      Height = 45
+      Top = 1
+      Width = 1462
+      Align = alClient
+      BevelOuter = bvNone
+      ChildSizing.EnlargeHorizontal = crsScaleChilds
+      ChildSizing.EnlargeVertical = crsScaleChilds
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 100
+      ClientHeight = 45
+      ClientWidth = 1462
+      DataSource = dsAluno
+      OnClick = dbNavAlunosClick
+      Options = []
+      TabOrder = 0
+    end
+  end
+  object dsAluno: TDataSource
+    DataSet = DataModuleApp.sqlQueryAlunos
+    left = 8
+    top = 8
+  end
+end
