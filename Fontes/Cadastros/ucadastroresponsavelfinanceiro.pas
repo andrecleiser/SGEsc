@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, DbCtrls, Buttons, StdCtrls, uCadastroPadrao;
+  ExtCtrls, DbCtrls, Buttons, StdCtrls, uCadastroPadrao, uResponsavelService;
 
 type
 
@@ -26,18 +26,16 @@ type
     Label5: TLabel;
     Label6: TLabel;
     pnlAluno: TPanel;
-    sqlQueryPadraocelular: TStringField;
-    sqlQueryPadraocpf: TStringField;
-    sqlQueryPadraoemail: TStringField;
-    sqlQueryPadraofk_aluno_id: TLargeintField;
-    sqlQueryPadraoid: TLargeintField;
-    sqlQueryPadraonome: TStringField;
-    sqlQueryPadraorg: TStringField;
-    sqlQueryPadraotelefone: TStringField;
+    procedure DBEdit2Exit(Sender: TObject);
+    procedure DBEdit6Exit(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     fid_aluno: Integer;
+
+    responsavelService: TResponsavelService;
   public
     property id_aluno: Integer read fid_aluno write fid_aluno;
   end;
@@ -47,21 +45,52 @@ var
 
 implementation
 
+uses
+  uClassUtil;
+
 {$R *.lfm}
 
 { TfrmCadastroResponsavelFinanceiro }
 
-procedure TfrmCadastroResponsavelFinanceiro.sqlQueryPadraoBeforePost(
-  DataSet: TDataSet);
+procedure TfrmCadastroResponsavelFinanceiro.FormCreate(Sender: TObject);
 begin
   inherited;
-  sqlQueryPadraofk_aluno_id.AsInteger := id_aluno;
+  sqlQueryPadrao.Params.Clear;
+  sqlQueryPadrao.Params.CreateParam(ftInteger, 'id', ptInput);
+  sqlQueryPadrao.ServerFiltered:=true;
 end;
 
 procedure TfrmCadastroResponsavelFinanceiro.FormShow(Sender: TObject);
 begin
   captionForm := 'CADASTRO DE RESPONSÁVEL FINANCEIRO';
+  responsavelService := TResponsavelService.create(sqlQueryPadrao);
+end;
+
+procedure TfrmCadastroResponsavelFinanceiro.FormDestroy(Sender: TObject);
+begin
+  responsavelService.Free;
   inherited;
+end;
+
+procedure TfrmCadastroResponsavelFinanceiro.sqlQueryPadraoBeforePost(
+  DataSet: TDataSet);
+begin
+  responsavelService.validarDados;
+  if DataSet.State = dsInsert then
+    sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := id_aluno;
+  inherited;
+end;
+
+procedure TfrmCadastroResponsavelFinanceiro.DBEdit6Exit(Sender: TObject);
+begin
+  if not sqlQueryPadrao.FieldByName('email').IsNull then
+    TUtil.validar_Email(sqlQueryPadrao.FieldByName('email').AsString);
+end;
+
+procedure TfrmCadastroResponsavelFinanceiro.DBEdit2Exit(Sender: TObject);
+begin
+  if not sqlQueryPadrao.FieldByName('cpf').IsNull then
+    TUtil.CheckCPF(sqlQueryPadrao.FieldByName('cpf').AsString);
 end;
 
 end.

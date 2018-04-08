@@ -15,29 +15,29 @@ type
     dsMotivo_Matricula: TDataSource;
     dsDoenca_Pre_Existente: TDataSource;
     MySQL57Connection: TMySQL57Connection;
-    sqlQueryDoenca_Pre_Existenteid: TLargeintField;
-    sqlQueryDoenca_Pre_ExistenteNome: TStringField;
-    sqlQueryMotivo_Matricula: TSQLQuery;
-    sqlQueryDoenca_Pre_Existente: TSQLQuery;
-    sqlQueryAlunos: TSQLQuery;
-    sqlQueryAlunosbairro: TStringField;
-    sqlQueryAlunoscelular: TStringField;
-    sqlQueryAlunoscep: TStringField;
-    sqlQueryAlunoscidade: TStringField;
-    sqlQueryAlunosdata_nascimento: TDateField;
-    sqlQueryAlunosendereco: TStringField;
-    sqlQueryAlunosestado: TStringField;
-    sqlQueryAlunosid: TLargeintField;
-    sqlQueryAlunosnome: TStringField;
-    sqlQueryAlunosnome_mae: TStringField;
-    sqlQueryAlunosnome_pai: TStringField;
-    sqlQueryAlunostelefone: TStringField;
-    sqlQueryMotivo_Matriculadescricao: TStringField;
-    sqlQueryMotivo_Matriculaid: TLargeintField;
-    sqlTransactionAluno: TSQLTransaction;
+    qryAlunoObj: TSQLQuery;
+    qryLookUpDoenca_Pre_Existenteid: TLargeintField;
+    qryLookUpDoenca_Pre_ExistenteNome: TStringField;
+    qryLookUpMotivo_Matricula: TSQLQuery;
+    qryLookUpDoenca_Pre_Existente: TSQLQuery;
+    qryAlunosbairro: TStringField;
+    qryAlunoscelular: TStringField;
+    qryAlunoscep: TStringField;
+    qryAlunoscidade: TStringField;
+    qryAlunosdata_nascimento: TDateField;
+    qryAlunosendereco: TStringField;
+    qryAlunosestado: TStringField;
+    qryAlunosid: TLargeintField;
+    qryAlunosnome: TStringField;
+    qryAlunosnome_mae: TStringField;
+    qryAlunosnome_pai: TStringField;
+    qryAlunostelefone: TStringField;
+    qryLookUpMotivo_Matriculadescricao: TStringField;
+    qryLookUpMotivo_Matriculaid: TLargeintField;
+    sqlTransactionGeral: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
-    procedure SQLConnector1AfterConnect(Sender: TObject);
+    procedure qryAlunoObjAfterClose({%H-}DataSet: TDataSet);
   private
 
   public
@@ -64,9 +64,10 @@ begin
   MySQL57Connection.Connected := false;
 end;
 
-procedure TDataModuleApp.SQLConnector1AfterConnect(Sender: TObject);
+procedure TDataModuleApp.qryAlunoObjAfterClose(DataSet: TDataSet);
 begin
-
+  qryAlunoObj.ServerFilter:='';
+  qryAlunoObj.ServerFiltered:=false;
 end;
 
 end.

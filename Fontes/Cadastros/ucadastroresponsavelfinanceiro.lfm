@@ -1,11 +1,28 @@
 inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
-  Left = 342
+  Left = 3586
   Height = 381
-  Top = 186
+  Top = 271
   Width = 990
   ClientHeight = 381
   ClientWidth = 990
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
+  inherited pnlBottom: TPanel
+    Top = 325
+    Width = 990
+    ClientWidth = 990
+    TabOrder = 7
+    inherited pnlFrmBaseSair: TPanel
+      Left = 776
+      inherited btnSair: TBitBtn
+        Left = 26
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
   inherited pnlNav: TPanel
     Width = 990
     ClientWidth = 990
@@ -24,19 +41,6 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
         'Salvar'
         'Cancelar'
       )
-      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
-    end
-  end
-  inherited pnlBottom: TPanel
-    Top = 318
-    Width = 990
-    ClientWidth = 990
-    TabOrder = 7
-    inherited btnSair: TBitBtn
-      Left = 798
-      Color = clScrollBar
-      Default = False
-      DefaultCaption = False
     end
   end
   object pnlAluno: TPanel[2]
@@ -91,15 +95,18 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     Left = 31
     Height = 28
     Top = 263
-    Width = 267
+    Width = 165
+    CustomEditMask = True
     DataField = 'cpf'
     DataSource = dsPadrao
     CharCase = ecNormal
+    EditMask = '999.999.999-99;0;_'
     MaxLength = 0
     TabOrder = 2
+    OnExit = DBEdit2Exit
   end
   object Label3: TLabel[7]
-    Left = 328
+    Left = 224
     Height = 20
     Top = 239
     Width = 37
@@ -107,7 +114,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     ParentColor = False
   end
   object DBEdit3: TDBEdit[8]
-    Left = 328
+    Left = 224
     Height = 28
     Top = 263
     Width = 183
@@ -118,7 +125,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     TabOrder = 3
   end
   object Label4: TLabel[9]
-    Left = 538
+    Left = 434
     Height = 20
     Top = 239
     Width = 60
@@ -126,18 +133,20 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     ParentColor = False
   end
   object DBEdit4: TDBEdit[10]
-    Left = 538
+    Left = 434
     Height = 28
     Top = 263
-    Width = 183
+    Width = 158
+    CustomEditMask = True
     DataField = 'celular'
     DataSource = dsPadrao
     CharCase = ecNormal
+    EditMask = '(99)99999-9999;0;_'
     MaxLength = 0
     TabOrder = 4
   end
   object Label5: TLabel[11]
-    Left = 741
+    Left = 619
     Height = 20
     Top = 239
     Width = 70
@@ -145,13 +154,15 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     ParentColor = False
   end
   object DBEdit5: TDBEdit[12]
-    Left = 741
+    Left = 619
     Height = 28
     Top = 263
-    Width = 183
+    Width = 158
+    CustomEditMask = True
     DataField = 'telefone'
     DataSource = dsPadrao
     CharCase = ecNormal
+    EditMask = '(99)9999-9999;0;_'
     MaxLength = 0
     TabOrder = 5
   end
@@ -173,6 +184,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     CharCase = ecNormal
     MaxLength = 0
     TabOrder = 1
+    OnExit = DBEdit6Exit
   end
   inherited dsPadrao: TDataSource[15]
     OnStateChange = dsPadraoStateChange
@@ -228,92 +240,9 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
       end>
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
-      'select * from responsavel_financeiro where id = :id'
+      'select * from responsavel'
     )
     Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit, sqoRefreshUsingSelect]
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'id'
-        ParamType = ptInput
-      end>
-    object sqlQueryPadraoid: TLargeintField[0]
-      FieldKind = fkData
-      FieldName = 'id'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlQueryPadraonome: TStringField[1]
-      FieldKind = fkData
-      FieldName = 'nome'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 70
-    end
-    object sqlQueryPadraofk_aluno_id: TLargeintField[2]
-      FieldKind = fkData
-      FieldName = 'fk_aluno_id'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlQueryPadraoemail: TStringField[3]
-      FieldKind = fkData
-      FieldName = 'email'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 40
-    end
-    object sqlQueryPadraocpf: TStringField[4]
-      FieldKind = fkData
-      FieldName = 'cpf'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 11
-    end
-    object sqlQueryPadraorg: TStringField[5]
-      FieldKind = fkData
-      FieldName = 'rg'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 11
-    end
-    object sqlQueryPadraotelefone: TStringField[6]
-      FieldKind = fkData
-      FieldName = 'telefone'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-    object sqlQueryPadraocelular: TStringField[7]
-      FieldKind = fkData
-      FieldName = 'celular'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 11
-    end
+    ServerFilter = 'id = :id'
   end
 end

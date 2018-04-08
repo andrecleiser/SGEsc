@@ -1,32 +1,55 @@
 inherited frmCadastroAlunos: TfrmCadastroAlunos
-  Left = 2698
-  Height = 802
-  Top = 203
+  Left = 2969
+  Height = 788
+  Top = 148
+  Width = 1388
   Caption = 'Cadastro de Aluno'
-  ClientHeight = 802
+  ClientHeight = 788
+  ClientWidth = 1388
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poWorkAreaCenter
-  inherited pnlNav: TPanel
-    inherited dbNavAlunos: TDBNavigator
-      ClientHeight = 41
-      ClientWidth = 1488
-      ConfirmDelete = True
+  inherited pnlBottom: TPanel
+    Top = 732
+    Width = 1388
+    ClientWidth = 1388
+    inherited pnlFrmBaseSair: TPanel
+      Left = 1174
+      inherited btnSair: TBitBtn
+        Left = 26
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+    object btnDesativar: TBitBtn[1]
+      Left = 58
+      Height = 38
+      Top = 7
+      Width = 204
+      Caption = 'Desativar aluno'
+      OnClick = btnDesativarClick
+      TabOrder = 1
     end
   end
-  inherited pnlBottom: TPanel
-    Top = 739
-    inherited btnSair: TBitBtn
-      Color = clScrollBar
-      Default = False
-      DefaultCaption = False
+  inherited pnlNav: TPanel
+    Width = 1388
+    ClientWidth = 1388
+    inherited dbNavAlunos: TDBNavigator
+      Width = 1386
+      ClientWidth = 1382
+      ConfirmDelete = True
+      Hints.Strings = (      )
+      ParentShowHint = False
+      VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel]
     end
   end
   object PageControl: TPageControl[2]
     Left = 0
-    Height = 692
+    Height = 685
     Top = 47
-    Width = 1494
+    Width = 1388
     ActivePage = TabSheetGeral
     Align = alClient
     Font.CharSet = ANSI_CHARSET
@@ -41,19 +64,19 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     OnChange = PageControlChange
     object TabSheetGeral: TTabSheet
       Caption = 'Dados do aluno'
-      ClientHeight = 659
-      ClientWidth = 1486
+      ClientHeight = 652
+      ClientWidth = 1380
       object Panel2: TPanel
         Left = 0
-        Height = 659
+        Height = 652
         Top = 0
-        Width = 1486
+        Width = 1380
         Align = alClient
-        ClientHeight = 659
-        ClientWidth = 1486
+        ClientHeight = 652
+        ClientWidth = 1380
         TabOrder = 0
         object Label1: TLabel
-          Left = 32
+          Left = 16
           Height = 20
           Top = 8
           Width = 59
@@ -61,65 +84,69 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           ParentColor = False
         end
         object DBEdit3: TDBEdit
-          Left = 1332
+          Left = 880
           Height = 28
           Top = 167
-          Width = 100
+          Width = 104
+          CustomEditMask = True
           DataField = 'cep'
           DataSource = dsPadrao
           CharCase = ecNormal
+          EditMask = '99999-999;0;_'
           MaxLength = 0
-          TabOrder = 7
+          TabOrder = 9
         end
         object DBEdit2: TDBEdit
-          Left = 250
+          Left = 16
           Height = 28
           Top = 101
-          Width = 1182
-          DataField = 'endereco'
-          DataSource = dsPadrao
-          CharCase = ecNormal
-          MaxLength = 0
-          TabOrder = 3
-        end
-        object DBEdit4: TDBEdit
-          Left = 32
-          Height = 28
-          Top = 167
-          Width = 524
-          DataField = 'bairro'
+          Width = 555
+          DataField = 'rua'
           DataSource = dsPadrao
           CharCase = ecNormal
           MaxLength = 0
           TabOrder = 4
         end
-        object DBEdit1: TDBEdit
-          Left = 136
+        object DBEdit4: TDBEdit
+          Left = 995
+          Height = 28
+          Top = 101
+          Width = 360
+          DataField = 'bairro'
+          DataSource = dsPadrao
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 6
+        end
+        object dbeNome: TDBEdit
+          Left = 109
           Height = 28
           Top = 32
-          Width = 1296
+          Width = 782
           DataField = 'nome'
           DataSource = dsPadrao
           CharCase = ecNormal
           MaxLength = 0
-          TabOrder = 1
+          TabOrder = 2
         end
         object DBDateEdit1: TDBDateEdit
-          Left = 32
+          Left = 901
           Height = 28
-          Top = 101
-          Width = 176
+          Top = 32
+          Width = 172
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+          DefaultToday = True
           DateOrder = doNone
+          DateFormat = 'dd/mm/yyyy'
           ButtonWidth = 29
           NumGlyphs = 1
           MaxLength = 0
-          TabOrder = 2
+          TabOrder = 3
           DataField = 'data_nascimento'
           DataSource = dsPadrao
         end
         object Label2: TLabel
-          Left = 136
+          Left = 109
           Height = 20
           Top = 8
           Width = 50
@@ -127,7 +154,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           ParentColor = False
         end
         object DBEdit5: TDBEdit
-          Left = 32
+          Left = 16
           Height = 28
           Top = 32
           Width = 84
@@ -141,15 +168,15 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           TabStop = False
         end
         object Label3: TLabel
-          Left = 32
+          Left = 901
           Height = 20
-          Top = 77
+          Top = 8
           Width = 172
           Caption = 'Data de nascimento'
           ParentColor = False
         end
         object Label4: TLabel
-          Left = 250
+          Left = 16
           Height = 20
           Top = 77
           Width = 292
@@ -157,15 +184,15 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           ParentColor = False
         end
         object Label5: TLabel
-          Left = 32
+          Left = 995
           Height = 20
-          Top = 145
+          Top = 77
           Width = 51
           Caption = 'Bairro'
           ParentColor = False
         end
         object Label6: TLabel
-          Left = 578
+          Left = 16
           Height = 20
           Top = 145
           Width = 59
@@ -173,18 +200,18 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           ParentColor = False
         end
         object DBEdit6: TDBEdit
-          Left = 578
+          Left = 16
           Height = 28
           Top = 167
-          Width = 654
+          Width = 781
           DataField = 'cidade'
           DataSource = dsPadrao
           CharCase = ecNormal
           MaxLength = 0
-          TabOrder = 5
+          TabOrder = 7
         end
         object DBComboBox1: TDBComboBox
-          Left = 1251
+          Left = 810
           Height = 28
           Top = 167
           Width = 58
@@ -223,12 +250,13 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             'SP'
             'TO'
           )
-          MaxLength = 0
+          MaxLength = 2
           Sorted = True
-          TabOrder = 6
+          Style = csDropDownList
+          TabOrder = 8
         end
         object Label7: TLabel
-          Left = 1252
+          Left = 811
           Height = 20
           Top = 145
           Width = 58
@@ -236,61 +264,22 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           ParentColor = False
         end
         object Label8: TLabel
-          Left = 1332
+          Left = 880
           Height = 20
           Top = 145
           Width = 33
           Caption = 'CEP'
           ParentColor = False
         end
-        object Label9: TLabel
-          Left = 32
-          Height = 20
-          Top = 211
-          Width = 70
-          Caption = 'Telefone'
-          ParentColor = False
-        end
-        object DBEdit7: TDBEdit
-          Left = 32
-          Height = 28
-          Top = 233
-          Width = 200
-          DataField = 'telefone'
-          DataSource = dsPadrao
-          CharCase = ecNormal
-          MaxLength = 0
-          TabOrder = 8
-        end
-        object Label10: TLabel
-          Left = 282
-          Height = 20
-          Top = 211
-          Width = 60
-          Caption = 'Celular'
-          ParentColor = False
-        end
-        object DBEdit8: TDBEdit
-          Left = 280
-          Height = 28
-          Top = 232
-          Width = 200
-          DataField = 'celular'
-          DataSource = dsPadrao
-          CharCase = ecNormal
-          MaxLength = 0
-          TabOrder = 9
-        end
         object GroupBox1: TGroupBox
-          Left = 32
+          Left = 16
           Height = 158
-          Top = 280
+          Top = 213
           Width = 1400
           Caption = 'Filiação'
           ClientHeight = 133
           ClientWidth = 1396
-          TabOrder = 10
-          TabStop = True
+          TabOrder = 12
           object Label11: TLabel
             Left = 12
             Height = 20
@@ -303,7 +292,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             Left = 12
             Height = 28
             Top = 32
-            Width = 1296
+            Width = 1330
             DataField = 'nome_pai'
             DataSource = dsPadrao
             CharCase = ecNormal
@@ -322,7 +311,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             Left = 12
             Height = 28
             Top = 95
-            Width = 1296
+            Width = 1330
             DataField = 'nome_mae'
             DataSource = dsPadrao
             CharCase = ecNormal
@@ -331,15 +320,14 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           end
         end
         object GroupBox2: TGroupBox
-          Left = 32
+          Left = 16
           Height = 199
-          Top = 456
+          Top = 389
           Width = 1400
           Caption = 'Anamnese'
           ClientHeight = 174
           ClientWidth = 1396
-          TabOrder = 11
-          TabStop = True
+          TabOrder = 14
           object Label13: TLabel
             Left = 12
             Height = 20
@@ -356,12 +344,12 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             Caption = 'Doença pré-existente'
             ParentColor = False
           end
-          object Label15: TLabel
+          object lblObservacao: TLabel
             Left = 12
             Height = 20
             Top = 67
-            Width = 99
-            Caption = 'Observação'
+            Width = 381
+            Caption = 'Observação - 0 caracteres digitados de 200.'
             ParentColor = False
           end
           object dblMotivo_Matricula: TDBLookupComboBox
@@ -377,16 +365,18 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             ListField = 'descricao'
             ListFieldIndex = 0
             ListSource = DataModuleApp.dsMotivo_Matricula
-            LookupCache = True
+            LookupCache = False
+            Sorted = True
             TabOrder = 0
           end
           object dblDoenca_Pre_Existente: TDBLookupComboBox
             Left = 664
             Height = 28
             Top = 31
-            Width = 712
+            Width = 678
             AutoComplete = True
             AutoDropDown = True
+            Color = clWhite
             DataField = 'fk_doenca_pre_existente_id'
             DataSource = dsPadrao
             KeyField = 'id'
@@ -394,38 +384,169 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             ListFieldIndex = 0
             ListSource = DataModuleApp.dsDoenca_Pre_Existente
             LookupCache = False
+            Sorted = True
             TabOrder = 1
           end
           object DBMemo1: TDBMemo
             Left = 12
             Height = 78
             Top = 92
-            Width = 1364
+            Width = 1330
             DataField = 'observacao'
             DataSource = dsPadrao
+            MaxLength = 200
+            OnChange = DBMemo1Change
             TabOrder = 2
           end
+        end
+        object DBEdit11: TDBEdit
+          Left = 578
+          Height = 28
+          Top = 101
+          Width = 406
+          DataField = 'complemento'
+          DataSource = dsPadrao
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 5
+        end
+        object Label16: TLabel
+          Left = 578
+          Height = 20
+          Top = 77
+          Width = 120
+          Caption = 'Complemento'
+          ParentColor = False
+        end
+        object Label17: TLabel
+          Left = 1089
+          Height = 20
+          Top = 8
+          Width = 113
+          Caption = 'Dt. matrícula'
+          ParentColor = False
+        end
+        object DBEdit12: TDBEdit
+          Left = 1088
+          Height = 28
+          Top = 32
+          Width = 126
+          DataField = 'data_cadastramento'
+          DataSource = dsPadrao
+          ReadOnly = True
+          CharCase = ecNormal
+          Color = clSilver
+          MaxLength = 0
+          TabOrder = 1
+          TabStop = False
+        end
+        object Label18: TLabel
+          Left = 1229
+          Height = 20
+          Top = 8
+          Width = 119
+          Caption = 'Dt. inativação'
+          ParentColor = False
+        end
+        object DBEdit13: TDBEdit
+          Left = 1229
+          Height = 28
+          Top = 32
+          Width = 126
+          DataField = 'data_inativacao'
+          DataSource = dsPadrao
+          ReadOnly = True
+          CharCase = ecNormal
+          Color = clSilver
+          MaxLength = 0
+          TabOrder = 13
+          TabStop = False
+        end
+        object pnlErroResponsavel: TPanel
+          Left = 1
+          Height = 42
+          Top = 609
+          Width = 1378
+          Align = alBottom
+          BevelColor = clTeal
+          BevelInner = bvLowered
+          BevelWidth = 2
+          Caption = 'CADASTRAR RESPONSÁVEL AO ALUNO'
+          Color = clRed
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -20
+          Font.Name = 'Verdana'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 15
+          Visible = False
+        end
+        object Label9: TLabel
+          Left = 995
+          Height = 20
+          Top = 145
+          Width = 70
+          Caption = 'Telefone'
+          ParentColor = False
+        end
+        object DBEdit7: TDBEdit
+          Left = 995
+          Height = 28
+          Top = 167
+          Width = 173
+          CustomEditMask = True
+          DataField = 'telefone'
+          DataSource = dsPadrao
+          CharCase = ecNormal
+          EditMask = '(99) 9999-9999;0;_'
+          MaxLength = 0
+          TabOrder = 10
+        end
+        object DBEdit8: TDBEdit
+          Left = 1182
+          Height = 28
+          Top = 167
+          Width = 173
+          CustomEditMask = True
+          DataField = 'celular'
+          DataSource = dsPadrao
+          CharCase = ecNormal
+          EditMask = '(99) 99999-9999;0;_'
+          MaxLength = 0
+          TabOrder = 11
+        end
+        object Label10: TLabel
+          Left = 1182
+          Height = 20
+          Top = 145
+          Width = 60
+          Caption = 'Celular'
+          ParentColor = False
         end
       end
     end
     object TabSheetResponsavel: TTabSheet
       Caption = 'Responsável financeiro'
-      ClientHeight = 659
-      ClientWidth = 1486
+      ClientHeight = 652
+      ClientWidth = 1380
       object Panel5: TPanel
         Left = 0
-        Height = 659
+        Height = 652
         Top = 0
-        Width = 1486
+        Width = 1380
         Align = alClient
-        ClientHeight = 659
-        ClientWidth = 1486
+        ClientHeight = 652
+        ClientWidth = 1380
         TabOrder = 0
         object DBGrid1: TDBGrid
           Left = 1
-          Height = 600
+          Height = 593
           Top = 1
-          Width = 1484
+          Width = 1378
           Align = alClient
           Columns = <          
             item
@@ -463,13 +584,14 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           TitleFont.Style = [fsBold]
         end
         object Panel1: TPanel
+          Tag = 1
           Left = 1
           Height = 57
-          Top = 601
-          Width = 1484
+          Top = 594
+          Width = 1378
           Align = alBottom
           ClientHeight = 57
-          ClientWidth = 1484
+          ClientWidth = 1378
           TabOrder = 1
           object btnNovoResponsavel: TBitBtn
             Tag = 1
@@ -478,7 +600,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             Hint = 'Inclui um novo responsável'
             Top = 8
             Width = 155
-            Caption = 'Incluir'
+            Caption = '&Incluir'
             Glyph.Data = {
               36090000424D3609000000000000360000002800000018000000180000000100
               2000000000000009000064000000640000000000000000000000000000000000
@@ -568,7 +690,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             Hint = 'Edita os dados do responsável selecionado'
             Top = 8
             Width = 155
-            Caption = 'Editar'
+            Caption = '&Editar'
             Glyph.Data = {
               36090000424D3609000000000000360000002800000018000000180000000100
               2000000000000009000064000000640000000000000000000000000000000000
@@ -657,8 +779,10 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
   end
   inherited dsPadrao: TDataSource[3]
     OnStateChange = dsPadraoStateChange
+    top = 10
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -677,10 +801,16 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Precision = -1
       end    
       item
-        Name = 'endereco'
+        Name = 'rua'
         DataType = ftString
         Precision = -1
-        Size = 300
+        Size = 180
+      end    
+      item
+        Name = 'complemento'
+        DataType = ftString
+        Precision = -1
+        Size = 150
       end    
       item
         Name = 'bairro'
@@ -731,6 +861,16 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Size = 210
       end    
       item
+        Name = 'data_cadastramento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'data_inativacao'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
         Name = 'observacao'
         DataType = ftString
         Precision = -1
@@ -745,169 +885,36 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Name = 'fk_doenca_pre_existente_id'
         DataType = ftLargeint
         Precision = -1
+      end    
+      item
+        Name = 'ativo'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'adimplente'
+        DataType = ftString
+        Precision = -1
+        Size = 3
       end>
-    BeforeDelete = nil
-    BeforePost = nil
+    AfterInsert = sqlQueryPadraoAfterInsert
+    AfterRefresh = sqlQueryPadraoAfterRefresh
+    BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
       'select * from aluno'
     )
-    Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit]
-    object sqlQueryPadraoid: TLargeintField[0]
-      FieldKind = fkData
-      FieldName = 'id'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlQueryPadraonome: TStringField[1]
-      FieldKind = fkData
-      FieldName = 'nome'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 70
-    end
-    object sqlQueryPadraodata_nascimento: TDateField[2]
-      FieldKind = fkData
-      FieldName = 'data_nascimento'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      DisplayFormat = '00/00/0000;1;_'
-      EditMask = '00/00/0000;1;_'
-    end
-    object sqlQueryPadraoendereco: TStringField[3]
-      FieldKind = fkData
-      FieldName = 'endereco'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object sqlQueryPadraobairro: TStringField[4]
-      FieldKind = fkData
-      FieldName = 'bairro'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 30
-    end
-    object sqlQueryPadraocidade: TStringField[5]
-      FieldKind = fkData
-      FieldName = 'cidade'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object sqlQueryPadraoestado: TStringField[6]
-      FieldKind = fkData
-      FieldName = 'estado'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 2
-    end
-    object sqlQueryPadraocep: TStringField[7]
-      FieldKind = fkData
-      FieldName = 'cep'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      EditMask = '99999-999;0;_'
-      Size = 8
-    end
-    object sqlQueryPadraotelefone: TStringField[8]
-      FieldKind = fkData
-      FieldName = 'telefone'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      EditMask = '(99)9999-9999;0;_'
-      Size = 10
-    end
-    object sqlQueryPadraocelular: TStringField[9]
-      FieldKind = fkData
-      FieldName = 'celular'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      EditMask = '(99)99999-9999;0;_'
-      Size = 11
-    end
-    object sqlQueryPadraonome_pai: TStringField[10]
-      FieldKind = fkData
-      FieldName = 'nome_pai'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 70
-    end
-    object sqlQueryPadraonome_mae: TStringField[11]
-      FieldKind = fkData
-      FieldName = 'nome_mae'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 70
-    end
-    object sqlQueryPadraoobservacao: TStringField[12]
-      FieldKind = fkData
-      FieldName = 'observacao'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 200
-    end
-    object sqlQueryPadraofk_motivo_matricula_id: TLargeintField[13]
-      FieldKind = fkData
-      FieldName = 'fk_motivo_matricula_id'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField[14]
-      FieldKind = fkData
-      FieldName = 'fk_doenca_pre_existente_id'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
+    DeleteSQL.Strings = (
+      ''
+    )
+    Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit, sqoCancelUpdatesOnRefresh, sqoRefreshUsingSelect]
+    ServerFilter = 'id = :id'
+    left = 40
   end
   object dsResponsavel: TDataSource[5]
     AutoEdit = False
     DataSet = sqlQueryResponsavel
-    left = 48
+    left = 32
     top = 96
   end
   object sqlQueryResponsavel: TSQLQuery[6]
@@ -921,26 +928,26 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Name = 'nome'
         DataType = ftString
         Precision = -1
-        Size = 70
+        Size = 210
       end    
       item
         Name = 'celular'
         DataType = ftString
         Precision = -1
-        Size = 11
+        Size = 33
       end    
       item
         Name = 'email'
         DataType = ftString
         Precision = -1
-        Size = 40
+        Size = 120
       end>
     BeforeOpen = sqlQueryResponsavelBeforeOpen
     Database = DataModuleApp.MySQL57Connection
-    Transaction = DataModuleApp.sqlTransactionAluno
+    Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
       'select id, nome, celular, email'
-      'from responsavel_financeiro'
+      'from responsavel'
       'where fk_aluno_id = :id'
     )
     Params = <    
@@ -950,46 +957,160 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         ParamType = ptInput
         Value = '0'
       end>
-    left = 88
+    left = 72
     top = 96
-    object sqlQueryResponsavelid: TLargeintField
-      FieldKind = fkData
-      FieldName = 'id'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlQueryResponsavelnome: TStringField
-      FieldKind = fkData
-      FieldName = 'nome'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 70
-    end
-    object sqlQueryResponsavelcelular: TStringField
-      FieldKind = fkData
-      FieldName = 'celular'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 11
-    end
-    object sqlQueryResponsavelemail: TStringField
-      FieldKind = fkData
-      FieldName = 'email'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 40
-    end
+  end
+  object imageList: TImageList[7]
+    Height = 24
+    Width = 24
+    left = 405
+    top = 728
+    Bitmap = {
+      4C69020000001800000018000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FBFBFBFFD8D8D8FFC2C2C2FFBBBBBBFFBCBC
+      BCFFC3C3C3FFD9D9D9FFFBFBFBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00E9E9E9FFBEBEBEFFC8C8C8FFD2D2D2FFD4D4D4FFD4D4
+      D4FFD4D4D4FFCBCBCBFFBFBFBFFFEBEBEBFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00EDEDEDFFB3B3B3FFDFDFDFFFE9E9E9FFE1E1E1FFDDDDDDFFDCDC
+      DCFFE3E3E3FFEEEEEEFFE3E3E3FFB5B5B5FFEEEEEEFFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00ADADADFFD5D4D4FFC6C6C6FF9F9F9FFFAAAAAAFFBBBBBBFFBBBB
+      BBFFAAAAAAFFA2A2A2FFCCCCCCFFEDEDEDFFB0B0B0FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00B5B5B4FFCDCDCDFFC9C8C8FFB5B5B4FFC5C5C5FFFBFBFBFFFFFFFF00FFFF
+      FF00F9F9F9FFC2C2C2FF979797FFDDDDDDFFCBCBCBFFD2D2D2FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00BABABAFFEAEAEAFFD5D4D4FFBABABAFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FEFEFEFFBABABAFFD5D4D4FFEAEAEAFFBABABAFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00B5B5B4FFE0E1E1FFC9C8C8FFB5B5B4FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00B5B5B4FFC9C8C8FFE0E1E1FFB5B5B4FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00ADADADFFD3D3D2FFBABABAFFADADADFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00ADADADFFBABABAFFD3D3D2FFADADADFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00A2A2A3FFC3C3C3FFACACACFFA2A2A3FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00A2A2A3FFACACACFFC3C3C3FFA2A2A3FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009FC7FF75E1
+      EFFF29ABE0FF1B92D8FF35B6E6FF51D0EFFF70E1F6FF81EBFCFF8EF0FFFF8BF0
+      FEFF81EAFAFF70E2F7FF51CFEEFF37BAE6FF219ADBFF2DB0E1FF83E6F0FF009F
+      C7FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009BC4FF83E6
+      F0FF2FB5E0FF1795D8FF1DA8DFFF25B7E5FF34CBEEFF45D9F6FF54E5FDFF52E3
+      FBFF44D8F4FF35CBEEFF28B9E5FF21ACE0FF1B9ED9FF35BAE4FF94EAF2FF009B
+      C4FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000095BEFF81E5
+      F0FF30B6E1FF1896D8FF22AAE0FF28B9E6FF30C7EDFF3AD6F5FF42E1FCFF42E0
+      FAFF39D5F4FF32CAEFFF29BAE5FF24AFE1FF1E9FDBFF34BAE2FF94EAF2FF0095
+      BEFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00008EB9FF84E8
+      F2FF33B9E2FF199EDAFF22B1E2FF2ABEE9FF35CDEFFF3FD8F6FF4BE3FCFF49E1
+      FBFF3ED7F5FF36CEEFFF2DC1E9FF26B5E3FF1EA7DCFF39BFE5FF97EBF3FF008E
+      B9FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000086B2FF7EE5
+      F0FF2EB1E0FF1691D7FF20A6DFFF26B6E6FF2DC6EEFF38D5F5FF40E0FCFF40DD
+      FAFF38D1F3FF30C7EDFF27B7E5FF23ABE0FF1C9BD9FF32B5E1FF90EAF2FF0086
+      B2FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00007DACFF80E5
+      F0FF2DB3E0FF1793D8FF1EA8DFFF25B6E5FF2FC7EEFF37D4F4FF43E0FCFF3FDE
+      F9FF37D3F4FF30C7ECFF28B9E5FF22ACE0FF1B9CD9FF33B7E2FF91EAF2FF007D
+      ACFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000175A5FF83E6
+      F0FF33B8E4FF1899D8FF23AFE1FF2ABCE9FF33CBEFFF3ED8F5FF48E2FCFF47E1
+      FCFF3ED7F4FF36CDF0FF2BBEE6FF27B4E3FF1FA4DCFF36BDE3FF96EBF3FF0175
+      A5FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006D9EFF81E6
+      F0FF32B6E2FF1897D8FF22ACE1FF29BAE6FF32CBEFFF3DD8F7FF46E2FCFF46E1
+      FDFF3DD7F6FF35CCEFFF29BBE8FF25B1E1FF1EA0DBFF35BAE3FF94EAF0FF006D
+      9EFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006698FF81E6
+      F4FF2DB2DFFF1794D8FF1FA8E0FF25B6E8FF2DC5EBFF35CFEFFF3EDAF4FF3BD8
+      F2FF34CEEEFF2FC6EBFF28B9E8FF22ACE2FF1A9CDAFF33B7E2FF96EBF6FF0066
+      98FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00016094FF64DC
+      EEFF28AADDFF1380C6FF188BC2FF1B94BCFF1D9DBBFF22A9BCFF25B3C1FF25B1
+      C1FF22A7BCFF1E9FBBFF1A96BBFF1A91C4FF1788CAFF2CB0DFFF6FDFEDFF0160
+      94FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FF0160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FBFBFBFFD8D8D8FFC2C2C2FFBBBBBBFFBCBC
+      BCFFC3C3C3FFD9D9D9FFFBFBFBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00E9E9E9FFBEBEBEFFC8C8C8FFD2D2D2FFD4D4D4FFD4D4
+      D4FFD4D4D4FFCBCBCBFFBFBFBFFFEBEBEBFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00EDEDEDFFB3B3B3FFDFDFDFFFE9E9E9FFE1E1E1FFDDDDDDFFDCDC
+      DCFFE3E3E3FFEEEEEEFFE3E3E3FFB5B5B5FFEEEEEEFFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00ADADADFFD5D4D4FFC6C6C6FF9F9F9FFFAAAAAAFFBBBBBBFFBBBB
+      BBFFAAAAAAFFA2A2A2FFCCCCCCFFEDEDEDFFB0B0B0FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00B5B5B4FFCDCDCDFFC9C8C8FFB5B5B4FFC5C5C5FFFBFBFBFFFFFFFF00FFFF
+      FF00F9F9F9FFC2C2C2FF979797FFDDDDDDFFCBCBCBFFD2D2D2FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00ADADADFFD3D3D2FFBABABAFFADADADFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FEFEFEFFBABABAFFD5D4D4FFEAEAEAFFBABABAFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00A2A2A3FFC3C3C3FFACACACFFA2A2A3FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00B5B5B4FFC9C8C8FFE0E1E1FFB5B5B4FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00989899FFB4B4B4FFA09F9FFF989899FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00ADADADFFBABABAFFD3D3D2FFADADADFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00A2A2A3FFACACACFFC3C3C3FFA2A2A3FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFEFFFFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00989899FFA09F9FFFB4B4B4FF989899FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009FC7FF75E1
+      EFFF29ABE0FF1B92D8FF35B6E6FF51D0EFFF70E1F6FF81EBFCFF8EF0FFFF8BF0
+      FEFF81EAFAFF70E2F7FF51CFEEFF37BAE6FF219ADBFF2DB0E1FF83E6F0FF009F
+      C7FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009BC4FF83E6
+      F0FF2FB5E0FF1795D8FF1DA8DFFF25B7E5FF34CBEEFF45D9F6FF54E5FDFF52E3
+      FBFF44D8F4FF35CBEEFF28B9E5FF21ACE0FF1B9ED9FF35BAE4FF94EAF2FF009B
+      C4FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000095BEFF81E5
+      F0FF30B6E1FF1896D8FF22AAE0FF28B9E6FF30C7EDFF3AD6F5FF42E1FCFF42E0
+      FAFF39D5F4FF32CAEFFF29BAE5FF24AFE1FF1E9FDBFF34BAE2FF94EAF2FF0095
+      BEFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00008EB9FF84E8
+      F2FF33B9E2FF199EDAFF22B1E2FF2ABEE9FF35CDEFFF3FD8F6FF4BE3FCFF49E1
+      FBFF3ED7F5FF36CEEFFF2DC1E9FF26B5E3FF1EA7DCFF39BFE5FF97EBF3FF008E
+      B9FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000086B2FF7EE5
+      F0FF2EB1E0FF1691D7FF20A6DFFF26B6E6FF2DC6EEFF38D5F5FF40E0FCFF40DD
+      FAFF38D1F3FF30C7EDFF27B7E5FF23ABE0FF1C9BD9FF32B5E1FF90EAF2FF0086
+      B2FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00007DACFF80E5
+      F0FF2DB3E0FF1793D8FF1EA8DFFF25B6E5FF2FC7EEFF37D4F4FF43E0FCFF3FDE
+      F9FF37D3F4FF30C7ECFF28B9E5FF22ACE0FF1B9CD9FF33B7E2FF91EAF2FF007D
+      ACFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000175A5FF83E6
+      F0FF33B8E4FF1899D8FF23AFE1FF2ABCE9FF33CBEFFF3ED8F5FF48E2FCFF47E1
+      FCFF3ED7F4FF36CDF0FF2BBEE6FF27B4E3FF1FA4DCFF36BDE3FF96EBF3FF0175
+      A5FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006D9EFF81E6
+      F0FF32B6E2FF1897D8FF22ACE1FF29BAE6FF32CBEFFF3DD8F7FF46E2FCFF46E1
+      FDFF3DD7F6FF35CCEFFF29BBE8FF25B1E1FF1EA0DBFF35BAE3FF94EAF0FF006D
+      9EFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006698FF81E6
+      F4FF2DB2DFFF1794D8FF1FA8E0FF25B6E8FF2DC5EBFF35CFEFFF3EDAF4FF3BD8
+      F2FF34CEEEFF2FC6EBFF28B9E8FF22ACE2FF1A9CDAFF33B7E2FF96EBF6FF0066
+      98FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00016094FF64DC
+      EEFF28AADDFF1380C6FF188BC2FF1B94BCFF1D9DBBFF22A9BCFF25B3C1FF25B1
+      C1FF22A7BCFF1E9FBBFF1A96BBFF1A91C4FF1788CAFF2CB0DFFF6FDFEDFF0160
+      94FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FF0160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00
+    }
   end
 end

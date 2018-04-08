@@ -10,14 +10,14 @@ uses
 type
   TUtil = class(TObject)
   private
-    class function TiraMascara(const sCGC_CPF: String): String;
 
   public
     class function incrementaChavePrimaria(conexao: TSQLConnection; nomeTabela: String; nomeCampoChavePrimaria: String): Integer;
-    class function validar_email(email: string): boolean;
+    class procedure validar_Email(email: string);
 
-    class function CheckCPF (sCPF : String): Boolean;
-    class function CheckCGC(sCGC: String): Boolean;
+    class procedure CheckCPF (sCPF : String);
+    class procedure CheckCGC(sCGC: String);
+    class function tirarMascara(const valorCampo: String): String;
   end;
 
 implementation
@@ -36,14 +36,14 @@ begin
     qry.SQL.Add('select max(' + nomeCampoChavePrimaria + ') from ' + nomeTabela);
     qry.Open;
 
-    result := qry.Fields[0].AsInteger;
+    result := qry.Fields[0].AsInteger + 1;
   finally
     qry.Close;
     qry.Free;
   end;
 end;
 
-class function TUtil.validar_email(email: string): boolean;
+class procedure TUtil.validar_Email(email: string);
 const
   csLetra = 'abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWYXZ';
   csNumero = '0123456789';
@@ -57,9 +57,10 @@ var
   vsiPosicaoPrimeiroArrouba : Shortint;
   vcPrimeiroCaractere : String;
   vsDominio : String;
+  emailValido: boolean;
 
 begin
-  Result := True;
+  emailValido := True;
   vsiTamanho := length(email);
   vcPrimeiroCaractere := copy(email,1,1);
   vsiPosicaoPrimeiroArrouba := pos(csArrouba,email);
@@ -67,28 +68,31 @@ begin
 
   //Verifica se não tem caracteres brancos no fim e no começo
   //Não está na especificação, mas objetiva evitar bugs
-  if email <> trim(email) then Result := false else
+  if email <> trim(email) then emailValido := false else
 
   //Verifica se inicia com número
-  if pos(vcPrimeiroCaractere,csNumero) > 0 then Result := false else
+  if pos(vcPrimeiroCaractere,csNumero) > 0 then emailValido := false else
 
   //Verifica se contêm pelo menos um @
-  if vsiPosicaoPrimeiroArrouba = 0 then Result := false else
+  if vsiPosicaoPrimeiroArrouba = 0 then emailValido := false else
 
   //Verifica se contêm mais de um @, é o mesmo que perguntar se existe @ no domínio
-  if pos(csArrouba,vsDominio) > 0 then Result := false else
+  if pos(csArrouba,vsDominio) > 0 then emailValido := false else
 
   //Verifica se existe pelo memos um "." após o @
-  if pos(csPonto,vsDominio) = 0 then Result := false else
+  if pos(csPonto,vsDominio) = 0 then emailValido := false else
 
   //Verifica se existe dois pontos juntos
-  if pos(csDoisPontos,email) > 0 then Result := false else
+  if pos(csDoisPontos,email) > 0 then emailValido := false else
 
   //Verifica se existe algum caractere inválido
   for vsiCont := 1 to vsiTamanho do
   begin
-    if pos(copy(email,vsiCont,1), (csLetra + csNumero + csEspecial + csArrouba +  csPonto)) = 0 then Result := false;
+    if pos(copy(email,vsiCont,1), (csLetra + csNumero + csEspecial + csArrouba +  csPonto)) = 0 then emailValido := false;
   end;
+
+  if not emailValido then
+   raise Exception.Create('O e-mail informado não é válido.');
 end;
 
 (******************************************************************************)
@@ -96,54 +100,51 @@ end;
 (******************************************************************************)
 
 (******************************************************************************)
-(*  Programador: Adilson - Baby                                               *)
-(*  Function   : TiraMascara                                                  *)
-(*  Descrição  : Função para retirar a mascara do CPF e do CGC                *)
-(*  Parâmetro  : sCGC_CPF - CGC/CPF p/ retirar a máscara.                     *)
-(*  Retorno    : CGC/CPF sem a máscara.                                       *)
-(*  Revisão    : André Cleiser      Data Revisão: 17/02/2000                  *)
+(*  Function   : TUtil.tirarMascaraNumeros                                           *)
+(*  Descrição  : Função para retirar a mascara de conteúdo numérico           *)
+(*  Parâmetro  : valorCampo, conteúdo numérico de onde será retirada a máscara*)
+(*  Retorno    : valorCampo sem a máscara.                                    *)
 (******************************************************************************)
-class function TCGC_CPF.TiraMascara(const sCGC_CPF: String): String;
+class function TUtil.tirarMascara(const valorCampo: String): String;
 var
   iIndice : Integer; { Indice para poder varrer a entrada }
 begin
   Result := '';
   //Varre a string com o CGC/CPF p/ tirar a máscara.
-  for iIndice := 1 to length(sCGC_CPF) do
-   if sCGC_CPF[iIndice] in ['0'..'9'] then
-    Result := Result + sCGC_CPF[iIndice]; //Pega o CGC/CPF sem a máscara.
+  for iIndice := 1 to length(valorCampo) do
+   if valorCampo[iIndice] in ['0'..'9'] then
+    Result := Result + valorCampo[iIndice]; //Pega o CGC/CPF sem a máscara.
 end;
 
 (******************************************************************************)
-(*  Programador: Adilson - Baby                                               *)
 (*  Function   : CheckCPF                                                     *)
 (*  Descrição  : Função para verificar a validez do CPF                       *)
 (*  Parâmetro  : sCPF - CPF p/ verificação.                                   *)
 (*  Retorno    : True  => CPF valido                                          *)
 (*               False => CPF inválido                                        *)
-(*  Revisão    : André Cleiser      Data Revisão: 17/02/2000                  *)
 (******************************************************************************)
-class function TCGC_CPF.CheckCPF(sCPF: String): Boolean;
+class procedure TUtil.CheckCPF(sCPF: String);
 var
  aiDigito       : array[1..11] of integer; { Digitos do CPF }
  iIndice        : integer;                 { Indice dos digitos }
- iErro          : integer;                 { Variavel de Erro ( string -> integer ) }
+ {%H-}iErro     : integer;                 { Variavel de Erro ( string -> integer ) }
  iMultiplicador : integer;                 { Fator de Multiplicacao }
  iTotal         : integer;                 { Total para os Calculos }
+ cpfValido      : boolean;
 
 begin
   try
     //Zera o acumulador dos dígitos do CPF.
     iTotal         := 0;
     //Pega o CPF sem máscara.
-    sCPF           := TiraMascara(sCPF);
+    sCPF           := TUtil.tirarMascara(sCPF);
     //Usado para verificar os dígitos que estão antes do dg verificador.
     iMultiplicador := 10;
     //1º verificação do CPF.
-    Result := (Length(sCPF) = 11);
+    cpfValido := (sCPF.Length = 11);
     //Se for identidficado um erro gerar exceção.
-    if not Result then
-     raise Exception.Create(Format(msgCGC_CPFInvalido, ['CPF']));
+    if not cpfValido then
+      raise Exception.Create(Format(msgCGC_CPFInvalido, ['CPF']));
 
     //Converte o String em um Integer.
     for iIndice := 1 to 11 do Val(sCPF[iIndice], aiDigito[iIndice], iErro);
@@ -155,11 +156,11 @@ begin
     end;
 
     //2º verificação do CPF.
-    Result := ((((iTotal * 10) mod 11) = aiDigito[10]) or
-               (((iTotal * 10) mod 11) = aiDigito[10] + 10));
+    cpfValido := ((((iTotal * 10) mod 11) = aiDigito[10]) or
+                 (((iTotal * 10) mod 11) = aiDigito[10] + 10));
 
     //Se for identidficado um erro gerar exceção.
-    if not Result then
+    if not cpfValido then
      raise Exception.Create(Format(msgCGC_CPFInvalido, ['CPF']));
 
     //Zera o acumulador dos dígitos do CPF.
@@ -175,11 +176,11 @@ begin
     end;
 
     //3º verificação do CPF.
-    Result := ((((iTotal * 10) mod 11) = aiDigito[11]) or
-               (((iTotal * 10) mod 11) = aiDigito[11] + 10));
+    cpfValido := ((((iTotal * 10) mod 11) = aiDigito[11]) or
+                 (((iTotal * 10) mod 11) = aiDigito[11] + 10));
 
     //Se for identidficado um erro gerar exceção.
-    if not Result then
+    if not cpfValido then
      raise Exception.Create(Format(msgCGC_CPFInvalido, ['CPF']));
   except
     raise;
@@ -187,23 +188,21 @@ begin
 end;
 
 (******************************************************************************)
-(*  Programador: Adilson - Baby                                               *)
 (*  Function   : CheckCGC                                                     *)
 (*  Descrição  : Função para verificar a validez do CGC                       *)
 (*  Parâmetro  : sCGC - CGC p/ verificação.                                   *)
 (*  Retorno    : True  => CGC valido                                          *)
 (*               False => CGC inválido                                        *)
-(*  Revisão    : André Cleiser      Data Revisão: 17/02/2000                  *)
 (******************************************************************************)
-class function TCGC_CPF.CheckCGC(sCGC: String): Boolean;
+class procedure TUtil.CheckCGC(sCGC: String);
 var
   aiDigito       : array[1..14] of integer; { Digitos do CGC }
   iTotal         : integer;                 { Total para Calculos }
   iMultiplicador : integer;                 { Fator de multiplicacao }
   iIndice        : integer;                 { Indice dos digitos }
-  iErro          : integer;                 { Variavel de Erro ( string -> integer ) }
+  {%H-}iErro     : integer;                 { Variavel de Erro ( string -> integer ) }
   iDigVerif      : integer;                 { Digito para verificacao }
-
+  cpfValido      : boolean;
 begin
   try
     //Zera o acumulador dos dígitos do CGC.
@@ -211,12 +210,12 @@ begin
     //Usado para auxiliar a validação do CGC.
     iMultiplicador := 5;
     //Pega CGC sem máscara.
-    sCGC          := TiraMascara(sCGC);
+    sCGC          := TUtil.tirarMascara(sCGC);
 
     //1º verificação do CGC.
-    Result := (length(sCGC) = 14);
+    cpfValido := (length(sCGC) = 14);
     //Se for identidficado um erro gerar exceção.
-    if not Result then
+    if not cpfValido then
      raise Exception.Create(Format(msgCGC_CPFInvalido, ['CGC']));
 
     //Converte o String em um Integer.
@@ -240,9 +239,9 @@ begin
     //Pega o dígito verificador(Fim)
 
     //2º verificação do CGC.
-    Result := not (iDigVerif <> aiDigito[13]);
+    cpfValido := not (iDigVerif <> aiDigito[13]);
     //Se for identidficado um erro gerar exceção.
-    if not Result then
+    if not cpfValido then
      raise Exception.Create(Format(msgCGC_CPFInvalido, ['CGC']));
 
 
@@ -265,9 +264,9 @@ begin
 
 
     //3º verificação do CGC.
-    Result := not (iDigVerif <> aiDigito[14]);
+    cpfValido := not (iDigVerif <> aiDigito[14]);
     //Se for identidficado um erro gerar exceção.
-    if not Result then
+    if not cpfValido then
      raise Exception.Create(Format(msgCGC_CPFInvalido, ['CGC']));
   except
     raise;

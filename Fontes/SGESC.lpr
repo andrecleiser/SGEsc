@@ -7,8 +7,10 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, sdflaz, uCadAluno, uDATMOD, uCadastroPadrao, uCadastroAlunos,
-  uPrincipal, uClassUtil, uCadastroResponsavelFinanceiro
+  Forms, sdflaz, uDATMOD, uCadastroPadrao, uCadastroAlunos, uPrincipal,
+  uClassUtil, uCadastroResponsavelFinanceiro, uFinanceiroService, uAlunoService,
+  uResponsavelService, uFormBase, uConsultaAluno, uRegistrarFrequencia, uAluno,
+  uFrequenciaService
   { you can add units after this };
 
 {$R *.res}
