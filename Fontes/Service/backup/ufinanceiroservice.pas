@@ -5,7 +5,7 @@ unit uFinanceiroService;
 interface
 
 uses
-  Classes, SysUtils, sqldb;
+  Classes, SysUtils, sqldb, uAluno;
 
 type
   TFinanceiroService = class
@@ -18,8 +18,8 @@ type
     constructor create(dataSetAluno: TSQLQuery);
     destructor destroy; override;
 
-    function alunoAdimplente: String; overload;
-    class function alunoAdimplente(idAluno: Integer): String; overload;
+    class function alunoAdimplente(aluno: TAluno): boolean; overload;
+    class function alunoAdimplente(idAluno: Integer): boolean; overload;
   end;
 
 
@@ -35,14 +35,14 @@ begin
   dataSet := nil;
 end;
 
-function TFinanceiroService.alunoAdimplente: String;
+class function TFinanceiroService.alunoAdimplente(aluno: TAluno): boolean; overload;
 begin
-  result := 'N';
+  result := aluno.adimplente = 'S';
 end;
 
-class function TFinanceiroService.alunoAdimplente(idAluno: Integer): String;
+class function TFinanceiroService.alunoAdimplente(idAluno: Integer): boolean;
 begin
-  result := 'N';
+  result := false;
 end;
 
 end.

@@ -29,6 +29,7 @@ inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
       Top = 9
       Width = 218
       Caption = 'Registrar frequência'
+      Enabled = False
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C006000000000000000000000000000000000000936645936645

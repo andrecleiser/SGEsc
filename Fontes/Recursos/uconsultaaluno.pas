@@ -14,7 +14,7 @@ type
 
   TfrmConsultaAluno = class(TfrmBase)
     btnConsultar: TBitBtn;
-    btnEditarResponsavel: TBitBtn;
+    btnEditar: TBitBtn;
     btnRetornar: TBitBtn;
     DBGrid1: TDBGrid;
     dsAlunos: TDataSource;
@@ -22,12 +22,12 @@ type
     lblTextoConsulta: TLabel;
     Panel1: TPanel;
     procedure btnConsultarClick(Sender: TObject);
-    procedure btnEditarResponsavelClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   private
 
   public
-     function obterAlunoSelecionado: TAluno;
+//     function obterAlunoSelecionado: TAluno;
   end;
 
 var
@@ -60,16 +60,14 @@ begin
   DataModuleApp.qryAlunoObj.Open;
 
   btnRetornar.Enabled:=not DataModuleApp.qryAlunoObj.IsEmpty;
+  btnEditar.Enabled:=not DataModuleApp.qryAlunoObj.IsEmpty;
 
   if DataModuleApp.qryAlunoObj.IsEmpty then
     raise Exception.Create('A pesquisa executada a partir do texto usado não encontrou nenhum aluno.');
 end;
 
-procedure TfrmConsultaAluno.btnEditarResponsavelClick(Sender: TObject);
+procedure TfrmConsultaAluno.btnEditarClick(Sender: TObject);
 begin
-  if DataModuleApp.qryAlunoObj.IsEmpty then
-    raise Exception.Create('Nenhum aluno encontrado.');
-
   with TfrmCadastroAlunos.Create(Application) do
   try
     sqlQueryPadrao.ParamByName('id').AsInteger := DataModuleApp.qryAlunoObj.FieldByName('id').AsInteger;
@@ -90,11 +88,11 @@ begin
   DataModuleApp.qryAlunoObj.Close;
 end;
 
-function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
+{function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
 begin
   result := TAluno.create(DataModuleApp.qryAlunoObj);
   btnSair.Click;
 end;
-
+}
 end.
 

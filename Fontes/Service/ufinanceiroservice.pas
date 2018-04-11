@@ -5,39 +5,25 @@ unit uFinanceiroService;
 interface
 
 uses
-  Classes, SysUtils, sqldb;
+  Classes, SysUtils, sqldb, uAluno;
 
 type
   TFinanceiroService = class
 
   private
-    dataSet: TSQLQuery;
 
   public
     // O parâmetro dataSetAluno idica um DataSet com as informações de um aluno.
-    constructor create(dataSetAluno: TSQLQuery);
-    destructor destroy; override;
-
-    function alunoAdimplente: boolean; overload;
+    class function alunoAdimplente(aluno: TAluno): boolean; overload;
     class function alunoAdimplente(idAluno: Integer): boolean; overload;
   end;
 
 
 implementation
 
-constructor TFinanceiroService.create(dataSetAluno: TSQLQuery);
+class function TFinanceiroService.alunoAdimplente(aluno: TAluno): boolean; overload;
 begin
-  dataSet := dataSetAluno;
-end;
-
-destructor TFinanceiroService.destroy;
-begin
-  dataSet := nil;
-end;
-
-function TFinanceiroService.alunoAdimplente: boolean;
-begin
-  result := false;
+  result := aluno.adimplente = 'S';
 end;
 
 class function TFinanceiroService.alunoAdimplente(idAluno: Integer): boolean;

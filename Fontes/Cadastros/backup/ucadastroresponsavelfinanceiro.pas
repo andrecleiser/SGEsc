@@ -29,13 +29,11 @@ type
     procedure DBEdit2Exit(Sender: TObject);
     procedure DBEdit6Exit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     fid_aluno: Integer;
 
-    responsavelService: TResponsavelService;
   public
     property id_aluno: Integer read fid_aluno write fid_aluno;
   end;
@@ -63,22 +61,17 @@ end;
 procedure TfrmCadastroResponsavelFinanceiro.FormShow(Sender: TObject);
 begin
   captionForm := 'CADASTRO DE RESPONSÁVEL FINANCEIRO';
-  responsavelService := TResponsavelService.create(sqlQueryPadrao);
-end;
-
-procedure TfrmCadastroResponsavelFinanceiro.FormDestroy(Sender: TObject);
-begin
-  responsavelService.Free;
-  inherited;
 end;
 
 procedure TfrmCadastroResponsavelFinanceiro.sqlQueryPadraoBeforePost(
   DataSet: TDataSet);
 begin
-  responsavelService.validarDados;
+  TResponsavelService.validarDados(DataSet);
+
+  inherited;
+
   if DataSet.State = dsInsert then
     sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := id_aluno;
-  inherited;
 end;
 
 procedure TfrmCadastroResponsavelFinanceiro.DBEdit6Exit(Sender: TObject);

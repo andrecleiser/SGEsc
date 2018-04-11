@@ -40,9 +40,6 @@ var
 
 implementation
 
-uses
-  uDATMOD;
-
 {$R *.lfm}
 
 { TfrmRegistrarFrequencia }
@@ -62,6 +59,7 @@ procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);
 begin
   lblNomeAlunoFrente.Visible:=false;
   lblNomeAlunoFundo.Visible:=false;
+  btnRegistrarFrequencia.Enabled:=false;
 end;
 
 procedure TfrmRegistrarFrequencia.BitBtn3Click(Sender: TObject);
@@ -81,6 +79,13 @@ begin
     lblNomeAlunoFrente.Caption:=aluno.nome;
     lblNomeAlunoFundo.Caption:=aluno.nome;
 
+{    if aluno.adimplente = 'N' then
+    begin
+      lblNomeAlunoFrente.Font.Color := clRed;
+      lblNomeAlunoFundo.Font.Color := clRed;
+    end;}
+
+    btnRegistrarFrequencia.Enabled:=true;
     btnRegistrarFrequencia.SetFocus;
   except
     edtCodigoAluno.SetFocus;

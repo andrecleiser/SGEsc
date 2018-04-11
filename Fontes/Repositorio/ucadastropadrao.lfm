@@ -78,12 +78,13 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
     FieldDefs = <>
     AfterEdit = sqlQueryPadraoAfterEdit
     AfterInsert = sqlQueryPadraoAfterInsert
+    AfterPost = sqlQueryPadraoAfterPost
     BeforeDelete = sqlQueryPadraoBeforeDelete
     BeforePost = sqlQueryPadraoBeforePost
     Database = DataModuleApp.MySQL57Connection
-    Transaction = DataModuleApp.sqlTransactionAluno
+    Transaction = DataModuleApp.sqlTransactionGeral
+    Options = [sqoKeepOpenOnCommit]
     Params = <>
-    UpdateMode = upWhereAll
     left = 39
     top = 8
   end

@@ -1,3 +1,4 @@
+﻿CREATE SCHEMA `sgesc` DEFAULT CHARACTER SET utf8;
 drop table frequencia;
 drop table responsavel;
 drop table aluno;
@@ -34,7 +35,6 @@ CREATE TABLE aluno (
 	observacao VARCHAR(200),
     fk_motivo_matricula_id BIGINT(4) NOT NULL,
     fk_doenca_pre_existente_id BIGINT(4) NOT NULL,
-    ativo VARCHAR(01) NOT NULL DEFAULT 'N',
     adimplente VARCHAR(01) NOT NULL DEFAULT 'N',
     
 	FOREIGN KEY (fk_doenca_pre_existente_id) REFERENCES doenca_pre_existente(id),

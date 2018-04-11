@@ -5,30 +5,24 @@ unit uAlunoService;
 interface
 
 uses
-  Classes, SysUtils, uFinanceiroService, sqldb, Forms, LCLType, uAluno;
+  Classes, SysUtils, db, sqldb, Forms, LCLType, uAluno;
 
 type
 
   TAlunoService = class
   private
-    dataSet: TSQLQuery;
-    financeiroService: TFinanceiroService;
   public
-    // O parâmetro dataSetAluno idica um DataSet com as informações de um aluno.
-    constructor create(dataSetAluno: TSQLQuery);
-    destructor destroy; override;
+    // retorna um objeto aluno a partir do id. Caso não seja encontrado, retornará nil.
+    class function obterAlunoAtivo(id: integer): TAluno;
 
-    // retorna um objecto aluno a partir do id. Caso não seja encontrado, retornará nil.
-    class function obterAluno(id: integer): TAluno;
+    // retorna um objeto aluno a partir do regsitro corrente do DataSet.
+    class function obterAluno(dataSet: TSQLQuery): TAluno; overload;
 
     // Identifica se existe responsável cadatrado ao aluno
-    function temResponsavel: boolean;
+    class function temResponsavel(idAluno: integer): boolean;
 
     // Aplica as regras de validação referentes à inclusão do aluno.
-    procedure validarDados;
-
-
-    property financeiro: TFinanceiroService read financeiroService;
+    class procedure validarDados(dataSet: TDataSet);
   end;
 
 implementation
@@ -37,40 +31,28 @@ uses
   uDATMOD;
 
 //******************** MÉTODOS PÚBLICOS ********************//
-constructor TAlunoService.create(dataSetAluno: TSQLQuery);
+class function TAlunoService.obterAluno(dataSet: TSQLQuery): TAluno;
 begin
-  dataSet := dataSetAluno;
-  financeiroService := TFinanceiroService.create(dataSetAluno);
+  result := TAluno.create(dataSet);
 end;
 
-destructor TAlunoService.destroy;
-begin
-  financeiroService.Free;
-  Self.dataSet := nil;
-end;
-
-
-function TAlunoService.temResponsavel: boolean;
+class function TAlunoService.temResponsavel(idAluno: integer): boolean;
 var
   qry: TSQLQuery;
 begin
-  result := dataSet.IsEmpty;
-  if not Result then
-  begin
-    qry := TSQLQuery.Create(nil);
-    qry.SQLConnection := dataSet.SQLConnection;
-    try
-      qry.SQL.Add('select count(*) from responsavel where fk_aluno_id = ' + dataSet.FieldByName('id').AsString);
-      qry.Open;
-      result := (qry.Fields[0].AsInteger > 0);
-    finally
-      qry.Close;
-      qry.Free;
-    end;
+  qry := TSQLQuery.Create(nil);
+  qry.SQLConnection := DataModuleApp.MySQL57Connection;
+  try
+    qry.SQL.Add('select count(*) from responsavel where fk_aluno_id = ' + idAluno.toString);
+    qry.Open;
+    result := (qry.Fields[0].AsInteger > 0);
+  finally
+    qry.Close;
+    qry.Free;
   end;
 end;
 
-procedure TAlunoService.validarDados;
+class procedure TAlunoService.validarDados(dataSet: TDataSet);
 begin
   // Regra de validação 03
   if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) then
@@ -98,41 +80,23 @@ begin
     raise Exception.Create('É necessário indicar a pré-existência de doença.');
 end;
 
-//******************** MÉTODOS DE CLASSE PÚBLICOS ********************//
-class function TAlunoService.obterAluno(id: integer): TAluno;
-{var
-  qry: TSQLQuery;}
+class function TAlunoService.obterAlunoAtivo(id: integer): TAluno;
 begin
   result := nil;
-{  qry := TSQLQuery.Create(nil);
-  qry.SQLConnection := DataModuleApp.MySQL57Connection;}
 
   try
-{    qry.SQL.Add('seletc id, nome, data_nascimento, data_cadastramento, data_inativacao, fk_motivo_matricula_id, fk_doenca_pre_existente_id from aluno where id = ' + id.ToString);
-    qry.Open;}
-
     DataModuleApp.qryAlunoObj.Close;
-    DataModuleApp.qryAlunoObj.ServerFilter:='id = ' + id.ToString;
+    DataModuleApp.qryAlunoObj.ServerFilter:='id = ' + id.ToString + ' and data_inativacao is null';
     DataModuleApp.qryAlunoObj.ServerFiltered:=true;
     DataModuleApp.qryAlunoObj.Open;
 
     //if not qry.IsEmpty then
     if not DataModuleApp.qryAlunoObj.IsEmpty then
     begin
-      result := TAluno.create(qry);
-
-{      result := TAluno.create(qry.FieldByName('id').AsInteger,
-                              qry.FieldByName('nome').AsString,
-                              qry.FieldByName('data_nascimento').AsDateTime,
-                              qry.FieldByName('data_cadastramento').AsDateTime,
-                              qry.FieldByName('data_inativacao').AsDateTime,
-                              qry.FieldByName('fk_motivo_matricula_id').AsInteger,
-                              qry.FieldByName('fk_doenca_pre_existente_id').AsInteger);}
+      result := TAluno.create(DataModuleApp.qryAlunoObj);
     end;
   finally
     DataModuleApp.qryAlunoObj.Close;
-{    qry.Close;
-    qry.Free;}
   end;
 end;
 

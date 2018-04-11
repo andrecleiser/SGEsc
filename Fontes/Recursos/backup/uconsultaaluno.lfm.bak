@@ -23,6 +23,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       Top = 9
       Width = 145
       Caption = 'Retornar'
+      Enabled = False
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
@@ -83,8 +84,9 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       }
       Spacing = 10
       TabOrder = 1
+      Visible = False
     end
-    object btnEditarResponsavel: TBitBtn[2]
+    object btnEditar: TBitBtn[2]
       Tag = 2
       Left = 210
       Height = 38
@@ -92,6 +94,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       Top = 9
       Width = 155
       Caption = 'Editar'
+      Enabled = False
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
         2000000000000009000064000000640000000000000000000000000000000000
@@ -168,7 +171,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000
       }
-      OnClick = btnEditarResponsavelClick
+      OnClick = btnEditarClick
       ParentShowHint = False
       ShowHint = True
       Spacing = 20
@@ -296,6 +299,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
   end
   object dsAlunos: TDataSource[3]
     AutoEdit = False
+    DataSet = DataModuleApp.qryAlunoObj
     left = 157
     top = 8
   end

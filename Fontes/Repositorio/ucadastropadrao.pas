@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, DbCtrls, Buttons, LCLType, uFormBase;
+  ExtCtrls, DbCtrls, Buttons, LCLType, uFormBase, BufDataset;
 
 type
 
@@ -23,6 +23,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterPost(DataSet: TDataSet);
     procedure sqlQueryPadraoBeforeDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
@@ -49,7 +50,7 @@ var
 implementation
 
 uses
-  uClassUtil;
+  uClassUtil, uDATMOD;
 
 {$R *.lfm}
 
@@ -79,17 +80,34 @@ begin
     campoFocoEdicao.SetFocus;
 end;
 
+procedure TfrmCadastroPadrao.sqlQueryPadraoBeforePost(DataSet: TDataSet);
+begin
+  if DataSet.State = dsInsert then
+  begin
+    if incrementarChavePrimaria() then
+      DataSet.FieldByName(fcampoChavePrimaria).AsInteger := TUtil.incrementaChavePrimaria(TSQLQuery(DataSet).SQLConnection, ftabela, fcampoChavePrimaria);
+  end
+  else if DataSet.State = dsEdit then
+  begin
+    if DataSet.Modified then
+      DataSet.Tag:=1;
+  end;
+end;
+
+procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);
+begin
+  if DataSet.Tag = 1 then
+  begin
+    DataSet.Tag := 0;
+    TSQLQuery(DataSet).ApplyUpdates;
+    DataModuleApp.sqlTransactionGeral.CommitRetaining;
+  end;
+end;
+
 procedure TfrmCadastroPadrao.sqlQueryPadraoBeforeDelete(DataSet: TDataSet);
 begin
   if Application.MessageBox('Deseja excluir o registro?', 'Exclusão', MB_ICONQUESTION + MB_YESNO) = idNo then
     raise Exception.Create('Exclusão cancelada!');
-end;
-
-procedure TfrmCadastroPadrao.sqlQueryPadraoBeforePost(DataSet: TDataSet);
-begin
-  if DataSet.State = dsInsert then
-    if incrementarChavePrimaria() then
-      DataSet.FieldByName(fcampoChavePrimaria).AsInteger := TUtil.incrementaChavePrimaria(TSQLQuery(DataSet).SQLConnection, ftabela, fcampoChavePrimaria);
 end;
 
 procedure TfrmCadastroPadrao.btnSairClick(Sender: TObject);

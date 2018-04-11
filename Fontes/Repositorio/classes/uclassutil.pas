@@ -282,7 +282,7 @@ begin
   begin
      // Chave primária
     if ESQLDatabaseError(e).ErrorCode = 1062 then
-      result := 'Registro já cadastrado'
+      result := 'Informação já cadastrada.'
   end
   else result := e.Message;
 end;

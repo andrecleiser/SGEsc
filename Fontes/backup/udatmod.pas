@@ -20,24 +20,12 @@ type
     qryLookUpDoenca_Pre_ExistenteNome: TStringField;
     qryLookUpMotivo_Matricula: TSQLQuery;
     qryLookUpDoenca_Pre_Existente: TSQLQuery;
-    qryAlunosbairro: TStringField;
-    qryAlunoscelular: TStringField;
-    qryAlunoscep: TStringField;
-    qryAlunoscidade: TStringField;
-    qryAlunosdata_nascimento: TDateField;
-    qryAlunosendereco: TStringField;
-    qryAlunosestado: TStringField;
-    qryAlunosid: TLargeintField;
-    qryAlunosnome: TStringField;
-    qryAlunosnome_mae: TStringField;
-    qryAlunosnome_pai: TStringField;
-    qryAlunostelefone: TStringField;
     qryLookUpMotivo_Matriculadescricao: TStringField;
     qryLookUpMotivo_Matriculaid: TLargeintField;
     sqlTransactionGeral: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
-    procedure qryAlunoObjAfterClose(DataSet: TDataSet);
+    procedure qryAlunoObjAfterClose({%H-}DataSet: TDataSet);
   private
 
   public

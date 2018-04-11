@@ -40,9 +40,6 @@ var
 
 implementation
 
-uses
-  uDATMOD;
-
 {$R *.lfm}
 
 { TfrmRegistrarFrequencia }
@@ -53,15 +50,7 @@ procedure TfrmRegistrarFrequencia.btnRegistrarFrequenciaClick(Sender: TObject);
   qry: TSQLQuery;}
 begin
   validarCampoVazio;
-  try
-  //  qry := TSQLQuery.Create(nil);
-//    qry.SQLConnection;
-    DataModuleApp.MySQL57Connection.ExecuteDirect('insert into frequencia values (' + aluno.id.ToString + ', date(now()))');
-    Application.MessageBox('Frequência registrada com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
-  except
-    on e: Exception do
-      Application.MessageBox(PChar('Falha ao tentar registrar a frequência. ' + #13#10 + 'Erro: ' + e.Message + '.'), 'ERRO', MB_ICONERROR);
-  end;
+  TFrequenciaService.registrarFrequencia(aluno.id);
   edtCodigoAluno.Clear;
   edtCodigoAluno.SetFocus;
 end;
@@ -70,6 +59,7 @@ procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);
 begin
   lblNomeAlunoFrente.Visible:=false;
   lblNomeAlunoFundo.Visible:=false;
+  btnRegistrarFrequencia.Enabled:=false;
 end;
 
 procedure TfrmRegistrarFrequencia.BitBtn3Click(Sender: TObject);
@@ -89,6 +79,13 @@ begin
     lblNomeAlunoFrente.Caption:=aluno.nome;
     lblNomeAlunoFundo.Caption:=aluno.nome;
 
+{    if aluno.adimplente = 'N' then
+    begin
+      lblNomeAlunoFrente.Font.Color := clRed;
+      lblNomeAlunoFundo.Font.Color := clRed;
+    end;}
+
+    btnRegistrarFrequencia.Enabled:=true;
     btnRegistrarFrequencia.SetFocus;
   except
     edtCodigoAluno.SetFocus;

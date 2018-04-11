@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, DbCtrls, Buttons, ComCtrls, StdCtrls, DBExtCtrls, DBGrids, MaskEdit,
-  uCadastroPadrao, uAlunoService;
+  uCadastroPadrao, uAlunoService, BufDataset;
 
 type
 
@@ -63,6 +63,25 @@ type
     Panel2: TPanel;
     pnlErroResponsavel: TPanel;
     Panel5: TPanel;
+    sqlQueryPadraoadimplente: TStringField;
+    sqlQueryPadraobairro: TStringField;
+    sqlQueryPadraocelular: TStringField;
+    sqlQueryPadraocep: TStringField;
+    sqlQueryPadraocidade: TStringField;
+    sqlQueryPadraocomplemento: TStringField;
+    sqlQueryPadraodata_cadastramento: TDateField;
+    sqlQueryPadraodata_inativacao: TDateField;
+    sqlQueryPadraodata_nascimento: TDateField;
+    sqlQueryPadraoestado: TStringField;
+    sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField;
+    sqlQueryPadraofk_motivo_matricula_id: TLargeintField;
+    sqlQueryPadraoid: TLargeintField;
+    sqlQueryPadraonome: TStringField;
+    sqlQueryPadraonome_mae: TStringField;
+    sqlQueryPadraonome_pai: TStringField;
+    sqlQueryPadraoobservacao: TStringField;
+    sqlQueryPadraorua: TStringField;
+    sqlQueryPadraotelefone: TStringField;
     sqlQueryResponsavel: TSQLQuery;
     TabSheetGeral: TTabSheet;
     TabSheetResponsavel: TTabSheet;
@@ -75,12 +94,10 @@ type
     procedure FormShow(Sender: TObject);
     procedure PageControlChange(Sender: TObject);
     procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
-    procedure sqlQueryPadraoAfterRefresh({%H-}DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterPost({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
     procedure sqlQueryResponsavelBeforeOpen({%H-}DataSet: TDataSet);
   private
-    alunoService: TAlunoService;
-
     procedure setImageSituacaoAluno;
 
   public
@@ -93,7 +110,7 @@ var
 implementation
 
 uses
-  uCadastroResponsavelFinanceiro;
+  uCadastroResponsavelFinanceiro, uDATMOD;
 
 {$R *.lfm}
 
@@ -105,7 +122,7 @@ begin
   sqlQueryPadrao.Close;
   sqlQueryPadrao.Params.Clear;
   sqlQueryPadrao.Params.CreateParam(ftInteger, 'id', ptInput);
-  sqlQueryPadrao.ServerFiltered:=true;
+//  sqlQueryPadrao.ServerFiltered:=true;
 
   captionForm := 'Cadastro de aluno';
   campoChavePrimaria:='id';
@@ -119,11 +136,28 @@ begin
   dblMotivo_Matricula.ListSource.DataSet.Open;
   dblDoenca_Pre_Existente.ListSource.DataSet.Open;
 
-  alunoService := TAlunoService.create(sqlQueryPadrao);
   campoFocoEdicao := dbeNome;
 
   PageControl.ActivePage := TabSheetGeral;
-
+{
+update aluno
+set nome = :nome,
+    data_nascimento = :data_nascimento,
+    rua = :rua,
+    complemento = :complemento,
+    bairro = :bairro,
+    cidade = :cidade,
+    estado = :estado,
+    cep = :cep,
+    telefone = :telefone,
+    celular = :celular,
+    nome_pai = :nome_pai,
+    nome_mae =  :nome_mae,
+    observacao = :observacao,
+    fk_motivo_matricula_id = :fk_motivo_matricula_id,
+    fk_doenca_pre_existente_id = :fk_doenca_pre_existente_id
+where id = :old_id
+}
   imageList.GetBitmap(0, btnDesativar.Glyph);
 end;
 
@@ -131,7 +165,6 @@ procedure TfrmCadastroAlunos.FormDestroy(Sender: TObject);
 begin
   dblMotivo_Matricula.ListSource.DataSet.Close;
   dblDoenca_Pre_Existente.ListSource.DataSet.Close;
-  alunoService.Free;
   inherited;
 end;
 
@@ -145,8 +178,8 @@ begin
   end
   else
   begin
+    pnlErroResponsavel.Visible := sqlQueryResponsavel.IsEmpty;
     sqlQueryResponsavel.Close;
-    pnlErroResponsavel.Visible := not alunoService.temResponsavel;
   end;
 end;
 
@@ -156,14 +189,14 @@ begin
   pnlErroResponsavel.Visible := true;
 end;
 
-procedure TfrmCadastroAlunos.sqlQueryPadraoAfterRefresh(DataSet: TDataSet);
+procedure TfrmCadastroAlunos.sqlQueryPadraoAfterPost(DataSet: TDataSet);
 begin
-  setImageSituacaoAluno;
+  dsPadrao.OnStateChange(dsPadrao);
 end;
 
 procedure TfrmCadastroAlunos.sqlQueryPadraoBeforePost(DataSet: TDataSet);
 begin
-  alunoService.validarDados;
+  TAlunoService.validarDados(DataSet);
 
   inherited;
 
@@ -197,7 +230,8 @@ begin
     end;
     ShowModal;
   finally
-    PageControl.OnChange(PageControl);
+    sqlQueryResponsavel.Close;
+    PageControl.ActivePage := TabSheetGeral;
     Free;
   end;
 end;

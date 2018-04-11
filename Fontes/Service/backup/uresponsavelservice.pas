@@ -5,20 +5,15 @@ unit uResponsavelService;
 interface
 
 uses
-  Classes, SysUtils, Forms, sqldb, LCLType;
+  Classes, SysUtils, Forms, sql, LCLType;
 
 type
 
   TResponsavelService = class
   private
-    dataSet: TSQLQuery;
   public
-    // O parâmetro dataSetAluno idica um DataSet com as informações de um aluno.
-    constructor create(dataSetResponsavel: TSQLQuery);
-    destructor destroy; override;
-
     // Aplica as regras de validação referentes à inclusão do aluno.
-    procedure validarDados;
+    class procedure validarDados(dataSet: TDataSet);
   end;
 
 implementation
@@ -27,32 +22,22 @@ uses
   uClassUtil;
 
 //******************** MÉTODOS PÚBLICOS ********************//
-constructor TResponsavelService.create(dataSetResponsavel: TSQLQuery);
-begin
-  dataSet := dataSetResponsavel;
-end;
-
-destructor TResponsavelService.destroy;
-begin
-  Self.dataSet := nil;
-end;
-
-procedure TResponsavelService.validarDados;
+class procedure TResponsavelService.validarDados(dataSet: TDataSet);
 begin
   // Regra de validação 01
-  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Length < 10) then
+  if dataSet.FieldByName('nome').AsString.Trim.Length < 10 then
     raise Exception.Create('O nome do responsável deve conter entre 10 e 70 caracteres.');
 
   // Regra de validação 02
-  if dataSet.FieldByName('email').IsNull or (dataSet.FieldByName('email').AsString.Length < 10) then
-    raise Exception.Create('O e-mail do responsável deve conter entre 10 e 70 caracteres.');
+  if dataSet.FieldByName('email').AsString.Trim.Length < 10 then
+    raise Exception.Create('O e-mail do responsável deve conter entre 10 e 40 caracteres.');
 
   // Regra de validação 03
-  if dataSet.FieldByName('cpf').IsNull  then
+  if dataSet.FieldByName('cpf').AsString.Trim.Length = 0  then
     raise Exception.Create('O C.P.F. do responsável tem que ser informado.');
 
   // Regra de validação 04
-  if dataSet.FieldByName('celular').IsNull  then
+  if dataSet.FieldByName('celular').AsString.Trim.Length = 0  then
     raise Exception.Create('O celular do responsável tem que ser informado.');
 
   // Regra de validação 05
@@ -61,6 +46,9 @@ begin
   // Regra de validação 06
   TUtil.validar_Email(dataSet.FieldByName('email').AsString);
 
+  // Regra de validação 07
+  if dataSet.FieldByName('celular').AsString.Trim.Length <> 11 then
+    raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//

@@ -18,6 +18,9 @@ type
     class procedure CheckCPF (sCPF : String);
     class procedure CheckCGC(sCGC: String);
     class function tirarMascara(const valorCampo: String): String;
+
+    class function mensagemErro(e: Exception): string;
+
   end;
 
 implementation
@@ -271,6 +274,17 @@ begin
   except
     raise;
   end;
+end;
+
+class function TUtil.mensagemErro(e: Exception): string;
+begin
+  if e.ClassNameIs('ESQLDatabaseError') then
+  begin
+     // Chave primária
+    if ESQLDatabaseError(e).ErrorCode = 1062 then
+      result := 'Registro já cadastrado'
+  end
+  else result := e.Message;
 end;
 
 end.

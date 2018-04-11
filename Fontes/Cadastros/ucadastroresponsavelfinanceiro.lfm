@@ -1,12 +1,11 @@
 inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
-  Left = 3586
+  Left = 3248
   Height = 381
-  Top = 271
+  Top = 205
   Width = 990
   ClientHeight = 381
   ClientWidth = 990
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnShow = FormShow
   inherited pnlBottom: TPanel
     Top = 325
@@ -242,7 +241,6 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     SQL.Strings = (
       'select * from responsavel'
     )
-    Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit, sqoRefreshUsingSelect]
     ServerFilter = 'id = :id'
   end
 end
