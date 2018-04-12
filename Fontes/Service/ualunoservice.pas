@@ -56,7 +56,7 @@ end;
 class procedure TAlunoService.validarDados(dataSet: TDataSet);
 begin
   // Regra de validação 03
-  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) then
+  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome').AsString.Trim.Length > 70) then
     raise Exception.Create('O nome do aluno deve conter entre 10 e 70 caracteres.');
 
   // Regra de validação 04
@@ -79,6 +79,8 @@ begin
   // Regra de validação 08
   if dataSet.FieldByName('fk_doenca_pre_existente_id').IsNull  then
     raise Exception.Create('É necessário indicar a pré-existência de doença.');
+
+
 end;
 
 class function TAlunoService.obterAlunoAtivo(id: integer): TAluno;

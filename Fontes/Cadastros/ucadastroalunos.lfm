@@ -99,6 +99,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     ClientWidth = 1250
     inherited dbNavAlunos: TDBNavigator
       Width = 1248
+      ClientHeight = 41
       ClientWidth = 1244
       ConfirmDelete = True
       Hints.Strings = (      )
@@ -111,7 +112,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     Height = 685
     Top = 47
     Width = 1250
-    ActivePage = TabSheetResponsavel
+    ActivePage = TabSheetGeral
     Align = alClient
     Font.CharSet = ANSI_CHARSET
     Font.Height = -17
@@ -119,7 +120,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 2
     TabPosition = tpBottom
     OnChange = PageControlChange
@@ -147,14 +148,14 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         object DBEdit3: TDBEdit
           Left = 760
           Height = 28
-          Top = 167
+          Top = 168
           Width = 104
           CustomEditMask = True
           DataField = 'cep'
           DataSource = dsPadrao
           CharCase = ecNormal
           EditMask = '99999-999;0;_'
-          MaxLength = 0
+          MaxLength = 9
           TabOrder = 9
         end
         object DBEdit2: TDBEdit
@@ -165,7 +166,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'rua'
           DataSource = dsPadrao
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 60
           TabOrder = 4
         end
         object DBEdit4: TDBEdit
@@ -176,7 +177,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'bairro'
           DataSource = dsPadrao
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 30
           TabOrder = 6
         end
         object dbeNome: TDBEdit
@@ -187,7 +188,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'nome'
           DataSource = dsPadrao
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 70
           TabOrder = 2
         end
         object DBDateEdit1: TDBDateEdit
@@ -268,7 +269,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'cidade'
           DataSource = dsPadrao
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 50
           TabOrder = 7
         end
         object DBComboBox1: TDBComboBox
@@ -357,7 +358,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             DataField = 'nome_pai'
             DataSource = dsPadrao
             CharCase = ecNormal
-            MaxLength = 0
+            MaxLength = 70
             TabOrder = 0
           end
           object Label12: TLabel
@@ -376,7 +377,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
             DataField = 'nome_mae'
             DataSource = dsPadrao
             CharCase = ecNormal
-            MaxLength = 0
+            MaxLength = 70
             TabOrder = 1
           end
         end
@@ -468,7 +469,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'complemento'
           DataSource = dsPadrao
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 50
           TabOrder = 5
         end
         object Label16: TLabel
@@ -563,8 +564,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'telefone'
           DataSource = dsPadrao
           CharCase = ecNormal
-          EditMask = '(99) 9999-9999;0;_'
-          MaxLength = 0
+          EditMask = '(99)9999-9999;0;_'
+          MaxLength = 13
           TabOrder = 10
         end
         object DBEdit8: TDBEdit
@@ -576,8 +577,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'celular'
           DataSource = dsPadrao
           CharCase = ecNormal
-          EditMask = '(99) 99999-9999;0;_'
-          MaxLength = 0
+          EditMask = '(99)99999-9999;0;_'
+          MaxLength = 14
           TabOrder = 11
         end
         object Label10: TLabel

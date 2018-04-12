@@ -1,10 +1,16 @@
 ﻿CREATE SCHEMA `sgesc` DEFAULT CHARACTER SET utf8;
+
+/*
+  CRIAR USUÁRIO sgesc_adm com senha 23101990 ao schema sgesc
+*/
+
+/*
 drop table frequencia;
 drop table responsavel;
 drop table aluno;
 drop table motivo_matricula;
 drop table doenca_pre_existente;
-
+*/
 
 CREATE TABLE doenca_pre_existente (
 	id BIGINT(4) PRIMARY KEY AUTO_INCREMENT,

@@ -241,7 +241,6 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     SQL.Strings = (
       'select * from responsavel'
     )
-    Options = [sqoKeepOpenOnCommit, sqoAutoApplyUpdates, sqoAutoCommit]
     ServerFilter = 'id = :id'
   end
 end

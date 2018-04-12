@@ -111,7 +111,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     Height = 685
     Top = 47
     Width = 1250
-    ActivePage = TabSheetResponsavel
+    ActivePage = TabSheetGeral
     Align = alClient
     Font.CharSet = ANSI_CHARSET
     Font.Height = -17
@@ -119,7 +119,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 2
     TabPosition = tpBottom
     OnChange = PageControlChange
@@ -154,7 +154,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataSource = dsPadrao
           CharCase = ecNormal
           EditMask = '99999-999;0;_'
-          MaxLength = 0
+          MaxLength = 9
           TabOrder = 9
         end
         object DBEdit2: TDBEdit
@@ -187,7 +187,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataField = 'nome'
           DataSource = dsPadrao
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 70
           TabOrder = 2
         end
         object DBDateEdit1: TDBDateEdit
@@ -564,7 +564,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataSource = dsPadrao
           CharCase = ecNormal
           EditMask = '(99) 9999-9999;0;_'
-          MaxLength = 0
+          MaxLength = 14
           TabOrder = 10
         end
         object DBEdit8: TDBEdit
@@ -577,7 +577,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
           DataSource = dsPadrao
           CharCase = ecNormal
           EditMask = '(99) 99999-9999;0;_'
-          MaxLength = 0
+          MaxLength = 15
           TabOrder = 11
         end
         object Label10: TLabel
@@ -843,7 +843,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     top = 10
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'

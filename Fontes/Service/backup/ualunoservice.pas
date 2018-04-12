@@ -16,7 +16,7 @@ type
     class function obterAlunoAtivo(id: integer): TAluno;
 
     // retorna um objeto aluno a partir do regsitro corrente do DataSet.
-    class function obterAluno(dataSet: TSQLQuery): TAluno; overload;
+//    class function obterAluno(dataSet: TSQLQuery): TAluno; overload;
 
     // Identifica se existe responsável cadatrado ao aluno
     class function temResponsavel(idAluno: integer): boolean;
@@ -31,10 +31,11 @@ uses
   uDATMOD;
 
 //******************** MÉTODOS PÚBLICOS ********************//
-class function TAlunoService.obterAluno(dataSet: TSQLQuery): TAluno;
+{class function TAlunoService.obterAluno(dataSet: TSQLQuery): TAluno;
 begin
   result := TAluno.create(dataSet);
 end;
+}
 
 class function TAlunoService.temResponsavel(idAluno: integer): boolean;
 var
@@ -55,7 +56,7 @@ end;
 class procedure TAlunoService.validarDados(dataSet: TDataSet);
 begin
   // Regra de validação 03
-  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) then
+  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome').AsString.Trim.Length > 70) then
     raise Exception.Create('O nome do aluno deve conter entre 10 e 70 caracteres.');
 
   // Regra de validação 04

@@ -28,6 +28,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     TabOrder = 6
     inherited dbNavAlunos: TDBNavigator
       Width = 988
+      ClientHeight = 41
       ClientWidth = 984
       Hints.Strings = (
         'Primeiro'
@@ -72,14 +73,14 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     ParentColor = False
   end
   object DBEdit1: TDBEdit[4]
-    Left = 31
+    Left = 32
     Height = 28
     Top = 144
     Width = 893
     DataField = 'nome'
     DataSource = dsPadrao
     CharCase = ecNormal
-    MaxLength = 0
+    MaxLength = 70
     TabOrder = 0
   end
   object Label2: TLabel[5]
@@ -100,7 +101,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     DataSource = dsPadrao
     CharCase = ecNormal
     EditMask = '999.999.999-99;0;_'
-    MaxLength = 0
+    MaxLength = 14
     TabOrder = 2
     OnExit = DBEdit2Exit
   end
@@ -120,7 +121,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     DataField = 'rg'
     DataSource = dsPadrao
     CharCase = ecNormal
-    MaxLength = 0
+    MaxLength = 11
     TabOrder = 3
   end
   object Label4: TLabel[9]
@@ -141,7 +142,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     DataSource = dsPadrao
     CharCase = ecNormal
     EditMask = '(99)99999-9999;0;_'
-    MaxLength = 0
+    MaxLength = 14
     TabOrder = 4
   end
   object Label5: TLabel[11]
@@ -162,7 +163,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     DataSource = dsPadrao
     CharCase = ecNormal
     EditMask = '(99)9999-9999;0;_'
-    MaxLength = 0
+    MaxLength = 13
     TabOrder = 5
   end
   object Label6: TLabel[13]
@@ -181,7 +182,7 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     DataField = 'email'
     DataSource = dsPadrao
     CharCase = ecNormal
-    MaxLength = 0
+    MaxLength = 40
     TabOrder = 1
     OnExit = DBEdit6Exit
   end
@@ -189,7 +190,6 @@ inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
     OnStateChange = dsPadraoStateChange
   end
   inherited sqlQueryPadrao: TSQLQuery[16]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'

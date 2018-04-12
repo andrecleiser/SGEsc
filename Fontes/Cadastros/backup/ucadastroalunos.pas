@@ -230,6 +230,7 @@ begin
     end;
     ShowModal;
   finally
+    sqlQueryResponsavel.Close;
     PageControl.ActivePage := TabSheetGeral;
     Free;
   end;
