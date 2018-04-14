@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="10"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="SGESC"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="4">
+      <Item1>
+        <PackageName Value="TurboPowerIPro"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="SDFLaz"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="FCL"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="LCL"/>
+      </Item4>
+    </RequiredPackages>
+    <Units Count="15">
+      <Unit0>
+        <Filename Value="SGESC.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="udatmod.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DataModuleApp"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="uDATMOD"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroPadrao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroPadrao"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroAlunos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroAlunos"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="uprincipal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrincipal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uPrincipal"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="Repositorio\classes\uclassutil.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uClassUtil"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroResponsavelFinanceiro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroResponsavelFinanceiro"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="Service\ufinanceiroservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uFinanceiroService"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="Service\ualunoservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAlunoService"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="Service\uresponsavelservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uResponsavelService"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="Repositorio\uformbase.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBase"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFormBase"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmConsultaAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uConsultaAluno"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRegistrarFrequencia"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uRegistrarFrequencia"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="Model\ualuno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAluno"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="Service\ufrequenciaservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uFrequenciaService"/>
+      </Unit14>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="SGESC"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model"/>
+      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGESC\Exe\Dcu"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="6">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+      <Item4>
+        <Name Value="Exception"/>
+      </Item4>
+      <Item5>
+        <Name Value="EDatabaseError"/>
+      </Item5>
+      <Item6>
+        <Name Value="ESQLDatabaseError"/>
+      </Item6>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="31">
+      <Unit0>
+        <Filename Value="SGESC.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="8" Y="8"/>
+        <UsageCount Value="103"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="udatmod.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DataModuleApp"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="uDATMOD"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="12" Y="4"/>
+        <UsageCount Value="103"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroPadrao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroPadrao"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="73"/>
+        <CursorPos X="22" Y="75"/>
+        <UsageCount Value="98"/>
+        <Bookmarks Count="1">
+          <Item0 X="5" Y="37" ID="1"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroAlunos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroAlunos"/>
+        <TopLine Value="89"/>
+        <CursorPos X="33" Y="113"/>
+        <UsageCount Value="98"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="uprincipal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrincipal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uPrincipal"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="44"/>
+        <CursorPos Y="74"/>
+        <UsageCount Value="98"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="Repositorio\classes\uclassutil.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uClassUtil"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="147"/>
+        <CursorPos Y="186"/>
+        <UsageCount Value="87"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroResponsavelFinanceiro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroResponsavelFinanceiro"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="43"/>
+        <CursorPos X="39" Y="46"/>
+        <UsageCount Value="85"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="Service\ufinanceiroservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uFinanceiroService"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="19" Y="29"/>
+        <UsageCount Value="73"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="Service\ualunoservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAlunoService"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="50"/>
+        <CursorPos X="40" Y="57"/>
+        <UsageCount Value="72"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="Service\uresponsavelservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uResponsavelService"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="31" Y="8"/>
+        <UsageCount Value="65"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="Repositorio\uformbase.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBase"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFormBase"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="53" Y="15"/>
+        <UsageCount Value="57"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmConsultaAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uConsultaAluno"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="17" Y="9"/>
+        <UsageCount Value="56"/>
+        <Loaded Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRegistrarFrequencia"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uRegistrarFrequencia"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="60"/>
+        <CursorPos X="35" Y="62"/>
+        <UsageCount Value="55"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="Model\ualuno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAluno"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="65" Y="76"/>
+        <UsageCount Value="50"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="Service\ufrequenciaservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uFrequenciaService"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="35" Y="4"/>
+        <UsageCount Value="41"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="Cadastros\ucadaluno.pas"/>
+        <ComponentName Value="frmCadAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadAluno"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="35" Y="7"/>
+        <UsageCount Value="45"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2856"/>
+        <CursorPos Y="2866"/>
+        <UsageCount Value="2"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="..\..\..\Lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="47"/>
+        <CursorPos X="25" Y="69"/>
+        <UsageCount Value="3"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\..\..\Lazarus\lcl\lclstrconsts.pas"/>
+        <UnitName Value="LCLStrConsts"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="254"/>
+        <CursorPos X="52" Y="259"/>
+        <UsageCount Value="3"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="82" Y="9"/>
+        <UsageCount Value="3"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\..\..\..\Lazarus\lcl\lclstrconsts.pas"/>
+        <UnitName Value="LCLStrConsts"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="439"/>
+        <CursorPos X="29" Y="50"/>
+        <UsageCount Value="5"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\..\..\..\Lazarus\lcl\include\customnotebook.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="311"/>
+        <CursorPos Y="335"/>
+        <UsageCount Value="7"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="Cadastros\ucadastroalunos.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="17" Y="20"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="Repositorio\ucadastropadrao.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos Y="21"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="18" Y="18"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\..\..\..\Lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2840"/>
+        <CursorPos X="42" Y="2851"/>
+        <UsageCount Value="7"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\..\..\..\Lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="996"/>
+        <CursorPos X="41" Y="1013"/>
+        <UsageCount Value="7"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="..\..\..\..\Lazarus\lcl\interfaces\win32\win32object.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="454"/>
+        <CursorPos Y="480"/>
+        <UsageCount Value="7"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="..\..\..\..\Lazarus\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="208"/>
+        <CursorPos Y="232"/>
+        <UsageCount Value="9"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="..\..\..\..\Lazarus\lcl\include\customedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="75"/>
+        <CursorPos Y="100"/>
+        <UsageCount Value="8"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="..\..\..\..\Lazarus\lcl\comctrls.pp"/>
+        <UnitName Value="ComCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="612"/>
+        <CursorPos X="14" Y="634"/>
+        <UsageCount Value="10"/>
+      </Unit30>
+    </Units>
+    <JumpHistory Count="9" HistoryIndex="8">
+      <Position1>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="194" Column="14"/>
+      </Position1>
+      <Position2>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="103" Column="24" TopLine="94"/>
+      </Position2>
+      <Position3>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="142" Column="49" TopLine="100"/>
+      </Position3>
+      <Position4>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="36" Column="5"/>
+      </Position4>
+      <Position5>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="144" TopLine="103"/>
+      </Position5>
+      <Position6>
+        <Filename Value="udatmod.pas"/>
+        <Caret Line="4" Column="12"/>
+      </Position6>
+      <Position7>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Caret Line="26" Column="51" TopLine="2"/>
+      </Position7>
+      <Position8>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="113" Column="33" TopLine="89"/>
+      </Position8>
+      <Position9>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="17" Column="32" TopLine="12"/>
+      </Position9>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

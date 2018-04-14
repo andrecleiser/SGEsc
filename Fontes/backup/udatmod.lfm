@@ -1,0 +1,190 @@
+object DataModuleApp: TDataModuleApp
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  OldCreateOrder = False
+  Height = 1030
+  HorizontalOffset = 0
+  VerticalOffset = 0
+  Width = 1870
+  PPI = 120
+  object MySQL57Connection: TMySQL57Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'sgesc'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = '23101990'
+    Transaction = sqlTransactionGeral
+    UserName = 'sgesc_adm'
+    CharSet = 'UTF8'
+    HostName = 'localhost'
+    Options = [scoApplyUpdatesChecksRowsAffected]
+    SkipLibraryVersionCheck = False
+    left = 80
+    top = 30
+  end
+  object sqlTransactionGeral: TSQLTransaction
+    Active = True
+    Action = caNone
+    Database = MySQL57Connection
+    left = 120
+    top = 32
+  end
+  object dsMotivo_Matricula: TDataSource
+    AutoEdit = False
+    DataSet = qryLookUpMotivo_Matricula
+    left = 592
+    top = 16
+  end
+  object dsDoenca_Pre_Existente: TDataSource
+    AutoEdit = False
+    DataSet = qryLookUpDoenca_Pre_Existente
+    left = 592
+    top = 88
+  end
+  object qryLookUpMotivo_Matricula: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select * from motivo_matricula order by descricao'
+    )
+    Options = [sqoKeepOpenOnCommit]
+    Params = <>
+    left = 632
+    top = 16
+    object qryLookUpMotivo_Matriculaid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryLookUpMotivo_Matriculadescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+  object qryLookUpDoenca_Pre_Existente: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select * from doenca_pre_existente order by nome'
+    )
+    Options = [sqoKeepOpenOnCommit]
+    Params = <>
+    left = 632
+    top = 88
+    object qryLookUpDoenca_Pre_Existenteid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryLookUpDoenca_Pre_ExistenteNome: TStringField
+      FieldKind = fkData
+      FieldName = 'Nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+  object qryAlunoObj: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'data_nascimento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'data_cadastramento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'data_inativacao'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'fk_motivo_matricula_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_doenca_pre_existente_id'
+        DataType = ftLargeint
+        Precision = -1
+      end>
+    AfterClose = qryAlunoObjAfterClose
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select id,'
+      '       nome,'
+      '       data_nascimento,'
+      '       data_cadastramento,'
+      '       data_inativacao,'
+      '       fk_motivo_matricula_id,'
+      '       fk_doenca_pre_existente_id,'
+      '       adimplente'
+      'from   aluno'
+      'order by nome'
+    )
+    Params = <>
+    left = 80
+    top = 128
+  end
+end

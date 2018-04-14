@@ -1,0 +1,246 @@
+inherited frmCadastroResponsavelFinanceiro: TfrmCadastroResponsavelFinanceiro
+  Left = 3248
+  Height = 381
+  Top = 205
+  Width = 990
+  ClientHeight = 381
+  ClientWidth = 990
+  OnCreate = FormCreate
+  OnShow = FormShow
+  inherited pnlBottom: TPanel
+    Top = 325
+    Width = 990
+    ClientWidth = 990
+    TabOrder = 7
+    inherited pnlFrmBaseSair: TPanel
+      Left = 776
+      inherited btnSair: TBitBtn
+        Left = 26
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  inherited pnlNav: TPanel
+    Width = 990
+    ClientWidth = 990
+    TabOrder = 6
+    inherited dbNavAlunos: TDBNavigator
+      Width = 988
+      ClientHeight = 41
+      ClientWidth = 984
+      Hints.Strings = (
+        'Primeiro'
+        'Anterior'
+        'Próximo'
+        'Último'
+        'Inserir'
+        'Excluir'
+        'Editar'
+        'Salvar'
+        'Cancelar'
+      )
+    end
+  end
+  object pnlAluno: TPanel[2]
+    Left = 0
+    Height = 63
+    Top = 47
+    Width = 990
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelInner = bvLowered
+    BevelWidth = 2
+    Caption = 'pnlAluno'
+    Color = clSilver
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -20
+    Font.Name = 'Verdana'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 8
+  end
+  object Label1: TLabel[3]
+    Left = 31
+    Height = 20
+    Top = 120
+    Width = 50
+    Caption = 'Nome'
+    ParentColor = False
+  end
+  object DBEdit1: TDBEdit[4]
+    Left = 32
+    Height = 28
+    Top = 144
+    Width = 893
+    DataField = 'nome'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 70
+    TabOrder = 0
+  end
+  object Label2: TLabel[5]
+    Left = 31
+    Height = 20
+    Top = 239
+    Width = 46
+    Caption = 'C.P.F.'
+    ParentColor = False
+  end
+  object DBEdit2: TDBEdit[6]
+    Left = 31
+    Height = 28
+    Top = 263
+    Width = 165
+    CustomEditMask = True
+    DataField = 'cpf'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    EditMask = '999.999.999-99;0;_'
+    MaxLength = 14
+    TabOrder = 2
+    OnExit = DBEdit2Exit
+  end
+  object Label3: TLabel[7]
+    Left = 224
+    Height = 20
+    Top = 239
+    Width = 37
+    Caption = 'R.G.'
+    ParentColor = False
+  end
+  object DBEdit3: TDBEdit[8]
+    Left = 224
+    Height = 28
+    Top = 263
+    Width = 183
+    DataField = 'rg'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 11
+    TabOrder = 3
+  end
+  object Label4: TLabel[9]
+    Left = 434
+    Height = 20
+    Top = 239
+    Width = 60
+    Caption = 'Celular'
+    ParentColor = False
+  end
+  object DBEdit4: TDBEdit[10]
+    Left = 434
+    Height = 28
+    Top = 263
+    Width = 158
+    CustomEditMask = True
+    DataField = 'celular'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    EditMask = '(99)99999-9999;0;_'
+    MaxLength = 14
+    TabOrder = 4
+  end
+  object Label5: TLabel[11]
+    Left = 619
+    Height = 20
+    Top = 239
+    Width = 70
+    Caption = 'Telefone'
+    ParentColor = False
+  end
+  object DBEdit5: TDBEdit[12]
+    Left = 619
+    Height = 28
+    Top = 263
+    Width = 158
+    CustomEditMask = True
+    DataField = 'telefone'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    EditMask = '(99)9999-9999;0;_'
+    MaxLength = 13
+    TabOrder = 5
+  end
+  object Label6: TLabel[13]
+    Left = 31
+    Height = 20
+    Top = 178
+    Width = 55
+    Caption = 'e-mail'
+    ParentColor = False
+  end
+  object DBEdit6: TDBEdit[14]
+    Left = 31
+    Height = 28
+    Top = 202
+    Width = 893
+    DataField = 'email'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 40
+    TabOrder = 1
+    OnExit = DBEdit6Exit
+  end
+  inherited dsPadrao: TDataSource[15]
+    OnStateChange = dsPadraoStateChange
+  end
+  inherited sqlQueryPadrao: TSQLQuery[16]
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'fk_aluno_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'email'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'cpf'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end    
+      item
+        Name = 'rg'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end    
+      item
+        Name = 'telefone'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'celular'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end>
+    BeforePost = sqlQueryPadraoBeforePost
+    SQL.Strings = (
+      'select * from responsavel'
+    )
+    ServerFilter = 'id = :id'
+  end
+end
