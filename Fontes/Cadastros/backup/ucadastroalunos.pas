@@ -191,6 +191,7 @@ end;
 
 procedure TfrmCadastroAlunos.sqlQueryPadraoAfterPost(DataSet: TDataSet);
 begin
+  inherited;
   dsPadrao.OnStateChange(dsPadrao);
 end;
 

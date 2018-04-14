@@ -33,6 +33,7 @@ type
     fcampoFocoEdicao: TWinControl;
 
     function incrementarChavePrimaria(): boolean;
+    procedure salvarDadosDataSet;
 
   protected
     property tabela: String             read fTabela         write fTabela;
@@ -82,6 +83,7 @@ end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoBeforePost(DataSet: TDataSet);
 begin
+  DataSet.Tag:=1;
   if DataSet.State = dsInsert then
   begin
     if incrementarChavePrimaria() then
@@ -90,7 +92,7 @@ begin
   else if DataSet.State = dsEdit then
   begin
     if not DataSet.Modified then
-      DataSet.Tag:=1;
+      DataSet.Tag:=0;
   end;
 end;
 
@@ -99,8 +101,7 @@ begin
   if DataSet.Tag = 1 then
   begin
     DataSet.Tag := 0;
-    TSQLQuery(DataSet).ApplyUpdates;
-    DataModuleApp.sqlTransactionGeral.CommitRetaining;
+    salvarDadosDataSet;
   end;
 end;
 
@@ -136,6 +137,12 @@ end;
 function TfrmCadastroPadrao.incrementarChavePrimaria(): boolean;
 begin
   result := (ftabela <> '') and (fcampoChavePrimaria <> '');
+end;
+
+procedure TfrmCadastroPadrao.salvarDadosDataSet;
+begin
+  sqlQueryPadrao.ApplyUpdates;
+  DataModuleApp.sqlTransactionGeral.CommitRetaining;
 end;
 
 end.

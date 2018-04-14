@@ -21,6 +21,7 @@ type
     procedure dsPadraoStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure sqlQueryPadraoAfterDelete(DataSet: TDataSet);
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterPost(DataSet: TDataSet);
@@ -33,6 +34,7 @@ type
     fcampoFocoEdicao: TWinControl;
 
     function incrementarChavePrimaria(): boolean;
+    procedure salvarDadosDataSet;
 
   protected
     property tabela: String             read fTabela         write fTabela;
@@ -68,6 +70,11 @@ begin
   sqlQueryPadrao.Close;
 end;
 
+procedure TfrmCadastroPadrao.sqlQueryPadraoAfterDelete(DataSet: TDataSet);
+begin
+  salvarDadosDataSet;
+end;
+
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterEdit(DataSet: TDataSet);
 begin
   if Assigned(campoFocoEdicao) then
@@ -82,6 +89,7 @@ end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoBeforePost(DataSet: TDataSet);
 begin
+  DataSet.Tag:=1;
   if DataSet.State = dsInsert then
   begin
     if incrementarChavePrimaria() then
@@ -89,8 +97,8 @@ begin
   end
   else if DataSet.State = dsEdit then
   begin
-    if DataSet.Modified then
-      DataSet.Tag:=1;
+    if not DataSet.Modified then
+      DataSet.Tag:=0;
   end;
 end;
 
@@ -99,8 +107,7 @@ begin
   if DataSet.Tag = 1 then
   begin
     DataSet.Tag := 0;
-    TSQLQuery(DataSet).ApplyUpdates;
-    DataModuleApp.sqlTransactionGeral.CommitRetaining;
+    salvarDadosDataSet;
   end;
 end;
 
@@ -136,6 +143,12 @@ end;
 function TfrmCadastroPadrao.incrementarChavePrimaria(): boolean;
 begin
   result := (ftabela <> '') and (fcampoChavePrimaria <> '');
+end;
+
+procedure TfrmCadastroPadrao.salvarDadosDataSet;
+begin
+  sqlQueryPadrao.ApplyUpdates;
+  DataModuleApp.sqlTransactionGeral.CommitRetaining;
 end;
 
 end.

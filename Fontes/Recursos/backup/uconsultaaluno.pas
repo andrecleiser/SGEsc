@@ -27,7 +27,7 @@ type
   private
 
   public
-     function obterAlunoSelecionado: TAluno;
+//     function obterAlunoSelecionado: TAluno;
   end;
 
 var
@@ -88,11 +88,11 @@ begin
   DataModuleApp.qryAlunoObj.Close;
 end;
 
-function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
+{function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
 begin
   result := TAluno.create(DataModuleApp.qryAlunoObj);
   btnSair.Click;
 end;
-
+}
 end.
 

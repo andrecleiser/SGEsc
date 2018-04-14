@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Buttons, StdCtrls, DBGrids, uFormBase, uAluno;
+  ExtCtrls, Buttons, StdCtrls, DBGrids, uFormBase;
 
 type
 
@@ -23,7 +23,7 @@ type
     Panel1: TPanel;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
   private
 
   public

@@ -1,12 +1,15 @@
 inherited frmConsultaAluno: TfrmConsultaAluno
   Left = 3066
-  Top = 134
+  Height = 659
+  Top = 225
   Width = 913
   ActiveControl = edtTextoConsultar
   Caption = 'Consultar aluno'
+  ClientHeight = 659
   ClientWidth = 913
   OnClose = FormClose
   inherited pnlBottom: TPanel
+    Top = 603
     Width = 913
     ClientWidth = 913
     inherited pnlFrmBaseSair: TPanel
@@ -274,7 +277,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
   end
   object DBGrid1: TDBGrid[2]
     Left = 0
-    Height = 625
+    Height = 522
     Top = 81
     Width = 913
     Align = alClient

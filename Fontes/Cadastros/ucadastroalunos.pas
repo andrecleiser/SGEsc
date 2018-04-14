@@ -110,7 +110,7 @@ var
 implementation
 
 uses
-  uCadastroResponsavelFinanceiro, uDATMOD;
+  uCadastroResponsavelFinanceiro;
 
 {$R *.lfm}
 
@@ -191,6 +191,7 @@ end;
 
 procedure TfrmCadastroAlunos.sqlQueryPadraoAfterPost(DataSet: TDataSet);
 begin
+  inherited;
   dsPadrao.OnStateChange(dsPadrao);
 end;
 
