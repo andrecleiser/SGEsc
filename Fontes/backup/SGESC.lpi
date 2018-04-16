@@ -36,7 +36,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="15">
+    <Units Count="13">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -79,62 +79,49 @@
         <UnitName Value="uClassUtil"/>
       </Unit5>
       <Unit6>
-        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmCadastroResponsavelFinanceiro"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadastroResponsavelFinanceiro"/>
-      </Unit6>
-      <Unit7>
         <Filename Value="Service\ufinanceiroservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uFinanceiroService"/>
-      </Unit7>
-      <Unit8>
+      </Unit6>
+      <Unit7>
         <Filename Value="Service\ualunoservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uAlunoService"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="Service\uresponsavelservice.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="uResponsavelService"/>
-      </Unit9>
-      <Unit10>
+      </Unit7>
+      <Unit8>
         <Filename Value="Repositorio\uformbase.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmBase"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFormBase"/>
-      </Unit10>
-      <Unit11>
+      </Unit8>
+      <Unit9>
         <Filename Value="Recursos\uconsultaaluno.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmConsultaAluno"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uConsultaAluno"/>
-      </Unit11>
-      <Unit12>
+      </Unit9>
+      <Unit10>
         <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmRegistrarFrequencia"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uRegistrarFrequencia"/>
-      </Unit12>
-      <Unit13>
+      </Unit10>
+      <Unit11>
         <Filename Value="Model\ualuno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uAluno"/>
-      </Unit13>
-      <Unit14>
+      </Unit11>
+      <Unit12>
         <Filename Value="Service\ufrequenciaservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uFrequenciaService"/>
-      </Unit14>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -146,7 +133,7 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model"/>
-      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGESC\Exe\Dcu"/>
+      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\ciclo-2\dcu"/>
     </SearchPaths>
     <Linking>
       <Options>

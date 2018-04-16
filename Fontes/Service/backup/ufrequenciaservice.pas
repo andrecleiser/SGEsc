@@ -13,7 +13,7 @@ type
   private
 
   public
-    class function obterAluno(idAluno: integer): TAluno;
+    class function obterAluno(idAluno: integer; pSituacaoAluno: TSetSituacaoAluno = [saTodos]): TAluno; overload;
     class procedure registrarFrequencia(idAluno: integer);
   end;
 
@@ -22,23 +22,20 @@ implementation
 uses
   uDATMOD, uClassUtil;
 
-class function TFrequenciaService.obterAluno(idAluno: integer): TAluno;
+class function TFrequenciaService.obterAluno(idAluno: integer; pSituacaoAluno: TSetSituacaoAluno = [saTodos]): TAluno; overload;
 begin
-  result := TAlunoService.obterAlunoAtivo(idAluno);
-
-  if not Assigned(result) then
-    raise Exception.Create('Aluno não cadastrado.');
+  result := TAlunoService.obterAluno(idAluno, pSituacaoAluno);
 end;
 
 class procedure TFrequenciaService.registrarFrequencia(idAluno: integer);
 begin
   try
-    DataModuleApp.MySQL57Connection.ExecuteDirect('insert into frequencia values (' + idAluno.ToString + ', date(now()))');
+    DataModuleApp.MySQL57Connection.ExecuteDirect('insert into frequencia values (' + idAluno.ToString + ', date(now()), ' + QuotedStr(FormatDateTime('hhnn', Time)) + ')');
     DataModuleApp.sqlTransactionGeral.CommitRetaining;
     Application.MessageBox('Frequência registrada com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
   except
     on e: Exception do
-      Application.MessageBox(PChar('Falha ao tentar registrar a frequência. ' + #13#10 + 'Erro: ' + TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
+      Application.MessageBox(PChar(TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
   end;
 end;
 

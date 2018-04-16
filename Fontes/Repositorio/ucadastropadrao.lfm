@@ -1,24 +1,24 @@
 inherited frmCadastroPadrao: TfrmCadastroPadrao
-  Left = 192
-  Height = 825
-  Top = 46
-  Width = 1494
-  BorderIcons = [biHelp]
+  Left = 45
+  Height = 593
+  Top = 65
+  Width = 1177
+  BorderIcons = [biSystemMenu]
   Caption = 'Form cadastro padão'
-  ClientHeight = 825
-  ClientWidth = 1494
+  ClientHeight = 593
+  ClientWidth = 1177
   Font.CharSet = ANSI_CHARSET
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   inherited pnlBottom: TPanel
-    Top = 769
-    Width = 1494
-    ClientWidth = 1494
+    Top = 537
+    Width = 1177
+    ClientWidth = 1177
     TabOrder = 1
     inherited pnlFrmBaseSair: TPanel
-      Left = 1280
+      Left = 963
       inherited btnSair: TBitBtn
         Color = clScrollBar
         Default = False
@@ -30,16 +30,16 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
     Left = 0
     Height = 47
     Top = 0
-    Width = 1494
+    Width = 1177
     Align = alTop
     ClientHeight = 47
-    ClientWidth = 1494
+    ClientWidth = 1177
     TabOrder = 0
     object dbNavAlunos: TDBNavigator
       Left = 1
       Height = 45
       Top = 1
-      Width = 1492
+      Width = 1175
       Align = alClient
       BevelOuter = bvNone
       BorderStyle = bsSingle
@@ -50,7 +50,7 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 100
       ClientHeight = 41
-      ClientWidth = 1488
+      ClientWidth = 1171
       ConfirmDelete = False
       DataSource = dsPadrao
       Flat = True

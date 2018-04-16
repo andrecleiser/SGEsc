@@ -1,0 +1,92 @@
+inherited frmCadastroPadrao: TfrmCadastroPadrao
+  Left = 45
+  Height = 593
+  Top = 65
+  Width = 1177
+  BorderIcons = [biSystemMenu]
+  Caption = 'Form cadastro padão'
+  ClientHeight = 593
+  ClientWidth = 1177
+  Font.CharSet = ANSI_CHARSET
+  Font.Pitch = fpVariable
+  Font.Quality = fqDraft
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  inherited pnlBottom: TPanel
+    Top = 537
+    Width = 1177
+    ClientWidth = 1177
+    TabOrder = 1
+    inherited pnlFrmBaseSair: TPanel
+      Left = 963
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  object pnlNav: TPanel[1]
+    Left = 0
+    Height = 47
+    Top = 0
+    Width = 1177
+    Align = alTop
+    ClientHeight = 47
+    ClientWidth = 1177
+    TabOrder = 0
+    object dbNavAlunos: TDBNavigator
+      Left = 1
+      Height = 45
+      Top = 1
+      Width = 1175
+      Align = alClient
+      BevelOuter = bvNone
+      BorderStyle = bsSingle
+      ChildSizing.EnlargeHorizontal = crsScaleChilds
+      ChildSizing.EnlargeVertical = crsScaleChilds
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 100
+      ClientHeight = 41
+      ClientWidth = 1171
+      ConfirmDelete = False
+      DataSource = dsPadrao
+      Flat = True
+      Hints.Strings = (
+        'Inserir'
+        'Excluir'
+        'Editar'
+        'Salvar'
+        'Cancelar'
+      )
+      Options = []
+      TabOrder = 0
+      VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
+    end
+  end
+  object dsPadrao: TDataSource[2]
+    AutoEdit = False
+    DataSet = sqlQueryPadrao
+    OnStateChange = dsPadraoStateChange
+    left = 10
+    top = 8
+  end
+  object sqlQueryPadrao: TSQLQuery[3]
+    PacketRecords = -1
+    FieldDefs = <>
+    AfterDelete = sqlQueryPadraoAfterDelete
+    AfterEdit = sqlQueryPadraoAfterEdit
+    AfterInsert = sqlQueryPadraoAfterInsert
+    AfterPost = sqlQueryPadraoAfterPost
+    BeforeDelete = sqlQueryPadraoBeforeDelete
+    BeforePost = sqlQueryPadraoBeforePost
+    Database = DataModuleApp.MySQL57Connection
+    Transaction = DataModuleApp.sqlTransactionGeral
+    Options = [sqoKeepOpenOnCommit]
+    Params = <>
+    left = 39
+    top = 8
+  end
+end

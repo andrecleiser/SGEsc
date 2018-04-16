@@ -8,8 +8,8 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, sdflaz, uDATMOD, uCadastroPadrao, uCadastroAlunos, uPrincipal,
-  uClassUtil, uCadastroResponsavelFinanceiro, uFinanceiroService, uAlunoService,
-  uResponsavelService, uFormBase, uConsultaAluno, uRegistrarFrequencia, uAluno,
+  uClassUtil, uFinanceiroService, uAlunoService,
+  uFormBase, uConsultaAluno, uRegistrarFrequencia, uAluno,
   uFrequenciaService
   { you can add units after this };
 

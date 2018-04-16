@@ -61,12 +61,13 @@ end;
 
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
-  with TfrmConsultaAluno.Create(Application) do
+  TfrmConsultaAluno.abrirConsultaAluno();
+{  with TfrmConsultaAluno.Create(Application) do
   try
     ShowModal;
   finally
     Free;
-  end;
+  end;}
 end;
 
 procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);

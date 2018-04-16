@@ -6,9 +6,11 @@ interface
 
 uses
   Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Buttons, StdCtrls, DBGrids, uFormBase, uAluno;
+  ExtCtrls, Buttons, StdCtrls, DBGrids, uFormBase;
 
 type
+
+  TComportamentoConsulta = (ccEditar, ccRetornar);
 
   { TfrmConsultaAluno }
 
@@ -21,13 +23,16 @@ type
     edtTextoConsultar: TEdit;
     lblTextoConsulta: TLabel;
     Panel1: TPanel;
+    pnlRetornar: TPanel;
+    pnlEditar: TPanel;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure btnRetornarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
   private
-
+    fCodigoAluno: integer;
   public
-//     function obterAlunoSelecionado: TAluno;
+    class function abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
   end;
 
 var
@@ -36,11 +41,25 @@ var
 implementation
 
 uses
-  uCadastroAlunos, uDATMOD;
+  uCadastroAlunos, uDATMOD, uAlunoService;
 
 {$R *.lfm}
 
 { TfrmConsultaAluno }
+
+class function TfrmConsultaAluno.abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
+begin
+  with TfrmConsultaAluno.Create(Application) do
+  try
+    fCodigoAluno := 0;
+    pnlRetornar.Visible := (pComportamentoConsulta = ccRetornar);
+    pnlEditar.Visible := (pComportamentoConsulta = ccEditar);
+    ShowModal;
+  finally
+      Result := fCodigoAluno;
+    Free;
+  end;
+end;
 
 procedure TfrmConsultaAluno.btnConsultarClick(Sender: TObject);
 var
@@ -80,6 +99,16 @@ begin
   finally
     Free;
   end;
+end;
+
+procedure TfrmConsultaAluno.btnRetornarClick(Sender: TObject);
+begin
+  if dsAlunos.DataSet.IsEmpty then
+    raise Exception.Create('Nenhum aluno foi selecionado.');
+
+  fCodigoAluno := dsAlunos.DataSet.FieldByName('id').AsInteger;
+
+  btnSair.Click;
 end;
 
 procedure TfrmConsultaAluno.FormClose(Sender: TObject;

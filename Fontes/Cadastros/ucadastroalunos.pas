@@ -15,30 +15,33 @@ type
 
   TfrmCadastroAlunos = class(TfrmCadastroPadrao)
     btnDesativar: TBitBtn;
-    btnNovoResponsavel: TBitBtn;
-    btnEditarResponsavel: TBitBtn;
+    DBComboBox1: TDBComboBox;
+    DBDateEdit1: TDBDateEdit;
+    DBEdit1: TDBEdit;
+    DBEdit10: TDBEdit;
     DBEdit11: TDBEdit;
     DBEdit12: TDBEdit;
     DBEdit13: TDBEdit;
-    DBEdit7: TDBEdit;
-    DBEdit8: TDBEdit;
-    dsResponsavel: TDataSource;
-    DBComboBox1: TDBComboBox;
-    DBDateEdit1: TDBDateEdit;
-    dbeNome: TDBEdit;
-    DBEdit10: TDBEdit;
+    DBEdit14: TDBEdit;
+    DBEdit15: TDBEdit;
+    DBEdit16: TDBEdit;
+    DBEdit17: TDBEdit;
+    DBEdit18: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
     DBEdit9: TDBEdit;
-    DBGrid1: TDBGrid;
-    dblMotivo_Matricula: TDBLookupComboBox;
+    dbeNome: TDBEdit;
     dblDoenca_Pre_Existente: TDBLookupComboBox;
+    dblMotivo_Matricula: TDBLookupComboBox;
     DBMemo1: TDBMemo;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
     imageList: TImageList;
     Label1: TLabel;
     Label10: TLabel;
@@ -46,11 +49,16 @@ type
     Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
-    lblObservacao: TLabel;
+    Label15: TLabel;
     Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
+    Label19: TLabel;
     Label2: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -58,45 +66,15 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    PageControl: TPageControl;
+    lblObservacao: TLabel;
     Panel1: TPanel;
-    Panel2: TPanel;
-    pnlErroResponsavel: TPanel;
-    Panel5: TPanel;
-    sqlQueryPadraoadimplente: TStringField;
-    sqlQueryPadraobairro: TStringField;
-    sqlQueryPadraocelular: TStringField;
-    sqlQueryPadraocep: TStringField;
-    sqlQueryPadraocidade: TStringField;
-    sqlQueryPadraocomplemento: TStringField;
-    sqlQueryPadraodata_cadastramento: TDateField;
-    sqlQueryPadraodata_inativacao: TDateField;
-    sqlQueryPadraodata_nascimento: TDateField;
-    sqlQueryPadraoestado: TStringField;
-    sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField;
-    sqlQueryPadraofk_motivo_matricula_id: TLargeintField;
-    sqlQueryPadraoid: TLargeintField;
-    sqlQueryPadraonome: TStringField;
-    sqlQueryPadraonome_mae: TStringField;
-    sqlQueryPadraonome_pai: TStringField;
-    sqlQueryPadraoobservacao: TStringField;
-    sqlQueryPadraorua: TStringField;
-    sqlQueryPadraotelefone: TStringField;
-    sqlQueryResponsavel: TSQLQuery;
-    TabSheetGeral: TTabSheet;
-    TabSheetResponsavel: TTabSheet;
-    procedure btnDesativarClick(Sender: TObject);
-    procedure btnNovoResponsavelClick(Sender: TObject);
+    procedure DBEdit14Exit(Sender: TObject);
+    procedure DBEdit15Exit(Sender: TObject);
     procedure DBMemo1Change(Sender: TObject);
-    procedure dsPadraoStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure PageControlChange(Sender: TObject);
-    procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
-    procedure sqlQueryPadraoAfterPost({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
-    procedure sqlQueryResponsavelBeforeOpen({%H-}DataSet: TDataSet);
   private
     procedure setImageSituacaoAluno;
 
@@ -110,7 +88,7 @@ var
 implementation
 
 uses
-  uCadastroResponsavelFinanceiro;
+  uClassUtil;
 
 {$R *.lfm}
 
@@ -122,11 +100,8 @@ begin
   sqlQueryPadrao.Close;
   sqlQueryPadrao.Params.Clear;
   sqlQueryPadrao.Params.CreateParam(ftInteger, 'id', ptInput);
-//  sqlQueryPadrao.ServerFiltered:=true;
 
   captionForm := 'Cadastro de aluno';
-  campoChavePrimaria:='id';
-  Tabela:='aluno';
 end;
 
 procedure TfrmCadastroAlunos.FormShow(Sender: TObject);
@@ -138,26 +113,6 @@ begin
 
   campoFocoEdicao := dbeNome;
 
-  PageControl.ActivePage := TabSheetGeral;
-{
-update aluno
-set nome = :nome,
-    data_nascimento = :data_nascimento,
-    rua = :rua,
-    complemento = :complemento,
-    bairro = :bairro,
-    cidade = :cidade,
-    estado = :estado,
-    cep = :cep,
-    telefone = :telefone,
-    celular = :celular,
-    nome_pai = :nome_pai,
-    nome_mae =  :nome_mae,
-    observacao = :observacao,
-    fk_motivo_matricula_id = :fk_motivo_matricula_id,
-    fk_doenca_pre_existente_id = :fk_doenca_pre_existente_id
-where id = :old_id
-}
   imageList.GetBitmap(0, btnDesativar.Glyph);
 end;
 
@@ -166,33 +121,6 @@ begin
   dblMotivo_Matricula.ListSource.DataSet.Close;
   dblDoenca_Pre_Existente.ListSource.DataSet.Close;
   inherited;
-end;
-
-procedure TfrmCadastroAlunos.PageControlChange(Sender: TObject);
-begin
-  dbNavAlunos.Enabled := not (TPageControl(Sender).ActivePage = TabSheetResponsavel);
-  if TPageControl(Sender).ActivePage = TabSheetResponsavel then
-  begin
-    sqlQueryResponsavel.Open;
-    btnEditarResponsavel.Enabled := not sqlQueryResponsavel.IsEmpty;
-  end
-  else
-  begin
-    pnlErroResponsavel.Visible := sqlQueryResponsavel.IsEmpty;
-    sqlQueryResponsavel.Close;
-  end;
-end;
-
-procedure TfrmCadastroAlunos.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  pnlErroResponsavel.Visible := true;
-end;
-
-procedure TfrmCadastroAlunos.sqlQueryPadraoAfterPost(DataSet: TDataSet);
-begin
-  inherited;
-  dsPadrao.OnStateChange(dsPadrao);
 end;
 
 procedure TfrmCadastroAlunos.sqlQueryPadraoBeforePost(DataSet: TDataSet);
@@ -205,47 +133,21 @@ begin
     DataSet.FieldByName('data_cadastramento').AsDateTime:=Date;
 end;
 
-procedure TfrmCadastroAlunos.sqlQueryResponsavelBeforeOpen(DataSet: TDataSet);
-begin
-  sqlQueryResponsavel.Params[0].AsInteger:=sqlQueryPadrao.FieldByName('id').AsInteger;
-end;
-
-procedure TfrmCadastroAlunos.dsPadraoStateChange(Sender: TObject);
-begin
-  inherited;
-    // Será permitido informar um responsável se não estiver em edição ou existir aluno.
-   TabSheetResponsavel.Enabled := (TDataSource(Sender).State = dsBrowse) and (not TDataSource(Sender).DataSet.IsEmpty);
-end;
-
-procedure TfrmCadastroAlunos.btnNovoResponsavelClick(Sender: TObject);
-begin
-  with TfrmCadastroResponsavelFinanceiro.Create(Application) do
-  try
-    sqlQueryPadrao.Params[0].AsInteger := sqlQueryResponsavel.FieldByName('id').AsInteger;
-    sqlQueryPadrao.Open;
-    pnlAluno.Caption := '  Aluno: ' + Self.sqlQueryPadrao.FieldByName('nome').AsString;
-    id_aluno         := Self.sqlQueryPadrao.FieldByName('id').AsInteger;
-    case TBitBtn(Sender).Tag of
-      1: sqlQueryPadrao.Insert;
-      2: sqlQueryPadrao.Edit;
-    end;
-    ShowModal;
-  finally
-    sqlQueryResponsavel.Close;
-    PageControl.ActivePage := TabSheetGeral;
-    Free;
-  end;
-end;
-
 procedure TfrmCadastroAlunos.DBMemo1Change(Sender: TObject);
 begin
   lblObservacao.Caption := 'Observação - ' + TDBMemo(Sender).Lines.Text.Length.ToString + ' caracteres digitados de 200.';
 end;
 
-procedure TfrmCadastroAlunos.btnDesativarClick(Sender: TObject);
+procedure TfrmCadastroAlunos.DBEdit14Exit(Sender: TObject);
 begin
-  {sqlQueryPadrao.ParamByName('adimplente').AsString := alunoService.financeiro.alunoAdimplente;
-  sqlQueryPadrao.ParamByName('id').AsInteger:= sqlQueryPadrao.FieldByName('id').AsInteger;}
+  if not sqlQueryPadrao.FieldByName('email_responsavel').IsNull then
+    TUtil.validar_Email(sqlQueryPadrao.FieldByName('email_responsavel').AsString);
+end;
+
+procedure TfrmCadastroAlunos.DBEdit15Exit(Sender: TObject);
+begin
+  if not sqlQueryPadrao.FieldByName('cpf_responsavel').IsNull then
+    TUtil.CheckCPF(sqlQueryPadrao.FieldByName('cpf_responsavel').AsString);
 end;
 
 procedure TfrmCadastroAlunos.setImageSituacaoAluno;

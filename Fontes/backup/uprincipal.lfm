@@ -232,7 +232,7 @@ object frmPrincipal: TfrmPrincipal
         Size = 120
       end>
     Database = DataModuleApp.MySQL57Connection
-    Transaction = DataModuleApp.sqlTransactionAluno
+    Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
       'SELECT * FROM motivo_matricula'
     )

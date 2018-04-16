@@ -49,8 +49,8 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 100
-      ClientHeight = 45
-      ClientWidth = 1492
+      ClientHeight = 41
+      ClientWidth = 1488
       ConfirmDelete = False
       DataSource = dsPadrao
       Flat = True
@@ -76,6 +76,7 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
   object sqlQueryPadrao: TSQLQuery[3]
     PacketRecords = -1
     FieldDefs = <>
+    AfterDelete = sqlQueryPadraoAfterDelete
     AfterEdit = sqlQueryPadraoAfterEdit
     AfterInsert = sqlQueryPadraoAfterInsert
     AfterPost = sqlQueryPadraoAfterPost
