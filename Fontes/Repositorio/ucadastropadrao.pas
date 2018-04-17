@@ -21,7 +21,7 @@ type
     procedure dsPadraoStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure sqlQueryPadraoAfterDelete(DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterPost(DataSet: TDataSet);

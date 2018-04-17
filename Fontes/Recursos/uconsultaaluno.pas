@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  uCadastroAlunos, uDATMOD, uAlunoService;
+  uCadastroAlunos, uDATMOD;
 
 {$R *.lfm}
 

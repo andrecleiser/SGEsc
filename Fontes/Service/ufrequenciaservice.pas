@@ -5,7 +5,7 @@ unit uFrequenciaService;
 interface
 
 uses
-  Classes, SysUtils, uAluno, uAlunoService, Forms, LCLType, sqldb;
+  Classes, SysUtils, Forms, LCLType, sqldb;
 
 type
   TFrequenciaService = class

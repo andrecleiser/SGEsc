@@ -13,7 +13,6 @@ type
   private
 
   public
-    class function obterAluno(idAluno: integer; pSituacaoAluno: TSetSituacaoAluno = [saTodos]): TAluno; overload;
     class procedure registrarFrequencia(idAluno: integer);
   end;
 
@@ -22,10 +21,6 @@ implementation
 uses
   uDATMOD, uClassUtil;
 
-class function TFrequenciaService.obterAluno(idAluno: integer; pSituacaoAluno: TSetSituacaoAluno = [saTodos]): TAluno; overload;
-begin
-  result := TAlunoService.obterAluno(idAluno, pSituacaoAluno);
-end;
 
 class procedure TFrequenciaService.registrarFrequencia(idAluno: integer);
 begin

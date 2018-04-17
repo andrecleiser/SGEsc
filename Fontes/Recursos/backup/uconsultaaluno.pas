@@ -56,7 +56,7 @@ begin
     pnlEditar.Visible := (pComportamentoConsulta = ccEditar);
     ShowModal;
   finally
-      Result := fCodigoAluno;
+    Result := fCodigoAluno;
     Free;
   end;
 end;

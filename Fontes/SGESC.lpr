@@ -10,7 +10,7 @@ uses
   Forms, sdflaz, uDATMOD, uCadastroPadrao, uCadastroAlunos, uPrincipal,
   uClassUtil, uFinanceiroService, uAlunoService,
   uFormBase, uConsultaAluno, uRegistrarFrequencia, uAluno,
-  uFrequenciaService
+  uFrequenciaService, uCadastroUsuario, uLogin, uUsuarioService, uUsuario
   { you can add units after this };
 
 {$R *.res}
@@ -19,7 +19,7 @@ begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TDataModuleApp, DataModuleApp);
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmLogin, frmLogin);
   Application.Run;
 end.
 

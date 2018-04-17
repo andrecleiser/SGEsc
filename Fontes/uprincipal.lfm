@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 3383
+  Left = 3387
   Height = 600
-  Top = 21
+  Top = 201
   Width = 1200
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -206,6 +206,16 @@ object frmPrincipal: TfrmPrincipal
           7D52B57D52B57D52B57D52B57D52B57D52B57D52FFFFFFFFFFFF
         }
         OnClick = MenuItemRegistrarFrequenciaClick
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = 'Sistema'
+      object MenuItem5: TMenuItem
+        Caption = 'Controle de acesso'
+        object MenuItem6: TMenuItem
+          Caption = 'Cadastro de usuário'
+          OnClick = MenuItem6Click
+        end
       end
     end
     object menuItemSair: TMenuItem

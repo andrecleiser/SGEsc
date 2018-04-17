@@ -8,7 +8,7 @@ object DataModuleApp: TDataModuleApp
   Width = 1310
   PPI = 120
   object MySQL57Connection: TMySQL57Connection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'sgesc'
     KeepConnection = False
@@ -26,7 +26,7 @@ object DataModuleApp: TDataModuleApp
     top = 30
   end
   object sqlTransactionGeral: TSQLTransaction
-    Active = False
+    Active = True
     Action = caNone
     Database = MySQL57Connection
     left = 120
@@ -42,7 +42,7 @@ object DataModuleApp: TDataModuleApp
     AutoEdit = False
     DataSet = qryLookUpDoenca_Pre_Existente
     left = 592
-    top = 88
+    top = 84
   end
   object qryLookUpMotivo_Matricula: TSQLQuery
     PacketRecords = -1
@@ -63,7 +63,6 @@ object DataModuleApp: TDataModuleApp
     SQL.Strings = (
       'select * from motivo_matricula order by descricao'
     )
-    Options = [sqoKeepOpenOnCommit]
     Params = <>
     left = 632
     top = 16
@@ -106,10 +105,9 @@ object DataModuleApp: TDataModuleApp
     SQL.Strings = (
       'select * from doenca_pre_existente order by nome'
     )
-    Options = [sqoKeepOpenOnCommit]
     Params = <>
     left = 632
-    top = 88
+    top = 84
     object qryLookUpDoenca_Pre_Existenteid: TLargeintField
       FieldKind = fkData
       FieldName = 'id'
@@ -168,7 +166,7 @@ object DataModuleApp: TDataModuleApp
         DataType = ftLargeint
         Precision = -1
       end>
-    AfterClose = qryAlunoObjAfterClose
+    AfterClose = SQLQueryObjAfterClose
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
     SQL.Strings = (
@@ -186,5 +184,39 @@ object DataModuleApp: TDataModuleApp
     Params = <>
     left = 80
     top = 128
+  end
+  object qryUsuarioObj: TSQLQuery
+    FieldDefs = <>
+    AfterClose = SQLQueryObjAfterClose
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select id,'
+      '       login,'
+      '       nome,'
+      '       fk_perfil_usuario_id,'
+      '       senha,'
+      '       ativo'
+      'from   usuario'
+    )
+    Params = <>
+    left = 80
+    top = 224
+  end
+  object qryPerfilUsuario: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    Options = [sqoKeepOpenOnCommit]
+    Params = <>
+    left = 632
+    top = 152
+  end
+  object dsPerfilUsuario: TDataSource
+    AutoEdit = False
+    DataSet = qryPerfilUsuario
+    left = 592
+    top = 152
   end
 end

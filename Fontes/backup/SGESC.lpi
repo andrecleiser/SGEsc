@@ -36,7 +36,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="17">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -122,6 +122,32 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uFrequenciaService"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="Cadastros\ucadastrousuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroUsuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroUsuario"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="Recursos\ulogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmLogin"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uLogin"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="Service\uusuarioservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uUsuarioService"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="Model\uusuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uUsuario"/>
+      </Unit16>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
