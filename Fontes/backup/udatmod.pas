@@ -24,7 +24,7 @@ type
     qryLookUpMotivo_Matriculadescricao: TStringField;
     qryLookUpMotivo_Matriculaid: TLargeintField;
     qryUsuarioObj: TSQLQuery;
-    qryPerfilUsuario: TSQLQuery;
+    qryLookUpPerfilUsuario: TSQLQuery;
     sqlTransactionGeral: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);

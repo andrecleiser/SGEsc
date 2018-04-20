@@ -20,12 +20,12 @@ type
 
   public
 
-    property id    : integer read fid     write ;
-    property login : string  read flogin  write ;
-    property nome  : string  read fnome   write ;
-    property perfil: integer read fperfil write ;
-    property senha : string  read fsenha  write ;
-    property ativo : string  read fativo  write ;
+    property id    : integer read fid     write fid    ;
+    property login : string  read flogin  write flogin ;
+    property nome  : string  read fnome   write fnome  ;
+    property perfil: integer read fperfil write fperfil;
+    property senha : string  read fsenha  write fsenha ;
+    property ativo : string  read fativo  write fativo ;
 
     constructor create(pid    : integer;
                        plogin : string;

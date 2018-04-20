@@ -170,7 +170,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="6">
+    <Exceptions Count="7">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -189,6 +189,9 @@
       <Item6>
         <Name Value="ESQLDatabaseError"/>
       </Item6>
+      <Item7>
+        <Name Value="EUpdateError"/>
+      </Item7>
     </Exceptions>
   </Debugging>
 </CONFIG>

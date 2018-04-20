@@ -154,7 +154,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'rua'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 60
+      MaxLength = 0
       TabOrder = 5
     end
     object DBEdit4: TDBEdit
@@ -165,7 +165,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'bairro'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 30
+      MaxLength = 0
       TabOrder = 7
     end
     object dbeNome: TDBEdit
@@ -176,7 +176,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'nome'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 70
+      MaxLength = 0
       TabOrder = 1
     end
     object DBDateEdit1: TDBDateEdit
@@ -257,7 +257,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'cidade'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 50
+      MaxLength = 0
       TabOrder = 8
     end
     object DBComboBox1: TDBComboBox
@@ -346,7 +346,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'nome_pai'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 70
+        MaxLength = 0
         TabOrder = 0
       end
       object Label12: TLabel
@@ -365,7 +365,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'nome_mae'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 70
+        MaxLength = 0
         TabOrder = 1
       end
     end
@@ -457,7 +457,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'complemento'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 20
+      MaxLength = 0
       TabOrder = 6
     end
     object Label16: TLabel
@@ -529,7 +529,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'telefone'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '(99)9999-9999;0;_'
+      EditMask = '99 99999-9999;0;_'
       MaxLength = 13
       TabOrder = 11
     end
@@ -542,8 +542,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'celular'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '(99)99999-9999;0;_'
-      MaxLength = 14
+      EditMask = '99 99999-9999;0;_'
+      MaxLength = 13
       TabOrder = 12
     end
     object Label10: TLabel
@@ -579,7 +579,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'nome_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 70
+        MaxLength = 0
         TabOrder = 0
       end
       object Label19: TLabel
@@ -598,7 +598,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'email_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 40
+        MaxLength = 0
         TabOrder = 1
         OnExit = DBEdit14Exit
       end
@@ -640,7 +640,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'rg_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 11
+        MaxLength = 0
         TabOrder = 3
       end
       object Label22: TLabel
@@ -660,8 +660,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'celular_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '(99)99999-9999;0;_'
-        MaxLength = 14
+        EditMask = '99 99999-9999;0;_'
+        MaxLength = 13
         TabOrder = 4
       end
       object Label23: TLabel
@@ -681,7 +681,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'telefone_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '(99)9999-9999;0;_'
+        EditMask = '99 99999-9999;0;_'
         MaxLength = 13
         TabOrder = 5
       end
@@ -695,6 +695,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     FieldDefs = <    
       item
         Name = 'id'
+        Attributes = [faHiddenCol]
         DataType = ftLargeint
         Precision = -1
       end    
@@ -839,33 +840,41 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       end>
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
-      'select *'
+      'select id,'
+      '       nome,'
+      '       data_nascimento,'
+      '       rua,'
+      '       complemento,'
+      '       bairro,'
+      '       cidade,'
+      '       estado,'
+      '       cep,'
+      '       telefone,'
+      '       celular,'
+      '       nome_pai,'
+      '       nome_mae,'
+      '       data_cadastramento,'
+      '       data_inativacao,'
+      '       observacao,'
+      '       fk_motivo_matricula_id,'
+      '       fk_doenca_pre_existente_id,'
+      '       adimplente,'
+      '       nome_responsavel,'
+      '       email_responsavel,'
+      '       cpf_responsavel,'
+      '       rg_responsavel,'
+      '       telefone_responsavel,'
+      '       celular_responsavel'
       'from aluno'
       'where id = :id'
     )
     UpdateSQL.Strings = (
-      'update aluno'
-      'set nome = :nome,'
-      '    data_nascimento = :data_nascimento,'
-      '    rua = :rua,'
-      '    complemento = :complemento,'
-      '    bairro = :bairro,'
-      '    cidade = :cidade,'
-      '    estado = :estado,'
-      '    cep = :cep,'
-      '    telefone = :telefone,'
-      '    celular = :celular,'
-      '    nome_pai = :nome_pai,'
-      '    nome_mae =  :nome_mae,'
-      '    observacao = :observacao,'
-      '    fk_motivo_matricula_id = :fk_motivo_matricula_id,'
-      '    fk_doenca_pre_existente_id = :fk_doenca_pre_existente_id'
-      'where id = :OLD_id'
       ''
     )
     DeleteSQL.Strings = (
       ''
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown

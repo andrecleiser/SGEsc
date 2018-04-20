@@ -66,7 +66,7 @@ begin
 
   TUsuarioService.validarUsuario(usuario);
 
-  Close;
+  Hide;
 
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
 end;

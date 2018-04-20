@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  Menus, LCLType, DBGrids;
+  Menus, LCLType, DBGrids, ComCtrls;
 
 type
 
@@ -25,8 +25,10 @@ type
     menuItemSair: TMenuItem;
     MenuItem3: TMenuItem;
     SQLQuery1: TSQLQuery;
+    StatusBar: TStatusBar;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
@@ -46,7 +48,7 @@ var
 implementation
 
 uses
-    uCadastroAlunos, uConsultaAluno, uRegistrarFrequencia, uCadastroUsuario;
+    uCadastroAlunos, uConsultaAluno, uRegistrarFrequencia, uCadastroUsuario, uLogin;
 
 {$R *.lfm}
 
@@ -55,15 +57,19 @@ uses
 procedure TfrmPrincipal.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
    if Application.MessageBox('Deseja sair?', 'Sair', MB_ICONQUESTION + MB_YESNO) = idNo then
-   begin
+     CloseAction := caNone
+   else
      Application.Terminate;
-     CloseAction := caNone;
-   end;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
 //   Application.OnException := @OnExcept;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+  StatusBar.Panels[0].Text:=' Usuário logado: ' + usuario.nome;
 end;
 
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);

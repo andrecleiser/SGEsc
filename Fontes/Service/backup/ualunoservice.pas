@@ -56,13 +56,15 @@ begin
       result := TAluno.create(DataModuleApp.qryAlunoObj);
 
     if not Assigned(result) then
-      raise Exception.Create('Aluno não cadastrado.');
+      raise Exception.Create('Aluno não cadastrado ou inativo.');
   finally
     DataModuleApp.qryAlunoObj.Close;
   end;
 end;
 
 class procedure TAlunoService.validarDados(dataSet: TDataSet);
+var
+  t: string;
 begin
   // Regra de validação 01
   if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome').AsString.Trim.Length > 70) then
@@ -113,11 +115,11 @@ begin
   TUtil.CheckCPF(dataSet.FieldByName('cpf_responsavel').AsString);
 
   // Regra de validação 13
-  if dataSet.FieldByName('celular_responsavel').AsString.Trim.Length = 0  then
+  if dataSet.FieldByName('celular_responsavel').IsNull  then
     raise Exception.Create('O celular do responsável tem que ser informado.');
 
   // Regra de validação 14
-  if dataSet.FieldByName('celular_responsavel').AsString.Trim.Length <> 11 then
+  if dataSet.FieldByName('celular_responsavel').AsString.Replace(' ', '').Trim.Length <> 11 then
     raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
 end;
 

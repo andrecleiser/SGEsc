@@ -18,7 +18,7 @@ create table usuario (
     login varchar(15) not null,
     nome varchar(70) not null,
     fk_perfil_usuario_id bigint(10) not null,
-    senha varchar(15) not null,
+    senha varchar(50) not null,
 	ativo varchar(01) not null default 's',
 		
 	foreign key (fk_perfil_usuario_id) references perfil_usuario(id)

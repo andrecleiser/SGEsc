@@ -6,13 +6,35 @@ object frmPrincipal: TfrmPrincipal
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'SGEsc'
+  ClientHeight = 575
+  ClientWidth = 1200
+  Color = clCream
   DesignTimePPI = 120
   Menu = mainMenu
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.8.2.0'
   Visible = True
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 29
+    Top = 546
+    Width = 1200
+    Panels = <    
+      item
+        Bevel = pbRaised
+        Text = 'Usuário logado: '
+        Width = 1000
+      end    
+      item
+        BidiMode = bdRightToLeft
+        Text = 'Versão: ciclo-2'
+        Width = 50
+      end>
+    SimplePanel = False
+  end
   object mainMenu: TMainMenu
     left = 10
     top = 10

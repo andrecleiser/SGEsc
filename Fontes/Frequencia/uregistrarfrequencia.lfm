@@ -124,6 +124,7 @@ inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
     object btnConsultarAlunoPorNome: TBitBtn
       Left = 320
       Height = 40
+      Hint = 'Consultar aluno pelo seu nome'
       Top = 8
       Width = 40
       Glyph.Data = {
@@ -192,6 +193,7 @@ inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
     object btnConsultarAluno: TBitBtn
       Left = 273
       Height = 40
+      Hint = 'Consultar aluno pelo seu código'
       Top = 8
       Width = 40
       Default = True

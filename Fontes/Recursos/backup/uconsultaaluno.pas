@@ -18,6 +18,7 @@ type
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
     btnRetornar: TBitBtn;
+    cbAlunoAtivo: TCheckBox;
     DBGrid1: TDBGrid;
     dsAlunos: TDataSource;
     edtTextoConsultar: TEdit;
@@ -28,6 +29,7 @@ type
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnRetornarClick(Sender: TObject);
+    procedure cbAlunoAtivoChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
   private
     fCodigoAluno: integer;
@@ -41,7 +43,7 @@ var
 implementation
 
 uses
-  uCadastroAlunos, uDATMOD, uAlunoService;
+  uCadastroAlunos, uDATMOD;
 
 {$R *.lfm}
 
@@ -72,7 +74,9 @@ begin
   if txt.Trim.Length > 0 then
   begin
     DataModuleApp.qryAlunoObj.Params.Clear;
-    DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%') + ' and data_inativacao is null';
+    DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%');
+    if cbAlunoAtivo.Checked then
+      DataModuleApp.qryAlunoObj.ServerFilter.Insert(DataModuleApp.qryAlunoObj.ServerFilter.Length, ' and data_inativacao is null');
     DataModuleApp.qryAlunoObj.ServerFiltered:=true;
   end;
 
@@ -109,6 +113,11 @@ begin
   fCodigoAluno := dsAlunos.DataSet.FieldByName('id').AsInteger;
 
   btnSair.Click;
+end;
+
+procedure TfrmConsultaAluno.cbAlunoAtivoChange(Sender: TObject);
+begin
+  DataModuleApp.qryAlunoObj.Close;
 end;
 
 procedure TfrmConsultaAluno.FormClose(Sender: TObject;

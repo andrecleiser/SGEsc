@@ -1,12 +1,13 @@
 inherited frmCadastroUsuario: TfrmCadastroUsuario
-  Left = 3063
+  Left = 236
   Height = 270
-  Top = 348
+  Top = 347
   Width = 819
   Caption = 'Cadastro de usuário'
   ClientHeight = 270
   ClientWidth = 819
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   inherited pnlBottom: TPanel
     Top = 214
@@ -36,8 +37,18 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     ClientWidth = 819
     inherited dbNavAlunos: TDBNavigator
       Width = 817
-      ClientHeight = 41
       ClientWidth = 813
+      Hints.Strings = (
+        'Primeiro'
+        'Anterior'
+        'Próximo'
+        'Último'
+        'Inserir'
+        'Excluir'
+        'Editar'
+        'Salvar'
+        'Cancelar'
+      )
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
     end
   end
@@ -48,7 +59,7 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     Width = 157
     DataField = 'login'
     DataSource = dsPadrao
-    CharCase = ecNormal
+    CharCase = ecUppercase
     MaxLength = 0
     TabOrder = 2
   end
@@ -124,13 +135,12 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
   object dbeSenha: TDBEdit[10]
     Left = 549
     Height = 28
-    Top = 137
-    Width = 157
+    Top = 136
+    Width = 174
     DataField = 'senha'
     DataSource = dsPadrao
-    CharCase = ecNormal
+    CharCase = ecUppercase
     MaxLength = 0
-    PasswordChar = '*'
     TabOrder = 6
   end
   inherited dsPadrao: TDataSource[11]
@@ -138,12 +148,118 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
   end
   inherited sqlQueryPadrao: TSQLQuery[12]
     IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        Attributes = [faHiddenCol]
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'login'
+        DataType = ftString
+        Precision = -1
+        Size = 45
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'fk_perfil_usuario_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'senha'
+        DataType = ftString
+        Precision = -1
+        Size = 150
+      end    
+      item
+        Name = 'ativo'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    AfterEdit = sqlQueryPadraoAfterEdit
+    AfterInsert = sqlQueryPadraoAfterInsert
+    AfterPost = sqlQueryPadraoAfterPost
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
       'select *'
       'from usuario'
       'order by nome'
     )
+    InsertSQL.Strings = (
+      ''
+    )
+    UpdateSQL.Strings = (
+      ''
+    )
+    DeleteSQL.Strings = (
+      'delete from usuario where id = :OLD_id'
+    )
     top = 4
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraologin: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'login'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 45
+    end
+    object sqlQueryPadraonome: TStringField[2]
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 210
+    end
+    object sqlQueryPadraofk_perfil_usuario_id: TLargeintField[3]
+      FieldKind = fkData
+      FieldName = 'fk_perfil_usuario_id'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraosenha: TStringField[4]
+      FieldKind = fkData
+      FieldName = 'senha'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 150
+    end
+    object sqlQueryPadraoativo: TStringField[5]
+      FieldKind = fkData
+      FieldName = 'ativo'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
   end
 end

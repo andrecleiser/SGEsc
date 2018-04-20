@@ -143,7 +143,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99999-999;0;_'
-      MaxLength = 0
+      MaxLength = 9
       TabOrder = 10
     end
     object DBEdit2: TDBEdit
@@ -154,7 +154,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'rua'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 60
+      MaxLength = 0
       TabOrder = 5
     end
     object DBEdit4: TDBEdit
@@ -165,7 +165,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'bairro'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 30
+      MaxLength = 0
       TabOrder = 7
     end
     object dbeNome: TDBEdit
@@ -176,7 +176,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'nome'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 70
+      MaxLength = 0
       TabOrder = 1
     end
     object DBDateEdit1: TDBDateEdit
@@ -257,7 +257,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'cidade'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 50
+      MaxLength = 0
       TabOrder = 8
     end
     object DBComboBox1: TDBComboBox
@@ -346,7 +346,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'nome_pai'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 70
+        MaxLength = 0
         TabOrder = 0
       end
       object Label12: TLabel
@@ -365,7 +365,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'nome_mae'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 70
+        MaxLength = 0
         TabOrder = 1
       end
     end
@@ -457,7 +457,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'complemento'
       DataSource = dsPadrao
       CharCase = ecNormal
-      MaxLength = 20
+      MaxLength = 0
       TabOrder = 6
     end
     object Label16: TLabel
@@ -529,8 +529,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'telefone'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '(99)9999-9999;0;_'
-      MaxLength = 0
+      EditMask = '99 99999-9999;0;_'
+      MaxLength = 13
       TabOrder = 11
     end
     object DBEdit8: TDBEdit
@@ -542,8 +542,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'celular'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '(99)99999-9999;0;_'
-      MaxLength = 0
+      EditMask = '99 99999-9999;0;_'
+      MaxLength = 13
       TabOrder = 12
     end
     object Label10: TLabel
@@ -579,7 +579,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'nome_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 70
+        MaxLength = 0
         TabOrder = 0
       end
       object Label19: TLabel
@@ -598,7 +598,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'email_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 40
+        MaxLength = 0
         TabOrder = 1
         OnExit = DBEdit14Exit
       end
@@ -620,7 +620,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '999.999.999-99;0;_'
-        MaxLength = 0
+        MaxLength = 14
         TabOrder = 2
         OnExit = DBEdit15Exit
       end
@@ -640,7 +640,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'rg_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        MaxLength = 11
+        MaxLength = 0
         TabOrder = 3
       end
       object Label22: TLabel
@@ -660,8 +660,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'celular_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '(99)99999-9999;0;_'
-        MaxLength = 0
+        EditMask = '99 99999-9999;0;_'
+        MaxLength = 13
         TabOrder = 4
       end
       object Label23: TLabel
@@ -681,8 +681,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'telefone_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '(99)9999-9999;0;_'
-        MaxLength = 0
+        EditMask = '99 99999-9999;0;_'
+        MaxLength = 13
         TabOrder = 5
       end
     end
@@ -692,10 +692,10 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     top = 2
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
+        Attributes = [faHiddenCol]
         DataType = ftLargeint
         Precision = -1
       end    
@@ -840,33 +840,41 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       end>
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
-      'select *'
+      'select id,'
+      '       nome,'
+      '       data_nascimento,'
+      '       rua,'
+      '       complemento,'
+      '       bairro,'
+      '       cidade,'
+      '       estado,'
+      '       cep,'
+      '       telefone,'
+      '       celular,'
+      '       nome_pai,'
+      '       nome_mae,'
+      '       data_cadastramento,'
+      '       data_inativacao,'
+      '       observacao,'
+      '       fk_motivo_matricula_id,'
+      '       fk_doenca_pre_existente_id,'
+      '       adimplente,'
+      '       nome_responsavel,'
+      '       email_responsavel,'
+      '       cpf_responsavel,'
+      '       rg_responsavel,'
+      '       telefone_responsavel,'
+      '       celular_responsavel'
       'from aluno'
       'where id = :id'
     )
     UpdateSQL.Strings = (
-      'update aluno'
-      'set nome = :nome,'
-      '    data_nascimento = :data_nascimento,'
-      '    rua = :rua,'
-      '    complemento = :complemento,'
-      '    bairro = :bairro,'
-      '    cidade = :cidade,'
-      '    estado = :estado,'
-      '    cep = :cep,'
-      '    telefone = :telefone,'
-      '    celular = :celular,'
-      '    nome_pai = :nome_pai,'
-      '    nome_mae =  :nome_mae,'
-      '    observacao = :observacao,'
-      '    fk_motivo_matricula_id = :fk_motivo_matricula_id,'
-      '    fk_doenca_pre_existente_id = :fk_doenca_pre_existente_id'
-      'where id = :OLD_id'
       ''
     )
     DeleteSQL.Strings = (
       ''
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -875,250 +883,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       end>
     left = 366
     top = 0
-    object sqlQueryPadraoid: TLargeintField[0]
-      FieldKind = fkData
-      FieldName = 'id'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlQueryPadraonome: TStringField[1]
-      FieldKind = fkData
-      FieldName = 'nome'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-      Size = 210
-    end
-    object sqlQueryPadraodata_nascimento: TDateField[2]
-      FieldKind = fkData
-      FieldName = 'data_nascimento'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlQueryPadraorua: TStringField[3]
-      FieldKind = fkData
-      FieldName = 'rua'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 180
-    end
-    object sqlQueryPadraocomplemento: TStringField[4]
-      FieldKind = fkData
-      FieldName = 'complemento'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 60
-    end
-    object sqlQueryPadraobairro: TStringField[5]
-      FieldKind = fkData
-      FieldName = 'bairro'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 90
-    end
-    object sqlQueryPadraocidade: TStringField[6]
-      FieldKind = fkData
-      FieldName = 'cidade'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 150
-    end
-    object sqlQueryPadraoestado: TStringField[7]
-      FieldKind = fkData
-      FieldName = 'estado'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 6
-    end
-    object sqlQueryPadraocep: TStringField[8]
-      FieldKind = fkData
-      FieldName = 'cep'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 24
-    end
-    object sqlQueryPadraotelefone: TStringField[9]
-      FieldKind = fkData
-      FieldName = 'telefone'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 30
-    end
-    object sqlQueryPadraocelular: TStringField[10]
-      FieldKind = fkData
-      FieldName = 'celular'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 33
-    end
-    object sqlQueryPadraonome_pai: TStringField[11]
-      FieldKind = fkData
-      FieldName = 'nome_pai'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 210
-    end
-    object sqlQueryPadraonome_mae: TStringField[12]
-      FieldKind = fkData
-      FieldName = 'nome_mae'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 210
-    end
-    object sqlQueryPadraodata_cadastramento: TDateField[13]
-      FieldKind = fkData
-      FieldName = 'data_cadastramento'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlQueryPadraodata_inativacao: TDateField[14]
-      FieldKind = fkData
-      FieldName = 'data_inativacao'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlQueryPadraoobservacao: TStringField[15]
-      FieldKind = fkData
-      FieldName = 'observacao'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 600
-    end
-    object sqlQueryPadraofk_motivo_matricula_id: TLargeintField[16]
-      FieldKind = fkData
-      FieldName = 'fk_motivo_matricula_id'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField[17]
-      FieldKind = fkData
-      FieldName = 'fk_doenca_pre_existente_id'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlQueryPadraoadimplente: TStringField[18]
-      FieldKind = fkData
-      FieldName = 'adimplente'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 3
-    end
-    object sqlQueryPadraonome_responsavel: TStringField[19]
-      FieldKind = fkData
-      FieldName = 'nome_responsavel'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 210
-    end
-    object sqlQueryPadraoemail_responsavel: TStringField[20]
-      FieldKind = fkData
-      FieldName = 'email_responsavel'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-      Size = 120
-    end
-    object sqlQueryPadraocpf_responsavel: TStringField[21]
-      FieldKind = fkData
-      FieldName = 'cpf_responsavel'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-      Size = 33
-    end
-    object sqlQueryPadraorg_responsavel: TStringField[22]
-      FieldKind = fkData
-      FieldName = 'rg_responsavel'
-      Index = 22
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 33
-    end
-    object sqlQueryPadraotelefone_responsavel: TStringField[23]
-      FieldKind = fkData
-      FieldName = 'telefone_responsavel'
-      Index = 23
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = False
-      Size = 30
-    end
-    object sqlQueryPadraocelular_responsavel: TStringField[24]
-      FieldKind = fkData
-      FieldName = 'celular_responsavel'
-      Index = 24
-      LookupCache = False
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = False
-      Required = True
-      Size = 33
-    end
   end
   object imageList: TImageList[5]
     Height = 24

@@ -5,18 +5,12 @@ unit uUsuarioService;
 interface
 
 uses
-  Classes, SysUtils, uUsuario, db;
+  Classes, SysUtils, uUsuario, db, Dialogs;
 
 type
   TUsuarioService = class
   private
   public
-    // retorna um objeto usuário a partir do id. Caso não seja encontrado, retornará nil.
-    class function obterUsuario(id: integer): TUsuario; overload;
-
-    // retorna um objeto usuário a partir do regsitro corrente do DataSet.
-    class function obterUsuario(dataSet: TDataSet): TUsuario; overload;
-
     // Aplica as regras de validação referentes à inclusão do usuário.
     class procedure validarDados(dataSet: TDataSet);
 
@@ -30,16 +24,6 @@ implementation
 
 uses
   uDATMOD, base64;
-
-class function TUsuarioService.obterUsuario(id: integer): TUsuario;
-begin
-  Result := nil;
-end;
-
-class function TUsuarioService.obterUsuario(dataSet: TDataSet): TUsuario;
-begin
-  Result := nil;
-end;
 
 class procedure TUsuarioService.validarUsuario(pusuario: TUsuario);
 begin
@@ -63,6 +47,7 @@ begin
 
     // Regra de validação 03
     if DecodeStringBase64(FieldByName('senha').AsString) <> pusuario.senha then
+//    if FieldByName('senha').AsString <> pusuario.senha then
       raise Exception.Create('Senha informada não é válida.');
 
     // Atualizo obj "usuario" com os dados obtidos
@@ -79,7 +64,7 @@ begin
     raise Exception.Create('O login do usuário deve conter entre 5 e 15 caracteres.');
 
   // Regra de validação 02
-  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 5) or (dataSet.FieldByName('nome').AsString.Trim.Length > 15) then
+  if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome').AsString.Trim.Length > 70) then
     raise Exception.Create('O nome do usuário deve conter entre 10 e 70 caracteres.');
 
   // Regra de validação 03
@@ -105,38 +90,3 @@ begin
 end;
 
 end.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

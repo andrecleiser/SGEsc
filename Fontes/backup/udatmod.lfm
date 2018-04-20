@@ -203,11 +203,16 @@ object DataModuleApp: TDataModuleApp
     left = 80
     top = 224
   end
-  object qryPerfilUsuario: TSQLQuery
+  object qryLookUpPerfilUsuario: TSQLQuery
     PacketRecords = -1
     FieldDefs = <>
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select *'
+      'from perfil_usuario'
+      'order by nome'
+    )
     Options = [sqoKeepOpenOnCommit]
     Params = <>
     left = 632
@@ -215,7 +220,7 @@ object DataModuleApp: TDataModuleApp
   end
   object dsPerfilUsuario: TDataSource
     AutoEdit = False
-    DataSet = qryPerfilUsuario
+    DataSet = qryLookUpPerfilUsuario
     left = 592
     top = 152
   end

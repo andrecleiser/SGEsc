@@ -75,6 +75,7 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
   end
   object sqlQueryPadrao: TSQLQuery[3]
     PacketRecords = -1
+    OnUpdateError = sqlQueryPadraoUpdateError
     FieldDefs = <>
     AfterDelete = sqlQueryPadraoAfterDelete
     AfterEdit = sqlQueryPadraoAfterEdit

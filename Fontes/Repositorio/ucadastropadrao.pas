@@ -24,9 +24,12 @@ type
     procedure sqlQueryPadraoAfterDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
-    procedure sqlQueryPadraoAfterPost(DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterPost({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforeDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
+    procedure sqlQueryPadraoUpdateError(Sender: TObject;
+      {%H-}DataSet: TCustomBufDataset; E: EUpdateError; UpdateKind: TUpdateKind;
+      var Response: TResolverResponse);
   private
     fTabela: String;
     fcampoChavePrimaria: String;
@@ -89,26 +92,37 @@ end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoBeforePost(DataSet: TDataSet);
 begin
-  DataSet.Tag:=1;
+//  DataSet.Tag:=1;
   if DataSet.State = dsInsert then
   begin
     if incrementarChavePrimaria() then
       DataSet.FieldByName(fcampoChavePrimaria).AsInteger := TUtil.incrementaChavePrimaria(TSQLQuery(DataSet).SQLConnection, ftabela, fcampoChavePrimaria);
-  end
-  else if DataSet.State = dsEdit then
+  end;
+{  else if DataSet.State = dsEdit then
   begin
     if not DataSet.Modified then
       DataSet.Tag:=0;
-  end;
+  end;}
+end;
+
+procedure TfrmCadastroPadrao.sqlQueryPadraoUpdateError(Sender: TObject;
+  DataSet: TCustomBufDataset; E: EUpdateError; UpdateKind: TUpdateKind;
+  var Response: TResolverResponse);
+begin
+  if (UpdateKind = ukModify) and (e.ErrorCode = 0) then
+    Response := rrIgnore
+  else
+    raise e;
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);
 begin
-  if DataSet.Tag = 1 then
+{  if DataSet.Tag = 1 then
   begin
     DataSet.Tag := 0;
     salvarDadosDataSet;
-  end;
+  end;}
+  salvarDadosDataSet;
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoBeforeDelete(DataSet: TDataSet);

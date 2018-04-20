@@ -52,8 +52,7 @@ uses
 procedure TfrmRegistrarFrequencia.btnRegistrarFrequenciaClick(Sender: TObject);
 begin
   TFrequenciaService.registrarFrequencia(aluno.id);
-  edtCodigoAluno.Clear;
-  edtCodigoAluno.SetFocus;
+  limparAluno;
 end;
 
 procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);

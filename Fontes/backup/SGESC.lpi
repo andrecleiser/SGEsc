@@ -161,7 +161,15 @@
       <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model"/>
       <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\ciclo-2\dcu"/>
     </SearchPaths>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <TargetCPU Value="i386"/>
+      <TargetOS Value="win32"/>
+    </CodeGeneration>
     <Linking>
+      <Debugging>
+        <GenerateDebugInfo Value="False"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
@@ -170,7 +178,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="6">
+    <Exceptions Count="7">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -189,6 +197,9 @@
       <Item6>
         <Name Value="ESQLDatabaseError"/>
       </Item6>
+      <Item7>
+        <Name Value="EUpdateError"/>
+      </Item7>
     </Exceptions>
   </Debugging>
 </CONFIG>

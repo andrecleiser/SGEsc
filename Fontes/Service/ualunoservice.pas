@@ -94,12 +94,12 @@ begin
   // Regra de validação 08
   if YearsBetween(Trunc(Date), Trunc(dataSet.FieldByName('data_nascimento').AsDateTime)) < 18 then
   begin
-    if dataSet.FieldByName('nome_responsavel').AsString.Trim.Length < 10 then
+    if (dataSet.FieldByName('nome_responsavel').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome_responsavel').AsString.Trim.Length > 70) then
       raise Exception.Create('O nome do responsável deve conter entre 10 e 70 caracteres.');
   end;
 
   // Regra de validação 11
-  if dataSet.FieldByName('email_responsavel').AsString.Trim.Length < 10 then
+  if (dataSet.FieldByName('email_responsavel').AsString.Trim.Length < 10) or (dataSet.FieldByName('email_responsavel').AsString.Trim.Length > 40) then
     raise Exception.Create('O e-mail do responsável deve conter entre 10 e 40 caracteres.');
 
   // Regra de validação 12
@@ -113,11 +113,11 @@ begin
   TUtil.CheckCPF(dataSet.FieldByName('cpf_responsavel').AsString);
 
   // Regra de validação 13
-  if dataSet.FieldByName('celular_responsavel').AsString.Trim.Length = 0  then
+  if dataSet.FieldByName('celular_responsavel').IsNull  then
     raise Exception.Create('O celular do responsável tem que ser informado.');
 
   // Regra de validação 14
-  if dataSet.FieldByName('celular_responsavel').AsString.Trim.Length <> 11 then
+  if dataSet.FieldByName('celular_responsavel').AsString.Replace(' ', '').Trim.Length <> 11 then
     raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
 end;
 

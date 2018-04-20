@@ -1,3 +1,4 @@
+{%RunFlags MESSAGES+}
 unit uUsuario;
 
 {$mode objfpc}{$H+}
