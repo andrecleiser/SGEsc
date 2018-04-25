@@ -22,7 +22,14 @@ type
 
     // Aplica as regras de validação referentes à inclusão do aluno.
     class procedure validarDados(dataSet: TDataSet);
-  end;
+
+    // Torna o aluno impedido participar das aulas.
+    class procedure bloquearAluno(idAluno: integer);
+
+    // Torna o aluno apto participar das aulas.
+    class procedure desbloquearAluno(idAluno: integer);
+
+end;
 
 implementation
 
@@ -62,9 +69,37 @@ begin
   end;
 end;
 
+class procedure TAlunoService.bloquearAluno(idAluno: integer);
+begin
+  if Application.MessageBox('O aluno será impedido de participar das atividades da escola. Deseja continuar?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO then
+    raise Exception.Create('Bloqueio do aluno cancelado.');
+
+  try
+    DataModuleApp.MySQL57Connection.ExecuteDirect('update aluno set data_inativacao = date(now()) where id = ' + idAluno.toString);
+    DataModuleApp.sqlTransactionGeral.CommitRetaining;
+    Application.MessageBox('Aluno bloqueado com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
+  except
+    on e: Exception do
+      Application.MessageBox(PChar(TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
+  end;
+end;
+
+class procedure TAlunoService.desbloquearAluno(idAluno: integer);
+begin
+  if Application.MessageBox('O aluno poderá participar das atividades da escola. Deseja continuar?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO then
+    raise Exception.Create('Desbloqueio do aluno cancelado.');
+
+  try
+    DataModuleApp.MySQL57Connection.ExecuteDirect('update aluno set data_inativacao = null where id = ' + idAluno.toString);
+    DataModuleApp.sqlTransactionGeral.CommitRetaining;
+    Application.MessageBox('Aluno bloqueado com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
+  except
+    on e: Exception do
+      Application.MessageBox(PChar(TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
+  end;
+end;
+
 class procedure TAlunoService.validarDados(dataSet: TDataSet);
-var
-  t: string;
 begin
   // Regra de validação 01
   if dataSet.FieldByName('nome').IsNull or (dataSet.FieldByName('nome').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome').AsString.Trim.Length > 70) then
@@ -96,12 +131,12 @@ begin
   // Regra de validação 08
   if YearsBetween(Trunc(Date), Trunc(dataSet.FieldByName('data_nascimento').AsDateTime)) < 18 then
   begin
-    if dataSet.FieldByName('nome_responsavel').AsString.Trim.Length < 10 then
+    if (dataSet.FieldByName('nome_responsavel').AsString.Trim.Length < 10) or (dataSet.FieldByName('nome_responsavel').AsString.Trim.Length > 70) then
       raise Exception.Create('O nome do responsável deve conter entre 10 e 70 caracteres.');
   end;
 
   // Regra de validação 11
-  if dataSet.FieldByName('email_responsavel').AsString.Trim.Length < 10 then
+  if (dataSet.FieldByName('email_responsavel').AsString.Trim.Length < 10) or (dataSet.FieldByName('email_responsavel').AsString.Trim.Length > 40) then
     raise Exception.Create('O e-mail do responsável deve conter entre 10 e 40 caracteres.');
 
   // Regra de validação 12

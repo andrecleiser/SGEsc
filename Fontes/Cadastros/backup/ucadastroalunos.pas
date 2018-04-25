@@ -27,7 +27,9 @@ type
     DBEdit16: TDBEdit;
     DBEdit17: TDBEdit;
     DBEdit18: TDBEdit;
+    DBEdit19: TDBEdit;
     DBEdit2: TDBEdit;
+    DBEdit20: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
     DBEdit5: TDBEdit;
@@ -59,6 +61,8 @@ type
     Label21: TLabel;
     Label22: TLabel;
     Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -68,12 +72,15 @@ type
     Label9: TLabel;
     lblObservacao: TLabel;
     Panel1: TPanel;
+    procedure btnDesativarClick(Sender: TObject);
     procedure DBEdit14Exit(Sender: TObject);
     procedure DBEdit15Exit(Sender: TObject);
     procedure DBMemo1Change(Sender: TObject);
+    procedure dsPadraoStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure sqlQueryPadraoAfterScroll({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     procedure setImageSituacaoAluno;
@@ -116,6 +123,11 @@ begin
   imageList.GetBitmap(0, btnDesativar.Glyph);
 end;
 
+procedure TfrmCadastroAlunos.sqlQueryPadraoAfterScroll(DataSet: TDataSet);
+begin
+  setImageSituacaoAluno;
+end;
+
 procedure TfrmCadastroAlunos.FormDestroy(Sender: TObject);
 begin
   dblMotivo_Matricula.ListSource.DataSet.Close;
@@ -138,10 +150,31 @@ begin
   lblObservacao.Caption := 'Observação - ' + TDBMemo(Sender).Lines.Text.Length.ToString + ' caracteres digitados de 200.';
 end;
 
+procedure TfrmCadastroAlunos.dsPadraoStateChange(Sender: TObject);
+begin
+  inherited;
+  btnDesativar.Enabled:=not (sqlQueryPadrao.State in [dsEdit, dsInsert]);
+end;
+
 procedure TfrmCadastroAlunos.DBEdit14Exit(Sender: TObject);
 begin
   if not sqlQueryPadrao.FieldByName('email_responsavel').IsNull then
     TUtil.validar_Email(sqlQueryPadrao.FieldByName('email_responsavel').AsString);
+end;
+
+procedure TfrmCadastroAlunos.btnDesativarClick(Sender: TObject);
+begin
+  if sqlQueryPadrao.FieldByName('id').IsNull then
+    raise Exception.Create('Para bloquear um aluno recém cadastrado, feche o cadastro e selecione o novo aluno através da consulta de aluno.');
+
+  if btnDesativar.Caption = 'Bloquear aluno' then
+    TAlunoService.bloquearAluno(sqlQueryPadrao.FieldByName('id').AsInteger)
+  else
+    TAlunoService.desbloquearAluno(sqlQueryPadrao.FieldByName('id').AsInteger);
+
+  sqlQueryPadrao.Refresh;
+
+  setImageSituacaoAluno;
 end;
 
 procedure TfrmCadastroAlunos.DBEdit15Exit(Sender: TObject);
@@ -155,12 +188,12 @@ begin
   if sqlQueryPadrao.FieldByName('data_inativacao').IsNull then
   begin
     imageList.GetBitmap(0, btnDesativar.Glyph);
-    btnDesativar.Caption := 'Desativar aluno';
+    btnDesativar.Caption := 'Bloquear aluno';
   end
   else
   begin
     imageList.GetBitmap(1, btnDesativar.Glyph);
-    btnDesativar.Caption := 'Ativar aluno';
+    btnDesativar.Caption := 'Desbloquear aluno';
   end
 end;
 

@@ -1,7 +1,7 @@
 inherited frmCadastroUsuario: TfrmCadastroUsuario
-  Left = 236
+  Left = 2658
   Height = 270
-  Top = 347
+  Top = 278
   Width = 819
   Caption = 'Cadastro de usuário'
   ClientHeight = 270
@@ -141,13 +141,13 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     DataSource = dsPadrao
     CharCase = ecUppercase
     MaxLength = 0
+    PasswordChar = '*'
     TabOrder = 6
   end
   inherited dsPadrao: TDataSource[11]
     top = 4
   end
   inherited sqlQueryPadrao: TSQLQuery[12]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'

@@ -122,11 +122,11 @@ begin
   lblNomeAlunoFrente.Caption:=aluno.nome;
   lblNomeAlunoFundo.Caption:=aluno.nome;
 
-{    if aluno.adimplente = 'N' then
+  if aluno.adimplente = 'N' then
   begin
     lblNomeAlunoFrente.Font.Color := clRed;
     lblNomeAlunoFundo.Font.Color := clRed;
-  end;}
+  end;
 
   btnRegistrarFrequencia.Enabled:=true;
   btnRegistrarFrequencia.SetFocus;

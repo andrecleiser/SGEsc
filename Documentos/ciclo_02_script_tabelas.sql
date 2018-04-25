@@ -6,7 +6,9 @@ drop table responsavel;
     add cpf_responsavel varchar(11) not null,
 	add rg_responsavel varchar(11),
     add telefone_responsavel varchar(10),
-    add celular_responsavel varchar(11) not null;
+    add celular_responsavel varchar(11) not null,
+    add hora_turma varchar(4),
+    add modalidade varchar(30);
 
 create table perfil_usuario (
 	id bigint(10) primary key auto_increment,

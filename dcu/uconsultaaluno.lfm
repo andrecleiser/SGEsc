@@ -216,7 +216,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       Left = 24
       Height = 28
       Top = 43
-      Width = 809
+      Width = 643
       TabOrder = 0
     end
     object lblTextoConsulta: TLabel
@@ -299,12 +299,11 @@ inherited frmConsultaAluno: TfrmConsultaAluno
     object cbAlunoAtivo: TCheckBox
       Left = 694
       Height = 24
-      Top = 3
+      Top = 43
       Width = 139
       Caption = 'Alunos ativos'
       OnChange = cbAlunoAtivoChange
       TabOrder = 2
-      Visible = False
     end
   end
   object DBGrid1: TDBGrid[2]

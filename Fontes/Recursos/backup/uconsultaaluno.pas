@@ -71,14 +71,20 @@ begin
 
   DataModuleApp.qryAlunoObj.Close;
 
-  if txt.Trim.Length > 0 then
+  DataModuleApp.qryAlunoObj.Params.Clear;
+
+  if cbAlunoAtivo.Checked then
+    DataModuleApp.qryAlunoObj.ServerFilter := 'data_inativacao is null';
+
+  if (txt.Trim.Length > 0) then
   begin
-    DataModuleApp.qryAlunoObj.Params.Clear;
-    DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%');
     if cbAlunoAtivo.Checked then
-      DataModuleApp.qryAlunoObj.ServerFilter.Insert(DataModuleApp.qryAlunoObj.ServerFilter.Length, ' and data_inativacao is null');
-    DataModuleApp.qryAlunoObj.ServerFiltered:=true;
+      DataModuleApp.qryAlunoObj.ServerFilter.Insert(DataModuleApp.qryAlunoObj.ServerFilter.Length, ' and nome like ' + QuotedStr('%' + txt.Trim + '%')
+    else
+      DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%');
   end;
+
+  DataModuleApp.qryAlunoObj.ServerFiltered:= (DataModuleApp.qryAlunoObj.ServerFilter.Length > 0);
 
   DataModuleApp.qryAlunoObj.Open;
 
