@@ -7,30 +7,32 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Buttons, StdCtrls, MaskEdit, uFormBase, uAluno, uFrequenciaService, LCLType,
-  sqldb;
+  sqldb, uAlunoService;
 
 type
 
   { TfrmRegistrarFrequencia }
 
   TfrmRegistrarFrequencia = class(TfrmBase)
-    BitBtn1: TBitBtn;
+    btnConsultarAlunoPorNome: TBitBtn;
     btnRegistrarFrequencia: TBitBtn;
-    BitBtn3: TBitBtn;
+    btnConsultarAluno: TBitBtn;
     edtCodigoAluno: TEdit;
     Label1: TLabel;
     lblNomeAlunoFundo: TLabel;
     lblNomeAlunoFrente: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
-    procedure BitBtn3Click(Sender: TObject);
+    procedure btnConsultarAlunoPorNomeClick(Sender: TObject);
+    procedure btnConsultarAlunoClick(Sender: TObject);
     procedure btnRegistrarFrequenciaClick(Sender: TObject);
     procedure edtCodigoAlunoEnter(Sender: TObject);
   private
     aluno: TAluno;
 
     procedure validarCampoVazio;
-
+    procedure atualizarDadosAluno;
+    procedure limparAluno;
   public
 
   end;
@@ -40,19 +42,17 @@ var
 
 implementation
 
+uses
+  uConsultaAluno;
+
 {$R *.lfm}
 
 { TfrmRegistrarFrequencia }
 
-{******************** MÉTODOS PÚBLICOS ************************}
 procedure TfrmRegistrarFrequencia.btnRegistrarFrequenciaClick(Sender: TObject);
-{var
-  qry: TSQLQuery;}
 begin
-  validarCampoVazio;
   TFrequenciaService.registrarFrequencia(aluno.id);
-  edtCodigoAluno.Clear;
-  edtCodigoAluno.SetFocus;
+  limparAluno;
 end;
 
 procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);
@@ -62,7 +62,7 @@ begin
   btnRegistrarFrequencia.Enabled:=false;
 end;
 
-procedure TfrmRegistrarFrequencia.BitBtn3Click(Sender: TObject);
+procedure TfrmRegistrarFrequencia.btnConsultarAlunoClick(Sender: TObject);
 var
   codigoAluno: string;
 begin
@@ -71,30 +71,37 @@ begin
   codigoAluno := edtCodigoAluno.Text;
 
   try
-    aluno := TFrequenciaService.obterAluno(codigoAluno.ToInteger);
-
-    lblNomeAlunoFrente.Visible:=True;
-    lblNomeAlunoFundo.Visible:=True;
-
-    lblNomeAlunoFrente.Caption:=aluno.nome;
-    lblNomeAlunoFundo.Caption:=aluno.nome;
-
-{    if aluno.adimplente = 'N' then
-    begin
-      lblNomeAlunoFrente.Font.Color := clRed;
-      lblNomeAlunoFundo.Font.Color := clRed;
-    end;}
-
-    btnRegistrarFrequencia.Enabled:=true;
-    btnRegistrarFrequencia.SetFocus;
+    aluno := TAlunoService.obterAluno(codigoAluno.ToInteger, [saAtivo]);
+    if Assigned(aluno) then
+      atualizarDadosAluno;
   except
     edtCodigoAluno.SetFocus;
     raise;
   end;
 end;
 
+procedure TfrmRegistrarFrequencia.btnConsultarAlunoPorNomeClick(Sender: TObject);
+var
+  codigoAluno: integer;
+begin
+  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno(ccRetornar);
+  if codigoAluno > 0 then
+  begin
+    edtCodigoAluno.Text:=codigoAluno.ToString;
+    btnConsultarAluno.Click;
+  end
+  else
+    edtCodigoAluno.SetFocus;
+end;
 
 {******************** MÉTODOS PRIVADOS **************************}
+
+procedure TfrmRegistrarFrequencia.limparAluno;
+begin
+  edtCodigoAluno.Clear;
+  edtCodigoAluno.SetFocus;
+end;
+
 procedure TfrmRegistrarFrequencia.validarCampoVazio;
 var
   codigoAluno: string;
@@ -107,39 +114,22 @@ begin
   end;
 end;
 
+procedure TfrmRegistrarFrequencia.atualizarDadosAluno;
+begin
+  lblNomeAlunoFrente.Visible:=True;
+  lblNomeAlunoFundo.Visible:=True;
+
+  lblNomeAlunoFrente.Caption:=aluno.nome;
+  lblNomeAlunoFundo.Caption:=aluno.nome;
+
+  if aluno.adimplente = 'N' then
+  begin
+    lblNomeAlunoFrente.Font.Color := clRed;
+    lblNomeAlunoFundo.Font.Color := clRed;
+  end;
+
+  btnRegistrarFrequencia.Enabled:=true;
+  btnRegistrarFrequencia.SetFocus;
+end;
+
 end.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

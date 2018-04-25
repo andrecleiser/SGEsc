@@ -1,18 +1,40 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 3383
+  Left = 3387
   Height = 600
-  Top = 21
+  Top = 201
   Width = 1200
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'SGEsc'
+  ClientHeight = 575
+  ClientWidth = 1200
+  Color = clCream
   DesignTimePPI = 120
   Menu = mainMenu
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.8.2.0'
   Visible = True
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 29
+    Top = 546
+    Width = 1200
+    Panels = <    
+      item
+        Bevel = pbRaised
+        Text = 'Usuário logado: '
+        Width = 1000
+      end    
+      item
+        BidiMode = bdRightToLeft
+        Text = 'Versão: ciclo-2'
+        Width = 50
+      end>
+    SimplePanel = False
+  end
   object mainMenu: TMainMenu
     left = 10
     top = 10
@@ -208,6 +230,16 @@ object frmPrincipal: TfrmPrincipal
         OnClick = MenuItemRegistrarFrequenciaClick
       end
     end
+    object MenuItem4: TMenuItem
+      Caption = 'Sistema'
+      object MenuItem5: TMenuItem
+        Caption = 'Controle de acesso'
+        object MenuItem6: TMenuItem
+          Caption = 'Cadastro de usuário'
+          OnClick = MenuItem6Click
+        end
+      end
+    end
     object menuItemSair: TMenuItem
       Caption = 'Sair'
       OnClick = menuItemSairClick
@@ -232,7 +264,7 @@ object frmPrincipal: TfrmPrincipal
         Size = 120
       end>
     Database = DataModuleApp.MySQL57Connection
-    Transaction = DataModuleApp.sqlTransactionAluno
+    Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
       'SELECT * FROM motivo_matricula'
     )

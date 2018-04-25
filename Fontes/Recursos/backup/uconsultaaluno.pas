@@ -6,9 +6,11 @@ interface
 
 uses
   Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Buttons, StdCtrls, DBGrids, uFormBase, uAluno;
+  ExtCtrls, Buttons, StdCtrls, DBGrids, uFormBase;
 
 type
+
+  TComportamentoConsulta = (ccEditar, ccRetornar);
 
   { TfrmConsultaAluno }
 
@@ -16,18 +18,23 @@ type
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
     btnRetornar: TBitBtn;
+    cbAlunoAtivo: TCheckBox;
     DBGrid1: TDBGrid;
     dsAlunos: TDataSource;
     edtTextoConsultar: TEdit;
     lblTextoConsulta: TLabel;
     Panel1: TPanel;
+    pnlRetornar: TPanel;
+    pnlEditar: TPanel;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure btnRetornarClick(Sender: TObject);
+    procedure cbAlunoAtivoChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
   private
-
+    fCodigoAluno: integer;
   public
-//     function obterAlunoSelecionado: TAluno;
+    class function abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
   end;
 
 var
@@ -42,6 +49,20 @@ uses
 
 { TfrmConsultaAluno }
 
+class function TfrmConsultaAluno.abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
+begin
+  with TfrmConsultaAluno.Create(Application) do
+  try
+    fCodigoAluno := 0;
+    pnlRetornar.Visible := (pComportamentoConsulta = ccRetornar);
+    pnlEditar.Visible := (pComportamentoConsulta = ccEditar);
+    ShowModal;
+  finally
+    Result := fCodigoAluno;
+    Free;
+  end;
+end;
+
 procedure TfrmConsultaAluno.btnConsultarClick(Sender: TObject);
 var
   txt: string;
@@ -50,12 +71,20 @@ begin
 
   DataModuleApp.qryAlunoObj.Close;
 
-  if txt.Trim.Length > 0 then
+  DataModuleApp.qryAlunoObj.Params.Clear;
+
+  if cbAlunoAtivo.Checked then
+    DataModuleApp.qryAlunoObj.ServerFilter := 'data_inativacao is null';
+
+  if (txt.Trim.Length > 0) then
   begin
-    DataModuleApp.qryAlunoObj.Params.Clear;
-    DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%') + ' and data_inativacao is null';
-    DataModuleApp.qryAlunoObj.ServerFiltered:=true;
+    if cbAlunoAtivo.Checked then
+      DataModuleApp.qryAlunoObj.ServerFilter.Insert(DataModuleApp.qryAlunoObj.ServerFilter.Length, ' and nome like ' + QuotedStr('%' + txt.Trim + '%')
+    else
+      DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%');
   end;
+
+  DataModuleApp.qryAlunoObj.ServerFiltered:= (DataModuleApp.qryAlunoObj.ServerFilter.Length > 0);
 
   DataModuleApp.qryAlunoObj.Open;
 
@@ -80,6 +109,21 @@ begin
   finally
     Free;
   end;
+end;
+
+procedure TfrmConsultaAluno.btnRetornarClick(Sender: TObject);
+begin
+  if dsAlunos.DataSet.IsEmpty then
+    raise Exception.Create('Nenhum aluno foi selecionado.');
+
+  fCodigoAluno := dsAlunos.DataSet.FieldByName('id').AsInteger;
+
+  btnSair.Click;
+end;
+
+procedure TfrmConsultaAluno.cbAlunoAtivoChange(Sender: TObject);
+begin
+  DataModuleApp.qryAlunoObj.Close;
 end;
 
 procedure TfrmConsultaAluno.FormClose(Sender: TObject;

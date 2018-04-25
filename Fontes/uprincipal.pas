@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  Menus, LCLType, DBGrids;
+  Menus, LCLType, DBGrids, ComCtrls;
 
 type
 
@@ -17,19 +17,25 @@ type
     mainMenu: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
     MenuItemRegistrarFrequencia: TMenuItem;
     menuItemCadastros: TMenuItem;
     menuItemSair: TMenuItem;
     MenuItem3: TMenuItem;
     SQLQuery1: TSQLQuery;
+    StatusBar: TStatusBar;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
 
-    procedure onExcept({%H-}sender: TObject; e: Exception);
+//    procedure OnExcept({%H-}sender: TObject; e: Exception);
   private
 
   public
@@ -42,7 +48,7 @@ var
 implementation
 
 uses
-    uCadastroAlunos, uConsultaAluno, uRegistrarFrequencia;
+    uCadastroAlunos, uConsultaAluno, uRegistrarFrequencia, uCadastroUsuario, uLogin;
 
 {$R *.lfm}
 
@@ -51,28 +57,36 @@ uses
 procedure TfrmPrincipal.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
    if Application.MessageBox('Deseja sair?', 'Sair', MB_ICONQUESTION + MB_YESNO) = idNo then
-      CloseAction := caNone;
+     CloseAction := caNone
+   else
+     Application.Terminate;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  application.onException := @onExcept;
+//   Application.OnException := @OnExcept;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+  StatusBar.Panels[0].Text:=' Usuário logado: ' + usuario.nome;
 end;
 
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
-  with TfrmConsultaAluno.Create(Application) do
+  TfrmConsultaAluno.abrirConsultaAluno(ccEditar);
+{  with TfrmConsultaAluno.Create(Application) do
   try
     ShowModal;
   finally
     Free;
-  end;
+  end;}
 end;
 
-procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);
+{procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);
 begin
   Application.MessageBox(PChar(e.Message), 'ERRO', MB_ICONERROR);
-end;
+end;}
 
 procedure TfrmPrincipal.MenuItem3Click(Sender: TObject);
 begin
@@ -81,6 +95,16 @@ begin
     sqlQueryPadrao.ParamByName('id').AsInteger:=0;
     sqlQueryPadrao.Open;
     sqlQueryPadrao.Insert;
+    ShowModal;
+  finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem6Click(Sender: TObject);
+begin
+  with TfrmCadastroUsuario.Create(Application) do
+  try
     ShowModal;
   finally
     Free;

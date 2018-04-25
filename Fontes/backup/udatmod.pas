@@ -12,6 +12,7 @@ type
   { TDataModuleApp }
 
   TDataModuleApp = class(TDataModule)
+    dsPerfilUsuario: TDataSource;
     dsMotivo_Matricula: TDataSource;
     dsDoenca_Pre_Existente: TDataSource;
     MySQL57Connection: TMySQL57Connection;
@@ -22,10 +23,12 @@ type
     qryLookUpDoenca_Pre_Existente: TSQLQuery;
     qryLookUpMotivo_Matriculadescricao: TStringField;
     qryLookUpMotivo_Matriculaid: TLargeintField;
+    qryUsuarioObj: TSQLQuery;
+    qryLookUpPerfilUsuario: TSQLQuery;
     sqlTransactionGeral: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
-    procedure qryAlunoObjAfterClose({%H-}DataSet: TDataSet);
+    procedure SQLQueryObjAfterClose(DataSet: TDataSet);
   private
 
   public
@@ -52,10 +55,10 @@ begin
   MySQL57Connection.Connected := false;
 end;
 
-procedure TDataModuleApp.qryAlunoObjAfterClose(DataSet: TDataSet);
+procedure TDataModuleApp.SQLQueryObjAfterClose(DataSet: TDataSet);
 begin
-  qryAlunoObj.ServerFilter:='';
-  qryAlunoObj.ServerFiltered:=false;
+  TSQLQuery(DataSet).ServerFilter := '';
+  TSQLQuery(DataSet).ServerFiltered := false;
 end;
 
 end.

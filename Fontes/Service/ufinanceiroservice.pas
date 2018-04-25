@@ -15,7 +15,7 @@ type
   public
     // O parâmetro dataSetAluno idica um DataSet com as informações de um aluno.
     class function alunoAdimplente(aluno: TAluno): boolean; overload;
-    class function alunoAdimplente(idAluno: Integer): boolean; overload;
+//    class function alunoAdimplente(idAluno: Integer): boolean; overload;
   end;
 
 
@@ -26,10 +26,10 @@ begin
   result := aluno.adimplente = 'S';
 end;
 
-class function TFinanceiroService.alunoAdimplente(idAluno: Integer): boolean;
+{class function TFinanceiroService.alunoAdimplente(idAluno: Integer): boolean;
 begin
   result := false;
-end;
+end;}
 
 end.
 

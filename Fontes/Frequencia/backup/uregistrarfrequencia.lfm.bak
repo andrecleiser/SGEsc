@@ -121,10 +121,11 @@ inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
       OnEnter = edtCodigoAlunoEnter
       TabOrder = 0
     end
-    object BitBtn1: TBitBtn
+    object btnConsultarAlunoPorNome: TBitBtn
       Left = 320
       Height = 40
-      Top = 9
+      Hint = 'Consultar aluno pelo seu nome'
+      Top = 8
       Width = 40
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
@@ -184,13 +185,15 @@ inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
         E4B7AFBA9D91A09F919DA1939D968B9BA69FABD7D3D8FFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       }
+      OnClick = btnConsultarAlunoPorNomeClick
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
     end
-    object BitBtn3: TBitBtn
+    object btnConsultarAluno: TBitBtn
       Left = 273
       Height = 40
+      Hint = 'Consultar aluno pelo seu código'
       Top = 8
       Width = 40
       Default = True
@@ -252,7 +255,7 @@ inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       }
-      OnClick = BitBtn3Click
+      OnClick = btnConsultarAlunoClick
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
