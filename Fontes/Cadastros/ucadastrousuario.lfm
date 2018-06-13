@@ -39,6 +39,7 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
       Width = 817
       ClientHeight = 41
       ClientWidth = 813
+      ConfirmDelete = True
       Hints.Strings = (
         'Primeiro'
         'Anterior'

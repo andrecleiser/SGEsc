@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="19"/>
-        <UsageCount Value="135"/>
+        <UsageCount Value="139"/>
       </Unit0>
       <Unit1>
         <Filename Value="udatmod.pas"/>
@@ -19,10 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="uDATMOD"/>
-        <EditorIndex Value="11"/>
-        <TopLine Value="17"/>
-        <CursorPos X="53" Y="18"/>
-        <UsageCount Value="135"/>
+        <EditorIndex Value="12"/>
+        <CursorPos X="36" Y="25"/>
+        <UsageCount Value="139"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -32,10 +31,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroPadrao"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="9"/>
-        <CursorPos X="23" Y="16"/>
-        <UsageCount Value="130"/>
+        <EditorIndex Value="10"/>
+        <CursorPos X="38" Y="5"/>
+        <UsageCount Value="134"/>
+        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
@@ -45,11 +44,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroAlunos"/>
         <EditorIndex Value="9"/>
-        <TopLine Value="146"/>
-        <CursorPos Y="164"/>
-        <UsageCount Value="130"/>
+        <CursorPos X="3" Y="152"/>
+        <UsageCount Value="134"/>
         <Bookmarks Count="1">
-          <Item0 X="5" Y="167" ID="1"/>
+          <Item0 X="5" Y="171" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit3>
@@ -63,9 +61,8 @@
         <EditorIndex Value="2"/>
         <TopLine Value="54"/>
         <CursorPos X="59" Y="72"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="134"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="Repositorio\classes\uclassutil.pas"/>
@@ -74,7 +71,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="147"/>
         <CursorPos Y="186"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="123"/>
       </Unit5>
       <Unit6>
         <Filename Value="Service\ufinanceiroservice.pas"/>
@@ -82,7 +79,7 @@
         <UnitName Value="uFinanceiroService"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="42" Y="4"/>
-        <UsageCount Value="105"/>
+        <UsageCount Value="109"/>
       </Unit6>
       <Unit7>
         <Filename Value="Service\ualunoservice.pas"/>
@@ -91,7 +88,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="72"/>
         <CursorPos X="38" Y="95"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="108"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -103,7 +100,7 @@
         <UnitName Value="uFormBase"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="15"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="93"/>
       </Unit8>
       <Unit9>
         <Filename Value="Recursos\uconsultaaluno.pas"/>
@@ -112,13 +109,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uConsultaAluno"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="55"/>
-        <CursorPos X="72" Y="77"/>
-        <UsageCount Value="88"/>
+        <TopLine Value="18"/>
+        <CursorPos X="53" Y="18"/>
+        <UsageCount Value="92"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
@@ -130,7 +125,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="90"/>
         <CursorPos X="36" Y="115"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="91"/>
         <Bookmarks Count="1">
           <Item0 Y="99" ID="2"/>
         </Bookmarks>
@@ -144,7 +139,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos Y="80"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="86"/>
       </Unit11>
       <Unit12>
         <Filename Value="Service\ufrequenciaservice.pas"/>
@@ -152,7 +147,7 @@
         <UnitName Value="uFrequenciaService"/>
         <EditorIndex Value="6"/>
         <CursorPos X="109" Y="28"/>
-        <UsageCount Value="73"/>
+        <UsageCount Value="77"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -162,12 +157,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroUsuario"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
-        <TopLine Value="73"/>
-        <CursorPos X="40" Y="83"/>
-        <UsageCount Value="41"/>
+        <TopLine Value="70"/>
+        <CursorPos X="102" Y="88"/>
+        <UsageCount Value="45"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="Recursos\ulogin.pas"/>
@@ -179,7 +174,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="32"/>
         <CursorPos X="66" Y="8"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -189,7 +184,7 @@
         <UnitName Value="uUsuarioService"/>
         <TopLine Value="35"/>
         <CursorPos X="46" Y="36"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -199,7 +194,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="47"/>
         <CursorPos X="15" Y="47"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
@@ -410,130 +405,130 @@
       </Unit43>
       <Unit44>
         <Filename Value="..\..\..\..\Lazarus\fpc\3.0.4\source\packages\fcl-db\src\base\db.pas"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="44"/>
         <CursorPos X="11" Y="62"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit44>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
-        <Caret Line="54" Column="3" TopLine="52"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="186" TopLine="147"/>
       </Position1>
       <Position2>
-        <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="67" Column="114" TopLine="59"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="179" TopLine="147"/>
       </Position2>
       <Position3>
-        <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="66" TopLine="44"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="186" TopLine="147"/>
       </Position3>
       <Position4>
-        <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="27" Column="52"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="187" TopLine="147"/>
       </Position4>
       <Position5>
         <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="72" Column="42" TopLine="56"/>
+        <Caret Line="68" Column="44" TopLine="53"/>
       </Position5>
       <Position6>
         <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="69" TopLine="47"/>
       </Position6>
       <Position7>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="159" Column="3" TopLine="131"/>
+        <Filename Value="Service\ualunoservice.pas"/>
+        <Caret Line="30" Column="37"/>
       </Position7>
       <Position8>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="157" Column="3" TopLine="136"/>
+        <Caret Line="169" Column="19" TopLine="147"/>
       </Position8>
       <Position9>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="170" Column="24" TopLine="126"/>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Caret Line="88" Column="15" TopLine="73"/>
       </Position9>
       <Position10>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="133" Column="59" TopLine="126"/>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
       </Position10>
       <Position11>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="161" Column="21" TopLine="138"/>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Caret Line="21" Column="17"/>
       </Position11>
       <Position12>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="162" Column="3" TopLine="138"/>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Caret Line="32" Column="27"/>
       </Position12>
       <Position13>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Caret Line="76" TopLine="65"/>
       </Position13>
       <Position14>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="81" Column="36" TopLine="45"/>
+        <Caret Line="164" TopLine="146"/>
       </Position14>
       <Position15>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="162" Column="24" TopLine="125"/>
+        <Caret Line="163" TopLine="145"/>
       </Position15>
       <Position16>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="171" Column="51" TopLine="134"/>
+        <Caret Line="162" TopLine="144"/>
       </Position16>
       <Position17>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="82" Column="36" TopLine="60"/>
+        <Caret Line="164" TopLine="146"/>
       </Position17>
       <Position18>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="186" TopLine="147"/>
+        <Caret Line="165" TopLine="147"/>
       </Position18>
       <Position19>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="179" TopLine="147"/>
+        <Caret Line="164" TopLine="146"/>
       </Position19>
       <Position20>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="186" TopLine="147"/>
+        <Caret Line="165" TopLine="147"/>
       </Position20>
       <Position21>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="187" TopLine="147"/>
+        <Caret Line="166" TopLine="148"/>
       </Position21>
       <Position22>
-        <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="68" Column="44" TopLine="53"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="168" TopLine="150"/>
       </Position22>
       <Position23>
-        <Filename Value="Service\ualunoservice.pas"/>
+        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Caret Line="57" Column="51" TopLine="56"/>
       </Position23>
       <Position24>
-        <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="30" Column="37"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="150" Column="103" TopLine="148"/>
       </Position24>
       <Position25>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <Caret Line="169" Column="19" TopLine="147"/>
+        <Caret Line="152" Column="3" TopLine="147"/>
       </Position25>
       <Position26>
-        <Filename Value="Recursos\uconsultaaluno.pas"/>
-        <Caret Line="88" Column="15" TopLine="73"/>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="128" Column="56" TopLine="114"/>
       </Position26>
       <Position27>
-        <Filename Value="Recursos\uconsultaaluno.pas"/>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
       </Position27>
       <Position28>
-        <Filename Value="Recursos\uconsultaaluno.pas"/>
-        <Caret Line="21" Column="17"/>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="28"/>
       </Position28>
       <Position29>
-        <Filename Value="Recursos\uconsultaaluno.pas"/>
-        <Caret Line="32" Column="27"/>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <Caret Line="152" Column="3"/>
       </Position29>
       <Position30>
-        <Filename Value="Recursos\uconsultaaluno.pas"/>
-        <Caret Line="76" TopLine="65"/>
+        <Filename Value="Repositorio\ucadastropadrao.pas"/>
+        <Caret Line="15" Column="3"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
