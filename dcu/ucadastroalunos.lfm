@@ -114,7 +114,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       ConfirmDelete = True
       Hints.Strings = (      )
       ParentShowHint = False
-      VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel]
     end
   end
   object Panel1: TPanel[2]
@@ -732,7 +731,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
   inherited dsPadrao: TDataSource[3]
     OnStateChange = dsPadraoStateChange
     left = 336
-    top = 2
+    top = 50
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
     FieldDefs = <    
@@ -939,7 +938,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         ParamType = ptInput
       end>
     left = 366
-    top = 0
+    top = 48
   end
   object imageList: TImageList[5]
     Height = 24

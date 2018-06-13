@@ -114,7 +114,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       ConfirmDelete = True
       Hints.Strings = (      )
       ParentShowHint = False
-      VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel]
     end
   end
   object Panel1: TPanel[2]
@@ -144,8 +143,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99999-999;0;_'
-      MaxLength = 0
-      TabOrder = 9
+      MaxLength = 9
+      TabOrder = 10
     end
     object DBEdit2: TDBEdit
       Left = 186
@@ -159,7 +158,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       TabOrder = 5
     end
     object dbeNome: TDBEdit
-      Left = 120
+      Left = 101
       Height = 28
       Top = 25
       Width = 570
@@ -293,7 +292,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       MaxLength = 2
       Sorted = True
       Style = csDropDownList
-      TabOrder = 16
+      TabOrder = 9
     end
     object Label7: TLabel
       Left = 675
@@ -319,7 +318,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Caption = 'Filiação'
       ClientHeight = 111
       ClientWidth = 1212
-      TabOrder = 12
+      TabOrder = 13
       object Label11: TLabel
         Left = 12
         Height = 20
@@ -367,7 +366,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Caption = 'Anamnese'
       ClientHeight = 109
       ClientWidth = 1212
-      TabOrder = 13
+      TabOrder = 14
       object Label13: TLabel
         Left = 12
         Height = 20
@@ -477,7 +476,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       CharCase = ecNormal
       Color = clSilver
       MaxLength = 0
-      TabOrder = 15
+      TabOrder = 16
       TabStop = False
     end
     object Label9: TLabel
@@ -498,8 +497,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99 9999-9999;0;_'
-      MaxLength = 0
-      TabOrder = 10
+      MaxLength = 12
+      TabOrder = 11
     end
     object DBEdit8: TDBEdit
       Left = 1054
@@ -511,8 +510,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99 99999-9999;0;_'
-      MaxLength = 0
-      TabOrder = 11
+      MaxLength = 13
+      TabOrder = 12
     end
     object Label10: TLabel
       Left = 1054
@@ -530,7 +529,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Caption = 'Responsável'
       ClientHeight = 105
       ClientWidth = 1212
-      TabOrder = 14
+      TabOrder = 15
       object Label15: TLabel
         Left = 16
         Height = 20
@@ -588,7 +587,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '999.999.999-99;0;_'
-        MaxLength = 0
+        MaxLength = 14
         TabOrder = 2
         OnExit = DBEdit15Exit
       end
@@ -629,7 +628,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '99 99999-9999;0;_'
-        MaxLength = 0
+        MaxLength = 13
         TabOrder = 5
       end
       object Label23: TLabel
@@ -650,7 +649,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '99 99999-9999;0;_'
-        MaxLength = 0
+        MaxLength = 13
         TabOrder = 6
       end
       object DBEdit13: TDBEdit
@@ -686,7 +685,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99:99;0;_'
-      MaxLength = 0
+      MaxLength = 5
       TabOrder = 2
     end
     object DBEdit4: TDBEdit
@@ -735,7 +734,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     top = 2
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'

@@ -25,7 +25,6 @@ type
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterPost({%H-}DataSet: TDataSet);
-    procedure sqlQueryPadraoBeforeDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
     procedure sqlQueryPadraoUpdateError(Sender: TObject;
       {%H-}DataSet: TCustomBufDataset; E: EUpdateError; UpdateKind: TUpdateKind;
@@ -123,12 +122,6 @@ begin
     salvarDadosDataSet;
   end;}
   salvarDadosDataSet;
-end;
-
-procedure TfrmCadastroPadrao.sqlQueryPadraoBeforeDelete(DataSet: TDataSet);
-begin
-  if Application.MessageBox('Deseja excluir o registro?', 'Exclusão', MB_ICONQUESTION + MB_YESNO) = idNo then
-    raise Exception.Create('Exclusão cancelada!');
 end;
 
 procedure TfrmCadastroPadrao.btnSairClick(Sender: TObject);

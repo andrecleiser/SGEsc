@@ -79,7 +79,7 @@ begin
   if (txt.Trim.Length > 0) then
   begin
     if cbAlunoAtivo.Checked then
-      DataModuleApp.qryAlunoObj.ServerFilter.Insert(DataModuleApp.qryAlunoObj.ServerFilter.Length, ' and nome like ' + QuotedStr('%' + txt.Trim + '%')
+      DataModuleApp.qryAlunoObj.ServerFilter.Insert(DataModuleApp.qryAlunoObj.ServerFilter.Length, ' and nome like ' + QuotedStr('%' + txt.Trim + '%'))
     else
       DataModuleApp.qryAlunoObj.ServerFilter:='nome like ' + QuotedStr('%' + txt.Trim + '%');
   end;

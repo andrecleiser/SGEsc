@@ -81,7 +81,6 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
     AfterEdit = sqlQueryPadraoAfterEdit
     AfterInsert = sqlQueryPadraoAfterInsert
     AfterPost = sqlQueryPadraoAfterPost
-    BeforeDelete = sqlQueryPadraoBeforeDelete
     BeforePost = sqlQueryPadraoBeforePost
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral

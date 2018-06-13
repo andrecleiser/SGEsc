@@ -1,5 +1,5 @@
 inherited frmConsultaAluno: TfrmConsultaAluno
-  Left = 3274
+  Left = 10
   Height = 601
   Top = 227
   Width = 913
@@ -302,7 +302,9 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       Top = 43
       Width = 139
       Caption = 'Alunos ativos'
+      Checked = True
       OnChange = cbAlunoAtivoChange
+      State = cbChecked
       TabOrder = 2
     end
   end
