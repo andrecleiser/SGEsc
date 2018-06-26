@@ -24,10 +24,13 @@ type
     class procedure validarDados(dataSet: TDataSet);
 
     // Torna o aluno impedido participar das aulas.
-    class procedure bloquearAluno(idAluno: integer);
+    class procedure desativarAluno(idAluno: integer);
 
     // Torna o aluno apto participar das aulas.
-    class procedure desbloquearAluno(idAluno: integer);
+    class procedure ativarAluno(idAluno: integer);
+
+    // Aplica as regras de validação referentes à exclusão do aluno.
+    class procedure validarExclusao(dataSet: TDataSet);
 
 end;
 
@@ -69,30 +72,30 @@ begin
   end;
 end;
 
-class procedure TAlunoService.bloquearAluno(idAluno: integer);
+class procedure TAlunoService.desativarAluno(idAluno: integer);
 begin
   if Application.MessageBox('O aluno será impedido de participar das atividades da escola. Deseja continuar?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO then
-    raise Exception.Create('Bloqueio do aluno cancelado.');
+    raise Exception.Create('Desativação do aluno cancelada.');
 
   try
     DataModuleApp.MySQL57Connection.ExecuteDirect('update aluno set data_inativacao = date(now()) where id = ' + idAluno.toString);
     DataModuleApp.sqlTransactionGeral.CommitRetaining;
-    Application.MessageBox('Aluno bloqueado com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
+    Application.MessageBox('Aluno desativado com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
   except
     on e: Exception do
       Application.MessageBox(PChar(TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
   end;
 end;
 
-class procedure TAlunoService.desbloquearAluno(idAluno: integer);
+class procedure TAlunoService.ativarAluno(idAluno: integer);
 begin
   if Application.MessageBox('O aluno poderá participar das atividades da escola. Deseja continuar?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO then
-    raise Exception.Create('Desbloqueio do aluno cancelado.');
+    raise Exception.Create('Ativação do aluno cancelada.');
 
   try
     DataModuleApp.MySQL57Connection.ExecuteDirect('update aluno set data_inativacao = null where id = ' + idAluno.toString);
     DataModuleApp.sqlTransactionGeral.CommitRetaining;
-    Application.MessageBox('Aluno desbloqueado com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
+    Application.MessageBox('Aluno desativado com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
   except
     on e: Exception do
       Application.MessageBox(PChar(TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
@@ -156,6 +159,13 @@ begin
   // Regra de validação 14
   if dataSet.FieldByName('celular_responsavel').AsString.Replace(' ', '').Trim.Length <> 11 then
     raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
+end;
+
+class procedure TAlunoService.validarExclusao(dataSet: TDataSet);
+begin
+  if dataSet.FieldByName('celular_responsavel').IsNull  then
+    raise Exception.Create('O celular do responsável tem que ser informado.');
+
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//

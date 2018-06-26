@@ -1,4 +1,4 @@
-unit uConsultaAluno;
+unit uconsulta_aluno;
 
 {$mode objfpc}{$H+}
 
@@ -131,11 +131,5 @@ begin
   DataModuleApp.qryAlunoObj.Close;
 end;
 
-{function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
-begin
-  result := TAluno.create(DataModuleApp.qryAlunoObj);
-  btnSair.Click;
-end;
-}
 end.
 

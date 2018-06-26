@@ -1,0 +1,104 @@
+inherited frmGerenciarTurma: TfrmGerenciarTurma
+  Left = 284
+  Height = 303
+  Top = 165
+  Width = 659
+  Caption = 'Gerenciamento de turma'
+  ClientHeight = 303
+  ClientWidth = 659
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  inherited pnlBottom: TPanel
+    Top = 247
+    Width = 659
+    ClientWidth = 659
+    inherited pnlFrmBaseSair: TPanel
+      Left = 445
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  inherited pnlNav: TPanel
+    Width = 659
+    ClientWidth = 659
+    inherited dbNavAlunos: TDBNavigator
+      Width = 657
+      ClientHeight = 41
+      ClientWidth = 653
+      ConfirmDelete = True
+      VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
+    end
+  end
+  object DBLookupComboBox1: TDBLookupComboBox[2]
+    Left = 48
+    Height = 28
+    Top = 184
+    Width = 568
+    AutoComplete = True
+    AutoDropDown = True
+    DataField = 'fk_aluno_id'
+    DataSource = dsPadrao
+    KeyField = 'id'
+    ListField = 'nome;nome_mae'
+    ListFieldIndex = 0
+    ListSource = DataModuleApp.dsLookUpAluno
+    LookupCache = False
+    TabOrder = 2
+  end
+  object DBLookupComboBox2: TDBLookupComboBox[3]
+    Left = 48
+    Height = 28
+    Top = 113
+    Width = 568
+    AutoComplete = True
+    AutoDropDown = True
+    DataField = 'fk_turma_id'
+    DataSource = dsPadrao
+    KeyField = 'id'
+    ListField = 'descricao;nome'
+    ListFieldIndex = 0
+    ListSource = DataModuleApp.dsqryLookUpTurma
+    LookupCache = False
+    TabOrder = 3
+  end
+  object Label1: TLabel[4]
+    Left = 48
+    Height = 20
+    Top = 88
+    Width = 56
+    AutoSize = False
+    Caption = 'Turma'
+    ParentColor = False
+  end
+  object Label2: TLabel[5]
+    Left = 48
+    Height = 20
+    Top = 160
+    Width = 49
+    Caption = 'Aluno'
+    ParentColor = False
+  end
+  inherited dsPadrao: TDataSource[6]
+  end
+  inherited sqlQueryPadrao: TSQLQuery[7]
+    FieldDefs = <    
+      item
+        Name = 'fk_aluno_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_turma_id'
+        DataType = ftLargeint
+        Precision = -1
+      end>
+    SQL.Strings = (
+      'select * from turma_aluno'
+    )
+    ServerFiltered = True
+  end
+end

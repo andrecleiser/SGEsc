@@ -1,4 +1,4 @@
-unit uConsultaAluno;
+unit uconsulta_aluno;
 
 {$mode objfpc}{$H+}
 
@@ -12,9 +12,9 @@ type
 
   TComportamentoConsulta = (ccEditar, ccRetornar);
 
-  { TfrmConsultaAluno }
+  { TfrmConsultaTurma }
 
-  TfrmConsultaAluno = class(TfrmBase)
+  TfrmConsultaTurma = class(TfrmBase)
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
     btnRetornar: TBitBtn;
@@ -38,7 +38,7 @@ type
   end;
 
 var
-  frmConsultaAluno: TfrmConsultaAluno;
+  frmConsultaTurma: TfrmConsultaTurma;
 
 implementation
 
@@ -47,11 +47,11 @@ uses
 
 {$R *.lfm}
 
-{ TfrmConsultaAluno }
+{ TfrmConsultaTurma }
 
-class function TfrmConsultaAluno.abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
+class function TfrmConsultaTurma.abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
 begin
-  with TfrmConsultaAluno.Create(Application) do
+  with TfrmConsultaTurma.Create(Application) do
   try
     fCodigoAluno := 0;
     pnlRetornar.Visible := (pComportamentoConsulta = ccRetornar);
@@ -63,7 +63,7 @@ begin
   end;
 end;
 
-procedure TfrmConsultaAluno.btnConsultarClick(Sender: TObject);
+procedure TfrmConsultaTurma.btnConsultarClick(Sender: TObject);
 var
   txt: string;
 begin
@@ -95,13 +95,12 @@ begin
     raise Exception.Create('A pesquisa executada a partir do texto usado não encontrou nenhum aluno.');
 end;
 
-procedure TfrmConsultaAluno.btnEditarClick(Sender: TObject);
+procedure TfrmConsultaTurma.btnEditarClick(Sender: TObject);
 begin
   with TfrmCadastroAlunos.Create(Application) do
   try
     sqlQueryPadrao.ParamByName('id').AsInteger := DataModuleApp.qryAlunoObj.FieldByName('id').AsInteger;
     sqlQueryPadrao.Open;
-    sqlQueryPadrao.Edit;
     ShowModal;
 
     if DataModuleApp.qryAlunoObj.IsEmpty then
@@ -111,7 +110,7 @@ begin
   end;
 end;
 
-procedure TfrmConsultaAluno.btnRetornarClick(Sender: TObject);
+procedure TfrmConsultaTurma.btnRetornarClick(Sender: TObject);
 begin
   if dsAlunos.DataSet.IsEmpty then
     raise Exception.Create('Nenhum aluno foi selecionado.');
@@ -121,22 +120,16 @@ begin
   btnSair.Click;
 end;
 
-procedure TfrmConsultaAluno.cbAlunoAtivoChange(Sender: TObject);
+procedure TfrmConsultaTurma.cbAlunoAtivoChange(Sender: TObject);
 begin
   DataModuleApp.qryAlunoObj.Close;
 end;
 
-procedure TfrmConsultaAluno.FormClose(Sender: TObject;
+procedure TfrmConsultaTurma.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   DataModuleApp.qryAlunoObj.Close;
 end;
 
-{function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
-begin
-  result := TAluno.create(DataModuleApp.qryAlunoObj);
-  btnSair.Click;
-end;
-}
 end.
 

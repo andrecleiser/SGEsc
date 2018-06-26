@@ -165,12 +165,12 @@ end;
 procedure TfrmCadastroAlunos.btnDesativarClick(Sender: TObject);
 begin
   if sqlQueryPadrao.FieldByName('id').IsNull then
-    raise Exception.Create('Para bloquear um aluno recém cadastrado, feche o cadastro e selecione o novo aluno através da consulta de aluno.');
+    raise Exception.Create('Para desativar um aluno recém cadastrado, feche o cadastro e selecione o novo aluno através da consulta de aluno.');
 
-  if btnDesativar.Caption = 'Bloquear aluno' then
-    TAlunoService.bloquearAluno(sqlQueryPadrao.FieldByName('id').AsInteger)
+  if btnDesativar.Caption = 'Desativar aluno' then
+    TAlunoService.desativarAluno(sqlQueryPadrao.FieldByName('id').AsInteger)
   else
-    TAlunoService.desbloquearAluno(sqlQueryPadrao.FieldByName('id').AsInteger);
+    TAlunoService.ativarAluno(sqlQueryPadrao.FieldByName('id').AsInteger);
 
   sqlQueryPadrao.Refresh;
 
@@ -188,12 +188,12 @@ begin
   if sqlQueryPadrao.FieldByName('data_inativacao').IsNull then
   begin
     imageList.GetBitmap(0, btnDesativar.Glyph);
-    btnDesativar.Caption := 'Bloquear aluno';
+    btnDesativar.Caption := 'Desativar aluno';
   end
   else
   begin
     imageList.GetBitmap(1, btnDesativar.Glyph);
-    btnDesativar.Caption := 'Desbloquear aluno';
+    btnDesativar.Caption := 'Ativar aluno';
   end
 end;
 

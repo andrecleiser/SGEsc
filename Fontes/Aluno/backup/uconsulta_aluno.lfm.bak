@@ -1,7 +1,7 @@
-inherited frmConsultaAluno: TfrmConsultaAluno
-  Left = 10
+inherited frmConsultaTurma: TfrmConsultaTurma
+  Left = 480
   Height = 601
-  Top = 227
+  Top = 284
   Width = 913
   ActiveControl = edtTextoConsultar
   Caption = 'Consultar aluno'

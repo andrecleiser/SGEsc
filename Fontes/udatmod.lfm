@@ -165,6 +165,12 @@ object DataModuleApp: TDataModuleApp
         Name = 'fk_doenca_pre_existente_id'
         DataType = ftLargeint
         Precision = -1
+      end    
+      item
+        Name = 'adimplente'
+        DataType = ftString
+        Precision = -1
+        Size = 3
       end>
     AfterClose = SQLQueryObjAfterClose
     Database = MySQL57Connection
@@ -183,7 +189,7 @@ object DataModuleApp: TDataModuleApp
     )
     Params = <>
     left = 80
-    top = 128
+    top = 106
   end
   object qryUsuarioObj: TSQLQuery
     FieldDefs = <>
@@ -201,7 +207,7 @@ object DataModuleApp: TDataModuleApp
     )
     Params = <>
     left = 80
-    top = 224
+    top = 168
   end
   object qryLookUpPerfilUsuario: TSQLQuery
     PacketRecords = -1
@@ -218,10 +224,151 @@ object DataModuleApp: TDataModuleApp
     left = 632
     top = 152
   end
-  object dsPerfilUsuario: TDataSource
-    AutoEdit = False
+  object dsqryLookUpPerfilUsuario: TDataSource
     DataSet = qryLookUpPerfilUsuario
     left = 592
     top = 152
+  end
+  object dsqryLookUpTurma: TDataSource
+    DataSet = qryLookUpTurma
+    left = 592
+    top = 224
+  end
+  object qryLookUpTurma: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'valor_sugerido'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select t.id, t.descricao, t.valor_sugerido, p.nome'
+      'from turma t'
+      '     inner join professor p on (t.fk_perfil_professor_id = p.id)'
+      'order by t.descricao'
+    )
+    Params = <>
+    left = 632
+    top = 224
+  end
+  object dsqryLookUpProfessor: TDataSource
+    AutoEdit = False
+    DataSet = qryLookUpProfessor
+    left = 592
+    top = 301
+  end
+  object qryLookUpProfessor: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'valor_sugerido'
+        DataType = ftFloat
+        Precision = -1
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select id, nome'
+      'from professor'
+      'order by nome'
+    )
+    Params = <>
+    left = 632
+    top = 301
+  end
+  object qryTurmaObj: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'fk_turma_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_aluno_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select ta.fk_turma_id, ta.fk_aluno_id, a.nome'
+      'from turma_aluno ta'
+      '     inner join aluno a on (ta.fk_aluno_id = a.id)'
+      'order by a.nome'
+    )
+    Params = <>
+    left = 80
+    top = 241
+  end
+  object qryLookUpAluno: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'nome_mae'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end>
+    Database = MySQL57Connection
+    Transaction = sqlTransactionGeral
+    SQL.Strings = (
+      'select id, nome, nome_mae'
+      'from aluno'
+      'order by nome'
+    )
+    Params = <>
+    left = 632
+    top = 384
+  end
+  object dsLookUpAluno: TDataSource
+    DataSet = qryLookUpAluno
+    left = 592
+    top = 384
   end
 end

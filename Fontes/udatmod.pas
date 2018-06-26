@@ -12,9 +12,12 @@ type
   { TDataModuleApp }
 
   TDataModuleApp = class(TDataModule)
-    dsPerfilUsuario: TDataSource;
+    dsLookUpAluno: TDataSource;
+    dsqryLookUpTurma: TDataSource;
+    dsqryLookUpPerfilUsuario: TDataSource;
     dsMotivo_Matricula: TDataSource;
     dsDoenca_Pre_Existente: TDataSource;
+    dsqryLookUpProfessor: TDataSource;
     MySQL57Connection: TMySQL57Connection;
     qryAlunoObj: TSQLQuery;
     qryLookUpDoenca_Pre_Existenteid: TLargeintField;
@@ -23,8 +26,12 @@ type
     qryLookUpDoenca_Pre_Existente: TSQLQuery;
     qryLookUpMotivo_Matriculadescricao: TStringField;
     qryLookUpMotivo_Matriculaid: TLargeintField;
+    qryLookUpProfessor: TSQLQuery;
     qryUsuarioObj: TSQLQuery;
     qryLookUpPerfilUsuario: TSQLQuery;
+    qryLookUpTurma: TSQLQuery;
+    qryTurmaObj: TSQLQuery;
+    qryLookUpAluno: TSQLQuery;
     sqlTransactionGeral: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);

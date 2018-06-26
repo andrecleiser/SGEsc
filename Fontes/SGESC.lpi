@@ -22,21 +22,24 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="4">
+    <RequiredPackages Count="5">
       <Item1>
-        <PackageName Value="TurboPowerIPro"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item1>
       <Item2>
-        <PackageName Value="SDFLaz"/>
+        <PackageName Value="TurboPowerIPro"/>
       </Item2>
       <Item3>
-        <PackageName Value="FCL"/>
+        <PackageName Value="SDFLaz"/>
       </Item3>
       <Item4>
-        <PackageName Value="LCL"/>
+        <PackageName Value="FCL"/>
       </Item4>
+      <Item5>
+        <PackageName Value="LCL"/>
+      </Item5>
     </RequiredPackages>
-    <Units Count="17">
+    <Units Count="21">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -58,96 +61,123 @@
         <UnitName Value="uCadastroPadrao"/>
       </Unit2>
       <Unit3>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmCadastroAlunos"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadastroAlunos"/>
-      </Unit3>
-      <Unit4>
         <Filename Value="uprincipal.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPrincipal"/>
-      </Unit4>
-      <Unit5>
+      </Unit3>
+      <Unit4>
         <Filename Value="Repositorio\classes\uclassutil.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uClassUtil"/>
-      </Unit5>
-      <Unit6>
+      </Unit4>
+      <Unit5>
         <Filename Value="Service\ufinanceiroservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uFinanceiroService"/>
-      </Unit6>
-      <Unit7>
+      </Unit5>
+      <Unit6>
         <Filename Value="Service\ualunoservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uAlunoService"/>
-      </Unit7>
-      <Unit8>
+      </Unit6>
+      <Unit7>
         <Filename Value="Repositorio\uformbase.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmBase"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFormBase"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="Recursos\uconsultaaluno.pas"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="Turma\uconsulta_turma.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmConsultaAluno"/>
+        <ComponentName Value="frmConsultaTurma"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uConsultaAluno"/>
-      </Unit9>
-      <Unit10>
+      </Unit8>
+      <Unit9>
         <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmRegistrarFrequencia"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uRegistrarFrequencia"/>
-      </Unit10>
-      <Unit11>
+      </Unit9>
+      <Unit10>
         <Filename Value="Model\ualuno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uAluno"/>
-      </Unit11>
-      <Unit12>
+      </Unit10>
+      <Unit11>
         <Filename Value="Service\ufrequenciaservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uFrequenciaService"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="Cadastros\ucadastrousuario.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmCadastroUsuario"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadastroUsuario"/>
-      </Unit13>
-      <Unit14>
+      </Unit11>
+      <Unit12>
         <Filename Value="Recursos\ulogin.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmLogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uLogin"/>
-      </Unit14>
-      <Unit15>
+      </Unit12>
+      <Unit13>
         <Filename Value="Service\uusuarioservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uUsuarioService"/>
-      </Unit15>
-      <Unit16>
+      </Unit13>
+      <Unit14>
         <Filename Value="Model\uusuario.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uUsuario"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="Recursos\uconstantessistema.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uConstantesSistema"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="Financeiro\uresgistropagamento.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRegistrarPagamento"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uResgistroPagamento"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="Turma\ucadastrarturma.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroTurma"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastrarTurma"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmGerenciarTurma"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uTurma_Aluno"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="Aluno\ucadastroalunos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroAlunos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroAlunos"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="Aluno\uconsulta_aluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmConsultaAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit20>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -158,7 +188,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model"/>
+      <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model;Financeiro;Turma;Aluno"/>
       <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\ciclo-2\dcu"/>
     </SearchPaths>
     <CodeGeneration>

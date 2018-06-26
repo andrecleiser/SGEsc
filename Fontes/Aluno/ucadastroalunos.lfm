@@ -38,7 +38,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Height = 38
       Top = 3
       Width = 204
-      Caption = 'Bloquear aluno'
+      Caption = 'Desativar aluno'
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
@@ -937,8 +937,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Name = 'id'
         ParamType = ptInput
       end>
-    left = 366
-    top = 48
+    left = 376
+    top = 50
   end
   object imageList: TImageList[5]
     Height = 24
