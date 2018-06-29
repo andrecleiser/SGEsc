@@ -7,6 +7,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
   ClientHeight = 303
   ClientWidth = 659
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   inherited pnlBottom: TPanel
     Top = 247
@@ -48,7 +49,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
     LookupCache = False
     TabOrder = 2
   end
-  object DBLookupComboBox2: TDBLookupComboBox[3]
+  object dbLookupComboBoxTurma: TDBLookupComboBox[3]
     Left = 48
     Height = 28
     Top = 113
@@ -64,7 +65,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
     LookupCache = False
     TabOrder = 3
   end
-  object Label1: TLabel[4]
+  object labelTurma: TLabel[4]
     Left = 48
     Height = 20
     Top = 88
@@ -95,6 +96,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
         DataType = ftLargeint
         Precision = -1
       end>
+    BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
       'select * from turma_aluno'
     )

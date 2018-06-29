@@ -39,7 +39,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="21">
+    <Units Count="23">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -178,6 +178,16 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit20>
+      <Unit21>
+        <Filename Value="Service\uturmaservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uTurmaService"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="Model\uturma.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uTurma"/>
+      </Unit22>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -196,7 +206,6 @@
     </CodeGeneration>
     <Linking>
       <Debugging>
-        <GenerateDebugInfo Value="False"/>
         <StripSymbols Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>

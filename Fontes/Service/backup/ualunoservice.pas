@@ -10,6 +10,7 @@ uses
 type
   TSituacaoAluno = (saTodos, saAtivo, saInativo, saAdimplente, saInadimplente);
   TSetSituacaoAluno = Set of TSituacaoAluno;
+  TListAlunos: Array of TAluno;
 
   TAlunoService = class
   private
@@ -28,6 +29,9 @@ type
 
     // Torna o aluno apto participar das aulas.
     class procedure ativarAluno(idAluno: integer);
+
+    // Aplica as regras de validação referentes à exclusão do aluno.
+    class procedure validarExclusao(dataSet: TDataSet);
 
 end;
 
@@ -156,6 +160,13 @@ begin
   // Regra de validação 14
   if dataSet.FieldByName('celular_responsavel').AsString.Replace(' ', '').Trim.Length <> 11 then
     raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
+end;
+
+class procedure TAlunoService.validarExclusao(dataSet: TDataSet);
+begin
+  if dataSet.FieldByName('celular_responsavel').IsNull  then
+    raise Exception.Create('O celular do responsável tem que ser informado.');
+
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//

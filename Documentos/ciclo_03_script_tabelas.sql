@@ -11,6 +11,7 @@ create table turma (
     hora_inicio varchar(4),
 	hora_fim varchar(4),
 	valor_sugerido double(7, 2) not null,
+	limite_alunos bigint(2),
 	
 	foreign key (fk_perfil_professor_id) references professor(id)
     
@@ -36,4 +37,6 @@ create table turma_aluno (
 
 	constraint pk_turma_aluno PRIMARY KEY (fk_turma_id, fk_aluno_id)
 
+	foreign key (fk_aluno_id) references aluno(id),
+	foreign key (fk_turma_id) references turma(id)
 ) engine=innodb default charset=utf8;

@@ -18,6 +18,7 @@ type
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
     DBGrid1: TDBGrid;
     DBLookupComboBox1: TDBLookupComboBox;
     Label2: TLabel;
@@ -25,6 +26,7 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -34,9 +36,12 @@ type
     sqlQueryPadraohora_fim: TStringField;
     sqlQueryPadraohora_inicio: TStringField;
     sqlQueryPadraoid: TLargeintField;
+    sqlQueryPadraolimite_alunos: TLargeintField;
     sqlQueryPadraovalor_sugerido: TFloatField;
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+    procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
 
   public
@@ -49,7 +54,7 @@ var
 implementation
 
 uses
-  uDATMOD;
+  uDATMOD, uTurmaService;
 
 {$R *.lfm}
 
@@ -67,6 +72,19 @@ begin
   DataModuleApp.qryLookUpProfessor.Open;
   sqlQueryPadrao.Open;
   captionForm := 'Cadastro de turma';
+end;
+
+procedure TfrmCadastroTurma.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+  sqlQueryPadraocontrolar_horario.AsString := 'S';
+end;
+
+procedure TfrmCadastroTurma.sqlQueryPadraoBeforePost(DataSet: TDataSet);
+begin
+  TTurmaService.validarTurma(DataSet);
+
+  inherited;
 end;
 
 end.

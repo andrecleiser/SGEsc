@@ -8,7 +8,7 @@ object DataModuleApp: TDataModuleApp
   Width = 1310
   PPI = 120
   object MySQL57Connection: TMySQL57Connection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'sgesc'
     KeepConnection = False
@@ -26,7 +26,7 @@ object DataModuleApp: TDataModuleApp
     top = 30
   end
   object sqlTransactionGeral: TSQLTransaction
-    Active = False
+    Active = True
     Action = caNone
     Database = MySQL57Connection
     left = 120
@@ -257,13 +257,25 @@ object DataModuleApp: TDataModuleApp
         DataType = ftString
         Precision = -1
         Size = 210
+      end    
+      item
+        Name = 'limite_alunos'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'qtd_alunos_turma'
+        DataType = ftLargeint
+        Precision = -1
       end>
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
     SQL.Strings = (
-      'select t.id, t.descricao, t.valor_sugerido, p.nome'
+      'select t.id, t.descricao, t.valor_sugerido, p.nome, t.limite_alunos, count(ta.fk_aluno_id) qtd_alunos_turma'
       'from turma t'
       '     inner join professor p on (t.fk_perfil_professor_id = p.id)'
+      '     inner join turma_aluno ta on (t.id = ta.fk_turma_id)'
+      'group by t.id, t.descricao, t.valor_sugerido, p.nome, t.limite_alunos'
       'order by t.descricao'
     )
     Params = <>
@@ -360,6 +372,7 @@ object DataModuleApp: TDataModuleApp
     SQL.Strings = (
       'select id, nome, nome_mae'
       'from aluno'
+      'where data_inativacao is null'
       'order by nome'
     )
     Params = <>
