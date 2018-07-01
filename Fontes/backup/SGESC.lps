@@ -23,7 +23,6 @@
         <CursorPos X="14" Y="58"/>
         <UsageCount Value="159"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="Repositorio\ucadastropadrao.pas"/>
@@ -205,12 +204,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uTurma_Aluno"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="41"/>
-        <CursorPos Y="72"/>
+        <CursorPos X="52" Y="61"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
@@ -239,8 +236,10 @@
         <Filename Value="Service\uturmaservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTurmaService"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <CursorPos X="19"/>
+        <TopLine Value="58"/>
+        <CursorPos X="28" Y="58"/>
         <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit21>

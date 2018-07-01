@@ -35,8 +35,8 @@ create table turma_aluno (
     fk_aluno_id bigint(10) not null,
     fk_turma_id bigint(10) not null,
 
-	constraint pk_turma_aluno PRIMARY KEY (fk_turma_id, fk_aluno_id)
-
 	foreign key (fk_aluno_id) references aluno(id),
-	foreign key (fk_turma_id) references turma(id)
+	foreign key (fk_turma_id) references turma(id),
+
+	constraint pk_turma_aluno PRIMARY KEY (fk_turma_id, fk_aluno_id)
 ) engine=innodb default charset=utf8;
