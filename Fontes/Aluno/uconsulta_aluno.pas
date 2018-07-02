@@ -1,5 +1,20 @@
 unit uconsulta_aluno;
 
+{
+
+
+select id,
+       nome,
+       data_nascimento,
+       data_cadastramento,
+       data_inativacao,
+       fk_motivo_matricula_id,
+       fk_doenca_pre_existente_id,
+       adimplente
+from   aluno
+order by nome
+}
+
 {$mode objfpc}{$H+}
 
 interface

@@ -143,7 +143,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99999-999;0;_'
-      MaxLength = 0
+      MaxLength = 9
       TabOrder = 10
     end
     object DBEdit2: TDBEdit
@@ -153,7 +153,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Width = 485
       DataField = 'rua'
       DataSource = dsPadrao
-      CharCase = ecNormal
+      CharCase = ecUppercase
       MaxLength = 0
       TabOrder = 5
     end
@@ -161,10 +161,10 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Left = 101
       Height = 28
       Top = 25
-      Width = 570
+      Width = 995
       DataField = 'nome'
       DataSource = dsPadrao
-      CharCase = ecNormal
+      CharCase = ecUppercase
       MaxLength = 0
       TabOrder = 1
     end
@@ -245,7 +245,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Width = 656
       DataField = 'cidade'
       DataSource = dsPadrao
-      CharCase = ecNormal
+      CharCase = ecUppercase
       MaxLength = 0
       TabOrder = 8
     end
@@ -334,7 +334,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Width = 1150
         DataField = 'nome_pai'
         DataSource = dsPadrao
-        CharCase = ecNormal
+        CharCase = ecUppercase
         MaxLength = 0
         TabOrder = 0
       end
@@ -353,7 +353,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Width = 1150
         DataField = 'nome_mae'
         DataSource = dsPadrao
-        CharCase = ecNormal
+        CharCase = ecUppercase
         MaxLength = 0
         TabOrder = 1
       end
@@ -431,6 +431,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Height = 83
         Top = 26
         Width = 549
+        CharCase = ecUppercase
         DataField = 'observacao'
         DataSource = dsPadrao
         MaxLength = 200
@@ -445,7 +446,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Width = 239
       DataField = 'complemento'
       DataSource = dsPadrao
-      CharCase = ecNormal
+      CharCase = ecUppercase
       MaxLength = 0
       TabOrder = 6
     end
@@ -497,7 +498,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99 9999-9999;0;_'
-      MaxLength = 0
+      MaxLength = 12
       TabOrder = 11
     end
     object DBEdit8: TDBEdit
@@ -510,7 +511,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99 99999-9999;0;_'
-      MaxLength = 0
+      MaxLength = 13
       TabOrder = 12
     end
     object Label10: TLabel
@@ -545,7 +546,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Width = 641
         DataField = 'nome_responsavel'
         DataSource = dsPadrao
-        CharCase = ecNormal
+        CharCase = ecUppercase
         MaxLength = 0
         TabOrder = 0
       end
@@ -587,7 +588,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '999.999.999-99;0;_'
-        MaxLength = 0
+        MaxLength = 14
         TabOrder = 2
         OnExit = DBEdit15Exit
       end
@@ -628,7 +629,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '99 99999-9999;0;_'
-        MaxLength = 0
+        MaxLength = 13
         TabOrder = 5
       end
       object Label23: TLabel
@@ -649,7 +650,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '99 99999-9999;0;_'
-        MaxLength = 0
+        MaxLength = 13
         TabOrder = 6
       end
       object DBEdit13: TDBEdit
@@ -676,17 +677,19 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       end
     end
     object DBEdit19: TDBEdit
-      Left = 675
+      Left = 704
       Height = 28
-      Top = 25
+      Top = 183
       Width = 74
       CustomEditMask = True
       DataField = 'hora_turma'
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99:99;0;_'
-      MaxLength = 0
+      MaxLength = 5
       TabOrder = 2
+      TabStop = False
+      Visible = False
     end
     object DBEdit4: TDBEdit
       Left = 923
@@ -695,30 +698,32 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Width = 304
       DataField = 'bairro'
       DataSource = dsPadrao
-      CharCase = ecNormal
+      CharCase = ecUppercase
       MaxLength = 0
       TabOrder = 7
     end
     object Label24: TLabel
-      Left = 675
+      Left = 704
       Height = 20
-      Top = 2
+      Top = 160
       Width = 62
       Caption = 'Horário'
       ParentColor = False
+      Visible = False
     end
     object Label25: TLabel
-      Left = 754
+      Left = 783
       Height = 20
-      Top = 2
+      Top = 160
       Width = 88
       Caption = 'Professora'
       ParentColor = False
+      Visible = False
     end
     object DBEdit20: TDBEdit
-      Left = 754
+      Left = 783
       Height = 28
-      Top = 25
+      Top = 183
       Width = 350
       CustomEditMask = True
       DataField = 'modalidade'
@@ -726,6 +731,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       CharCase = ecNormal
       MaxLength = 0
       TabOrder = 3
+      TabStop = False
+      Visible = False
     end
   end
   inherited dsPadrao: TDataSource[3]
@@ -734,7 +741,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     top = 50
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -892,6 +898,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Precision = -1
         Size = 90
       end>
+    AfterInsert = sqlQueryPadraoAfterInsert
     AfterScroll = sqlQueryPadraoAfterScroll
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
@@ -938,8 +945,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Name = 'id'
         ParamType = ptInput
       end>
-    left = 366
-    top = 48
+    left = 376
+    top = 50
   end
   object imageList: TImageList[5]
     Height = 24

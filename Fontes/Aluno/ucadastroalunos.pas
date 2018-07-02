@@ -80,6 +80,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
     procedure sqlQueryPadraoAfterScroll({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
@@ -121,6 +122,12 @@ begin
   campoFocoEdicao := dbeNome;
 
   imageList.GetBitmap(0, btnDesativar.Glyph);
+end;
+
+procedure TfrmCadastroAlunos.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+  sqlQueryPadrao.FieldByName('estado').AsString := 'PE';
 end;
 
 procedure TfrmCadastroAlunos.sqlQueryPadraoAfterScroll(DataSet: TDataSet);

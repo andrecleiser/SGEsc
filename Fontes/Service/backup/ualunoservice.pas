@@ -10,7 +10,6 @@ uses
 type
   TSituacaoAluno = (saTodos, saAtivo, saInativo, saAdimplente, saInadimplente);
   TSetSituacaoAluno = Set of TSituacaoAluno;
-  TListAlunos: Array of TAluno;
 
   TAlunoService = class
   private

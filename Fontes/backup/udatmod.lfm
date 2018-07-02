@@ -129,62 +129,23 @@ object DataModuleApp: TDataModuleApp
     end
   end
   object qryAlunoObj: TSQLQuery
-    FieldDefs = <    
-      item
-        Name = 'id'
-        DataType = ftLargeint
-        Precision = -1
-      end    
-      item
-        Name = 'nome'
-        DataType = ftString
-        Precision = -1
-        Size = 210
-      end    
-      item
-        Name = 'data_nascimento'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'data_cadastramento'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'data_inativacao'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'fk_motivo_matricula_id'
-        DataType = ftLargeint
-        Precision = -1
-      end    
-      item
-        Name = 'fk_doenca_pre_existente_id'
-        DataType = ftLargeint
-        Precision = -1
-      end    
-      item
-        Name = 'adimplente'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end>
+    FieldDefs = <>
     AfterClose = SQLQueryObjAfterClose
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
     SQL.Strings = (
-      'select id,'
-      '       nome,'
-      '       data_nascimento,'
-      '       data_cadastramento,'
-      '       data_inativacao,'
-      '       fk_motivo_matricula_id,'
-      '       fk_doenca_pre_existente_id,'
-      '       adimplente'
-      'from   aluno'
+      'select a.id,'
+      '       a.nome,'
+      '       ifnull(t.descricao, concat(t.descricao, '' - '', insert(t.hora_inicio, 3, 0, '':''))) descricao_turma,'
+      '       a.data_nascimento,'
+      '       a.data_cadastramento,'
+      '       a.data_inativacao,'
+      '       a.fk_motivo_matricula_id,'
+      '       a.fk_doenca_pre_existente_id,'
+      '       a.adimplente'
+      'from   aluno a'
+      '       left join turma_aluno ta on (a.id = ta.fk_aluno_id)'
+      '       left join turma t on (t.id = ta.fk_turma_id)'
       'order by nome'
     )
     Params = <>
@@ -235,6 +196,7 @@ object DataModuleApp: TDataModuleApp
     top = 224
   end
   object qryLookUpTurma: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -253,10 +215,10 @@ object DataModuleApp: TDataModuleApp
         Precision = -1
       end    
       item
-        Name = 'nome'
+        Name = 'hora_inicio'
         DataType = ftString
         Precision = -1
-        Size = 210
+        Size = 12
       end    
       item
         Name = 'limite_alunos'
@@ -271,16 +233,68 @@ object DataModuleApp: TDataModuleApp
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
     SQL.Strings = (
-      'select t.id, t.descricao, t.valor_sugerido, p.nome, t.limite_alunos, count(ta.fk_aluno_id) qtd_alunos_turma'
+      'select t.id,'
+      '       ifnull(t.descricao, concat(t.descricao, '' - '', insert(t.hora_inicio, 3, 0, '':''))) descricao,'
+      '       t.valor_sugerido,'
+      '       t.limite_alunos,'
+      '       count(ta.fk_aluno_id) qtd_alunos_turma'
       'from turma t'
-      '     inner join professor p on (t.fk_perfil_professor_id = p.id)'
-      '     inner join turma_aluno ta on (t.id = ta.fk_turma_id)'
-      'group by t.id, t.descricao, t.valor_sugerido, p.nome, t.limite_alunos'
-      'order by t.descricao'
+      '     left join turma_aluno ta on (t.id = ta.fk_turma_id)'
+      'group by t.id, t.descricao, t.valor_sugerido, t.hora_inicio, t.limite_alunos'
+      'order by t.descricao, insert(t.hora_inicio, 3, 0, '':'')'
     )
     Params = <>
     left = 632
     top = 224
+    object qryLookUpTurmaid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryLookUpTurmadescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 120
+    end
+    object qryLookUpTurmavalor_sugerido: TFloatField
+      FieldKind = fkData
+      FieldName = 'valor_sugerido'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = -1
+    end
+    object qryLookUpTurmalimite_alunos: TLargeintField
+      FieldKind = fkData
+      FieldName = 'limite_alunos'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryLookUpTurmaqtd_alunos_turma: TLargeintField
+      FieldKind = fkData
+      FieldName = 'qtd_alunos_turma'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dsqryLookUpProfessor: TDataSource
     AutoEdit = False
@@ -371,7 +385,7 @@ object DataModuleApp: TDataModuleApp
     SQL.Strings = (
       'select id, nome, nome_mae'
       'from aluno'
-      'where data_inativacao is not null'
+      'where data_inativacao is null'
       'order by nome'
     )
     Params = <>

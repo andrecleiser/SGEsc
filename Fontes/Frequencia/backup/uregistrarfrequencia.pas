@@ -43,7 +43,7 @@ var
 implementation
 
 uses
-  uConsultaAluno;
+  uconsulta_aluno;
 
 {$R *.lfm}
 

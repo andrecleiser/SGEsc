@@ -56,7 +56,7 @@ begin
 
   try
     DataModuleApp.qryAlunoObj.Close;
-    DataModuleApp.qryAlunoObj.ServerFilter:=  filtro +' id = ' + id.ToString;
+    DataModuleApp.qryAlunoObj.ServerFilter:=  filtro +' a.id = ' + id.ToString;
 
     DataModuleApp.qryAlunoObj.ServerFiltered:=true;
     DataModuleApp.qryAlunoObj.Open;

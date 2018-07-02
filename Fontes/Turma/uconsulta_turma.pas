@@ -74,6 +74,9 @@ end;
 
 procedure TfrmConsultaTurma.btnConsultarClick(Sender: TObject);
 begin
+  if dblTurma.KeyValue = -1 then
+    raise Exception.Create('Informe a turma!');
+
   DataModuleApp.qryTurmaObj.Close;
   DataModuleApp.qryTurmaObj.ServerFilter := 'fk_turma_id = ' + VarToStr(dblTurma.KeyValue);
   DataModuleApp.qryTurmaObj.Open;

@@ -27,6 +27,11 @@ type
     qryLookUpMotivo_Matriculadescricao: TStringField;
     qryLookUpMotivo_Matriculaid: TLargeintField;
     qryLookUpProfessor: TSQLQuery;
+    qryLookUpTurmadescricao: TStringField;
+    qryLookUpTurmaid: TLargeintField;
+    qryLookUpTurmalimite_alunos: TLargeintField;
+    qryLookUpTurmaqtd_alunos_turma: TLargeintField;
+    qryLookUpTurmavalor_sugerido: TFloatField;
     qryUsuarioObj: TSQLQuery;
     qryLookUpPerfilUsuario: TSQLQuery;
     qryLookUpTurma: TSQLQuery;

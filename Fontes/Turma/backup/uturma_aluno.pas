@@ -47,15 +47,15 @@ begin
   DataModuleApp.qryLookUpTurma.Close;
   DataModuleApp.qryLookUpAluno.Close;
   sqlQueryPadrao.Close;
-  dbLookupComboBoxTurma.ListSource.DataSet.AfterScroll := afterScrollLookUpTurma;
+  DataModuleApp.qryLookUpTurma.AfterScroll := afterScrollLookUpTurma;
 end;
 
 procedure TfrmGerenciarTurma.FormCreate(Sender: TObject);
 begin
   captionForm := 'Gerenciamento da turma';
   inherited;
-  afterScrollLookUpTurma := dbLookupComboBoxTurma.ListSource.DataSet.AfterScroll;
-  dbLookupComboBoxTurma.ListSource.DataSet.AfterScroll := afterScrollTurma;
+  afterScrollLookUpTurma := DataModuleApp.qryLookUpTurma.AfterScroll;
+  DataModuleApp.qryLookUpTurma.AfterScroll := @afterScrollTurma;
 end;
 
 procedure TfrmGerenciarTurma.FormShow(Sender: TObject);

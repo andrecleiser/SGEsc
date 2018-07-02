@@ -59,7 +59,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
     DataField = 'fk_turma_id'
     DataSource = dsPadrao
     KeyField = 'id'
-    ListField = 'descricao;nome'
+    ListField = 'descricao;hora_inicio'
     ListFieldIndex = 0
     ListSource = DataModuleApp.dsqryLookUpTurma
     LookupCache = False

@@ -4,7 +4,7 @@ unit uTurmaService;
 interface
 
 uses
-  Classes, SysUtils, db, sqldb, Forms, LCLType, DateUtils;
+  Classes, SysUtils, db, sqldb, Forms, LCLType, DateUtils, maskutils;
 
 type
 
@@ -21,7 +21,7 @@ type
     class procedure validarTurmaAluno(dataSet: TDataSet);
 
     // Verifica se aluno está dentro do horário em uma das turmas em que está matriculado
-    class function validarHorarioAluno(idAluno: integer): boolean;
+    class procedure validarHorarioAluno(idAluno: integer);
 end;
 
 implementation
@@ -55,7 +55,7 @@ begin
     raise Exception.Create('O responsável pela turma tem que ser informado.');
 
   // Regra de validação 11
-  if (dataSet.FieldByName('ocontrolar_horario').AsString.Equals('S')) then
+  if (dataSet.FieldByName('controlar_horario').AsString.Equals('S')) then
   begin
     // Regra de validação 03
     if (dataSet.FieldByName('hora_inicio').AsString.Length = 0) then
@@ -69,14 +69,14 @@ begin
 
     // Valida hora inicial
     try
-      horaInicial := StrToTime(dataSet.FieldByName('hora_inicio').AsString);
+      horaInicial := StrToTime(FormatMaskText('00:00;1', dataSet.FieldByName('hora_inicio').AsString));
     except
       raise Exception.Create('Hora inicial inválida.');
     end;
 
     // Valida hora inicial
     try
-      horaFinal := StrToTime(dataSet.FieldByName('hora_fim').AsString);
+      horaFinal := StrToTime(FormatMaskText('00:00;1', dataSet.FieldByName('hora_fim').AsString));
     except
       raise Exception.Create('Hora final inválida.');
     end;
@@ -122,9 +122,60 @@ begin
 end;
 
 // Verifica se aluno está dentro do horário em uma das turmas em que está matriculado
-class function TTurmaService.validarHorarioAluno(idAluno: integer): boolean;
+class procedure TTurmaService.validarHorarioAluno(idAluno: integer);
+var
+  sqlQueryTurmaAluno: TSQLQuery;
+  horaInicio,
+  horaFim: TTime;
+  // Identifica que o aluno está vinculdao a uma turma com restrição de horário. True -> acesso dentro do horário | False -> sem acesso porque não está dentro.
+  alunoVinculadoComRestricao,
+ // Identifica que o aluno está vinculdao a uma turma sem restrição de horário
+  alunoVinculadoSemRestricao: Boolean;
+
 begin
-  result := false;
+  alunoVinculadoSemRestricao := false;
+  alunoVinculadoComRestricao := false;
+
+  sqlQueryTurmaAluno := TSQLQuery.Create(nil);
+  sqlQueryTurmaAluno.SQLConnection := DataModuleApp.MySQL57Connection;
+  sqlQueryTurmaAluno.SQL.Add('select t.controlar_horario, t.hora_inicio, t.hora_fim');
+  sqlQueryTurmaAluno.SQL.Add('from   turma t');
+  sqlQueryTurmaAluno.SQL.Add('       inner join turma_aluno ta on (t.id = ta.fk_turma_id and ta.fk_aluno_id = ' + idAluno.ToString + ')');
+  sqlQueryTurmaAluno.Open;
+
+  if sqlQueryTurmaAluno.IsEmpty then
+    raise Exception.Create('O aluno não está matriculado em nenhuma turma!');
+
+  while not sqlQueryTurmaAluno.EOF do
+  begin
+    // Veriica se o aluno está dentro do horário de alguma turma a que está vinvulado.
+    if (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') then
+    begin
+      horaInicio := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_inicio').AsString));
+      horaFim    := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_fim').AsString));
+
+      if ((Time >= horaInicio) and (Time <= horaFim)) then
+      begin
+        alunoVinculadoComRestricao := true;
+        Break;
+      end;
+    end
+    // Uma vez apresnetada matrícula em um curso sem restrição de horário, esta propriedade não será mais modificada.
+    else
+      alunoVinculadoSemRestricao := true;
+
+    sqlQueryTurmaAluno.Next;
+  end;
+
+  // Situação 1: Aluno cadastrado em uma turma sem restrição e outra(s) com restrição, mas não autorizado.
+  if ((alunoVinculadoSemRestricao) and (sqlQueryTurmaAluno.RecordCount > 1)) and (alunoVinculadoComRestricao) then
+    if Application.MessageBox('O aluno está registrando frequência em uma turma sem restrição de horário?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO then
+      raise Exception.Create('Aluno não autorizado a frequentar a turma!');
+
+  // Situação 2: Aluno cadastrado em uma turma sem restrição apenas
+  // Situação 3: Aluno cadastrado em uma turma com restrição apenas
+  if (not alunoVinculadoSemRestricao) and (not alunoVinculadoComRestricao) then
+      raise Exception.Create('Aluno não autorizado a frequentar a turma!');
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//

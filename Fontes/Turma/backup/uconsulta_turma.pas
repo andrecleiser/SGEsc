@@ -89,6 +89,7 @@ begin
   with TfrmGerenciarTurma.Create(Application) do
   try
     sqlQueryPadrao.ServerFilter := 'fk_turma_id = ' + dsTurma_Aluno.DataSet.FieldByName('fk_turma_id').AsString + 'fk_aluno_id = ' + dsTurma_Aluno.DataSet.FieldByName('fk_aluno_id').AsString;
+    sqlQueryPadrao.Open;
     ShowModal;
   finally
     sqlQueryPadrao.ServerFilter := '';
