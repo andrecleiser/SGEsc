@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="19"/>
-        <UsageCount Value="175"/>
+        <UsageCount Value="176"/>
       </Unit0>
       <Unit1>
         <Filename Value="udatmod.pas"/>
@@ -22,7 +22,7 @@
         <EditorIndex Value="10"/>
         <TopLine Value="13"/>
         <CursorPos X="33" Y="40"/>
-        <UsageCount Value="175"/>
+        <UsageCount Value="176"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -35,7 +35,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="114"/>
         <CursorPos X="24" Y="147"/>
-        <UsageCount Value="170"/>
+        <UsageCount Value="171"/>
       </Unit2>
       <Unit3>
         <Filename Value="uprincipal.pas"/>
@@ -47,9 +47,8 @@
         <EditorIndex Value="11"/>
         <TopLine Value="124"/>
         <CursorPos X="14" Y="137"/>
-        <UsageCount Value="170"/>
+        <UsageCount Value="171"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="Repositorio\classes\uclassutil.pas"/>
@@ -58,7 +57,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="147"/>
         <CursorPos Y="186"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="160"/>
       </Unit4>
       <Unit5>
         <Filename Value="Service\ufinanceiroservice.pas"/>
@@ -66,7 +65,7 @@
         <UnitName Value="uFinanceiroService"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="42" Y="4"/>
-        <UsageCount Value="145"/>
+        <UsageCount Value="146"/>
       </Unit5>
       <Unit6>
         <Filename Value="Service\ualunoservice.pas"/>
@@ -75,7 +74,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="160"/>
         <CursorPos X="19" Y="187"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="145"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -87,7 +86,7 @@
         <UnitName Value="uFormBase"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="15"/>
-        <UsageCount Value="129"/>
+        <UsageCount Value="130"/>
       </Unit7>
       <Unit8>
         <Filename Value="Turma\uconsulta_turma.pas"/>
@@ -98,7 +97,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="71"/>
         <CursorPos X="24" Y="80"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="129"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -112,7 +111,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="62"/>
         <CursorPos Y="77"/>
-        <UsageCount Value="127"/>
+        <UsageCount Value="128"/>
         <Bookmarks Count="1">
           <Item0 Y="103" ID="2"/>
         </Bookmarks>
@@ -126,7 +125,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="36"/>
         <CursorPos Y="80"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -135,7 +134,7 @@
         <UnitName Value="uFrequenciaService"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="109" Y="28"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="114"/>
       </Unit11>
       <Unit12>
         <Filename Value="Recursos\ulogin.pas"/>
@@ -147,7 +146,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="66" Y="8"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="81"/>
       </Unit12>
       <Unit13>
         <Filename Value="Service\uusuarioservice.pas"/>
@@ -156,7 +155,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="46" Y="36"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="80"/>
       </Unit13>
       <Unit14>
         <Filename Value="Model\uusuario.pas"/>
@@ -165,7 +164,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="47"/>
         <CursorPos X="15" Y="47"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="80"/>
       </Unit14>
       <Unit15>
         <Filename Value="Recursos\uconstantessistema.pas"/>
@@ -173,7 +172,7 @@
         <UnitName Value="uConstantesSistema"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="122"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
       </Unit15>
       <Unit16>
         <Filename Value="Financeiro\uresgistropagamento.pas"/>
@@ -185,7 +184,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="33" Y="8"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
       </Unit16>
       <Unit17>
         <Filename Value="Turma\ucadastrarturma.pas"/>
@@ -197,7 +196,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="47"/>
         <CursorPos X="26" Y="57"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -208,9 +207,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uTurma_Aluno"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="65"/>
-        <CursorPos X="70" Y="81"/>
-        <UsageCount Value="51"/>
+        <TopLine Value="66"/>
+        <CursorPos X="42" Y="69"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -224,7 +223,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="216"/>
         <CursorPos X="25" Y="230"/>
-        <UsageCount Value="49"/>
+        <UsageCount Value="50"/>
         <Bookmarks Count="1">
           <Item0 Y="220" ID="1"/>
         </Bookmarks>
@@ -239,7 +238,7 @@
         <EditorIndex Value="8"/>
         <TopLine Value="110"/>
         <CursorPos X="3" Y="115"/>
-        <UsageCount Value="49"/>
+        <UsageCount Value="50"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit20>
@@ -250,7 +249,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="120"/>
         <CursorPos Y="145"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit21>
       <Unit22>
@@ -260,7 +259,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="36"/>
         <CursorPos X="58" Y="53"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
