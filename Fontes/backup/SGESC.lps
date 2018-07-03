@@ -47,7 +47,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
         <TopLine Value="117"/>
-        <CursorPos Y="121"/>
+        <CursorPos X="53" Y="123"/>
         <UsageCount Value="166"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -208,7 +208,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uTurma_Aluno"/>
-        <TopLine Value="54"/>
+        <TopLine Value="63"/>
         <CursorPos Y="67"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
