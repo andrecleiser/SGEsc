@@ -215,18 +215,19 @@ end;
 
 procedure TfrmCadastroAlunos.btnTurmaClick(Sender: TObject);
 var
-  id: string;
+  id: integer;
 begin
   with TfrmGerenciarTurma.Create(Application) do
   try
     // Na inclusão, deverá ser obtido o último id inserido
     if sqlQueryPadraoId.IsNull then
-      id := TAlunoService.ultimoId().ToString
+      id := TAlunoService.ultimoId()
     else
-      id := sqlQueryPadraoId.AsString;
+      id := sqlQueryPadraoId.AsInteger;
 
-    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id;
+    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;
+    sqlQueryPadrao.Edit;
     idAluno := id;
     ShowModal;
   finally

@@ -74,11 +74,11 @@ begin
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
 
-  if (fidAluno > 0) and (dsPadrao.State = dsEdit) then
+  if (fidAluno > 0) and (dsPadrao.State in [dsEdit, dsInsert]) then
   begin
     DBLookupComboBoxAluno.KeyValue := idAluno;
     sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := idAluno;
-    DBLookupComboBoxAluno.ReadOnly:=true;
+    DBLookupComboBoxAluno.Enabled:=false;
   end;
 end;
 
