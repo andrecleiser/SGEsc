@@ -134,7 +134,6 @@ begin
   try
     sqlQueryPadrao.ServerFilter := 'fk_turma_id = -1';
     sqlQueryPadrao.Open;
-    sqlQueryPadrao.Insert;
     ShowModal;
   finally
     sqlQueryPadrao.ServerFilter := '';

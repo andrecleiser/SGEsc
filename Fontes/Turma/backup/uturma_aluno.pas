@@ -15,8 +15,9 @@ type
   TfrmGerenciarTurma = class(TfrmCadastroPadrao)
     DBLookupComboBoxAluno: TDBLookupComboBox;
     dbLookupComboBoxTurma: TDBLookupComboBox;
-    labelTurma: TLabel;
     Label2: TLabel;
+    labelTurma: TLabel;
+    pnlDados: TPanel;
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -67,9 +68,6 @@ begin
 
   if (fnomeAluno.Length > 0) and (dsPadrao.State = dsInsert) then
   begin
-    {DBLookupComboBoxAluno.ListSource.DataSet.Locate('nome', fnomeAluno, [loCaseInsensitive]);
-    DBLookupComboBoxAluno.KeyValue := DBLookupComboBoxAluno.ListSource.DataSet.FieldByName('id').AsInteger;
-     }
     DBLookupComboBoxAluno.Text := fnomeAluno;
     sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := DBLookupComboBoxAluno.KeyValue;
   end;

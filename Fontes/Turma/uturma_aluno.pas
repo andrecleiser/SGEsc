@@ -15,8 +15,10 @@ type
   TfrmGerenciarTurma = class(TfrmCadastroPadrao)
     DBLookupComboBoxAluno: TDBLookupComboBox;
     dbLookupComboBoxTurma: TDBLookupComboBox;
-    labelTurma: TLabel;
     Label2: TLabel;
+    labelTurma: TLabel;
+    pnlDados: TPanel;
+    procedure dsPadraoStateChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -50,6 +52,12 @@ begin
   DataModuleApp.qryLookUpAluno.Close;
   sqlQueryPadrao.Close;
   DataModuleApp.qryLookUpTurma.AfterScroll := afterScrollLookUpTurma;
+end;
+
+procedure TfrmGerenciarTurma.dsPadraoStateChange(Sender: TObject);
+begin
+  inherited;
+  pnlDados.Enabled := (dsPadrao.State = dsInsert);
 end;
 
 procedure TfrmGerenciarTurma.FormCreate(Sender: TObject);

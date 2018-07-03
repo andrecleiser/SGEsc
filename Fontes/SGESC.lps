@@ -44,9 +44,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPrincipal"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
-        <TopLine Value="117"/>
-        <CursorPos X="53" Y="123"/>
+        <TopLine Value="40"/>
+        <CursorPos X="54" Y="57"/>
         <UsageCount Value="166"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -207,8 +208,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uTurma_Aluno"/>
-        <TopLine Value="63"/>
-        <CursorPos Y="67"/>
+        <TopLine Value="57"/>
+        <CursorPos X="3" Y="60"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -236,7 +237,6 @@
         <ComponentName Value="frmConsultaAluno"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <TopLine Value="88"/>
         <CursorPos X="135" Y="95"/>
@@ -530,123 +530,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="152" TopLine="152"/>
+        <Caret Line="102" Column="27" TopLine="75"/>
       </Position1>
       <Position2>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="153" TopLine="153"/>
+        <Caret Line="151" Column="38" TopLine="123"/>
       </Position2>
       <Position3>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="154" TopLine="154"/>
+        <Caret Line="190" Column="15" TopLine="162"/>
       </Position3>
       <Position4>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="155" TopLine="155"/>
+        <Caret Line="199" Column="42" TopLine="171"/>
       </Position4>
       <Position5>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="156" TopLine="156"/>
+        <Caret Line="204" Column="18" TopLine="176"/>
       </Position5>
       <Position6>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="157" TopLine="157"/>
+        <Caret Line="224" Column="40" TopLine="196"/>
       </Position6>
       <Position7>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="158" TopLine="158"/>
+        <Caret Line="225" Column="17" TopLine="197"/>
       </Position7>
       <Position8>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Column="45"/>
+        <Caret Line="229" Column="40" TopLine="201"/>
       </Position8>
       <Position9>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="17" Column="17"/>
+        <Caret Line="230" Column="17" TopLine="201"/>
       </Position9>
       <Position10>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="102" Column="27" TopLine="75"/>
+        <Caret Line="17" Column="17"/>
       </Position10>
       <Position11>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="151" Column="38" TopLine="123"/>
+        <Caret Line="102" Column="27" TopLine="75"/>
       </Position11>
       <Position12>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="190" Column="15" TopLine="162"/>
+        <Caret Line="151" Column="38" TopLine="123"/>
       </Position12>
       <Position13>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="199" Column="42" TopLine="171"/>
+        <Caret Line="191" Column="21" TopLine="162"/>
       </Position13>
       <Position14>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="204" Column="18" TopLine="176"/>
+        <Caret Line="192" Column="21" TopLine="163"/>
       </Position14>
       <Position15>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="224" Column="40" TopLine="196"/>
+        <Caret Line="204" Column="3" TopLine="202"/>
       </Position15>
       <Position16>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="225" Column="17" TopLine="197"/>
+        <Caret Line="128" Column="27" TopLine="107"/>
       </Position16>
       <Position17>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="229" Column="40" TopLine="201"/>
-      </Position17>
-      <Position18>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="230" Column="17" TopLine="201"/>
-      </Position18>
-      <Position19>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="17" Column="17"/>
-      </Position19>
-      <Position20>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="102" Column="27" TopLine="75"/>
-      </Position20>
-      <Position21>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="151" Column="38" TopLine="123"/>
-      </Position21>
-      <Position22>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="191" Column="21" TopLine="162"/>
-      </Position22>
-      <Position23>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="192" Column="21" TopLine="163"/>
-      </Position23>
-      <Position24>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="204" Column="3" TopLine="202"/>
-      </Position24>
-      <Position25>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="128" Column="27" TopLine="107"/>
-      </Position25>
-      <Position26>
         <Filename Value="uprincipal.pas"/>
         <Caret Line="73" Column="26" TopLine="36"/>
+      </Position17>
+      <Position18>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="70" Column="61" TopLine="44"/>
+      </Position18>
+      <Position19>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="71" Column="30" TopLine="61"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="141" TopLine="126"/>
+      </Position20>
+      <Position21>
+        <Filename Value="Aluno\uconsulta_aluno.pas"/>
+        <Caret Line="130" TopLine="111"/>
+      </Position21>
+      <Position22>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="72" Column="46" TopLine="60"/>
+      </Position22>
+      <Position23>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="71" Column="46" TopLine="59"/>
+      </Position23>
+      <Position24>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="70" Column="46" TopLine="58"/>
+      </Position24>
+      <Position25>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="69" Column="46" TopLine="57"/>
+      </Position25>
+      <Position26>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="68" Column="46" TopLine="56"/>
       </Position26>
       <Position27>
         <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="70" Column="61" TopLine="44"/>
+        <Caret Line="69" Column="46" TopLine="57"/>
       </Position27>
       <Position28>
         <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="71" Column="30" TopLine="61"/>
+        <Caret Line="73" Column="46" TopLine="61"/>
       </Position28>
       <Position29>
-        <Filename Value="uprincipal.pas"/>
-        <Caret Line="141" TopLine="126"/>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="79" Column="46" TopLine="67"/>
       </Position29>
       <Position30>
-        <Filename Value="Aluno\uconsulta_aluno.pas"/>
-        <Caret Line="130" TopLine="111"/>
+        <Filename Value="Turma\uturma_aluno.pas"/>
+        <Caret Line="60" Column="3" TopLine="57"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
