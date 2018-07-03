@@ -129,14 +129,63 @@ object DataModuleApp: TDataModuleApp
     end
   end
   object qryAlunoObj: TSQLQuery
-    FieldDefs = <>
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'descricao_turma'
+        DataType = ftString
+        Precision = -1
+        Size = 144
+      end    
+      item
+        Name = 'data_nascimento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'data_cadastramento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'data_inativacao'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'fk_motivo_matricula_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_doenca_pre_existente_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'adimplente'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
     AfterClose = SQLQueryObjAfterClose
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
     SQL.Strings = (
       'select a.id,'
       '       a.nome,'
-      '       ifnull(t.descricao, concat(t.descricao, '' - '', insert(t.hora_inicio, 3, 0, '':''))) descricao_turma,'
+      '       ifnull(concat(t.descricao, '' - '', insert(t.hora_inicio, 3, 0, '':'')), t.descricao) descricao_turma,'
       '       a.data_nascimento,'
       '       a.data_cadastramento,'
       '       a.data_inativacao,'
@@ -234,14 +283,14 @@ object DataModuleApp: TDataModuleApp
     Transaction = sqlTransactionGeral
     SQL.Strings = (
       'select t.id,'
-      '       ifnull(t.descricao, concat(t.descricao, '' - '', insert(t.hora_inicio, 3, 0, '':''))) descricao,'
+      '       ifnull(concat(t.descricao, '' - '', insert(t.hora_inicio, 3, 0, '':'')), t.descricao) descricao,'
       '       t.valor_sugerido,'
       '       t.limite_alunos,'
       '       count(ta.fk_aluno_id) qtd_alunos_turma'
       'from turma t'
       '     left join turma_aluno ta on (t.id = ta.fk_turma_id)'
       'group by t.id, t.descricao, t.valor_sugerido, t.hora_inicio, t.limite_alunos'
-      'order by t.descricao, insert(t.hora_inicio, 3, 0, '':'')'
+      'order by t.descricao, t.hora_inicio'
     )
     Params = <>
     left = 632

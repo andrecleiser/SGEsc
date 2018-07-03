@@ -565,7 +565,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         Width = 500
         DataField = 'email_responsavel'
         DataSource = dsPadrao
-        CharCase = ecNormal
+        CharCase = ecLowerCase
         MaxLength = 0
         TabOrder = 1
         OnExit = DBEdit14Exit
@@ -947,6 +947,270 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       end>
     left = 376
     top = 50
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraonome: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraodata_nascimento: TDateField[2]
+      FieldKind = fkData
+      FieldName = 'data_nascimento'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraorua: TStringField[3]
+      FieldKind = fkData
+      FieldName = 'rua'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object sqlQueryPadraocomplemento: TStringField[4]
+      FieldKind = fkData
+      FieldName = 'complemento'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object sqlQueryPadraobairro: TStringField[5]
+      FieldKind = fkData
+      FieldName = 'bairro'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object sqlQueryPadraocidade: TStringField[6]
+      FieldKind = fkData
+      FieldName = 'cidade'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 150
+    end
+    object sqlQueryPadraoestado: TStringField[7]
+      FieldKind = fkData
+      FieldName = 'estado'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object sqlQueryPadraocep: TStringField[8]
+      FieldKind = fkData
+      FieldName = 'cep'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 24
+    end
+    object sqlQueryPadraotelefone: TStringField[9]
+      FieldKind = fkData
+      FieldName = 'telefone'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object sqlQueryPadraocelular: TStringField[10]
+      FieldKind = fkData
+      FieldName = 'celular'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraonome_pai: TStringField[11]
+      FieldKind = fkData
+      FieldName = 'nome_pai'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraonome_mae: TStringField[12]
+      FieldKind = fkData
+      FieldName = 'nome_mae'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraodata_cadastramento: TDateField[13]
+      FieldKind = fkData
+      FieldName = 'data_cadastramento'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraodata_inativacao: TDateField[14]
+      FieldKind = fkData
+      FieldName = 'data_inativacao'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraoobservacao: TStringField[15]
+      FieldKind = fkData
+      FieldName = 'observacao'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 600
+    end
+    object sqlQueryPadraofk_motivo_matricula_id: TLargeintField[16]
+      FieldKind = fkData
+      FieldName = 'fk_motivo_matricula_id'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField[17]
+      FieldKind = fkData
+      FieldName = 'fk_doenca_pre_existente_id'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraoadimplente: TStringField[18]
+      FieldKind = fkData
+      FieldName = 'adimplente'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object sqlQueryPadraonome_responsavel: TStringField[19]
+      FieldKind = fkData
+      FieldName = 'nome_responsavel'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraoemail_responsavel: TStringField[20]
+      FieldKind = fkData
+      FieldName = 'email_responsavel'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object sqlQueryPadraocpf_responsavel: TStringField[21]
+      FieldKind = fkData
+      FieldName = 'cpf_responsavel'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraorg_responsavel: TStringField[22]
+      FieldKind = fkData
+      FieldName = 'rg_responsavel'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraotelefone_responsavel: TStringField[23]
+      FieldKind = fkData
+      FieldName = 'telefone_responsavel'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object sqlQueryPadraocelular_responsavel: TStringField[24]
+      FieldKind = fkData
+      FieldName = 'celular_responsavel'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraohora_turma: TStringField[25]
+      FieldKind = fkData
+      FieldName = 'hora_turma'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 12
+    end
+    object sqlQueryPadraomodalidade: TStringField[26]
+      FieldKind = fkData
+      FieldName = 'modalidade'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
   end
   object imageList: TImageList[5]
     Height = 24

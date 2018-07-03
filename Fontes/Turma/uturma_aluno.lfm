@@ -33,7 +33,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
       VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
     end
   end
-  object DBLookupComboBox1: TDBLookupComboBox[2]
+  object DBLookupComboBoxAluno: TDBLookupComboBox[2]
     Left = 48
     Height = 28
     Top = 184
@@ -63,6 +63,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
     ListFieldIndex = 0
     ListSource = DataModuleApp.dsqryLookUpTurma
     LookupCache = False
+    ScrollListDataset = True
     TabOrder = 3
   end
   object labelTurma: TLabel[4]

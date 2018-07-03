@@ -118,12 +118,14 @@ end;
 
 procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
 begin
+  Application.MessageBox('Funcionalidade a ser implementada.', 'INFORMAÇÃO');
+  {
   with TfrmCadastroTurma.Create(Application) do
   try
     ShowModal;
   finally
     Free;
-  end;
+  end;}
 end;
 
 procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);
@@ -131,6 +133,8 @@ begin
   with TfrmGerenciarTurma.Create(Application) do
   try
     sqlQueryPadrao.ServerFilter := 'fk_turma_id = -1';
+    sqlQueryPadrao.Open;
+    sqlQueryPadrao.Insert;
     ShowModal;
   finally
     sqlQueryPadrao.ServerFilter := '';

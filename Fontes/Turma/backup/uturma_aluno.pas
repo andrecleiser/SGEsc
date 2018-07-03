@@ -13,7 +13,7 @@ type
   { TfrmGerenciarTurma }
 
   TfrmGerenciarTurma = class(TfrmCadastroPadrao)
-    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBoxAluno: TDBLookupComboBox;
     dbLookupComboBoxTurma: TDBLookupComboBox;
     labelTurma: TLabel;
     Label2: TLabel;
@@ -24,8 +24,10 @@ type
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     afterScrollLookUpTurma: TDataSetNotifyEvent;
+    fnomeAluno: string;
 
   public
+    property nomeAluno: string read fnomeAluno write fnomeAluno;
 
   end;
 
@@ -62,6 +64,15 @@ procedure TfrmGerenciarTurma.FormShow(Sender: TObject);
 begin
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
+
+  if (fnomeAluno.Length > 0) and (dsPadrao.State = dsInsert) then
+  begin
+    {DBLookupComboBoxAluno.ListSource.DataSet.Locate('nome', fnomeAluno, [loCaseInsensitive]);
+    DBLookupComboBoxAluno.KeyValue := DBLookupComboBoxAluno.ListSource.DataSet.FieldByName('id').AsInteger;
+     }
+    DBLookupComboBoxAluno.Text := fnomeAluno;
+    sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := DBLookupComboBoxAluno.KeyValue;
+  end;
 end;
 
 procedure TfrmGerenciarTurma.afterScrollTurma(DataSet: TDataSet);

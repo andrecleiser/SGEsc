@@ -129,7 +129,6 @@ object DataModuleApp: TDataModuleApp
     end
   end
   object qryAlunoObj: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -245,7 +244,6 @@ object DataModuleApp: TDataModuleApp
     top = 224
   end
   object qryLookUpTurma: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
