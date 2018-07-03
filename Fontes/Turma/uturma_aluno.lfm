@@ -30,7 +30,18 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
       ClientHeight = 41
       ClientWidth = 653
       ConfirmDelete = True
-      VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
+      Hints.Strings = (
+        'Primeiro'
+        'Anterior'
+        'Próximo'
+        'Último'
+        'Inserir'
+        'Excluir'
+        'Editar'
+        'Salvar'
+        'Cancelar'
+      )
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
     end
   end
   object pnlDados: TPanel[2]

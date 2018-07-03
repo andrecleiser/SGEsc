@@ -143,7 +143,6 @@ end;
 
 procedure TfrmCadastroAlunos.FormShow(Sender: TObject);
 begin
-
   inherited;
   dblMotivo_Matricula.ListSource.DataSet.Open;
   dblDoenca_Pre_Existente.ListSource.DataSet.Open;
@@ -215,13 +214,21 @@ begin
 end;
 
 procedure TfrmCadastroAlunos.btnTurmaClick(Sender: TObject);
+var
+  id: integer;
 begin
   with TfrmGerenciarTurma.Create(Application) do
   try
-    sqlQueryPadrao.ServerFilter := 'fk_turma_id = -1';
+    // Na inclusão, deverá ser obtido o último id inserido
+    if sqlQueryPadraoId.IsNull then
+      id := TAlunoService.ultimoId()
+    else
+      id := sqlQueryPadraoId.AsInteger;
+
+    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;
-    sqlQueryPadrao.Insert;
-    nomeAluno := sqlQueryPadraonome.AsString.Trim;
+    sqlQueryPadrao.Edit;
+    idAluno := id;
     ShowModal;
   finally
     sqlQueryPadrao.ServerFilter := '';

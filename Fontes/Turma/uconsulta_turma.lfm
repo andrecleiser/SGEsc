@@ -249,6 +249,7 @@ inherited frmConsultaTurma: TfrmConsultaTurma
     TabOrder = 3
   end
   object dsTurma_Aluno: TDataSource[4]
+    AutoEdit = False
     DataSet = DataModuleApp.qryTurmaObj
     left = 48
     top = 160

@@ -40,3 +40,6 @@ create table turma_aluno (
 
 	constraint pk_turma_aluno PRIMARY KEY (fk_turma_id, fk_aluno_id)
 ) engine=innodb default charset=utf8;
+
+ALTER TABLE aluno
+ADD INDEX `idx_nome` (`nome` ASC);

@@ -32,6 +32,9 @@ type
     // Aplica as regras de validação referentes à exclusão do aluno.
     class procedure validarExclusao(dataSet: TDataSet);
 
+    // Retorna o úlimo Id do aluno.
+    class function ultimoId(): integer;
+
 end;
 
 implementation
@@ -166,6 +169,23 @@ begin
   if dataSet.FieldByName('celular_responsavel').IsNull  then
     raise Exception.Create('O celular do responsável tem que ser informado.');
 
+end;
+
+class function TAlunoService.ultimoId(): integer;
+var
+  sqlQuery: TSQLQuery;
+begin
+  sqlQuery := TSQLQuery.Create(nil);
+  sqlQuery.SQLConnection := DataModuleApp.MySQL57Connection;
+  sqlQuery.SQL.Add('select max(id) from aluno');
+  try
+    sqlQuery.Open;
+
+    result := sqlQuery.Fields[0].AsInteger;
+  except
+    sqlQuery.Close;
+    sqlQuery.Free;
+  end;
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//

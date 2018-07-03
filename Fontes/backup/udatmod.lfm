@@ -129,7 +129,6 @@ object DataModuleApp: TDataModuleApp
     end
   end
   object qryAlunoObj: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -245,7 +244,6 @@ object DataModuleApp: TDataModuleApp
     top = 224
   end
   object qryLookUpTurma: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -404,6 +402,7 @@ object DataModuleApp: TDataModuleApp
       'select ta.fk_turma_id, ta.fk_aluno_id, a.nome'
       'from turma_aluno ta'
       '     inner join aluno a on (ta.fk_aluno_id = a.id)'
+      'where a.data_inativacao is null'
       'order by a.nome'
     )
     Params = <>

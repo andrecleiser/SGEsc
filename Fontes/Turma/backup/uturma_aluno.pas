@@ -18,6 +18,7 @@ type
     Label2: TLabel;
     labelTurma: TLabel;
     pnlDados: TPanel;
+    procedure dsPadraoStateChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -25,10 +26,10 @@ type
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     afterScrollLookUpTurma: TDataSetNotifyEvent;
-    fnomeAluno: string;
+    fidAluno: integer;
 
   public
-    property nomeAluno: string read fnomeAluno write fnomeAluno;
+    property idAluno: integer read fidAluno write fidAluno;
 
   end;
 
@@ -53,12 +54,19 @@ begin
   DataModuleApp.qryLookUpTurma.AfterScroll := afterScrollLookUpTurma;
 end;
 
+procedure TfrmGerenciarTurma.dsPadraoStateChange(Sender: TObject);
+begin
+  inherited;
+  pnlDados.Enabled := (dsPadrao.State in [dsInsert, dsEdit]);
+end;
+
 procedure TfrmGerenciarTurma.FormCreate(Sender: TObject);
 begin
   captionForm := 'Gerenciamento da turma';
   inherited;
   afterScrollLookUpTurma := DataModuleApp.qryLookUpTurma.AfterScroll;
   DataModuleApp.qryLookUpTurma.AfterScroll := @afterScrollTurma;
+  fidAluno := 0;
 end;
 
 procedure TfrmGerenciarTurma.FormShow(Sender: TObject);
@@ -66,10 +74,11 @@ begin
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
 
-  if (fnomeAluno.Length > 0) and (dsPadrao.State = dsInsert) then
+  if (fidAluno > 0) and (dsPadrao.State = dsEdit) then
   begin
-    DBLookupComboBoxAluno.Text := fnomeAluno;
-    sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := DBLookupComboBoxAluno.KeyValue;
+    DBLookupComboBoxAluno.KeyValue := idAluno;
+    sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := idAluno;
+    DBLookupComboBoxAluno.ReadOnly:=true;
   end;
 end;
 

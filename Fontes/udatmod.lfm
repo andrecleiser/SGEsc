@@ -402,6 +402,7 @@ object DataModuleApp: TDataModuleApp
       'select ta.fk_turma_id, ta.fk_aluno_id, a.nome'
       'from turma_aluno ta'
       '     inner join aluno a on (ta.fk_aluno_id = a.id)'
+      'where a.data_inativacao is null'
       'order by a.nome'
     )
     Params = <>
