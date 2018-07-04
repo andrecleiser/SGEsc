@@ -112,7 +112,8 @@ begin
     raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
   end
   else
-    raise e;
+//  TUtil.mensagemErro(E)
+    raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);
@@ -152,8 +153,6 @@ procedure TfrmCadastroPadrao.salvarDadosDataSet;
 begin
   sqlQueryPadrao.ApplyUpdates;
   DataModuleApp.sqlTransactionGeral.CommitRetaining;
-  if (sqoRefreshUsingSelect in sqlQueryPadrao.Options) then
-    sqlQueryPadrao.Refresh;
 end;
 
 end.

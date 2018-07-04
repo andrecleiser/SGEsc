@@ -112,7 +112,7 @@ begin
     raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
   end
   else
-    raise e;
+    raise Exception.Create(TUtil.mensagemErro(E));
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);
