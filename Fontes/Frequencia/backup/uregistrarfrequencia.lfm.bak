@@ -1,7 +1,7 @@
 inherited frmRegistrarFrequencia: TfrmRegistrarFrequencia
-  Left = 3195
+  Left = 501
   Height = 227
-  Top = 223
+  Top = 237
   Width = 845
   ActiveControl = edtCodigoAluno
   Caption = 'Frenquência do aluno'

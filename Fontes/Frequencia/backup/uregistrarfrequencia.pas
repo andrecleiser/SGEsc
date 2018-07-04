@@ -43,7 +43,7 @@ var
 implementation
 
 uses
-  uConsultaAluno;
+  uconsulta_aluno;
 
 {$R *.lfm}
 
@@ -123,10 +123,9 @@ begin
   lblNomeAlunoFundo.Caption:=aluno.nome;
 
   if aluno.adimplente = 'N' then
-  begin
-    lblNomeAlunoFrente.Font.Color := clRed;
-    lblNomeAlunoFundo.Font.Color := clRed;
-  end;
+    lblNomeAlunoFrente.Font.Color := clRed
+  else
+    lblNomeAlunoFrente.Font.Color := clBlue;
 
   btnRegistrarFrequencia.Enabled:=true;
   btnRegistrarFrequencia.SetFocus;

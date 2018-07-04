@@ -54,7 +54,7 @@ var
 implementation
 
 uses
-  uClassUtil, uDATMOD;
+  uClassUtil, uDATMOD, uConstantesSistema;
 
 {$R *.lfm}
 
@@ -97,11 +97,6 @@ begin
     if incrementarChavePrimaria() then
       DataSet.FieldByName(fcampoChavePrimaria).AsInteger := TUtil.incrementaChavePrimaria(TSQLQuery(DataSet).SQLConnection, ftabela, fcampoChavePrimaria);
   end;
-{  else if DataSet.State = dsEdit then
-  begin
-    if not DataSet.Modified then
-      DataSet.Tag:=0;
-  end;}
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoUpdateError(Sender: TObject;
@@ -110,17 +105,18 @@ procedure TfrmCadastroPadrao.sqlQueryPadraoUpdateError(Sender: TObject;
 begin
   if (UpdateKind = ukModify) and (e.ErrorCode = 0) then
     Response := rrIgnore
+  else if (e.ErrorCode = FALHA_EXCLUIR_REGISTRO_FK) then
+  begin
+    Response := rrAbort;
+    Self.Close;
+    raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
+  end
   else
-    raise e;
+    raise Exception.Create(TUtil.mensagemErro(E));
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);
 begin
-{  if DataSet.Tag = 1 then
-  begin
-    DataSet.Tag := 0;
-    salvarDadosDataSet;
-  end;}
   salvarDadosDataSet;
 end;
 

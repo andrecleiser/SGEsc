@@ -1,19 +1,19 @@
 inherited frmConsultaAluno: TfrmConsultaAluno
-  Left = 10
+  Left = 316
   Height = 601
-  Top = 227
-  Width = 913
+  Top = 270
+  Width = 1100
   ActiveControl = edtTextoConsultar
   Caption = 'Consultar aluno'
   ClientHeight = 601
-  ClientWidth = 913
+  ClientWidth = 1100
   OnClose = FormClose
   inherited pnlBottom: TPanel
     Top = 545
-    Width = 913
-    ClientWidth = 913
+    Width = 1100
+    ClientWidth = 1100
     inherited pnlFrmBaseSair: TPanel
-      Left = 699
+      Left = 886
       inherited btnSair: TBitBtn
         Color = clScrollBar
         Default = False
@@ -189,10 +189,10 @@ inherited frmConsultaAluno: TfrmConsultaAluno
     Left = 0
     Height = 81
     Top = 0
-    Width = 913
+    Width = 1100
     Align = alTop
     ClientHeight = 81
-    ClientWidth = 913
+    ClientWidth = 1100
     TabOrder = 1
     object edtTextoConsultar: TEdit
       Left = 24
@@ -294,7 +294,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
     Left = 0
     Height = 464
     Top = 81
-    Width = 913
+    Width = 1100
     Align = alClient
     Columns = <    
       item
@@ -304,8 +304,13 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       end    
       item
         Title.Caption = 'nome'
-        Width = 800
+        Width = 580
         FieldName = 'nome'
+      end    
+      item
+        Title.Caption = 'Turma'
+        Width = 410
+        FieldName = 'descricao_turma'
       end>
     DataSource = dsAlunos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgRowHighlight]

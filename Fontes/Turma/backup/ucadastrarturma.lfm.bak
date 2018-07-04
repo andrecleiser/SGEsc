@@ -1,0 +1,401 @@
+inherited frmCadastroTurma: TfrmCadastroTurma
+  Left = 450
+  Height = 598
+  Top = 186
+  Width = 562
+  Caption = 'Cadastro de turma'
+  ClientHeight = 598
+  ClientWidth = 562
+  OnClose = FormClose
+  OnShow = FormShow
+  inherited pnlBottom: TPanel
+    Top = 542
+    Width = 562
+    ClientWidth = 562
+    TabOrder = 3
+    inherited pnlFrmBaseSair: TPanel
+      Left = 348
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  inherited pnlNav: TPanel
+    Width = 562
+    ClientWidth = 562
+    inherited dbNavAlunos: TDBNavigator
+      Width = 560
+      ClientHeight = 41
+      ClientWidth = 556
+      ConfirmDelete = True
+      Hints.Strings = (
+        'Primeiro'
+        'Anterior'
+        'Próximo'
+        'Último'
+        'Inserir'
+        'Excluir'
+        'Editar'
+        'Salvar'
+        'Cancelar'
+      )
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
+    end
+  end
+  object Panel4: TPanel[2]
+    Left = 0
+    Height = 285
+    Top = 257
+    Width = 562
+    Align = alClient
+    ClientHeight = 285
+    ClientWidth = 562
+    TabOrder = 2
+    object DBGrid1: TDBGrid
+      Left = 1
+      Height = 244
+      Top = 40
+      Width = 560
+      Align = alClient
+      AutoEdit = False
+      Color = clSkyBlue
+      Columns = <      
+        item
+          ReadOnly = True
+          Title.Caption = 'Descrição'
+          Width = 525
+          FieldName = 'descricao'
+        end>
+      DataSource = dsPadrao
+      Flat = True
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      Options2 = [goScrollToLastRow]
+      TabOrder = 0
+      TabStop = False
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Height = -17
+      TitleFont.Name = 'Verdana'
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+    end
+    object Panel3: TPanel
+      Left = 1
+      Height = 39
+      Top = 1
+      Width = 560
+      Align = alTop
+      BevelInner = bvLowered
+      BevelWidth = 3
+      Caption = 'Turmas'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -20
+      Font.Name = 'Verdana'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel[3]
+    Left = 0
+    Height = 210
+    Top = 47
+    Width = 562
+    Align = alTop
+    ClientHeight = 210
+    ClientWidth = 562
+    TabOrder = 1
+    object DBEdit1: TDBEdit
+      Left = 13
+      Height = 28
+      Top = 114
+      Width = 531
+      DataField = 'descricao'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 2
+    end
+    object Label3: TLabel
+      Left = 13
+      Height = 20
+      Top = 92
+      Width = 82
+      Caption = 'Descrição'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 124
+      Height = 20
+      Top = 146
+      Width = 83
+      Caption = 'Hora final'
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 13
+      Height = 20
+      Top = 146
+      Width = 96
+      Caption = 'Hora inicial'
+      ParentColor = False
+    end
+    object DBEdit2: TDBEdit
+      Left = 124
+      Height = 28
+      Top = 170
+      Width = 55
+      CustomEditMask = True
+      DataField = 'hora_fim'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '00:00;0;_'
+      MaxLength = 5
+      TabOrder = 4
+    end
+    object DBEdit3: TDBEdit
+      Left = 13
+      Height = 28
+      Top = 170
+      Width = 55
+      CustomEditMask = True
+      DataField = 'hora_inicio'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '00:00;0;_'
+      MaxLength = 5
+      TabOrder = 3
+    end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 13
+      Height = 28
+      Top = 60
+      Width = 531
+      AutoComplete = True
+      AutoDropDown = True
+      DataField = 'fk_perfil_professor_id'
+      DataSource = dsPadrao
+      KeyField = 'id'
+      ListField = 'nome'
+      ListFieldIndex = 0
+      ListSource = DataModuleApp.dsqryLookUpProfessor
+      LookupCache = False
+      ParentShowHint = False
+      TabOrder = 1
+    end
+    object Label2: TLabel
+      Left = 13
+      Height = 20
+      Top = 39
+      Width = 186
+      Caption = 'Professor responsável'
+      ParentColor = False
+    end
+    object DBCheckBox1: TDBCheckBox
+      Left = 13
+      Height = 29
+      Top = 7
+      Width = 523
+      Caption = 'Validar frequência dentro do horário informado'
+      DataField = 'controlar_horario'
+      DataSource = dsPadrao
+      TabOrder = 0
+      ValueChecked = 'S'
+      ValueUnchecked = 'N'
+    end
+    object Label6: TLabel
+      Left = 223
+      Height = 20
+      Top = 146
+      Width = 123
+      Caption = 'Valor sugerido'
+      ParentColor = False
+    end
+    object DBEdit4: TDBEdit
+      Left = 223
+      Height = 28
+      Top = 170
+      Width = 124
+      DataField = 'valor_sugerido'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      MaxLength = 0
+      TabOrder = 5
+    end
+    object Label7: TLabel
+      Left = 377
+      Height = 20
+      Top = 146
+      Width = 93
+      Caption = 'Qtd alunos'
+      ParentColor = False
+    end
+    object DBEdit5: TDBEdit
+      Left = 377
+      Height = 28
+      Top = 170
+      Width = 27
+      DataField = 'limite_alunos'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '00;0;_'
+      MaxLength = 2
+      TabOrder = 6
+    end
+  end
+  inherited dsPadrao: TDataSource[4]
+    AutoEdit = True
+    left = 488
+    top = 32
+  end
+  inherited sqlQueryPadrao: TSQLQuery[5]
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'controlar_horario'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'fk_perfil_professor_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'hora_inicio'
+        DataType = ftString
+        Precision = -1
+        Size = 12
+      end    
+      item
+        Name = 'hora_fim'
+        DataType = ftString
+        Precision = -1
+        Size = 12
+      end    
+      item
+        Name = 'valor_sugerido'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'limite_alunos'
+        DataType = ftLargeint
+        Precision = -1
+      end>
+    AfterInsert = sqlQueryPadraoAfterInsert
+    SQL.Strings = (
+      'select id,'
+      '       descricao,'
+      '       controlar_horario,'
+      '       fk_perfil_professor_id,'
+      '       hora_inicio,'
+      '       hora_fim,'
+      '       valor_sugerido,'
+      '       limite_alunos'
+      'from turma'
+      'order by descricao'
+    )
+    left = 528
+    top = 32
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraodescricao: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 120
+    end
+    object sqlQueryPadraocontrolar_horario: TStringField[2]
+      FieldKind = fkData
+      FieldName = 'controlar_horario'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object sqlQueryPadraofk_perfil_professor_id: TLargeintField[3]
+      FieldKind = fkData
+      FieldName = 'fk_perfil_professor_id'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraohora_inicio: TStringField[4]
+      FieldKind = fkData
+      FieldName = 'hora_inicio'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      EditMask = '00:00;1_'
+      Size = 12
+    end
+    object sqlQueryPadraohora_fim: TStringField[5]
+      FieldKind = fkData
+      FieldName = 'hora_fim'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      EditMask = '00:00;0_'
+      Size = 12
+    end
+    object sqlQueryPadraovalor_sugerido: TFloatField[6]
+      FieldKind = fkData
+      FieldName = 'valor_sugerido'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Currency = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = -1
+    end
+    object sqlQueryPadraolimite_alunos: TLargeintField[7]
+      DisplayWidth = 2
+      FieldKind = fkData
+      FieldName = 'limite_alunos'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '00'
+      EditFormat = '00;0_'
+      MaxValue = 99
+    end
+  end
+end

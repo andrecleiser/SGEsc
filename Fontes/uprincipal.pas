@@ -13,25 +13,30 @@ type
   { TfrmPrincipal }
 
   TfrmPrincipal = class(TForm)
-    DataSource1: TDataSource;
     mainMenu: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     MenuItemRegistrarFrequencia: TMenuItem;
     menuItemCadastros: TMenuItem;
     menuItemSair: TMenuItem;
     MenuItem3: TMenuItem;
-    SQLQuery1: TSQLQuery;
     StatusBar: TStatusBar;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
 
@@ -48,7 +53,8 @@ var
 implementation
 
 uses
-    uCadastroAlunos, uConsultaAluno, uRegistrarFrequencia, uCadastroUsuario, uLogin;
+    uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uLogin,
+    uconsulta_turma, uconsulta_aluno, uCadastrarTurma, uTurma_Aluno;
 
 {$R *.lfm}
 
@@ -72,15 +78,14 @@ begin
   StatusBar.Panels[0].Text:=' Usuário logado: ' + usuario.nome;
 end;
 
+procedure TfrmPrincipal.MenuItem10Click(Sender: TObject);
+begin
+  TfrmConsultaTurma.abrirConsultaTurma();
+end;
+
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
   TfrmConsultaAluno.abrirConsultaAluno(ccEditar);
-{  with TfrmConsultaAluno.Create(Application) do
-  try
-    ShowModal;
-  finally
-    Free;
-  end;}
 end;
 
 {procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);
@@ -107,6 +112,31 @@ begin
   try
     ShowModal;
   finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
+begin
+  Application.MessageBox('Funcionalidade a ser implementada.', 'INFORMAÇÃO');
+  {
+  with TfrmCadastroTurma.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;}
+end;
+
+procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);
+begin
+  with TfrmGerenciarTurma.Create(Application) do
+  try
+    sqlQueryPadrao.ServerFilter := 'fk_turma_id = -1';
+    sqlQueryPadrao.Open;
+    ShowModal;
+  finally
+    sqlQueryPadrao.ServerFilter := '';
     Free;
   end;
 end;

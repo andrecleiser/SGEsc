@@ -43,7 +43,7 @@ var
 implementation
 
 uses
-  uConsultaAluno;
+  uconsulta_aluno, uTurmaService;
 
 {$R *.lfm}
 
@@ -72,6 +72,10 @@ begin
 
   try
     aluno := TAlunoService.obterAluno(codigoAluno.ToInteger, [saAtivo]);
+
+    // Validar se o aluno está matriculado em alguma turma
+    TTurmaService.validarHorarioAluno(aluno.id);
+
     if Assigned(aluno) then
       atualizarDadosAluno;
   except

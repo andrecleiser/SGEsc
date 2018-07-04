@@ -15,6 +15,7 @@ type
 
   TfrmCadastroAlunos = class(TfrmCadastroPadrao)
     btnDesativar: TBitBtn;
+    btnTurma: TBitBtn;
     DBComboBox1: TDBComboBox;
     DBDateEdit1: TDBDateEdit;
     DBEdit1: TDBEdit;
@@ -72,7 +73,35 @@ type
     Label9: TLabel;
     lblObservacao: TLabel;
     Panel1: TPanel;
+    sqlQueryPadraoadimplente: TStringField;
+    sqlQueryPadraobairro: TStringField;
+    sqlQueryPadraocelular: TStringField;
+    sqlQueryPadraocelular_responsavel: TStringField;
+    sqlQueryPadraocep: TStringField;
+    sqlQueryPadraocidade: TStringField;
+    sqlQueryPadraocomplemento: TStringField;
+    sqlQueryPadraocpf_responsavel: TStringField;
+    sqlQueryPadraodata_cadastramento: TDateField;
+    sqlQueryPadraodata_inativacao: TDateField;
+    sqlQueryPadraodata_nascimento: TDateField;
+    sqlQueryPadraoemail_responsavel: TStringField;
+    sqlQueryPadraoestado: TStringField;
+    sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField;
+    sqlQueryPadraofk_motivo_matricula_id: TLargeintField;
+    sqlQueryPadraohora_turma: TStringField;
+    sqlQueryPadraoid: TLargeintField;
+    sqlQueryPadraomodalidade: TStringField;
+    sqlQueryPadraonome: TStringField;
+    sqlQueryPadraonome_mae: TStringField;
+    sqlQueryPadraonome_pai: TStringField;
+    sqlQueryPadraonome_responsavel: TStringField;
+    sqlQueryPadraoobservacao: TStringField;
+    sqlQueryPadraorg_responsavel: TStringField;
+    sqlQueryPadraorua: TStringField;
+    sqlQueryPadraotelefone: TStringField;
+    sqlQueryPadraotelefone_responsavel: TStringField;
     procedure btnDesativarClick(Sender: TObject);
+    procedure btnTurmaClick(Sender: TObject);
     procedure DBEdit14Exit(Sender: TObject);
     procedure DBEdit15Exit(Sender: TObject);
     procedure DBMemo1Change(Sender: TObject);
@@ -80,6 +109,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
     procedure sqlQueryPadraoAfterScroll({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
@@ -95,7 +125,7 @@ var
 implementation
 
 uses
-  uClassUtil;
+  uClassUtil, uTurma_Aluno;
 
 {$R *.lfm}
 
@@ -113,7 +143,6 @@ end;
 
 procedure TfrmCadastroAlunos.FormShow(Sender: TObject);
 begin
-
   inherited;
   dblMotivo_Matricula.ListSource.DataSet.Open;
   dblDoenca_Pre_Existente.ListSource.DataSet.Open;
@@ -121,6 +150,12 @@ begin
   campoFocoEdicao := dbeNome;
 
   imageList.GetBitmap(0, btnDesativar.Glyph);
+end;
+
+procedure TfrmCadastroAlunos.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+  sqlQueryPadrao.FieldByName('estado').AsString := 'PE';
 end;
 
 procedure TfrmCadastroAlunos.sqlQueryPadraoAfterScroll(DataSet: TDataSet);
@@ -154,6 +189,7 @@ procedure TfrmCadastroAlunos.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
   btnDesativar.Enabled:=not (sqlQueryPadrao.State in [dsEdit, dsInsert]);
+  btnTurma.Enabled:=not (sqlQueryPadrao.State in [dsEdit, dsInsert]);
 end;
 
 procedure TfrmCadastroAlunos.DBEdit14Exit(Sender: TObject);
@@ -165,16 +201,39 @@ end;
 procedure TfrmCadastroAlunos.btnDesativarClick(Sender: TObject);
 begin
   if sqlQueryPadrao.FieldByName('id').IsNull then
-    raise Exception.Create('Para bloquear um aluno recém cadastrado, feche o cadastro e selecione o novo aluno através da consulta de aluno.');
+    raise Exception.Create('Para desativar um aluno recém cadastrado, feche o cadastro e selecione o novo aluno através da consulta de aluno.');
 
-  if btnDesativar.Caption = 'Bloquear aluno' then
-    TAlunoService.bloquearAluno(sqlQueryPadrao.FieldByName('id').AsInteger)
+  if btnDesativar.Caption = 'Desativar aluno' then
+    TAlunoService.desativarAluno(sqlQueryPadrao.FieldByName('id').AsInteger)
   else
-    TAlunoService.desbloquearAluno(sqlQueryPadrao.FieldByName('id').AsInteger);
+    TAlunoService.ativarAluno(sqlQueryPadrao.FieldByName('id').AsInteger);
 
   sqlQueryPadrao.Refresh;
 
   setImageSituacaoAluno;
+end;
+
+procedure TfrmCadastroAlunos.btnTurmaClick(Sender: TObject);
+var
+  id: integer;
+begin
+  with TfrmGerenciarTurma.Create(Application) do
+  try
+    // Na inclusão, deverá ser obtido o último id inserido
+    if sqlQueryPadraoId.IsNull then
+      id := TAlunoService.ultimoId()
+    else
+      id := sqlQueryPadraoId.AsInteger;
+
+    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
+    sqlQueryPadrao.Open;
+    sqlQueryPadrao.Edit;
+    idAluno := id;
+    ShowModal;
+  finally
+    sqlQueryPadrao.ServerFilter := '';
+    Free;
+  end;
 end;
 
 procedure TfrmCadastroAlunos.DBEdit15Exit(Sender: TObject);
@@ -188,12 +247,12 @@ begin
   if sqlQueryPadrao.FieldByName('data_inativacao').IsNull then
   begin
     imageList.GetBitmap(0, btnDesativar.Glyph);
-    btnDesativar.Caption := 'Bloquear aluno';
+    btnDesativar.Caption := 'Desativar aluno';
   end
   else
   begin
     imageList.GetBitmap(1, btnDesativar.Glyph);
-    btnDesativar.Caption := 'Desbloquear aluno';
+    btnDesativar.Caption := 'Ativar aluno';
   end
 end;
 

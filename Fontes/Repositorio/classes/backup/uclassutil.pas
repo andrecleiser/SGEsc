@@ -5,7 +5,7 @@ unit uClassUtil;
 interface
 
 uses
-  Classes, SysUtils, sqldb;
+  Classes, SysUtils, sqldb, DB;
 
 type
   TUtil = class(TObject)
@@ -278,12 +278,9 @@ end;
 
 class function TUtil.mensagemErro(e: Exception): string;
 begin
-  if e.ClassNameIs('ESQLDatabaseError') then
-  begin
-     // Chave primária
-    if ESQLDatabaseError(e).ErrorCode = 1062 then
-      result := 'Registro já cadastrado'
-  end
+   // Chave primária
+  if EUpdateError(e).ErrorCode = 1062 then
+    result := 'Informação já cadastrada.'
   else result := e.Message;
 end;
 

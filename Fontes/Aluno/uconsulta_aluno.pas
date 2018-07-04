@@ -1,4 +1,19 @@
-unit uConsultaAluno;
+unit uconsulta_aluno;
+
+{
+
+
+select id,
+       nome,
+       data_nascimento,
+       data_cadastramento,
+       data_inativacao,
+       fk_motivo_matricula_id,
+       fk_doenca_pre_existente_id,
+       adimplente
+from   aluno
+order by nome
+}
 
 {$mode objfpc}{$H+}
 
@@ -101,7 +116,6 @@ begin
   try
     sqlQueryPadrao.ParamByName('id').AsInteger := DataModuleApp.qryAlunoObj.FieldByName('id').AsInteger;
     sqlQueryPadrao.Open;
-    sqlQueryPadrao.Edit;
     ShowModal;
 
     if DataModuleApp.qryAlunoObj.IsEmpty then
@@ -132,11 +146,5 @@ begin
   DataModuleApp.qryAlunoObj.Close;
 end;
 
-{function TfrmConsultaAluno.obterAlunoSelecionado: TAluno;
-begin
-  result := TAluno.create(DataModuleApp.qryAlunoObj);
-  btnSair.Click;
-end;
-}
 end.
 
