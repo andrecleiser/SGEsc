@@ -54,7 +54,7 @@ implementation
 
 uses
     uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uLogin,
-    uconsulta_turma, uconsulta_aluno, uCadastrarTurma, uTurma_Aluno;
+    uconsulta_turma, uconsulta_aluno, {uCadastrarTurma, }uTurma_Aluno;
 
 {$R *.lfm}
 

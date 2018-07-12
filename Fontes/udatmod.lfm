@@ -177,6 +177,11 @@ object DataModuleApp: TDataModuleApp
         DataType = ftString
         Precision = -1
         Size = 3
+      end    
+      item
+        Name = 'dia_vencimento'
+        DataType = ftLargeint
+        Precision = -1
       end>
     AfterClose = SQLQueryObjAfterClose
     Database = MySQL57Connection
@@ -190,7 +195,8 @@ object DataModuleApp: TDataModuleApp
       '       a.data_inativacao,'
       '       a.fk_motivo_matricula_id,'
       '       a.fk_doenca_pre_existente_id,'
-      '       a.adimplente'
+      '       a.adimplente,'
+      '       a.dia_vencimento'
       'from   aluno a'
       '       left join turma_aluno ta on (a.id = ta.fk_aluno_id)'
       '       left join turma t on (t.id = ta.fk_turma_id)'

@@ -39,6 +39,7 @@ type
     DBEdit8: TDBEdit;
     DBEdit9: TDBEdit;
     dbeNome: TDBEdit;
+    dbeNome1: TDBEdit;
     dblDoenca_Pre_Existente: TDBLookupComboBox;
     dblMotivo_Matricula: TDBLookupComboBox;
     DBMemo1: TDBMemo;
@@ -64,6 +65,7 @@ type
     Label23: TLabel;
     Label24: TLabel;
     Label25: TLabel;
+    Label26: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -84,6 +86,7 @@ type
     sqlQueryPadraodata_cadastramento: TDateField;
     sqlQueryPadraodata_inativacao: TDateField;
     sqlQueryPadraodata_nascimento: TDateField;
+    sqlQueryPadraodia_vencimento: TLargeintField;
     sqlQueryPadraoemail_responsavel: TStringField;
     sqlQueryPadraoestado: TStringField;
     sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField;

@@ -15,6 +15,7 @@ type
   TfrmConsultaTurma = class(TfrmBase)
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
+    btnExcluir: TBitBtn;
     DBGrid1: TDBGrid;
     dblTurma: TDBLookupComboBox;
     dsTurma_Aluno: TDataSource;
@@ -24,6 +25,7 @@ type
     StaticText1: TStaticText;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
@@ -38,7 +40,7 @@ var
 implementation
 
 uses
-  uDATMOD, uTurma_Aluno;
+  uDATMOD, uTurma_Aluno, uTurmaService;
 
 {$R *.lfm}
 
@@ -98,6 +100,12 @@ begin
     sqlQueryPadrao.ServerFilter := '';
     Free;
   end;
+end;
+
+procedure TfrmConsultaTurma.btnExcluirClick(Sender: TObject);
+begin
+  with dsTurma_Aluno.DataSet do
+    TTurmaService.excluirAluno(FieldByName('fk_aluno_id').AsInteger, FieldByName('fk_turma_id').AsInteger);
 end;
 
 end.

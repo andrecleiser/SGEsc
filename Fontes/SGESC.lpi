@@ -199,7 +199,7 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model;Financeiro;Turma;Aluno"/>
-      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\ciclo-2\dcu"/>
+      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\dcu"/>
     </SearchPaths>
     <CodeGeneration>
       <SmartLinkUnit Value="True"/>

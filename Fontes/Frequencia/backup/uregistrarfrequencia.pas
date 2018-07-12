@@ -19,6 +19,7 @@ type
     btnConsultarAluno: TBitBtn;
     edtCodigoAluno: TEdit;
     Label1: TLabel;
+    lblAlunoForaTurma: TLabel;
     lblNomeAlunoFundo: TLabel;
     lblNomeAlunoFrente: TLabel;
     Panel1: TPanel;
@@ -29,10 +30,12 @@ type
     procedure edtCodigoAlunoEnter(Sender: TObject);
   private
     aluno: TAluno;
+    idTurma: integer;
 
     procedure validarCampoVazio;
     procedure atualizarDadosAluno;
     procedure limparAluno;
+    procedure mostrarDadosAluno(mostrar: boolean);
   public
 
   end;
@@ -43,7 +46,7 @@ var
 implementation
 
 uses
-  uconsulta_aluno;
+  uconsulta_aluno, uTurmaService;
 
 {$R *.lfm}
 
@@ -51,15 +54,14 @@ uses
 
 procedure TfrmRegistrarFrequencia.btnRegistrarFrequenciaClick(Sender: TObject);
 begin
-  TFrequenciaService.registrarFrequencia(aluno.id);
+  TFrequenciaService.registrarFrequencia(aluno.id, idTurma);
   limparAluno;
 end;
 
 procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);
 begin
-  lblNomeAlunoFrente.Visible:=false;
-  lblNomeAlunoFundo.Visible:=false;
-  btnRegistrarFrequencia.Enabled:=false;
+  lblAlunoForaTurma.Visible := false;
+  mostrarDadosAluno(false);
 end;
 
 procedure TfrmRegistrarFrequencia.btnConsultarAlunoClick(Sender: TObject);
@@ -72,8 +74,14 @@ begin
 
   try
     aluno := TAlunoService.obterAluno(codigoAluno.ToInteger, [saAtivo]);
+
     if Assigned(aluno) then
+    begin
+      // Validar se o aluno está matriculado em alguma turma
+      lblAlunoForaTurma.Visible := TTurmaService.alunoAptoTurma(aluno.id, idTurma);
+
       atualizarDadosAluno;
+    end;
   except
     edtCodigoAluno.SetFocus;
     raise;
@@ -116,8 +124,7 @@ end;
 
 procedure TfrmRegistrarFrequencia.atualizarDadosAluno;
 begin
-  lblNomeAlunoFrente.Visible:=True;
-  lblNomeAlunoFundo.Visible:=True;
+  mostrarDadosAluno(true);
 
   lblNomeAlunoFrente.Caption:=aluno.nome;
   lblNomeAlunoFundo.Caption:=aluno.nome;
@@ -127,8 +134,14 @@ begin
   else
     lblNomeAlunoFrente.Font.Color := clBlue;
 
-  btnRegistrarFrequencia.Enabled:=true;
   btnRegistrarFrequencia.SetFocus;
+end;
+
+procedure TfrmRegistrarFrequencia.mostrarDadosAluno(mostrar: boolean);
+begin
+  lblNomeAlunoFrente.Visible:=mostrar;
+  lblNomeAlunoFundo.Visible:=mostrar;
+  btnRegistrarFrequencia.Enabled:=mostrar;
 end;
 
 end.

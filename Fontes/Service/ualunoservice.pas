@@ -162,6 +162,15 @@ begin
   // Regra de validação 14
   if dataSet.FieldByName('celular_responsavel').AsString.Replace(' ', '').Trim.Length <> 11 then
     raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
+
+  // Regra de validação 16
+  if (dataSet.FieldByName('dia_vencimento').AsInteger < 1) or
+     (dataSet.FieldByName('dia_vencimento').AsInteger > 31) then
+    raise Exception.Create('O vencimento do aluno deve estar entre 1 e 31.');
+
+  // Regra de validação 17
+  if dataSet.FieldByName('dia_vencimento').IsNull  then
+    raise Exception.Create('O vencimento do aluno tem que ser informado.');
 end;
 
 class procedure TAlunoService.validarExclusao(dataSet: TDataSet);
