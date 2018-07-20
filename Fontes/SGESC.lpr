@@ -20,7 +20,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TDataModuleApp, DataModuleApp);
   Application.CreateForm(TfrmLogin, frmLogin);
-  Application.CreateForm(TfrmCadastroTurma, frmCadastroTurma);
   Application.Run;
 end.
 

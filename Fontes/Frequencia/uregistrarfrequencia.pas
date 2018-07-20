@@ -6,8 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons, StdCtrls, MaskEdit, uFormBase, uAluno, uFrequenciaService, LCLType,
-  sqldb, uAlunoService;
+  Buttons, StdCtrls, MaskEdit, uFormBase, uAluno, LCLType, sqldb;
 
 type
 
@@ -28,6 +27,7 @@ type
     procedure btnConsultarAlunoClick(Sender: TObject);
     procedure btnRegistrarFrequenciaClick(Sender: TObject);
     procedure edtCodigoAlunoEnter(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     aluno: TAluno;
     idTurma: integer;
@@ -46,7 +46,7 @@ var
 implementation
 
 uses
-  uconsulta_aluno, uTurmaService;
+  uconsulta_aluno, uTurmaService, uFrequenciaService, uAlunoService;
 
 {$R *.lfm}
 
@@ -62,6 +62,11 @@ procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);
 begin
   lblAlunoForaTurma.Visible := false;
   mostrarDadosAluno(false);
+end;
+
+procedure TfrmRegistrarFrequencia.FormDestroy(Sender: TObject);
+begin
+  if Assigned(aluno) then aluno.Free;
 end;
 
 procedure TfrmRegistrarFrequencia.btnConsultarAlunoClick(Sender: TObject);

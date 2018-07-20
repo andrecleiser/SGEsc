@@ -165,7 +165,7 @@ begin
 
   // Regra de validação 16
   if (dataSet.FieldByName('dia_vencimento').AsInteger < 1) or
-     (dataSet.FieldByName('dia_vencimento').AsInteger < 31) then
+     (dataSet.FieldByName('dia_vencimento').AsInteger > 31) then
     raise Exception.Create('O vencimento do aluno deve estar entre 1 e 31.');
 
   // Regra de validação 17

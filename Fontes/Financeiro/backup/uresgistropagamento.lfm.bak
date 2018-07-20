@@ -1,9 +1,10 @@
-inherited frmCadastroPadrao1: TfrmCadastroPadrao1
-  Left = 402
-  Top = 136
+inherited frmRegistrarPagamento: TfrmRegistrarPagamento
+  Left = 2286
+  Top = 100
   Width = 961
   Caption = 'Registro de pagamento'
   ClientWidth = 961
+  OnDestroy = FormDestroy
   inherited pnlBottom: TPanel
     Width = 961
     ClientWidth = 961
@@ -17,17 +18,19 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
     end
   end
   inherited pnlNav: TPanel
+    Top = 51
     Width = 961
     ClientWidth = 961
     inherited dbNavAlunos: TDBNavigator
       Width = 959
+      ClientHeight = 41
       ClientWidth = 955
     end
   end
   object Panel1: TPanel[2]
     Left = 0
     Height = 51
-    Top = 47
+    Top = 0
     Width = 961
     Align = alTop
     ClientHeight = 51
@@ -48,6 +51,7 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
       Width = 95
       MaxLength = 6
       NumbersOnly = True
+      OnEnter = edtCodigoAlunoEnter
       TabOrder = 0
     end
     object btnConsultarAluno: TBitBtn
@@ -115,6 +119,7 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       }
+      OnClick = btnConsultarAlunoClick
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
@@ -183,6 +188,7 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
         E4B7AFBA9D91A09F919DA1939D968B9BA69FABD7D3D8FFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       }
+      OnClick = btnConsultarAlunoPorNomeClick
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
@@ -232,8 +238,16 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
     Align = alClient
     ClientHeight = 439
     ClientWidth = 961
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -17
+    Font.Name = 'Verdana'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
     TabOrder = 3
-    object Panel2: TPanel
+    Visible = False
+    object Panel3: TPanel
       Left = 1
       Height = 164
       Top = 1
@@ -349,7 +363,27 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
         Align = alClient
         AutoEdit = False
         Color = clSkyBlue
-        Columns = <>
+        Columns = <        
+          item
+            Title.Caption = 'Turma'
+            Width = 500
+            FieldName = 'descricao'
+          end        
+          item
+            Title.Caption = 'Valor'
+            Width = 150
+            FieldName = 'valor'
+          end        
+          item
+            Title.Caption = 'Ano'
+            Width = 120
+            FieldName = 'ano'
+          end        
+          item
+            Title.Caption = 'Mês'
+            Width = 120
+            FieldName = 'mes'
+          end>
         Flat = True
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         Options2 = [goScrollToLastRow]
@@ -360,7 +394,7 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
         TitleFont.Pitch = fpVariable
         TitleFont.Quality = fqDraft
       end
-      object Panel3: TPanel
+      object Panel5: TPanel
         Left = 1
         Height = 39
         Top = 1
@@ -382,9 +416,161 @@ inherited frmCadastroPadrao1: TfrmCadastroPadrao1
   inherited dsPadrao: TDataSource[4]
   end
   inherited sqlQueryPadrao: TSQLQuery[5]
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_aluno_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_turma_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'valor'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'ano'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'mes'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'observacao'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Active = True
+    AfterInsert = sqlQueryPadraoAfterInsert
     SQL.Strings = (
-      'select *'
-      'from pagamento'
+      'select '#9'p.id,'
+      #9'p.fk_aluno_id,'
+      '        p.fk_turma_id,'
+      '        p.valor,'
+      '        p.ano,'
+      '        p.mes,'
+      '        p.observacao,'
+      '        t.descricao'
+      'from    pagamento p'
+      #9'inner join turma t on (p.fk_turma_id = t.id)'
+      'where   p.fk_aluno_id = :idAluno'
+      'order by t.descricao, p.ano, p.mes'
+      ''
+      ''
     )
+    InsertSQL.Strings = (
+      ''
+    )
+    UpdateSQL.Strings = (
+      ''
+    )
+    DeleteSQL.Strings = (
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'idAluno'
+        ParamType = ptInput
+        Value = '0'
+      end>
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraofk_aluno_id: TLargeintField[1]
+      FieldKind = fkData
+      FieldName = 'fk_aluno_id'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraofk_turma_id: TLargeintField[2]
+      FieldKind = fkData
+      FieldName = 'fk_turma_id'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraovalor: TFloatField[3]
+      FieldKind = fkData
+      FieldName = 'valor'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Currency = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = -1
+    end
+    object sqlQueryPadraoano: TLargeintField[4]
+      FieldKind = fkData
+      FieldName = 'ano'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraomes: TLargeintField[5]
+      FieldKind = fkData
+      FieldName = 'mes'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraoobservacao: TStringField[6]
+      FieldKind = fkData
+      FieldName = 'observacao'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+    object sqlQueryPadraodescricao: TStringField[7]
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = []
+      ReadOnly = False
+      Required = True
+      Size = 120
+    end
   end
 end

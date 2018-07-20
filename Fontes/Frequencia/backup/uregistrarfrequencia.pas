@@ -78,7 +78,7 @@ begin
     if Assigned(aluno) then
     begin
       // Validar se o aluno está matriculado em alguma turma
-      lblAlunoForaTurma.Visible := TTurmaService.alunoAptoTurma(aluno.id, idTurma);
+      lblAlunoForaTurma.Visible := not TTurmaService.alunoAptoTurma(aluno.id, idTurma);
 
       atualizarDadosAluno;
     end;

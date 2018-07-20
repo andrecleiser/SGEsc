@@ -23,3 +23,7 @@ alter table frequencia
 add constraint fk_turma
   foreign key (fk_turma_id)
   references turma (id);
+  
+alter table pagamento
+change column observacao varchar(100) null;
+  

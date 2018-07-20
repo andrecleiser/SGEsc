@@ -805,8 +805,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Left = 989
       Height = 20
       Top = 1
-      Width = 101
-      Caption = 'Vencimento'
+      Width = 108
+      Caption = 'Dia do Venc.'
       ParentColor = False
     end
     object dbeNome1: TDBEdit

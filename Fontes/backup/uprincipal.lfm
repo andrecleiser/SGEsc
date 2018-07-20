@@ -37,7 +37,7 @@ object frmPrincipal: TfrmPrincipal
       end    
       item
         BidiMode = bdRightToLeft
-        Text = 'Versão: ciclo-3'
+        Text = 'Versão: ciclo-4'
         Width = 50
       end>
     ParentFont = False

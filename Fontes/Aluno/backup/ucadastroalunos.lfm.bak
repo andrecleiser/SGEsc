@@ -210,7 +210,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99999-999;0;_'
-      MaxLength = 0
+      MaxLength = 9
       TabOrder = 10
     end
     object DBEdit2: TDBEdit
@@ -565,7 +565,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99 9999-9999;0;_'
-      MaxLength = 0
+      MaxLength = 12
       TabOrder = 11
     end
     object DBEdit8: TDBEdit
@@ -578,7 +578,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99 99999-9999;0;_'
-      MaxLength = 0
+      MaxLength = 13
       TabOrder = 12
     end
     object Label10: TLabel
@@ -597,7 +597,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Caption = 'Responsável'
       ClientHeight = 105
       ClientWidth = 1212
-      TabOrder = 15
+      TabOrder = 16
       object Label15: TLabel
         Left = 16
         Height = 20
@@ -655,7 +655,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '999.999.999-99;0;_'
-        MaxLength = 0
+        MaxLength = 14
         TabOrder = 2
         OnExit = DBEdit15Exit
       end
@@ -696,7 +696,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '99 99999-9999;0;_'
-        MaxLength = 0
+        MaxLength = 13
         TabOrder = 5
       end
       object Label23: TLabel
@@ -717,7 +717,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataSource = dsPadrao
         CharCase = ecNormal
         EditMask = '99 99999-9999;0;_'
-        MaxLength = 0
+        MaxLength = 13
         TabOrder = 6
       end
       object DBEdit13: TDBEdit
@@ -753,8 +753,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       EditMask = '99:99;0;_'
-      MaxLength = 0
-      TabOrder = 16
+      MaxLength = 5
+      TabOrder = 15
       TabStop = False
       Visible = False
     end
@@ -814,7 +814,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Height = 28
       Top = 25
       Width = 100
-      DataField = 'nome'
+      DataField = 'dia_vencimento'
       DataSource = dsPadrao
       CharCase = ecUppercase
       MaxLength = 0
@@ -827,7 +827,6 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     top = 50
   end
   inherited sqlQueryPadrao: TSQLQuery[4]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
