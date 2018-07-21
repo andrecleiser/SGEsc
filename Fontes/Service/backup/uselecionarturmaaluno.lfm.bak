@@ -1,0 +1,21 @@
+inherited frmBase1: TfrmBase1
+  Left = 2567
+  Height = 384
+  Top = 210
+  Width = 350
+  ClientHeight = 384
+  ClientWidth = 350
+  inherited pnlBottom: TPanel
+    Top = 328
+    Width = 350
+    ClientWidth = 350
+    inherited pnlFrmBaseSair: TPanel
+      Left = 136
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+end

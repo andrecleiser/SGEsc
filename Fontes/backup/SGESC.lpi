@@ -39,7 +39,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="23">
+    <Units Count="24">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -188,6 +188,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTurma"/>
       </Unit22>
+      <Unit23>
+        <Filename Value="Service\uselecionarturmaaluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBase1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit23>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -206,7 +213,6 @@
     </CodeGeneration>
     <Linking>
       <Debugging>
-        <GenerateDebugInfo Value="False"/>
         <StripSymbols Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>

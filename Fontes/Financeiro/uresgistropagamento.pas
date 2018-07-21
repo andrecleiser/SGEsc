@@ -55,6 +55,7 @@ type
     Panel5: TPanel;
     pnlDados: TPanel;
     sqlQueryPadraoano: TLargeintField;
+    sqlQueryPadraodata_pagamento: TDateField;
     sqlQueryPadraodescricao: TStringField;
     sqlQueryPadraofk_aluno_id: TLargeintField;
     sqlQueryPadraofk_turma_id: TLargeintField;
@@ -67,6 +68,7 @@ type
     procedure edtCodigoAlunoEnter(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+    procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     aluno: TAluno;
     idTurma: integer;
@@ -85,7 +87,7 @@ var
 implementation
 
 uses
-  uconsulta_aluno, uFinanceiroService, uAlunoService;
+  uconsulta_aluno, uFinanceiroService, uAlunoService, uDATMOD;
 
 {$R *.lfm}
 
@@ -144,6 +146,16 @@ procedure TfrmRegistrarPagamento.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
   sqlQueryPadraofk_aluno_id.AsInteger := aluno.id;
+  sqlQueryPadraovalor.AsFloat := DataModuleApp.qryLookUpTurmavalor_sugerido.AsFloat;
+end;
+
+procedure TfrmRegistrarPagamento.sqlQueryPadraoBeforePost(DataSet: TDataSet);
+begin
+  sqlQueryPadraodata_pagamento.AsDateTime:=Date();
+
+  TFinanceiroService.validarDados(dataSet);
+
+  inherited;
 end;
 
 {******************** MÉTODOS PRIVADOS **************************}

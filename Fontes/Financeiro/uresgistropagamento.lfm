@@ -21,6 +21,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
     Top = 51
     Width = 961
     ClientWidth = 961
+    Visible = False
     inherited dbNavAlunos: TDBNavigator
       Width = 959
       ClientHeight = 41
@@ -459,9 +460,15 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         DataType = ftString
         Precision = -1
         Size = 120
+      end    
+      item
+        Name = 'data_pagamento'
+        DataType = ftDate
+        Precision = -1
       end>
     Active = True
     AfterInsert = sqlQueryPadraoAfterInsert
+    BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
       'select '#9'p.id,'
       #9'p.fk_aluno_id,'
@@ -470,7 +477,8 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       '        p.ano,'
       '        p.mes,'
       '        p.observacao,'
-      '        t.descricao'
+      '        t.descricao,'
+      '        p.data_pagamento'
       'from    pagamento p'
       #9'inner join turma t on (p.fk_turma_id = t.id)'
       'where   p.fk_aluno_id = :idAluno'
@@ -571,6 +579,15 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       ReadOnly = False
       Required = True
       Size = 120
+    end
+    object sqlQueryPadraodata_pagamento: TDateField[8]
+      FieldKind = fkData
+      FieldName = 'data_pagamento'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
     end
   end
 end

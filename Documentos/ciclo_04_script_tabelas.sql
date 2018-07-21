@@ -27,3 +27,6 @@ add constraint fk_turma
 alter table pagamento
 change column observacao varchar(100) null;
   
+alter table `sgesc`.`pagamento` 
+add unique index `idx_pagamento_unique` (`fk_aluno_id` asc, `fk_turma_id` asc, `ano` asc, `mes` asc);
+  

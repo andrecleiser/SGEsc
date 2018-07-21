@@ -1,0 +1,34 @@
+inherited frmBase1: TfrmBase1
+  Left = 2464
+  Height = 384
+  Top = 241
+  Width = 732
+  ClientHeight = 384
+  ClientWidth = 732
+  inherited pnlBottom: TPanel
+    Top = 328
+    Width = 732
+    ClientWidth = 732
+    inherited pnlFrmBaseSair: TPanel
+      Left = 518
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  object DBGrid1: TDBGrid[1]
+    Left = 0
+    Height = 328
+    Top = 0
+    Width = 732
+    Align = alClient
+    AutoEdit = False
+    Columns = <>
+    ParentColor = True
+    TabOrder = 1
+    TitleFont.Height = -17
+    TitleFont.Name = 'Verdana'
+  end
+end
