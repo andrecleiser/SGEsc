@@ -35,6 +35,12 @@ type
     // Retorna o úlimo Id do aluno.
     class function ultimoId(): integer;
 
+    // Retorna a quantidade de turmas do aluno.
+    class function obterTotalTurmas(idAluno: integer): integer;
+
+    // retorna os ids das turmas do aluno
+    class function obterIDsTurmas(idAluno: integer): string;
+
 end;
 
 implementation
@@ -196,6 +202,51 @@ begin
     sqlQuery.Free;
   end;
 end;
+
+// retorna a quantidade de alunos da turma.
+class function TAlunoService.obterTotalTurmas(idAluno: integer): integer;
+var
+  sql: TSQLQuery;
+begin
+  sql := TSQLQuery.Create(nil);
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select count(*) from turma_aluno where fk_aluno_id = ' + idAluno.ToString);
+  try
+    sql.Open;
+    result := sql.Fields[0].AsInteger;
+  finally
+    sql.Close;
+    sql.Free;
+  end;
+end;
+
+// retorna os ids das turmas do aluno
+class function TAlunoService.obterIDsTurmas(idAluno: integer): string;
+var
+  sql: TSQLQuery;
+  listaIds: TStrings;
+begin
+  result := '';
+
+  sql := TSQLQuery.Create(nil);
+  listaIds := TStringList.Create;
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select fk_turma_id from turma_aluno where fk_aluno_id = ' + idAluno.ToString);
+  try
+    sql.Open;
+    while not sql.eof do
+    begin
+      listaIds.Add(sql.Fields[0].AsString);
+      sql.Next;
+    end;
+    result := listaIds.DelimitedText;
+  finally
+    listaIds.Free;
+    sql.Close;
+    sql.Free;
+  end;
+end;
+
 
 //******************** MÉTODOS PRIVADOS ********************//
 

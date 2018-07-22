@@ -2,8 +2,10 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
   Left = 2286
   Top = 100
   Width = 961
+  ActiveControl = edtCodigoAluno
   Caption = 'Registro de pagamento'
   ClientWidth = 961
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   inherited pnlBottom: TPanel
     Width = 961
@@ -22,10 +24,12 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
     Width = 961
     ClientWidth = 961
     Visible = False
-    inherited dbNavAlunos: TDBNavigator
+    inherited dbNav: TDBNavigator
       Width = 959
       ClientHeight = 41
       ClientWidth = 955
+      ConfirmDelete = True
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
     end
   end
   object Panel1: TPanel[2]
@@ -248,7 +252,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
     ParentFont = False
     TabOrder = 3
     Visible = False
-    object Panel3: TPanel
+    object pnlCampos: TPanel
       Left = 1
       Height = 164
       Top = 1
@@ -262,9 +266,11 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         Height = 28
         Top = 29
         Width = 146
+        DataField = 'valor'
+        DataSource = dsPadrao
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 0
+        TabOrder = 1
       end
       object Label3: TLabel
         Left = 677
@@ -282,11 +288,14 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         Caption = 'Turma'
         ParentColor = False
       end
-      object DBLookupComboBox1: TDBLookupComboBox
+      object dblTurma: TDBLookupComboBox
         Left = 13
         Height = 28
         Top = 29
         Width = 653
+        AutoComplete = True
+        AutoDropDown = True
+        DataField = 'fk_turma_id'
         DataSource = dsPadrao
         KeyField = 'id'
         ListField = 'descricao'
@@ -294,7 +303,8 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         ListSource = DataModuleApp.dsqryLookUpTurma
         LookupCache = False
         ParentShowHint = False
-        TabOrder = 1
+        Style = csDropDownList
+        TabOrder = 0
       end
       object Label4: TLabel
         Left = 887
@@ -317,25 +327,29 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         Height = 28
         Top = 29
         Width = 64
+        DataField = 'ano'
+        DataSource = dsPadrao
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 2
+        TabOrder = 3
       end
       object DBEdit3: TDBEdit
         Left = 830
         Height = 28
         Top = 29
         Width = 50
+        DataField = 'mes'
+        DataSource = dsPadrao
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 3
+        TabOrder = 2
       end
-      object Label6: TLabel
+      object lblObservacao: TLabel
         Left = 13
         Height = 20
         Top = 65
-        Width = 37
-        Caption = 'OBS'
+        Width = 381
+        Caption = 'Observação - 0 caracteres digitados de 100.'
         ParentColor = False
       end
       object DBMemo1: TDBMemo
@@ -343,7 +357,10 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         Height = 61
         Top = 86
         Width = 938
+        DataField = 'observacao'
         DataSource = dsPadrao
+        MaxLength = 100
+        OnChange = DBMemo1Change
         TabOrder = 4
       end
     end
@@ -367,8 +384,13 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         Columns = <        
           item
             Title.Caption = 'Turma'
-            Width = 500
+            Width = 450
             FieldName = 'descricao'
+          end        
+          item
+            Title.Caption = 'Hora'
+            Width = 80
+            FieldName = 'hora_inicio'
           end        
           item
             Title.Caption = 'Valor'
@@ -376,15 +398,16 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
             FieldName = 'valor'
           end        
           item
-            Title.Caption = 'Ano'
-            Width = 120
-            FieldName = 'ano'
-          end        
-          item
             Title.Caption = 'Mês'
             Width = 120
             FieldName = 'mes'
+          end        
+          item
+            Title.Caption = 'Ano'
+            Width = 100
+            FieldName = 'ano'
           end>
+        DataSource = dsPadrao
         Flat = True
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         Options2 = [goScrollToLastRow]
@@ -415,6 +438,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
     end
   end
   inherited dsPadrao: TDataSource[4]
+    OnStateChange = dsPadraoStateChange
   end
   inherited sqlQueryPadrao: TSQLQuery[5]
     IndexName = 'DEFAULT_ORDER'
@@ -465,9 +489,15 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         Name = 'data_pagamento'
         DataType = ftDate
         Precision = -1
+      end    
+      item
+        Name = 'hora_inicio'
+        DataType = ftString
+        Precision = -1
+        Size = 12
       end>
-    Active = True
     AfterInsert = sqlQueryPadraoAfterInsert
+    AfterPost = sqlQueryPadraoAfterPost
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
       'select '#9'p.id,'
@@ -478,29 +508,43 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       '        p.mes,'
       '        p.observacao,'
       '        t.descricao,'
-      '        p.data_pagamento'
+      '        p.data_pagamento,'
+      '        t.hora_inicio'
       'from    pagamento p'
       #9'inner join turma t on (p.fk_turma_id = t.id)'
       'where   p.fk_aluno_id = :idAluno'
       'order by t.descricao, p.ano, p.mes'
-      ''
-      ''
     )
     InsertSQL.Strings = (
+      'insert into pagamento(id, fk_aluno_id, fk_turma_id, valor, ano, mes, observacao, data_pagamento)'
+      'values (0, :fk_aluno_id, :fk_turma_id, :valor, :ano, :mes, :observacao, :data_pagamento)'
+      'on duplicate key update id=last_insert_id()'
       ''
     )
     UpdateSQL.Strings = (
+      'update pagamento'
+      'set fk_aluno_id = :fk_aluno_id,'
+      '    fk_turma_id = :fk_turma_id,'
+      '    valor = :valor,'
+      '    ano = :ano,'
+      '    mes = :mes,'
+      '    observacao = :observacao,'
+      '    data_pagamento = :data_pagamento'
+      'where id = :OLD_id'
       ''
     )
     DeleteSQL.Strings = (
+      'delete from pagamento where id = :OLD_id'
+    )
+    RefreshSQL.Strings = (
       ''
     )
+    Options = [sqoKeepOpenOnCommit, sqoRefreshUsingSelect]
     Params = <    
       item
         DataType = ftInteger
         Name = 'idAluno'
         ParamType = ptInput
-        Value = '0'
       end>
     object sqlQueryPadraoid: TLargeintField[0]
       FieldKind = fkData
@@ -575,9 +619,9 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       FieldName = 'descricao'
       Index = 7
       LookupCache = False
-      ProviderFlags = []
+      ProviderFlags = [pfHidden]
       ReadOnly = False
-      Required = True
+      Required = False
       Size = 120
     end
     object sqlQueryPadraodata_pagamento: TDateField[8]
@@ -588,6 +632,17 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = True
+    end
+    object sqlQueryPadraohora_inicio: TStringField[9]
+      FieldKind = fkData
+      FieldName = 'hora_inicio'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfHidden]
+      ReadOnly = False
+      Required = False
+      OnGetText = mostrarHoraFormatada
+      Size = 12
     end
   end
 end

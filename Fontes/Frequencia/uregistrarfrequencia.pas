@@ -97,7 +97,7 @@ procedure TfrmRegistrarFrequencia.btnConsultarAlunoPorNomeClick(Sender: TObject)
 var
   codigoAluno: integer;
 begin
-  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno(ccRetornar);
+  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno([ccRetornar, ccApenasAtivos]);
   if codigoAluno > 0 then
   begin
     edtCodigoAluno.Text:=codigoAluno.ToString;

@@ -1,21 +1,3 @@
-{
-insert into pagamento(id, fk_aluno_id, fk_turma_id, valor, ano, mes, observacao)
-values (0, :fk_aluno_id, :fk_turma_id, :valor, :ano, :mes, :observacao)
-on duplicate key update id=last_insert_id()
-
-delete from pagamento where id = :OLD_id
-
-update pagamento
-set id,
-    fk_aluno_id,
-    fk_turma_id,
-    valor,
-    ano,
-    mes,
-    observacao
-where id = :OLD_id
-}
-
 unit uResgistroPagamento;
 
 {$mode objfpc}{$H+}
@@ -25,7 +7,7 @@ interface
 uses
   Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls,
   Graphics, Dialogs, ExtCtrls, Buttons, DbCtrls, StdCtrls, DBGrids,
-  uCadastroPadrao, uAluno;
+  uCadastroPadrao, uAluno, DateUtils;
 
 type
 
@@ -38,7 +20,7 @@ type
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBGrid1: TDBGrid;
-    DBLookupComboBox1: TDBLookupComboBox;
+    dblTurma: TDBLookupComboBox;
     DBMemo1: TDBMemo;
     edtCodigoAluno: TEdit;
     Label1: TLabel;
@@ -46,11 +28,11 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    Label6: TLabel;
+    lblObservacao: TLabel;
     lblNomeAlunoFrente: TLabel;
     lblNomeAlunoFundo: TLabel;
     Panel1: TPanel;
-    Panel3: TPanel;
+    pnlCampos: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
     pnlDados: TPanel;
@@ -59,19 +41,24 @@ type
     sqlQueryPadraodescricao: TStringField;
     sqlQueryPadraofk_aluno_id: TLargeintField;
     sqlQueryPadraofk_turma_id: TLargeintField;
+    sqlQueryPadraohora_inicio: TStringField;
     sqlQueryPadraoid: TLargeintField;
     sqlQueryPadraomes: TLargeintField;
     sqlQueryPadraoobservacao: TStringField;
     sqlQueryPadraovalor: TFloatField;
     procedure btnConsultarAlunoClick(Sender: TObject);
     procedure btnConsultarAlunoPorNomeClick(Sender: TObject);
+    procedure DBMemo1Change(Sender: TObject);
+    procedure dsPadraoStateChange(Sender: TObject);
     procedure edtCodigoAlunoEnter(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterPost(DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     aluno: TAluno;
-    idTurma: integer;
+    idTurmas: string;
 
     procedure validarCampoVazio;
     procedure atualizarDadosAluno;
@@ -104,13 +91,18 @@ begin
   try
     aluno := TAlunoService.obterAluno(codigoAluno.ToInteger, [saAtivo]);
 
-    TFinanceiroService.validarAluno(aluno, idTurma);
+    TFinanceiroService.validarAluno(aluno, idTurmas);
 
     atualizarDadosAluno;
 
     sqlQueryPadrao.Close;
     sqlQueryPadrao.Params[0].AsInteger := aluno.id;
     sqlQueryPadrao.Open;
+
+    DataModuleApp.qryLookUpTurma.Close;
+    DataModuleApp.qryLookUpTurma.ServerFilter := 'fk_turma_id in (' + idTurmas + ')';
+    DataModuleApp.qryLookUpTurma.ServerFiltered := true;
+    DataModuleApp.qryLookUpTurma.Open;
   except
     edtCodigoAluno.SetFocus;
     raise;
@@ -121,7 +113,7 @@ procedure TfrmRegistrarPagamento.btnConsultarAlunoPorNomeClick(Sender: TObject);
 var
   codigoAluno: integer;
 begin
-  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno(ccRetornar);
+  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno([ccRetornar, ccApenasAtivos]);
   if codigoAluno > 0 then
   begin
     edtCodigoAluno.Text:=codigoAluno.ToString;
@@ -131,14 +123,33 @@ begin
     edtCodigoAluno.SetFocus;
 end;
 
+procedure TfrmRegistrarPagamento.DBMemo1Change(Sender: TObject);
+begin
+  lblObservacao.Caption := 'Observação - ' + TDBMemo(Sender).Lines.Text.Length.ToString + ' caracteres digitados de 100.';
+end;
+
+procedure TfrmRegistrarPagamento.dsPadraoStateChange(Sender: TObject);
+begin
+  inherited;
+  pnlCampos.Enabled := TDataSource(Sender).State in [dsInsert, dsEdit];
+end;
+
 procedure TfrmRegistrarPagamento.edtCodigoAlunoEnter(Sender: TObject);
 begin
   mostrarDadosAluno(false);
 end;
 
+procedure TfrmRegistrarPagamento.FormCreate(Sender: TObject);
+begin
+  inherited;
+  captionForm := 'Registro de pagamento do aluno';
+end;
+
 procedure TfrmRegistrarPagamento.FormDestroy(Sender: TObject);
 begin
   if Assigned(aluno) then aluno.Free;
+  DataModuleApp.qryLookUpTurma.Close;
+  DataModuleApp.qryLookUpTurma.Filtered := false;
   inherited;
 end;
 
@@ -147,6 +158,13 @@ begin
   inherited;
   sqlQueryPadraofk_aluno_id.AsInteger := aluno.id;
   sqlQueryPadraovalor.AsFloat := DataModuleApp.qryLookUpTurmavalor_sugerido.AsFloat;
+  sqlQueryPadraodata_pagamento.AsDateTime := Today();
+end;
+
+procedure TfrmRegistrarPagamento.sqlQueryPadraoAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  sqlQueryPadrao.Refresh;
 end;
 
 procedure TfrmRegistrarPagamento.sqlQueryPadraoBeforePost(DataSet: TDataSet);

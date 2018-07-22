@@ -99,7 +99,7 @@ end;
 
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
-  TfrmConsultaAluno.abrirConsultaAluno(ccEditar);
+  TfrmConsultaAluno.abrirConsultaAluno([ccEditar]);
 end;
 
 {procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);

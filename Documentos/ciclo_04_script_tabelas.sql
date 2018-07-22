@@ -30,3 +30,8 @@ change column observacao varchar(100) null;
 alter table `sgesc`.`pagamento` 
 add unique index `idx_pagamento_unique` (`fk_aluno_id` asc, `fk_turma_id` asc, `ano` asc, `mes` asc);
   
+alter table `sgesc`.`pagamento` 
+add column `data_pagamento` date not null after `observacao`;
+
+ALTER TABLE `sgesc`.`turma_aluno` 
+ADD INDEX `fk_turma_id_idx` (`fk_turma_id` ASC);

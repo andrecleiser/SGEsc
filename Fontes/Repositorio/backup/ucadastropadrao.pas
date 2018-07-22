@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, DbCtrls, Buttons, LCLType, uFormBase, BufDataset;
+  ExtCtrls, DbCtrls, Buttons, LCLType, uFormBase, BufDataset, maskutils;
 
 type
 
@@ -14,7 +14,7 @@ type
 
   TfrmCadastroPadrao = class(TfrmBase)
     dsPadrao: TDataSource;
-    dbNavAlunos: TDBNavigator;
+    dbNav: TDBNavigator;
     pnlNav: TPanel;
     sqlQueryPadrao: TSQLQuery;
     procedure btnSairClick(Sender: TObject);
@@ -29,6 +29,9 @@ type
     procedure sqlQueryPadraoUpdateError(Sender: TObject;
       {%H-}DataSet: TCustomBufDataset; E: EUpdateError; UpdateKind: TUpdateKind;
       var Response: TResolverResponse);
+    procedure mostrarHoraFormatada(Sender: TField; var aText: string;
+      {%H-}DisplayText: Boolean);
+
   private
     fTabela: String;
     fcampoChavePrimaria: String;
@@ -112,8 +115,7 @@ begin
     raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
   end
   else
-//  TUtil.mensagemErro(E)
-    raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
+    raise Exception.Create(TUtil.mensagemErro(E));
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);
@@ -138,6 +140,13 @@ begin
   else Self.Caption := captionForm;
   end;
 end;
+
+procedure TfrmCadastroPadrao.mostrarHoraFormatada(Sender: TField;
+  var aText: string; DisplayText: Boolean);
+begin
+  aText := FormatMaskText('00\:00;0;', Sender.AsString);
+end;
+
 
 {**************************** Métodos protected ***************************}
 

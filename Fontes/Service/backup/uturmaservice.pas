@@ -31,13 +31,20 @@ end;
 implementation
 
 uses
-  uDATMOD, uClassUtil;
+  uDATMOD, uClassUtil, uselecionarturmaaluno;
 
 //******************** MÉTODOS PÚBLICOS ********************//
 // retorna a quantidade de alunos da turma.
 class function TTurmaService.obterTotalAlunos(idTurma: integer): integer;
+var
+  sql: TSQLQuery;
 begin
-  result := 0;
+  sql := TSQLQuery.Create(nil);
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select count(*) from turma_aluno where fk_turma_id = ' + idTurma.ToString);
+  sql.Open;
+
+  result := sql.Fields[0].AsInteger;
 end;
 
 // Aplica as regras de validação referentes à inclusão da turma.
@@ -131,70 +138,37 @@ var
   sqlQueryTurmaAluno: TSQLQuery;
   horaInicio,
   horaFim: TTime;
-  // Identifica que o aluno está vinculdao a uma turma com restrição de horário. True -> acesso dentro do horário | False -> sem acesso porque não está dentro.
-  alunoVinculadoComRestricao,
- // Identifica que o aluno está vinculdao a uma turma sem restrição de horário
-  alunoVinculadoSemRestricao: Boolean;
 begin
-  alunoVinculadoSemRestricao := false;
-  alunoVinculadoComRestricao := false;
   result := true;
 
-  sqlQueryTurmaAluno := TSQLQuery.Create(nil);
-  sqlQueryTurmaAluno.SQLConnection := DataModuleApp.MySQL57Connection;
-  sqlQueryTurmaAluno.SQL.Add('select t.id, t.controlar_horario, t.hora_inicio, t.hora_fim');
-  sqlQueryTurmaAluno.SQL.Add('from   turma t');
-  sqlQueryTurmaAluno.SQL.Add('       inner join turma_aluno ta on (t.id = ta.fk_turma_id and ta.fk_aluno_id = ' + idAluno.ToString + ')');
-  sqlQueryTurmaAluno.Open;
+  idTurma := getIdTurma(idAluno);
 
-  if sqlQueryTurmaAluno.IsEmpty then
+  if idTurma = -1 then
   begin
     result := false;
     raise Exception.Create('O aluno não está matriculado em nenhuma turma!');
   end;
 
-  while not sqlQueryTurmaAluno.EOF do
+  sqlQueryTurmaAluno := TSQLQuery.Create(nil);
+  sqlQueryTurmaAluno.SQLConnection := DataModuleApp.MySQL57Connection;
+  sqlQueryTurmaAluno.SQL.Add('select t.id, t.controlar_horario, t.hora_inicio, t.hora_fim');
+  sqlQueryTurmaAluno.SQL.Add('from   turma t');
+  sqlQueryTurmaAluno.SQL.Add('       inner join turma_aluno ta on (t.id = ta.fk_turma_id)');
+  sqlQueryTurmaAluno.SQL.Add('where  ta.fk_aluno_id = ' + idAluno.ToString + ' and t.id = ' + idTurma.ToString);
+  sqlQueryTurmaAluno.Open;
+
+  // Verifica se a turma tem controle de horário e pega os horários.
+  if (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') then
   begin
-    // Veriica se o aluno está dentro do horário de alguma turma a que está vinvulado.
-    if (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') then
-    begin
-      horaInicio := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_inicio').AsString));
-      horaFim    := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_fim').AsString));
-
-      if ((Time >= horaInicio) and (Time <= horaFim)) then
-      begin
-        {**
-          Caso o aluno seja matriculado em mais de uma turma,
-          a preferência ao registro será a com restrição de horário.
-        *}
-        idTurma := sqlQueryTurmaAluno.FieldByName('id').AsInteger;
-        alunoVinculadoComRestricao := true;
-        Break;
-      end;
-    end
-    // Uma vez apresnetada matrícula em um curso sem restrição de horário, esta propriedade não será mais modificada.
-    else
-    begin
-      idTurma := sqlQueryTurmaAluno.FieldByName('id').AsInteger;
-      alunoVinculadoSemRestricao := true;
-    end;
-
-    sqlQueryTurmaAluno.Next;
+    horaInicio := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_inicio').AsString));
+    horaFim    := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_fim').AsString));
   end;
-
-  // Situação 1: Aluno cadastrado em uma turma sem restrição e outra(s) com restrição, mas não autorizado.
-  //             Isto visa evitar que um aluno matriculado em uma turma sem restrição de horário
-  //             participe de outras aulas.
-  if ((alunoVinculadoSemRestricao) and (sqlQueryTurmaAluno.RecordCount > 1)) and (not alunoVinculadoComRestricao) then
-    result := (Application.MessageBox('O aluno está registrando frequência em uma turma sem restrição de horário?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO);
-
-  // Situação 2: Aluno cadastrado em uma turma sem restrição apenas
-  // Situação 3: Aluno cadastrado em uma turma com restrição apenas
-  if result and ((not alunoVinculadoSemRestricao) and (not alunoVinculadoComRestricao)) then
-  begin
+            // Turma sem controle de horário
+  Result := (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'N') or
+            // Turma com controle de horário
+            ((sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') and ((Time >= horaInicio) and (Time <= horaFim)));
+  if not Result  then
     Application.MessageBox('Aluno não autorizado a frequentar a turma!', 'AVISO', MB_ICONWARNING);
-    result := false;
-  end;
 end;
 
 // Exclue o aluno da turma
