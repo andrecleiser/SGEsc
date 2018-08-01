@@ -1,0 +1,489 @@
+inherited frmFichaFinanceira: TfrmFichaFinanceira
+  Left = 2117
+  Top = 146
+  Width = 1343
+  Caption = 'Ficha Financeira'
+  ClientWidth = 1343
+  inherited pnlBottom: TPanel
+    Width = 1343
+    ClientWidth = 1343
+    inherited pnlFrmBaseSair: TPanel
+      Left = 1129
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  object pnlDadosGerais: TPanel[1]
+    Left = 0
+    Height = 76
+    Top = 0
+    Width = 1343
+    Align = alTop
+    ClientHeight = 76
+    ClientWidth = 1343
+    TabOrder = 1
+    object Label3: TLabel
+      Left = 38
+      Height = 20
+      Top = 16
+      Width = 200
+      Caption = 'Total de alunos ativos: '
+      ParentColor = False
+    end
+    object edtTotalAlunosAtivos: TEdit
+      Left = 239
+      Height = 28
+      Top = 8
+      Width = 56
+      Color = clGray
+      Font.Color = clWhite
+      Font.Height = -17
+      Font.Name = 'Verdana'
+      ParentFont = False
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 0
+    end
+    object edtTotalAlunosAtivos1: TEdit
+      Left = 580
+      Height = 28
+      Top = 8
+      Width = 56
+      Color = clGray
+      Font.Color = clWhite
+      Font.Height = -17
+      Font.Name = 'Verdana'
+      ParentFont = False
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 1
+    end
+    object Label4: TLabel
+      Left = 308
+      Height = 20
+      Top = 16
+      Width = 271
+      Caption = 'Total de alunos inadimplentes: '
+      ParentColor = False
+    end
+    object Label6: TLabel
+      Left = 666
+      Height = 20
+      Top = 16
+      Width = 289
+      Caption = 'Faturamento mês a mês em %s: '
+      ParentColor = False
+    end
+    object DBGrid1: TDBGrid
+      Left = 984
+      Height = 50
+      Top = 8
+      Width = 307
+      BorderStyle = bsNone
+      Color = clLime
+      Columns = <      
+        item
+          Title.Caption = 'mes_pagamento'
+          Width = 120
+          FieldName = 'mes_pagamento'
+        end      
+        item
+          Title.Caption = 'valor'
+          Width = 150
+          FieldName = 'valor'
+        end>
+      DataSource = dsAlunoPagamentos
+      Options = [dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+      Scrollbars = ssAutoVertical
+      TabOrder = 2
+      TitleFont.Height = -17
+      TitleFont.Name = 'Verdana'
+    end
+  end
+  object pnlAluno: TPanel[2]
+    Left = 0
+    Height = 630
+    Top = 76
+    Width = 799
+    Align = alLeft
+    ClientHeight = 630
+    ClientWidth = 799
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 1
+      Height = 28
+      Top = 1
+      Width = 797
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Alunos ativos'
+      Color = clNavy
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -23
+      Font.Name = 'Verdana'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+    object dbGridAlunos: TDBGrid
+      Left = 1
+      Height = 600
+      Top = 29
+      Width = 797
+      Align = alClient
+      AutoEdit = False
+      BorderStyle = bsNone
+      Columns = <      
+        item
+          Title.Caption = 'Aluno'
+          Width = 650
+          FieldName = 'nome'
+        end      
+        item
+          Title.Caption = 'Dia do Venc.'
+          Width = 100
+          FieldName = 'dia_vencimento'
+        end>
+      DataSource = dsALunos
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = 'Verdana'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentColor = True
+      ParentFont = False
+      Scrollbars = ssAutoVertical
+      TabOrder = 0
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Height = -13
+      TitleFont.Name = 'Verdana'
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+    end
+    object BitBtn1: TBitBtn
+      Left = 769
+      Height = 25
+      Hint = 'Visualizar pagamentos do aluno selecionado'
+      Top = 3
+      Width = 25
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF19905C19905C18905C19905C19905C198F5C18905C188F5C1990
+        5C188F5C19905C19905C19905C18905C188F5C188F5C198F5C198F5C18905C19
+        905CFFFFFFFFFFFFFFFFFFFFFFFF0D5C31186D3E186D3E186D3E186D3E186D3E
+        186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D
+        3E186D3E186D3E1A925EFFFFFFFFFFFF19905C19905C18905C19905C19905C19
+        8F5C18905C188F5C19905C188F5C19905C19905C19905C18905C188F5C188F5C
+        198F5C198F5C18905C19905C1D6F421A945FFFFFFFFFFFFF0D5C31186D3E186D
+        3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E186D3E18
+        6D3E186D3E186D3E186D3E186D3E186D3E1A925E2572471B976119905C19905C
+        18905C19905C19905C198F5C18905C188F5C19905C188F5C19905C19905C1990
+        5C18905C188F5C188F5C198F5C198F5C18905C19905C1D6F421A945F2D754C1C
+        9A6319925E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E
+        32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E32BC7E1A925E2572
+        471B97613577511D9D661A955F40C1882EAB742DAB742DAB742DAB742DAB742D
+        AB742EAB742DAB742DAB742DAB742DAB742DAB742EAB742EAB742EAB742EAB74
+        40C1881A945F2D754C1C9A633D7B571FA0671C976152C79337AF7A52C79352C7
+        9352C79352C79352C79352C79352C79352C79352C79352C79352C79352C79352
+        C79352C79337AF7A52C7931B97613577511D9D66457E5C20A46A1C9A6365CEA0
+        41B48265CEA065CEA065CEA019905C65CEA065CEA019905C65CEA065CEA065CE
+        A019905C65CEA065CEA065CEA041B48265CEA01C9A633D7B571FA0674D806121
+        A86C1D9D6579D5AD4CB98979D5AD79D5AD79D5AD19905C79D5AD19905C79D5AD
+        19905C79D5AD19905C79D5AD19905C79D5AD79D5AD4CB98979D5AD1D9D66457E
+        5C20A46A52826523AB6E1FA0688EDDBB57BF928EDDBB8EDDBB19905C19905C8E
+        DDBB19905C8EDDBB19905C8EDDBB19905C8EDDBB19905C8EDDBB8EDDBB57BF92
+        8EDDBB1FA0674D806121A86C57846823AE7120A46AA1E4C861C49AA1E4C8A1E4
+        C8A1E4C819905CA1E4C8A1E4C819905CA1E4C8A1E4C8A1E4C819905CA1E4C8A1
+        E4C8A1E4C861C49AA1E4C820A46A52826523AB6E12693925B17322A76CB3EAD3
+        6BC9A1B3EAD3B3EAD3B3EAD3B3EAD3B3EAD3B3EAD3B3EAD3B3EAD3B3EAD3B3EA
+        D3B3EAD3B3EAD3B3EAD3B3EAD36BC9A0B3EAD321A86C57846823AE71FFFFFFFF
+        FFFF22AA6EC1EFDD73CDA773CDA672CDA773CDA673CDA773CDA673CDA672CDA6
+        72CDA773CDA773CDA773CDA772CDA772CDA773CDA772CDA7C1EFDD23AB6E1269
+        3925B173FFFFFFFFFFFF24AE70CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CC
+        F3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4CCF3E4
+        CCF3E423AE71FFFFFFFFFFFFFFFFFFFFFFFF25B17325B17325B17325B17325B1
+        7325B17325B17325B17325B17325B17325B17325B27325B17325B17325B17325
+        B17325B17325B17325B27325B173FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      }
+      OnClick = BitBtn1Click
+      TabOrder = 1
+    end
+  end
+  object pnlAlunoPagamentos: TPanel[3]
+    Left = 799
+    Height = 630
+    Top = 76
+    Width = 544
+    Align = alClient
+    ClientHeight = 630
+    ClientWidth = 544
+    TabOrder = 3
+    Visible = False
+    object Label2: TLabel
+      Left = 1
+      Height = 28
+      Top = 1
+      Width = 542
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Pagamentos do aluno selecionado'
+      Color = clNavy
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -23
+      Font.Name = 'Verdana'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+    object dbGridAlunosPagamentos: TDBGrid
+      Left = 1
+      Height = 600
+      Top = 29
+      Width = 542
+      Align = alClient
+      AutoEdit = False
+      BorderStyle = bsNone
+      Columns = <      
+        item
+          Title.Caption = 'Mês'
+          Width = 80
+          FieldName = 'mes_pagamento'
+        end      
+        item
+          Title.Caption = 'Valor pago'
+          Width = 100
+          FieldName = 'valor'
+        end      
+        item
+          Title.Caption = 'Turma'
+          Width = 320
+          FieldName = 'descricao'
+        end>
+      DataSource = dsAlunoPagamentos
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = 'Verdana'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentColor = True
+      ParentFont = False
+      Scrollbars = ssAutoVertical
+      TabOrder = 0
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Height = -17
+      TitleFont.Name = 'Verdana'
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+    end
+  end
+  object dsALunos: TDataSource[4]
+    AutoEdit = False
+    DataSet = sqlAluno
+    left = 101
+    top = 152
+  end
+  object dsAlunoPagamentos: TDataSource[5]
+    AutoEdit = False
+    DataSet = sqlAlunoPagamentos
+    left = 950
+    top = 173
+  end
+  object sqlAlunoPagamentos: TSQLQuery[6]
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'valor'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'mes_pagamento'
+        DataType = ftString
+        Precision = -1
+        Size = 27
+      end>
+    Active = True
+    Database = DataModuleApp.MySQL57Connection
+    Transaction = DataModuleApp.sqlTransactionGeral
+    SQL.Strings = (
+      'select p.valor,'
+      '       t.descricao,'
+      '       case'
+      '          when p.mes = 1 then ''janeiro'''
+      '          when p.mes = 2 then ''fevereiro'''
+      '          when p.mes = 3 then ''março'''
+      '          when p.mes = 4 then ''abril'''
+      '          when p.mes = 5 then ''maio'''
+      '          when p.mes = 6 then ''junho'''
+      '          when p.mes = 7 then ''julho'''
+      '          when p.mes = 8 then ''agosto'''
+      '          when p.mes = 9 then ''setembro'''
+      '          when p.mes = 10 then ''outubro'''
+      '          when p.mes = 11 then ''novembro'''
+      '          when p.mes = 12 then ''dezembro'''
+      '       end mes_pagamento'
+      'from pagamento p'
+      '  inner join turma t on (t.id = p.fk_turma_id)'
+      'where p.id = :id'
+      'order by p.mes'
+    )
+    Params = <    
+      item
+        DataType = ftLargeint
+        Name = 'id'
+        ParamType = ptInput
+        Size = 8
+      end>
+    DataSource = dsALunos
+    left = 988
+    top = 173
+    object sqlAlunoPagamentosvalor: TFloatField
+      FieldKind = fkData
+      FieldName = 'valor'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Currency = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = -1
+    end
+    object sqlAlunoPagamentosdescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 120
+    end
+    object sqlAlunoPagamentosmes_pagamento: TStringField
+      FieldKind = fkData
+      FieldName = 'mes_pagamento'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 27
+    end
+  end
+  object sqlAluno: TSQLQuery[7]
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'dia_vencimento'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_turma_id'
+        DataType = ftLargeint
+        Precision = -1
+      end>
+    Active = True
+    AfterScroll = sqlAlunoAfterScroll
+    Database = DataModuleApp.MySQL57Connection
+    Transaction = DataModuleApp.sqlTransactionGeral
+    SQL.Strings = (
+      'select a.id,'
+      '       a.nome,'
+      '       a.dia_vencimento,'
+      '       ta.fk_turma_id'
+      'from   aluno a'
+      '       left join turma_aluno ta on (a.id = ta.fk_aluno_id)'
+      'where  a.data_inativacao is not null'
+      'order by nome'
+    )
+    Params = <>
+    left = 135
+    top = 152
+    object sqlAlunoid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlAlunonome: TStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 210
+    end
+    object sqlAlunodia_vencimento: TLargeintField
+      FieldKind = fkData
+      FieldName = 'dia_vencimento'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlAlunofk_turma_id: TLargeintField
+      FieldKind = fkData
+      FieldName = 'fk_turma_id'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+end

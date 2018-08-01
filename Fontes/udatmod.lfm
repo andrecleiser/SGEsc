@@ -385,7 +385,6 @@ object DataModuleApp: TDataModuleApp
     top = 301
   end
   object qryTurmaObj: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'fk_turma_id'

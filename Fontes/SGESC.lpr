@@ -11,7 +11,7 @@ uses
   uClassUtil, uFinanceiroService, uAlunoService, uFormBase, uconsulta_aluno,
   uRegistrarFrequencia, uAluno, uFrequenciaService, uLogin, uUsuarioService,
   uUsuario, uConstantesSistema, uResgistroPagamento, uCadastrarTurma,
-  uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno;
+  uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno, uFichaFinanceira;
 
 {$R *.res}
 

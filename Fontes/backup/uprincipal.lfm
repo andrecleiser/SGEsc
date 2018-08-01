@@ -253,6 +253,16 @@ object frmPrincipal: TfrmPrincipal
         OnClick = MenuItem10Click
       end
     end
+    object MenuItem11: TMenuItem
+      Caption = 'Financeiro'
+      object MenuItem12: TMenuItem
+        Caption = 'Registrar pagamento'
+        OnClick = MenuItem12Click
+      end
+      object MenuItem13: TMenuItem
+        Caption = 'Ficha Financeira'
+      end
+    end
     object MenuItem4: TMenuItem
       Caption = 'Sistema'
       object MenuItem5: TMenuItem

@@ -18,6 +18,7 @@ type
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -99,7 +100,7 @@ end;
 
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
-  TfrmConsultaAluno.abrirConsultaAluno(ccEditar);
+  TfrmConsultaAluno.abrirConsultaAluno([ccEditar]);
 end;
 
 {procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);

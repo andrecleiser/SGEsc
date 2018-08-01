@@ -69,13 +69,13 @@ end;
 procedure TfrmBase.mostrarTelefoneFormatado(Sender: TField; var aText: string;
   DisplayText: Boolean);
 begin
-  aText := FormatMaskText('\(00\)0000\-0000;0; ', Sender.AsString);
+  aText := FormatMaskText('\(00\) 0000\-0000;0; ', Sender.AsString);
 end;
 
 procedure TfrmBase.mostrarCelularFormatado(Sender: TField; var aText: string;
   DisplayText: Boolean);
 begin
-  aText := FormatMaskText('\(00\)00000\-0000;0; ', Sender.AsString);
+  aText := FormatMaskText('\(00\) 00000\-0000;0; ', Sender.AsString);
 end;
 
 end.

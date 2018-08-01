@@ -18,6 +18,7 @@ type
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -35,6 +36,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
+    procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
@@ -58,7 +60,7 @@ implementation
 uses
     uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uLogin,
     uconsulta_turma, uconsulta_aluno, {uCadastrarTurma, }uTurma_Aluno,
-    uResgistroPagamento;
+    uResgistroPagamento, uFichaFinanceira;
 
 {$R *.lfm}
 
@@ -93,6 +95,19 @@ begin
   try
     ShowModal;
   finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem13Click(Sender: TObject);
+begin
+  with TfrmFichaFinanceira.Create(Application) do
+  try
+    sqlAluno.Open;
+    ShowModal;
+  finally
+    sqlAluno.Close;
+    sqlAlunoPagamentos.Close;
     Free;
   end;
 end;
