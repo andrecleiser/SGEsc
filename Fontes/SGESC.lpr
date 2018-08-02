@@ -7,11 +7,12 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, sdflaz, datetimectrls, uDATMOD, uCadastroPadrao, uPrincipal,
-  uClassUtil, uFinanceiroService, uAlunoService, uFormBase, uconsulta_aluno,
-  uRegistrarFrequencia, uAluno, uFrequenciaService, uLogin, uUsuarioService,
-  uUsuario, uConstantesSistema, uResgistroPagamento, uCadastrarTurma,
-  uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno, uFichaFinanceira;
+  Forms, sdflaz, datetimectrls, lazcontrols, uDATMOD, uCadastroPadrao,
+  uPrincipal, uClassUtil, uFinanceiroService, uAlunoService, uFormBase,
+  uconsulta_aluno, uRegistrarFrequencia, uAluno, uFrequenciaService, uLogin,
+  uUsuarioService, uUsuario, uConstantesSistema, uResgistroPagamento,
+  uCadastrarTurma, uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno,
+  uFichaFinanceira;
 
 {$R *.res}
 

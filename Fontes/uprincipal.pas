@@ -44,8 +44,6 @@ type
     procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
-
-//    procedure OnExcept({%H-}sender: TObject; e: Exception);
   private
 
   public
@@ -76,7 +74,6 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-//   Application.OnException := @OnExcept;
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -103,11 +100,8 @@ procedure TfrmPrincipal.MenuItem13Click(Sender: TObject);
 begin
   with TfrmFichaFinanceira.Create(Application) do
   try
-    sqlAluno.Open;
     ShowModal;
   finally
-    sqlAluno.Close;
-    sqlAlunoPagamentos.Close;
     Free;
   end;
 end;
@@ -116,11 +110,6 @@ procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
   TfrmConsultaAluno.abrirConsultaAluno([ccEditar]);
 end;
-
-{procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);
-begin
-  Application.MessageBox(PChar(e.Message), 'ERRO', MB_ICONERROR);
-end;}
 
 procedure TfrmPrincipal.MenuItem3Click(Sender: TObject);
 begin

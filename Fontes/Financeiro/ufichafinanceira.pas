@@ -5,41 +5,48 @@ unit uFichaFinanceira;
 interface
 
 uses
-  Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Buttons, StdCtrls, DBGrids, DbCtrls, uFormBase;
+  Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls,
+  Graphics, Dialogs, ExtCtrls, Buttons, StdCtrls, DBGrids, DbCtrls, EditBtn,
+  uFormBase, DateUtils;
 
 type
 
   { TfrmFichaFinanceira }
 
   TfrmFichaFinanceira = class(TfrmBase)
-    BitBtn1: TBitBtn;
+    dsFaturamento: TDataSource;
     DBGrid1: TDBGrid;
     dsALunos: TDataSource;
     dsAlunoPagamentos: TDataSource;
     dbGridAlunos: TDBGrid;
     dbGridAlunosPagamentos: TDBGrid;
+    editButtonFiltro: TEditButton;
     edtTotalAlunosAtivos: TEdit;
-    edtTotalAlunosAtivos1: TEdit;
+    edtTotalAlunosInadimplentes: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label6: TLabel;
+    lblFaturamento: TLabel;
+    Panel1: TPanel;
     pnlAluno: TPanel;
     pnlAlunoPagamentos: TPanel;
     pnlDadosGerais: TPanel;
     sqlAlunodia_vencimento: TLargeintField;
-    sqlAlunofk_turma_id: TLargeintField;
     sqlAlunoid: TLargeintField;
     sqlAlunonome: TStringField;
     sqlAlunoPagamentos: TSQLQuery;
     sqlAlunoPagamentosdescricao: TStringField;
+    sqlAlunoPagamentoshora_inicio: TStringField;
     sqlAlunoPagamentosmes_pagamento: TStringField;
     sqlAlunoPagamentosvalor: TFloatField;
     sqlAluno: TSQLQuery;
-    procedure BitBtn1Click(Sender: TObject);
-    procedure sqlAlunoAfterScroll(DataSet: TDataSet);
+    sqlFaturamento: TSQLQuery;
+    sqlFaturamentomes_pagamento: TStringField;
+    sqlFaturamentovalor: TFloatField;
+    procedure editButtonFiltroButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
 
   public
@@ -52,23 +59,43 @@ var
 implementation
 
 uses
- uDATMOD;
+ uAlunoService, uFinanceiroService;
 
 {$R *.lfm}
 
 { TfrmFichaFinanceira }
 
-procedure TfrmFichaFinanceira.BitBtn1Click(Sender: TObject);
+procedure TfrmFichaFinanceira.FormShow(Sender: TObject);
 begin
+  sqlAluno.Open;
   sqlAlunoPagamentos.Open;
-  pnlAlunoPagamentos.Show;
+  sqlFaturamento.Open;
+
+  lblFaturamento.Caption := Format(lblFaturamento.Caption, [YearOf(Today()).ToString()]);
+  edtTotalAlunosAtivos.Text := TAlunoService.totalAlunosAtivos().ToString();
+  edtTotalAlunosInadimplentes.Text := TFinanceiroService.totalAlunoInadimplente().ToString();
 end;
 
-procedure TfrmFichaFinanceira.sqlAlunoAfterScroll(DataSet: TDataSet);
+procedure TfrmFichaFinanceira.FormCreate(Sender: TObject);
 begin
-  pnlAlunoPagamentos.Hide;
-  if sqlAlunoPagamentos.Active then
-    sqlAlunoPagamentos.Close;
+  sqlFaturamento.Close;
+  sqlAlunoPagamentos.Close;
+  sqlAluno.Close;
+end;
+
+procedure TfrmFichaFinanceira.editButtonFiltroButtonClick(Sender: TObject);
+var
+  txt: string;
+begin
+  txt := editButtonFiltro.Text;
+  sqlAluno.Close;
+  if (txt.Trim.Length > 0) then
+    sqlAluno.ServerFilter := 'nome like ' + QuotedStr(txt.Trim + '%')
+  else
+    sqlAluno.ServerFilter := '';
+
+  sqlAluno.ServerFiltered:=(txt.Trim.Length > 0);
+  sqlAluno.Open;
 end;
 
 end.

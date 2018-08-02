@@ -37,6 +37,12 @@ type
 
     // Retorna a quantidade de turmas do aluno.
     class function obterTotalTurmas(idAluno: integer): integer;
+
+    // retorna os ids das turmas do aluno
+    class function obterIDsTurmas(idAluno: integer): string;
+
+    // retorna a quantidade de alunos ativos
+    class function totalAlunosAtivos(): integer;
 end;
 
 implementation
@@ -207,6 +213,49 @@ begin
   sql := TSQLQuery.Create(nil);
   sql.SQLConnection := DataModuleApp.MySQL57Connection;
   sql.SQL.Add('select count(*) from turma_aluno where fk_aluno_id = ' + idAluno.ToString);
+  try
+    sql.Open;
+    result := sql.Fields[0].AsInteger;
+  finally
+    sql.Close;
+    sql.Free;
+  end;
+end;
+
+// retorna os ids das turmas do aluno
+class function TAlunoService.obterIDsTurmas(idAluno: integer): string;
+var
+  sql: TSQLQuery;
+  listaIds: TStrings;
+begin
+  result := '';
+
+  sql := TSQLQuery.Create(nil);
+  listaIds := TStringList.Create;
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select fk_turma_id from turma_aluno where fk_aluno_id = ' + idAluno.ToString);
+  try
+    sql.Open;
+    while not sql.eof do
+    begin
+      listaIds.Add(sql.Fields[0].AsString);
+      sql.Next;
+    end;
+    result := listaIds.DelimitedText;
+  finally
+    listaIds.Free;
+    sql.Close;
+    sql.Free;
+  end;
+end;
+
+class function TAlunoService.totalAlunosAtivos(): integer;
+var
+  sql: TSQLQuery;
+begin
+  sql := TSQLQuery.Create(nil);
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select count(*) from aluno where data_inativacao is not null');
   try
     sql.Open;
     result := sql.Fields[0].AsInteger;

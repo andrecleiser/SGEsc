@@ -46,7 +46,8 @@ var
 implementation
 
 uses
-  uconsulta_aluno, uTurmaService, uFrequenciaService, uAlunoService;
+  uconsulta_aluno, uTurmaService, uFrequenciaService, uAlunoService,
+  uFinanceiroService;
 
 {$R *.lfm}
 
@@ -84,6 +85,9 @@ begin
     begin
       // Validar se o aluno está matriculado em alguma turma
       lblAlunoForaTurma.Visible := not TTurmaService.alunoAptoTurma(aluno.id, idTurma);
+
+      // Verifica se alluno está inadimplente
+      TFinanceiroService.alunoAdimplente(aluno, idTurma);
 
       atualizarDadosAluno;
     end;

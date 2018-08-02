@@ -8,7 +8,7 @@ object DataModuleApp: TDataModuleApp
   Width = 1310
   PPI = 120
   object MySQL57Connection: TMySQL57Connection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     DatabaseName = 'sgesc'
     KeepConnection = False
@@ -26,7 +26,7 @@ object DataModuleApp: TDataModuleApp
     top = 30
   end
   object sqlTransactionGeral: TSQLTransaction
-    Active = True
+    Active = False
     Action = caNone
     Database = MySQL57Connection
     left = 120
@@ -129,7 +129,6 @@ object DataModuleApp: TDataModuleApp
     end
   end
   object qryAlunoObj: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
