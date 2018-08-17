@@ -1,5 +1,4 @@
 inherited frmSelecionarTurmasAluno: TfrmSelecionarTurmasAluno
-  Left = 2464
   Height = 384
   Top = 241
   Width = 710

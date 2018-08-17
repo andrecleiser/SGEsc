@@ -1,5 +1,5 @@
 inherited frmRegistrarPagamento: TfrmRegistrarPagamento
-  Left = 2286
+  Left = 100
   Top = 100
   Width = 961
   ActiveControl = edtCodigoAluno
@@ -441,7 +441,6 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
     OnStateChange = dsPadraoStateChange
   end
   inherited sqlQueryPadrao: TSQLQuery[5]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'

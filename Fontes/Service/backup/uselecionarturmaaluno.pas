@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons, DBGrids, uFormBase;
+  Buttons, DBGrids, uFormBase, sqldb;
 
 type
 

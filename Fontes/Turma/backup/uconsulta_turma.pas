@@ -84,6 +84,7 @@ begin
   DataModuleApp.qryTurmaObj.Open;
 
   btnEditar.Enabled := not DataModuleApp.qryTurmaObj.IsEmpty;
+  btnExcluir.Enabled := not DataModuleApp.qryTurmaObj.IsEmpty;
 
   if DataModuleApp.qryTurmaObj.IsEmpty then
     raise Exception.Create('Não existem alunos relacionados à turma.');

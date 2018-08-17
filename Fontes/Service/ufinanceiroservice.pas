@@ -30,7 +30,7 @@ uses
 
 class function TFinanceiroService.alunoAdimplente(aluno: TAluno; idTurma: integer): boolean;
 begin
-  result := not TFinanceiroService.estaInadimplente(aluno.id, idTurma, aluno.dia_vencimento);
+  result := TFinanceiroService.estaInadimplente(aluno.id, idTurma, aluno.dia_vencimento);
   if result then
     aluno.adimplente := 'N'
   else
@@ -132,7 +132,7 @@ begin
     sql.DisableControls;
     while not sql.EOF do
     begin
-      if not TFinanceiroService
+      if TFinanceiroService
          .estaInadimplente(sql.Fields[0].AsInteger,
                            sql.Fields[1].AsInteger,
                            sql.Fields[2].AsInteger) then
@@ -153,7 +153,7 @@ var
 begin
   // Sem dia de vencimento será considerado inadimplente
 
-  // Corrigi aos meses 30 vencimento for 31 e fevereiro quando 28, 29, 30 ou 31.
+  // Corrige aos meses 30 vencimento for 31 e fevereiro quando 28, 29, 30 ou 31.
   if (dia_vencimento > DaysInMonth(Today())) then
     dia_vencimento := DaysInMonth(Today());
 
@@ -168,12 +168,14 @@ begin
   try
     sql.Open;
 
-    // Pagamento ncontrado no ano/mês antetior ao mês corrente.
-    result := (not sql.IsEmpty) and
-              (
-               (sql.Fields[1].AsInteger = YearOf( IncMonth(Today(), -1) )) and
-               (sql.Fields[0].AsInteger = MonthOf( IncMonth(Today(), -1) ))
-              );
+    // Pagamento encontrado no ano/mês antetior ao mês corrente.
+    result := (sql.IsEmpty) or
+              ( (not sql.IsEmpty) and
+                (not (
+                       (sql.Fields[1].AsInteger = YearOf( IncMonth(Today(), -1) )) and
+                       (sql.Fields[0].AsInteger >= MonthOf( IncMonth(Today(), -1) ))
+                     ))
+                 );
   finally
     sql.Close;
     sql.Free;
@@ -181,7 +183,7 @@ begin
 
   vencimento := EncodeDate(YearOf(Today()), MonthOf(Today()), dia_vencimento);
   // Pagamento no mês anterior e dia corrente menor do que o dia do vencimento do aluno
-  result := result and (DaysBetween(Today(), vencimento) >= 0);
+  result := result or ( result and (DaysBetween(Today(), vencimento) > 0));
 end;
 
 end.

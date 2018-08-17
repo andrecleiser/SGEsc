@@ -1,9 +1,9 @@
 object frmBase: TfrmBase
-  Left = 2650
+  Left = 2203
   Height = 762
-  Top = 148
+  Top = 67
   Width = 1609
-  BorderIcons = [biSystemMenu, biHelp]
+  BorderIcons = [biSystemMenu]
   Caption = 'Form base'
   ClientHeight = 762
   ClientWidth = 1609
