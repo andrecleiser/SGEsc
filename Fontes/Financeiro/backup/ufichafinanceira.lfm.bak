@@ -287,8 +287,8 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     end
     object dbGridAlunosPagamentos: TDBGrid
       Left = 1
-      Height = 600
-      Top = 29
+      Height = 548
+      Top = 81
       Width = 583
       Align = alClient
       AutoEdit = False
@@ -340,7 +340,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       Font.Name = 'Verdana'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       ParentColor = True
       ParentFont = False
       Scrollbars = ssAutoVertical
@@ -351,6 +351,62 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       TitleFont.Name = 'Verdana'
       TitleFont.Pitch = fpVariable
       TitleFont.Quality = fqDraft
+    end
+    object Panel2: TPanel
+      Left = 1
+      Height = 52
+      Top = 29
+      Width = 583
+      Align = alTop
+      ClientHeight = 52
+      ClientWidth = 583
+      TabOrder = 1
+      object Label5: TLabel
+        Left = 14
+        Height = 20
+        Top = 17
+        Width = 194
+        Caption = 'Mês aos pagamentos: '
+        ParentColor = False
+      end
+      object cbMes: TComboBox
+        Left = 210
+        Height = 28
+        Top = 11
+        Width = 211
+        ItemHeight = 20
+        ItemIndex = 0
+        Items.Strings = (
+          'Todos'
+          'Janeiro'
+          'Fevereiro'
+          'Março'
+          'Abril'
+          'Maio'
+          'Junho'
+          'Julho'
+          'Agosto'
+          'Setembro'
+          'Outrubro'
+          'Novembro'
+          'Dezembro'
+        )
+        Style = csDropDownList
+        TabOrder = 0
+        Text = 'Todos'
+      end
+      object Button1: TButton
+        Left = 427
+        Height = 28
+        Hint = 'Filtrar pagamentos pelo mês selecionado'
+        Top = 11
+        Width = 75
+        Caption = 'Filtrar'
+        OnClick = Button1Click
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+      end
     end
   end
   object dsALunos: TDataSource[4]
@@ -366,6 +422,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     top = 173
   end
   object sqlAlunoPagamentos: TSQLQuery[6]
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'valor'
@@ -389,6 +446,11 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         DataType = ftString
         Precision = -1
         Size = 27
+      end    
+      item
+        Name = 'mes'
+        DataType = ftLargeint
+        Precision = -1
       end>
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral
@@ -409,7 +471,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       '          when p.mes = 10 then ''outubro'''
       '          when p.mes = 11 then ''novembro'''
       '          when p.mes = 12 then ''dezembro'''
-      '       end mes_pagamento'
+      '       end mes_pagamento, p.mes'
       'from pagamento p'
       '  inner join turma t on (t.id = p.fk_turma_id)'
       'where p.fk_aluno_id = :id'
@@ -468,6 +530,15 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       Required = False
       OnGetText = mostrarHoraFormatada
       Size = 12
+    end
+    object sqlAlunoPagamentosmes: TLargeintField
+      FieldKind = fkData
+      FieldName = 'mes'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
     end
   end
   object sqlAluno: TSQLQuery[7]

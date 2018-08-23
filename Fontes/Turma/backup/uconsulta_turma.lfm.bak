@@ -177,6 +177,7 @@ inherited frmConsultaTurma: TfrmConsultaTurma
       ShowHint = True
       Spacing = 20
       TabOrder = 2
+      Visible = False
     end
   end
   object Panel1: TPanel[1]

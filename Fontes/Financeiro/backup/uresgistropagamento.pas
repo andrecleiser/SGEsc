@@ -159,6 +159,9 @@ begin
   sqlQueryPadraofk_aluno_id.AsInteger := aluno.id;
   sqlQueryPadraovalor.AsFloat := DataModuleApp.qryLookUpTurmavalor_sugerido.AsFloat;
   sqlQueryPadraodata_pagamento.AsDateTime := Today();
+  dblTurma.ItemIndex :=0 ;
+  sqlQueryPadraomes.AsInteger := MonthOf(Today());
+  sqlQueryPadraoano.AsInteger := YearOf(Today());
 end;
 
 procedure TfrmRegistrarPagamento.sqlQueryPadraoAfterPost(DataSet: TDataSet);

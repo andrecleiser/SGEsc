@@ -76,7 +76,7 @@ end;
 
 procedure TfrmConsultaTurma.btnConsultarClick(Sender: TObject);
 begin
-  if dblTurma.KeyValue = -1 then
+  if (dblTurma.KeyValue = -1) or (dblTurma.Text.Trim = '') then
     raise Exception.Create('Informe a turma!');
 
   DataModuleApp.qryTurmaObj.Close;

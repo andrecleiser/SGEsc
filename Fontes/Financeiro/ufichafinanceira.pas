@@ -14,6 +14,8 @@ type
   { TfrmFichaFinanceira }
 
   TfrmFichaFinanceira = class(TfrmBase)
+    Button1: TButton;
+    cbMes: TComboBox;
     dsFaturamento: TDataSource;
     DBGrid1: TDBGrid;
     dsALunos: TDataSource;
@@ -27,8 +29,10 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     lblFaturamento: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
     pnlAluno: TPanel;
     pnlAlunoPagamentos: TPanel;
     pnlDadosGerais: TPanel;
@@ -44,6 +48,7 @@ type
     sqlFaturamento: TSQLQuery;
     sqlFaturamentomes_pagamento: TStringField;
     sqlFaturamentovalor: TFloatField;
+    procedure Button1Click(Sender: TObject);
     procedure editButtonFiltroButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -98,5 +103,17 @@ begin
   sqlAluno.Open;
 end;
 
-end.
+procedure TfrmFichaFinanceira.Button1Click(Sender: TObject);
+begin
+  sqlAlunoPagamentos.Close;
+  sqlAlunoPagamentos.ServerFiltered := (cbMes.ItemIndex > 0);
 
+  if cbMes.ItemIndex > 0 then
+    sqlAlunoPagamentos.ServerFilter := 'mes = ' + cbMes.ItemIndex.ToString
+  else
+    sqlAlunoPagamentos.ServerFilter := '';
+
+  sqlAlunoPagamentos.Open;
+end;
+
+end.
