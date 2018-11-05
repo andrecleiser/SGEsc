@@ -11,7 +11,6 @@ type
   TFinanceiroService = class
 
   private
-    class function estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer): boolean;
 
   public
     class procedure validarAluno(aluno: TAluno; var idTurmas: string);
@@ -19,7 +18,7 @@ type
 
     // retorna a quantidade de alunos inadimplentes
     class function totalAlunoInadimplente(): integer;
-
+    class function estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer): boolean;
     class function alunoAdimplente(aluno: TAluno; idTurma: integer): boolean;
   end;
 

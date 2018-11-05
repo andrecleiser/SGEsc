@@ -36,12 +36,15 @@ type
     pnlAluno: TPanel;
     pnlAlunoPagamentos: TPanel;
     pnlDadosGerais: TPanel;
+    rgAdimplente: TRadioGroup;
+    sqlAlunoadimplente: TBooleanField;
     sqlAlunodia_vencimento: TLargeintField;
     sqlAlunoid: TLargeintField;
     sqlAlunonome: TStringField;
     sqlAlunoPagamentos: TSQLQuery;
     sqlAlunoPagamentosdescricao: TStringField;
     sqlAlunoPagamentoshora_inicio: TStringField;
+    sqlAlunoPagamentosmes: TLargeintField;
     sqlAlunoPagamentosmes_pagamento: TStringField;
     sqlAlunoPagamentosvalor: TFloatField;
     sqlAluno: TSQLQuery;
@@ -52,6 +55,8 @@ type
     procedure editButtonFiltroButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure rgAdimplenteClick(Sender: TObject);
+    procedure sqlAlunoCalcFields(DataSet: TDataSet);
   private
 
   public
@@ -79,6 +84,35 @@ begin
   lblFaturamento.Caption := Format(lblFaturamento.Caption, [YearOf(Today()).ToString()]);
   edtTotalAlunosAtivos.Text := TAlunoService.totalAlunosAtivos().ToString();
   edtTotalAlunosInadimplentes.Text := TFinanceiroService.totalAlunoInadimplente().ToString();
+end;
+
+procedure TfrmFichaFinanceira.rgAdimplenteClick(Sender: TObject);
+begin
+  sqlAluno.Filtered := (rgAdimplente.ItemIndex > 0);
+  case rgAdimplente.ItemIndex of
+    1: sqlAluno.Filter := 'not adimplente';
+    2: sqlAluno.Filter := 'adimplente';
+  end;
+end;
+
+procedure TfrmFichaFinanceira.sqlAlunoCalcFields(DataSet: TDataSet);
+var
+  listaIDTurmas: TStrings;
+  i: integer;
+begin
+  listaIDTurmas := TStringList.Create;
+  try
+    listaIDTurmas.DelimitedText := TAlunoService.obterIDsTurmas(sqlAlunoid.AsInteger);
+
+    for i := 0 to listaIDTurmas.Count - 1 do
+    begin
+      sqlAlunoadimplente.AsBoolean := not TFinanceiroService.estaInadimplente(sqlAlunoid.AsInteger, listaIDTurmas[i].ToInteger, sqlAlunodia_vencimento.AsInteger);
+      if not sqlAlunoadimplente.AsBoolean then
+        Break;
+    end;
+  finally
+    listaIDTurmas.Free;
+  end;
 end;
 
 procedure TfrmFichaFinanceira.FormCreate(Sender: TObject);
@@ -117,4 +151,3 @@ begin
 end;
 
 end.
-

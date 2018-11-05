@@ -11,7 +11,7 @@ type
   TFinanceiroService = class
 
   private
-    class function estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer): boolean;
+    class function estaInadimplente(idAluno: integer; dia_vencimento: integer; idTurma: integer = -1): boolean;
 
   public
     class procedure validarAluno(aluno: TAluno; var idTurmas: string);
@@ -30,7 +30,7 @@ uses
 
 class function TFinanceiroService.alunoAdimplente(aluno: TAluno; idTurma: integer): boolean;
 begin
-  result := TFinanceiroService.estaInadimplente(aluno.id, idTurma, aluno.dia_vencimento);
+  result := TFinanceiroService.estaInadimplente(aluno.id, aluno.dia_vencimento, idTurma);
   if result then
     aluno.adimplente := 'N'
   else
@@ -134,8 +134,8 @@ begin
     begin
       if TFinanceiroService
          .estaInadimplente(sql.Fields[0].AsInteger,
-                           sql.Fields[1].AsInteger,
-                           sql.Fields[2].AsInteger) then
+                           sql.Fields[2].AsInteger,
+                           sql.Fields[1].AsInteger) then
         Inc(result);
       sql.Next;
     end;
@@ -146,7 +146,7 @@ begin
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//
-class function TFinanceiroService.estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer): boolean;
+class function TFinanceiroService.estaInadimplente(idAluno: integer; dia_vencimento: integer; idTurma: integer = -1): boolean;
 var
   sql: TSQLQuery;
   vencimento: TDateTime;
@@ -173,7 +173,7 @@ begin
               ( (not sql.IsEmpty) and
                 (not (
                        (sql.Fields[1].AsInteger = YearOf( IncMonth(Today(), -1) )) and
-                       (sql.Fields[0].AsInteger = MonthOf( IncMonth(Today(), -1) ))
+                       (sql.Fields[0].AsInteger >= MonthOf( IncMonth(Today(), -1) ))
                      ))
                  );
   finally

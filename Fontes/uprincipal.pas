@@ -32,7 +32,6 @@ type
     MenuItem3: TMenuItem;
     StatusBar: TStatusBar;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
@@ -70,10 +69,6 @@ begin
      CloseAction := caNone
    else
      Application.Terminate;
-end;
-
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
-begin
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -137,13 +132,6 @@ end;
 procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
 begin
   Application.MessageBox('Funcionalidade a ser implementada.', 'INFORMAÇÃO');
-  {
-  with TfrmCadastroTurma.Create(Application) do
-  try
-    ShowModal;
-  finally
-    Free;
-  end;}
 end;
 
 procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);

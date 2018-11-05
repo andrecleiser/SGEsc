@@ -8,7 +8,7 @@ object DataModuleApp: TDataModuleApp
   Width = 1310
   PPI = 120
   object MySQL57Connection: TMySQL57Connection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'sgesc'
     KeepConnection = False

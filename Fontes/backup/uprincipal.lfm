@@ -261,6 +261,7 @@ object frmPrincipal: TfrmPrincipal
       end
       object MenuItem13: TMenuItem
         Caption = 'Ficha Financeira'
+        OnClick = MenuItem13Click
       end
     end
     object MenuItem4: TMenuItem

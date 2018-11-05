@@ -1,6 +1,6 @@
 inherited frmFichaFinanceira: TfrmFichaFinanceira
-  Left = 197
-  Top = 146
+  Left = 2198
+  Top = 238
   Width = 1343
   Caption = 'Ficha Financeira'
   ClientWidth = 1343
@@ -145,13 +145,17 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       Columns = <      
         item
           Title.Caption = 'Aluno'
-          Width = 610
+          Width = 510
           FieldName = 'nome'
         end      
         item
           Title.Caption = 'Dia do Venc.'
           Width = 100
           FieldName = 'dia_vencimento'
+        end      
+        item
+          Title.Caption = 'adimplente'
+          FieldName = 'adimplente'
         end>
       DataSource = dsALunos
       Font.CharSet = ANSI_CHARSET
@@ -185,7 +189,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         Height = 28
         Hint = 'Filtrar alunos'
         Top = 11
-        Width = 441
+        Width = 327
         ButtonWidth = 29
         CharCase = ecUppercase
         FocusOnButtonClick = True
@@ -254,6 +258,37 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         PasswordChar = #0
         ShowHint = True
         TabOrder = 0
+      end
+      object rgAdimplente: TRadioGroup
+        Left = 346
+        Height = 42
+        Top = 1
+        Width = 403
+        AutoFill = True
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 3
+        ClientHeight = 21
+        ClientWidth = 399
+        Columns = 3
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Name = 'Verdana'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ItemIndex = 0
+        Items.Strings = (
+          'Todos'
+          'Adimplentes'
+          'Inadimplentes'
+        )
+        OnClick = rgAdimplenteClick
+        ParentFont = False
+        TabOrder = 1
       end
     end
   end
@@ -422,7 +457,6 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     top = 173
   end
   object sqlAlunoPagamentos: TSQLQuery[6]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'valor'
@@ -542,6 +576,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     end
   end
   object sqlAluno: TSQLQuery[7]
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -558,12 +593,9 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         Name = 'dia_vencimento'
         DataType = ftLargeint
         Precision = -1
-      end    
-      item
-        Name = 'fk_turma_id'
-        DataType = ftLargeint
-        Precision = -1
       end>
+    AutoCalcFields = False
+    OnCalcFields = sqlAlunoCalcFields
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
@@ -605,6 +637,16 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+    end
+    object sqlAlunoadimplente: TBooleanField
+      FieldKind = fkCalculated
+      FieldName = 'adimplente'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
     end
   end
   object dsFaturamento: TDataSource[8]

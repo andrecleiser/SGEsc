@@ -159,7 +159,7 @@ begin
   sqlQueryPadraofk_aluno_id.AsInteger := aluno.id;
   sqlQueryPadraovalor.AsFloat := DataModuleApp.qryLookUpTurmavalor_sugerido.AsFloat;
   sqlQueryPadraodata_pagamento.AsDateTime := Today();
-  dblTurma.ItemIndex :=0 ;
+  sqlQueryPadraofk_turma_id.AsInteger := dblTurma.ListSource.DataSet.FieldByName('id').AsInteger;
   sqlQueryPadraomes.AsInteger := MonthOf(Today());
   sqlQueryPadraoano.AsInteger := YearOf(Today());
 end;

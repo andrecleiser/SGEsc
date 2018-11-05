@@ -32,7 +32,6 @@ type
     MenuItem3: TMenuItem;
     StatusBar: TStatusBar;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
@@ -44,8 +43,6 @@ type
     procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
-
-//    procedure OnExcept({%H-}sender: TObject; e: Exception);
   private
 
   public
@@ -72,11 +69,6 @@ begin
      CloseAction := caNone
    else
      Application.Terminate;
-end;
-
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
-begin
-//   Application.OnException := @OnExcept;
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -113,11 +105,6 @@ procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
   TfrmConsultaAluno.abrirConsultaAluno([ccEditar]);
 end;
-
-{procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);
-begin
-  Application.MessageBox(PChar(e.Message), 'ERRO', MB_ICONERROR);
-end;}
 
 procedure TfrmPrincipal.MenuItem3Click(Sender: TObject);
 begin
