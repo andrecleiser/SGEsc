@@ -30,3 +30,15 @@ Implementação do ciclo-3:
 - Consulta de aluno - mostrar as turmas a que está relacionado
 - Cadastro de aluno - incluir o aluno selecionado em uma turma
 - Frequência - Acesso do aluno - validar aluno à participação na aula - inativo
+
+Implementação do ciclo-4:
+
+- Frequência - Acesso do aluno - validar aluno à participação na aula - idadimplente
+- Contas a receber - registrar lancamento - construir modelo de dados lógico e físico
+- Contas a receber - registrar lancamento - construir tela
+- Contas a receber - registrar lancamento - implementar funcionalidade
+- Contas a receber - Identificar a situação financeira do aluno
+- Cadastro de aluno - incluir campo de vencimento da mensalidade
+- Frequência - Registro - selecionar turma ao registro
+- Contas a receber - ficha financeira - construir tela
+- Contas a receber - ficha financeira - implementar funcionalidade
