@@ -16,6 +16,9 @@ type
     mainMenu: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
+    MenuItem11: TMenuItem;
+    MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -29,9 +32,10 @@ type
     MenuItem3: TMenuItem;
     StatusBar: TStatusBar;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
+    procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
@@ -39,8 +43,6 @@ type
     procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
-
-//    procedure OnExcept({%H-}sender: TObject; e: Exception);
   private
 
   public
@@ -54,7 +56,8 @@ implementation
 
 uses
     uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uLogin,
-    uconsulta_turma, uconsulta_aluno, uCadastrarTurma, uTurma_Aluno;
+    uconsulta_turma, uconsulta_aluno, {uCadastrarTurma, }uTurma_Aluno,
+    uResgistroPagamento, uFichaFinanceira;
 
 {$R *.lfm}
 
@@ -68,11 +71,6 @@ begin
      Application.Terminate;
 end;
 
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
-begin
-//   Application.OnException := @OnExcept;
-end;
-
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
   StatusBar.Panels[0].Text:=' Usuário logado: ' + usuario.nome;
@@ -83,15 +81,30 @@ begin
   TfrmConsultaTurma.abrirConsultaTurma();
 end;
 
-procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
+procedure TfrmPrincipal.MenuItem12Click(Sender: TObject);
 begin
-  TfrmConsultaAluno.abrirConsultaAluno(ccEditar);
+  with TfrmRegistrarPagamento.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;
 end;
 
-{procedure TfrmPrincipal.onExcept(sender: TObject; e: Exception);
+procedure TfrmPrincipal.MenuItem13Click(Sender: TObject);
 begin
-  Application.MessageBox(PChar(e.Message), 'ERRO', MB_ICONERROR);
-end;}
+  with TfrmFichaFinanceira.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
+begin
+  TfrmConsultaAluno.abrirConsultaAluno([ccEditar]);
+end;
 
 procedure TfrmPrincipal.MenuItem3Click(Sender: TObject);
 begin
@@ -119,13 +132,6 @@ end;
 procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
 begin
   Application.MessageBox('Funcionalidade a ser implementada.', 'INFORMAÇÃO');
-  {
-  with TfrmCadastroTurma.Create(Application) do
-  try
-    ShowModal;
-  finally
-    Free;
-  end;}
 end;
 
 procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);

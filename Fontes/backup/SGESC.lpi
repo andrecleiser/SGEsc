@@ -22,24 +22,27 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="6">
       <Item1>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="LazControls"/>
       </Item1>
       <Item2>
-        <PackageName Value="TurboPowerIPro"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item2>
       <Item3>
-        <PackageName Value="SDFLaz"/>
+        <PackageName Value="TurboPowerIPro"/>
       </Item3>
       <Item4>
-        <PackageName Value="FCL"/>
+        <PackageName Value="SDFLaz"/>
       </Item4>
       <Item5>
-        <PackageName Value="LCL"/>
+        <PackageName Value="FCL"/>
       </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
     </RequiredPackages>
-    <Units Count="23">
+    <Units Count="25">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -188,6 +191,21 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTurma"/>
       </Unit22>
+      <Unit23>
+        <Filename Value="Service\uselecionarturmaaluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSelecionarTurmasAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmFichaFinanceira"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFichaFinanceira"/>
+      </Unit24>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -199,7 +217,7 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <OtherUnitFiles Value="Cadastros;Repositorio;Repositorio\classes;Service;Recursos;Frequencia;Model;Financeiro;Turma;Aluno"/>
-      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\ciclo-2\dcu"/>
+      <UnitOutputDirectory Value="C:\Cleiser\Projetos\SGEsc\dcu"/>
     </SearchPaths>
     <CodeGeneration>
       <SmartLinkUnit Value="True"/>

@@ -25,7 +25,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
   inherited pnlNav: TPanel
     Width = 659
     ClientWidth = 659
-    inherited dbNavAlunos: TDBNavigator
+    inherited dbNav: TDBNavigator
       Width = 657
       ClientHeight = 41
       ClientWidth = 653

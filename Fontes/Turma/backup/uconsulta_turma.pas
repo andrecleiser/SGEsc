@@ -15,6 +15,7 @@ type
   TfrmConsultaTurma = class(TfrmBase)
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
+    btnExcluir: TBitBtn;
     DBGrid1: TDBGrid;
     dblTurma: TDBLookupComboBox;
     dsTurma_Aluno: TDataSource;
@@ -24,6 +25,7 @@ type
     StaticText1: TStaticText;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
@@ -38,7 +40,7 @@ var
 implementation
 
 uses
-  uDATMOD, uTurma_Aluno;
+  uDATMOD, uTurma_Aluno, uTurmaService;
 
 {$R *.lfm}
 
@@ -74,7 +76,7 @@ end;
 
 procedure TfrmConsultaTurma.btnConsultarClick(Sender: TObject);
 begin
-  if dblTurma.KeyValue = -1 then
+  if (dblTurma.KeyValue = -1) or (dblTurma.Text.Trim = '') then
     raise Exception.Create('Informe a turma!');
 
   DataModuleApp.qryTurmaObj.Close;
@@ -82,6 +84,7 @@ begin
   DataModuleApp.qryTurmaObj.Open;
 
   btnEditar.Enabled := not DataModuleApp.qryTurmaObj.IsEmpty;
+  btnExcluir.Enabled := not DataModuleApp.qryTurmaObj.IsEmpty;
 
   if DataModuleApp.qryTurmaObj.IsEmpty then
     raise Exception.Create('Não existem alunos relacionados à turma.');
@@ -98,6 +101,12 @@ begin
     sqlQueryPadrao.ServerFilter := '';
     Free;
   end;
+end;
+
+procedure TfrmConsultaTurma.btnExcluirClick(Sender: TObject);
+begin
+  with dsTurma_Aluno.DataSet do
+    TTurmaService.excluirAluno(FieldByName('fk_aluno_id').AsInteger, FieldByName('fk_turma_id').AsInteger);
 end;
 
 end.

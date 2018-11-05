@@ -1,0 +1,253 @@
+inherited frmCadastroUsuario: TfrmCadastroUsuario
+  Left = 100
+  Height = 270
+  Top = 278
+  Width = 819
+  Caption = 'Cadastro de usuário'
+  ClientHeight = 270
+  ClientWidth = 819
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  inherited pnlBottom: TPanel
+    Top = 214
+    Width = 819
+    ClientWidth = 819
+    inherited pnlFrmBaseSair: TPanel
+      Left = 605
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+    object DBEdit4: TDBEdit[1]
+      Left = 674
+      Height = 28
+      Top = 137
+      Width = 164
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      MaxLength = 0
+      TabOrder = 1
+    end
+  end
+  inherited pnlNav: TPanel
+    Width = 819
+    ClientWidth = 819
+    inherited dbNav: TDBNavigator
+      Width = 817
+      ClientHeight = 41
+      ClientWidth = 813
+    end
+  end
+  object DBEdit1: TDBEdit[2]
+    Left = 17
+    Height = 28
+    Top = 78
+    Width = 157
+    DataField = 'login'
+    DataSource = dsPadrao
+    CharCase = ecUppercase
+    MaxLength = 0
+    TabOrder = 2
+  end
+  object Label1: TLabel[3]
+    Left = 17
+    Height = 20
+    Top = 55
+    Width = 46
+    Caption = 'Login'
+    ParentColor = False
+  end
+  object DBCheckBox1: TDBCheckBox[4]
+    Left = 731
+    Height = 29
+    Top = 136
+    Width = 71
+    Caption = 'Ativo'
+    DataField = 'ativo'
+    DataSource = dsPadrao
+    TabOrder = 3
+    ValueChecked = 'S'
+    ValueUnchecked = 'N'
+  end
+  object Label2: TLabel[5]
+    Left = 189
+    Height = 20
+    Top = 55
+    Width = 50
+    Caption = 'Nome'
+    ParentColor = False
+  end
+  object DBEdit2: TDBEdit[6]
+    Left = 189
+    Height = 28
+    Top = 78
+    Width = 613
+    DataField = 'nome'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 4
+  end
+  object DBLookupComboBox1: TDBLookupComboBox[7]
+    Left = 16
+    Height = 28
+    Top = 137
+    Width = 518
+    DataField = 'fk_perfil_usuario_id'
+    DataSource = dsPadrao
+    KeyField = 'id'
+    ListField = 'nome'
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 5
+  end
+  object Label3: TLabel[8]
+    Left = 17
+    Height = 20
+    Top = 114
+    Width = 43
+    Caption = 'Perfil'
+    ParentColor = False
+  end
+  object Label4: TLabel[9]
+    Left = 549
+    Height = 20
+    Top = 114
+    Width = 54
+    Caption = 'Senha'
+    ParentColor = False
+  end
+  object dbeSenha: TDBEdit[10]
+    Left = 549
+    Height = 28
+    Top = 136
+    Width = 174
+    DataField = 'senha'
+    DataSource = dsPadrao
+    CharCase = ecUppercase
+    MaxLength = 0
+    PasswordChar = '*'
+    TabOrder = 6
+  end
+  inherited dsPadrao: TDataSource[11]
+    top = 4
+  end
+  inherited sqlQueryPadrao: TSQLQuery[12]
+    FieldDefs = <    
+      item
+        Name = 'id'
+        Attributes = [faHiddenCol]
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'login'
+        DataType = ftString
+        Precision = -1
+        Size = 45
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'fk_perfil_usuario_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'senha'
+        DataType = ftString
+        Precision = -1
+        Size = 150
+      end    
+      item
+        Name = 'ativo'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    AfterEdit = sqlQueryPadraoAfterEdit
+    AfterInsert = sqlQueryPadraoAfterInsert
+    AfterPost = sqlQueryPadraoAfterPost
+    BeforePost = sqlQueryPadraoBeforePost
+    SQL.Strings = (
+      'select *'
+      'from usuario'
+      'order by nome'
+    )
+    InsertSQL.Strings = (
+      ''
+    )
+    UpdateSQL.Strings = (
+      ''
+    )
+    DeleteSQL.Strings = (
+      'delete from usuario where id = :OLD_id'
+    )
+    top = 4
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraologin: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'login'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 45
+    end
+    object sqlQueryPadraonome: TStringField[2]
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 210
+    end
+    object sqlQueryPadraofk_perfil_usuario_id: TLargeintField[3]
+      FieldKind = fkData
+      FieldName = 'fk_perfil_usuario_id'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlQueryPadraosenha: TStringField[4]
+      FieldKind = fkData
+      FieldName = 'senha'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = True
+      Size = 150
+    end
+    object sqlQueryPadraoativo: TStringField[5]
+      FieldKind = fkData
+      FieldName = 'ativo'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+  end
+end

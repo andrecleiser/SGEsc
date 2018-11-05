@@ -21,19 +21,34 @@ type
     class procedure validarTurmaAluno(dataSet: TDataSet);
 
     // Verifica se aluno está dentro do horário em uma das turmas em que está matriculado
-    class procedure validarHorarioAluno(idAluno: integer);
+    // idTurma: retorna código da turma selecionada.
+    class function alunoAptoTurma(idAluno: integer; var idTurma: integer): boolean;
+
+    // Exclue o aluno da turma
+    class procedure excluirAluno(idAluno: integer; idTurma: integer);
 end;
 
 implementation
 
 uses
-  uDATMOD;
+  uDATMOD, uClassUtil, uselecionarturmaaluno;
 
 //******************** MÉTODOS PÚBLICOS ********************//
 // retorna a quantidade de alunos da turma.
 class function TTurmaService.obterTotalAlunos(idTurma: integer): integer;
+var
+  sql: TSQLQuery;
 begin
-  result := 0;
+  sql := TSQLQuery.Create(nil);
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select count(*) from turma_aluno where fk_turma_id = ' + idTurma.ToString);
+  try
+    sql.Open;
+    result := sql.Fields[0].AsInteger;
+  finally
+    sql.Close;
+    sql.Free;
+  end;
 end;
 
 // Aplica as regras de validação referentes à inclusão da turma.
@@ -122,60 +137,58 @@ begin
 end;
 
 // Verifica se aluno está dentro do horário em uma das turmas em que está matriculado
-class procedure TTurmaService.validarHorarioAluno(idAluno: integer);
+class function TTurmaService.alunoAptoTurma(idAluno: integer; var idTurma: integer): boolean;
 var
   sqlQueryTurmaAluno: TSQLQuery;
   horaInicio,
   horaFim: TTime;
-  // Identifica que o aluno está vinculdao a uma turma com restrição de horário. True -> acesso dentro do horário | False -> sem acesso porque não está dentro.
-  alunoVinculadoComRestricao,
- // Identifica que o aluno está vinculdao a uma turma sem restrição de horário
-  alunoVinculadoSemRestricao: Boolean;
-
 begin
-  alunoVinculadoSemRestricao := false;
-  alunoVinculadoComRestricao := false;
+  result := true;
+
+  idTurma := getIdTurma(idAluno);
+
+  if idTurma = -1 then
+  begin
+    result := false;
+    raise Exception.Create('O aluno não está matriculado em nenhuma turma!');
+  end;
 
   sqlQueryTurmaAluno := TSQLQuery.Create(nil);
   sqlQueryTurmaAluno.SQLConnection := DataModuleApp.MySQL57Connection;
-  sqlQueryTurmaAluno.SQL.Add('select t.controlar_horario, t.hora_inicio, t.hora_fim');
+  sqlQueryTurmaAluno.SQL.Add('select t.id, t.controlar_horario, t.hora_inicio, t.hora_fim');
   sqlQueryTurmaAluno.SQL.Add('from   turma t');
-  sqlQueryTurmaAluno.SQL.Add('       inner join turma_aluno ta on (t.id = ta.fk_turma_id and ta.fk_aluno_id = ' + idAluno.ToString + ')');
+  sqlQueryTurmaAluno.SQL.Add('       inner join turma_aluno ta on (t.id = ta.fk_turma_id)');
+  sqlQueryTurmaAluno.SQL.Add('where  ta.fk_aluno_id = ' + idAluno.ToString + ' and t.id = ' + idTurma.ToString);
   sqlQueryTurmaAluno.Open;
 
-  if sqlQueryTurmaAluno.IsEmpty then
-    raise Exception.Create('O aluno não está matriculado em nenhuma turma!');
-
-  while not sqlQueryTurmaAluno.EOF do
+  // Verifica se a turma tem controle de horário e pega os horários.
+  if (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') then
   begin
-    // Veriica se o aluno está dentro do horário de alguma turma a que está vinvulado.
-    if (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') then
-    begin
-      horaInicio := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_inicio').AsString));
-      horaFim    := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_fim').AsString));
-
-      if ((Time >= horaInicio) and (Time <= horaFim)) then
-      begin
-        alunoVinculadoComRestricao := true;
-        Break;
-      end;
-    end
-    // Uma vez apresnetada matrícula em um curso sem restrição de horário, esta propriedade não será mais modificada.
-    else
-      alunoVinculadoSemRestricao := true;
-
-    sqlQueryTurmaAluno.Next;
+    horaInicio := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_inicio').AsString));
+    horaFim    := StrToTime(FormatMaskText('00:00;1', sqlQueryTurmaAluno.FieldByName('hora_fim').AsString));
   end;
+            // Turma sem controle de horário
+  Result := (sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'N') or
+            // Turma com controle de horário
+            ((sqlQueryTurmaAluno.FieldByName('controlar_horario').AsString = 'S') and ((Time >= horaInicio) and (Time <= horaFim)));
+  if not Result  then
+    Application.MessageBox('Aluno não autorizado a frequentar a turma!', 'AVISO', MB_ICONWARNING);
+end;
 
-  // Situação 1: Aluno cadastrado em uma turma sem restrição e outra(s) com restrição, mas não autorizado.
-  if ((alunoVinculadoSemRestricao) and (sqlQueryTurmaAluno.RecordCount > 1)) and (not alunoVinculadoComRestricao) then
-    if Application.MessageBox('O aluno está registrando frequência em uma turma sem restrição de horário?', 'Validação', MB_ICONQUESTION + MB_YESNO) = IDNO then
-      raise Exception.Create('Aluno não autorizado a frequentar a turma!');
+// Exclue o aluno da turma
+class procedure TTurmaService.excluirAluno(idAluno: integer; idTurma: integer);
+begin
+  if Application.MessageBox('O aluno selecionado será excluído da turma. Deseja continuar?', 'Exclusão', MB_ICONQUESTION + MB_YESNO) = IDNO then
+    raise Exception.Create('Exclusão do aluno cancelada.');
 
-  // Situação 2: Aluno cadastrado em uma turma sem restrição apenas
-  // Situação 3: Aluno cadastrado em uma turma com restrição apenas
-  if (not alunoVinculadoSemRestricao) and (not alunoVinculadoComRestricao) then
-      raise Exception.Create('Aluno não autorizado a frequentar a turma!');
+  try
+    DataModuleApp.MySQL57Connection.ExecuteDirect('delete from turma_aluno where fk_aluno_id = ' + idAluno.toString + ' and fk_turma_id = ' + idTurma.ToString);
+    DataModuleApp.sqlTransactionGeral.CommitRetaining;
+    Application.MessageBox('Aluno excluído da turma com sucesso.', 'SUCESSO', MB_ICONINFORMATION);
+  except
+    on e: Exception do
+      Application.MessageBox(PChar(TUtil.mensagemErro(e) + '.'), 'ERRO', MB_ICONERROR);
+  end;
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//

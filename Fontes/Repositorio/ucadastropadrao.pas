@@ -14,7 +14,7 @@ type
 
   TfrmCadastroPadrao = class(TfrmBase)
     dsPadrao: TDataSource;
-    dbNavAlunos: TDBNavigator;
+    dbNav: TDBNavigator;
     pnlNav: TPanel;
     sqlQueryPadrao: TSQLQuery;
     procedure btnSairClick(Sender: TObject);
@@ -29,6 +29,7 @@ type
     procedure sqlQueryPadraoUpdateError(Sender: TObject;
       {%H-}DataSet: TCustomBufDataset; E: EUpdateError; UpdateKind: TUpdateKind;
       var Response: TResolverResponse);
+
   private
     fTabela: String;
     fcampoChavePrimaria: String;

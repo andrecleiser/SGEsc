@@ -6,8 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons, StdCtrls, MaskEdit, uFormBase, uAluno, uFrequenciaService, LCLType,
-  sqldb, uAlunoService;
+  Buttons, StdCtrls, MaskEdit, uFormBase, uAluno, LCLType, sqldb;
 
 type
 
@@ -19,6 +18,7 @@ type
     btnConsultarAluno: TBitBtn;
     edtCodigoAluno: TEdit;
     Label1: TLabel;
+    lblAlunoForaTurma: TLabel;
     lblNomeAlunoFundo: TLabel;
     lblNomeAlunoFrente: TLabel;
     Panel1: TPanel;
@@ -27,12 +27,15 @@ type
     procedure btnConsultarAlunoClick(Sender: TObject);
     procedure btnRegistrarFrequenciaClick(Sender: TObject);
     procedure edtCodigoAlunoEnter(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     aluno: TAluno;
+    idTurma: integer;
 
     procedure validarCampoVazio;
     procedure atualizarDadosAluno;
     procedure limparAluno;
+    procedure mostrarDadosAluno(mostrar: boolean);
   public
 
   end;
@@ -43,7 +46,8 @@ var
 implementation
 
 uses
-  uconsulta_aluno, uTurmaService;
+  uconsulta_aluno, uTurmaService, uFrequenciaService, uAlunoService,
+  uFinanceiroService;
 
 {$R *.lfm}
 
@@ -51,15 +55,19 @@ uses
 
 procedure TfrmRegistrarFrequencia.btnRegistrarFrequenciaClick(Sender: TObject);
 begin
-  TFrequenciaService.registrarFrequencia(aluno.id);
+  TFrequenciaService.registrarFrequencia(aluno.id, idTurma);
   limparAluno;
 end;
 
 procedure TfrmRegistrarFrequencia.edtCodigoAlunoEnter(Sender: TObject);
 begin
-  lblNomeAlunoFrente.Visible:=false;
-  lblNomeAlunoFundo.Visible:=false;
-  btnRegistrarFrequencia.Enabled:=false;
+  lblAlunoForaTurma.Visible := false;
+  mostrarDadosAluno(false);
+end;
+
+procedure TfrmRegistrarFrequencia.FormDestroy(Sender: TObject);
+begin
+  if Assigned(aluno) then aluno.Free;
 end;
 
 procedure TfrmRegistrarFrequencia.btnConsultarAlunoClick(Sender: TObject);
@@ -73,11 +81,16 @@ begin
   try
     aluno := TAlunoService.obterAluno(codigoAluno.ToInteger, [saAtivo]);
 
-    // Validar se o aluno está matriculado em alguma turma
-    TTurmaService.validarHorarioAluno(aluno.id);
-
     if Assigned(aluno) then
+    begin
+      // Validar se o aluno está matriculado em alguma turma
+      lblAlunoForaTurma.Visible := not TTurmaService.alunoAptoTurma(aluno.id, idTurma);
+
+      // Verifica se alluno está inadimplente
+      TFinanceiroService.alunoAdimplente(aluno, idTurma);
+
       atualizarDadosAluno;
+    end;
   except
     edtCodigoAluno.SetFocus;
     raise;
@@ -88,7 +101,7 @@ procedure TfrmRegistrarFrequencia.btnConsultarAlunoPorNomeClick(Sender: TObject)
 var
   codigoAluno: integer;
 begin
-  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno(ccRetornar);
+  codigoAluno := TfrmConsultaAluno.abrirConsultaAluno([ccRetornar, ccApenasAtivos]);
   if codigoAluno > 0 then
   begin
     edtCodigoAluno.Text:=codigoAluno.ToString;
@@ -120,8 +133,7 @@ end;
 
 procedure TfrmRegistrarFrequencia.atualizarDadosAluno;
 begin
-  lblNomeAlunoFrente.Visible:=True;
-  lblNomeAlunoFundo.Visible:=True;
+  mostrarDadosAluno(true);
 
   lblNomeAlunoFrente.Caption:=aluno.nome;
   lblNomeAlunoFundo.Caption:=aluno.nome;
@@ -131,8 +143,14 @@ begin
   else
     lblNomeAlunoFrente.Font.Color := clBlue;
 
-  btnRegistrarFrequencia.Enabled:=true;
   btnRegistrarFrequencia.SetFocus;
+end;
+
+procedure TfrmRegistrarFrequencia.mostrarDadosAluno(mostrar: boolean);
+begin
+  lblNomeAlunoFrente.Visible:=mostrar;
+  lblNomeAlunoFundo.Visible:=mostrar;
+  btnRegistrarFrequencia.Enabled:=mostrar;
 end;
 
 end.

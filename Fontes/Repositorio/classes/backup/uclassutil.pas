@@ -279,7 +279,7 @@ end;
 class function TUtil.mensagemErro(e: Exception): string;
 begin
    // Chave primária
-  if EUpdateError(e).ErrorCode = 1062 then
+  if EUpdateError(e).ErrorCode in [1062, 130047080] then
     result := 'Informação já cadastrada.'
   else result := e.Message;
 end;

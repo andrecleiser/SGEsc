@@ -177,6 +177,11 @@ object DataModuleApp: TDataModuleApp
         DataType = ftString
         Precision = -1
         Size = 3
+      end    
+      item
+        Name = 'dia_vencimento'
+        DataType = ftLargeint
+        Precision = -1
       end>
     AfterClose = SQLQueryObjAfterClose
     Database = MySQL57Connection
@@ -190,7 +195,8 @@ object DataModuleApp: TDataModuleApp
       '       a.data_inativacao,'
       '       a.fk_motivo_matricula_id,'
       '       a.fk_doenca_pre_existente_id,'
-      '       a.adimplente'
+      '       a.adimplente,'
+      '       a.dia_vencimento'
       'from   aluno a'
       '       left join turma_aluno ta on (a.id = ta.fk_aluno_id)'
       '       left join turma t on (t.id = ta.fk_turma_id)'
@@ -395,19 +401,85 @@ object DataModuleApp: TDataModuleApp
         DataType = ftString
         Precision = -1
         Size = 210
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'hora_inicio'
+        DataType = ftString
+        Precision = -1
+        Size = 12
       end>
     Database = MySQL57Connection
     Transaction = sqlTransactionGeral
     SQL.Strings = (
-      'select ta.fk_turma_id, ta.fk_aluno_id, a.nome'
+      'select ta.fk_turma_id,'
+      '       ta.fk_aluno_id,'
+      '       a.nome,'
+      '       t.descricao,'
+      '       t.hora_inicio'
       'from turma_aluno ta'
       '     inner join aluno a on (ta.fk_aluno_id = a.id)'
+      '     inner join turma t on (t.id = ta.fk_turma_id)'
       'where a.data_inativacao is null'
       'order by a.nome'
     )
     Params = <>
     left = 80
     top = 241
+    object qryTurmaObjfk_turma_id: TLargeintField
+      FieldKind = fkData
+      FieldName = 'fk_turma_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryTurmaObjfk_aluno_id: TLargeintField
+      FieldKind = fkData
+      FieldName = 'fk_aluno_id'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryTurmaObjnome: TStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 210
+    end
+    object qryTurmaObjdescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 120
+    end
+    object qryTurmaObjhora_inicio: TStringField
+      FieldKind = fkData
+      FieldName = 'hora_inicio'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      OnGetText = qryTurmaObjhora_inicioGetText
+      Size = 12
+    end
   end
   object qryLookUpAluno: TSQLQuery
     FieldDefs = <    

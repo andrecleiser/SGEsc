@@ -1,20 +1,5 @@
 unit uconsulta_aluno;
 
-{
-
-
-select id,
-       nome,
-       data_nascimento,
-       data_cadastramento,
-       data_inativacao,
-       fk_motivo_matricula_id,
-       fk_doenca_pre_existente_id,
-       adimplente
-from   aluno
-order by nome
-}
-
 {$mode objfpc}{$H+}
 
 interface
@@ -25,7 +10,9 @@ uses
 
 type
 
-  TComportamentoConsulta = (ccEditar, ccRetornar);
+  TComportamentoConsulta = (ccEditar, ccRetornar, ccApenasAtivos);
+
+  TComportamentosConsulta = Set of TComportamentoConsulta;
 
   { TfrmConsultaAluno }
 
@@ -49,7 +36,7 @@ type
   private
     fCodigoAluno: integer;
   public
-    class function abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
+    class function abrirConsultaAluno(pComportamentosConsulta: TComportamentosConsulta): integer;
   end;
 
 var
@@ -64,13 +51,14 @@ uses
 
 { TfrmConsultaAluno }
 
-class function TfrmConsultaAluno.abrirConsultaAluno(pComportamentoConsulta: TComportamentoConsulta): integer;
+class function TfrmConsultaAluno.abrirConsultaAluno(pComportamentosConsulta: TComportamentosConsulta): integer;
 begin
   with TfrmConsultaAluno.Create(Application) do
   try
     fCodigoAluno := 0;
-    pnlRetornar.Visible := (pComportamentoConsulta = ccRetornar);
-    pnlEditar.Visible := (pComportamentoConsulta = ccEditar);
+    pnlRetornar.Visible := (ccRetornar in pComportamentosConsulta);
+    pnlEditar.Visible := (ccEditar in pComportamentosConsulta);
+    cbAlunoAtivo.Visible := not (ccApenasAtivos in pComportamentosConsulta);
     ShowModal;
   finally
     Result := fCodigoAluno;

@@ -1,5 +1,4 @@
 inherited frmLogin: TfrmLogin
-  Left = 3250
   Height = 246
   Top = 357
   Width = 396

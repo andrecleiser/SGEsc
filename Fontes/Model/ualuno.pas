@@ -19,6 +19,7 @@ type
     ffk_motivo_matricula_id: integer;
     ffk_doenca_pre_existente_id: integer;
     fadimplente: string;
+    fdia_vencimento: integer;
   public
     property id: integer                         read fid;
     property nome: string                        read fnome;
@@ -27,7 +28,8 @@ type
     property data_inativacao: TDate              read fdata_inativacao;
     property fk_motivo_matricula_id: integer     read ffk_motivo_matricula_id;
     property fk_doenca_pre_existente_id: integer read ffk_doenca_pre_existente_id;
-    property adimplente: string read fadimplente;
+    property adimplente: string                  read fadimplente write fadimplente;
+    property dia_vencimento: integer             read fdia_vencimento;
 
     constructor create(pid: integer;
                        pnome: string;
@@ -36,7 +38,8 @@ type
                        pdata_inativacao: TDate;
                        pfk_motivo_matricula_id: integer;
                        pfk_doenca_pre_existente_id: integer;
-                       padimplente: string); overload;
+                       padimplente: string;
+                       pdia_vencimento: integer = 0); overload;
 
     constructor create(dataSetAluno: TDataSet);  overload;
 
@@ -51,7 +54,8 @@ constructor TAluno.create(pid: integer;
                           pdata_inativacao: TDate;
                           pfk_motivo_matricula_id: integer;
                           pfk_doenca_pre_existente_id: integer;
-                          padimplente: string);
+                          padimplente: string;
+                          pdia_vencimento: integer = 0);
 begin
   fid := pid;
   fnome := pnome;
@@ -61,6 +65,7 @@ begin
   ffk_motivo_matricula_id := pfk_motivo_matricula_id;
   ffk_doenca_pre_existente_id := pfk_doenca_pre_existente_id;
   fadimplente := padimplente;
+  fdia_vencimento := pdia_vencimento;
 end;
 
 
@@ -74,6 +79,7 @@ begin
   ffk_motivo_matricula_id := dataSetAluno.FieldByName('fk_motivo_matricula_id').AsInteger;
   ffk_doenca_pre_existente_id := dataSetAluno.FieldByName('fk_doenca_pre_existente_id').AsInteger;
   fadimplente := dataSetAluno.FieldByName('adimplente').AsString;
+  fdia_vencimento := dataSetAluno.FieldByName('dia_vencimento').AsInteger;
 end;
 
 end.

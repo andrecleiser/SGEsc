@@ -37,7 +37,7 @@ object frmPrincipal: TfrmPrincipal
       end    
       item
         BidiMode = bdRightToLeft
-        Text = 'Versão: ciclo-3'
+        Text = 'Versão: ciclo-4'
         Width = 50
       end>
     ParentFont = False
@@ -251,6 +251,17 @@ object frmPrincipal: TfrmPrincipal
       object MenuItem10: TMenuItem
         Caption = 'Consultar'
         OnClick = MenuItem10Click
+      end
+    end
+    object MenuItem11: TMenuItem
+      Caption = 'Financeiro'
+      object MenuItem12: TMenuItem
+        Caption = 'Registrar pagamento'
+        OnClick = MenuItem12Click
+      end
+      object MenuItem13: TMenuItem
+        Caption = 'Ficha Financeira'
+        OnClick = MenuItem13Click
       end
     end
     object MenuItem4: TMenuItem

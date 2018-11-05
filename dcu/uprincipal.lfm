@@ -1,5 +1,5 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 3387
+  Left = 200
   Height = 600
   Top = 201
   Width = 1200
@@ -37,7 +37,7 @@ object frmPrincipal: TfrmPrincipal
       end    
       item
         BidiMode = bdRightToLeft
-        Text = 'Versão: ciclo-3'
+        Text = 'Versão: ciclo-4'
         Width = 50
       end>
     ParentFont = False
@@ -238,6 +238,32 @@ object frmPrincipal: TfrmPrincipal
         OnClick = MenuItemRegistrarFrequenciaClick
       end
     end
+    object MenuItem7: TMenuItem
+      Caption = 'Turma'
+      object MenuItem8: TMenuItem
+        Caption = 'Cadastrar'
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'Relacionar aluno'
+        OnClick = MenuItem9Click
+      end
+      object MenuItem10: TMenuItem
+        Caption = 'Consultar'
+        OnClick = MenuItem10Click
+      end
+    end
+    object MenuItem11: TMenuItem
+      Caption = 'Financeiro'
+      object MenuItem12: TMenuItem
+        Caption = 'Registrar pagamento'
+        OnClick = MenuItem12Click
+      end
+      object MenuItem13: TMenuItem
+        Caption = 'Ficha Financeira'
+        OnClick = MenuItem13Click
+      end
+    end
     object MenuItem4: TMenuItem
       Caption = 'Sistema'
       object MenuItem5: TMenuItem
@@ -252,32 +278,5 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Sair'
       OnClick = menuItemSairClick
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = SQLQuery1
-    left = 39
-    top = 10
-  end
-  object SQLQuery1: TSQLQuery
-    FieldDefs = <    
-      item
-        Name = 'id'
-        DataType = ftLargeint
-        Precision = -1
-      end    
-      item
-        Name = 'descricao'
-        DataType = ftString
-        Precision = -1
-        Size = 120
-      end>
-    Database = DataModuleApp.MySQL57Connection
-    Transaction = DataModuleApp.sqlTransactionGeral
-    SQL.Strings = (
-      'SELECT * FROM motivo_matricula'
-    )
-    Params = <>
-    left = 68
-    top = 10
   end
 end

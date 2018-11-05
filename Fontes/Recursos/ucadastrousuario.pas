@@ -1,22 +1,5 @@
-//2 15 R$256,84 R366,71 CRISTIANE
-{
-insert into usuario (login, nome, fk_perfil_usuario_id, senha, ativo)
-values (:login, :nome, :fk_perfil_usuario_id, :senha, :ativo)
-
-delete from usuario where id = :OLD_id
-
-update usuario
-set    login = :login,
-       nome = :nome,
-       fk_perfil_usuario_id = :fk_perfil_usuario_id,
-       senha = :senha,
-       ativo = :ativo
-where  id = :OLD_id
-}
 unit uCadastroUsuario;
 
-{$mode objfpc}{$H+}
-{$WARN 5024 on : Parameter "$1" not used}
 interface
 
 uses

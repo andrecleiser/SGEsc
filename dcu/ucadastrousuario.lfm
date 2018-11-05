@@ -35,23 +35,10 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
   inherited pnlNav: TPanel
     Width = 819
     ClientWidth = 819
-    inherited dbNavAlunos: TDBNavigator
+    inherited dbNav: TDBNavigator
       Width = 817
       ClientHeight = 41
       ClientWidth = 813
-      ConfirmDelete = True
-      Hints.Strings = (
-        'Primeiro'
-        'Anterior'
-        'Próximo'
-        'Último'
-        'Inserir'
-        'Excluir'
-        'Editar'
-        'Salvar'
-        'Cancelar'
-      )
-      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
     end
   end
   object DBEdit1: TDBEdit[2]
@@ -114,7 +101,6 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     KeyField = 'id'
     ListField = 'nome'
     ListFieldIndex = 0
-    ListSource = DataModuleApp.dsPerfilUsuario
     LookupCache = False
     TabOrder = 5
   end

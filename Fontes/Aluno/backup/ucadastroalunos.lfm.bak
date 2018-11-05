@@ -173,14 +173,11 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     Width = 1250
     ClientHeight = 42
     ClientWidth = 1250
-    inherited dbNavAlunos: TDBNavigator
+    inherited dbNav: TDBNavigator
       Height = 40
       Width = 1248
       ClientHeight = 36
       ClientWidth = 1244
-      ConfirmDelete = True
-      Hints.Strings = (      )
-      ParentShowHint = False
     end
   end
   object Panel1: TPanel[2]
@@ -209,7 +206,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'cep'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '99999-999;0;_'
+      EditMask = '00000-000;0;_'
       MaxLength = 9
       TabOrder = 10
     end
@@ -228,7 +225,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Left = 101
       Height = 28
       Top = 25
-      Width = 995
+      Width = 868
       DataField = 'nome'
       DataSource = dsPadrao
       CharCase = ecUppercase
@@ -544,7 +541,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       CharCase = ecNormal
       Color = clSilver
       MaxLength = 0
-      TabOrder = 16
+      TabOrder = 3
       TabStop = False
     end
     object Label9: TLabel
@@ -564,7 +561,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'telefone'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '99 9999-9999;0;_'
+      EditMask = '00 0000-0000;0;_'
       MaxLength = 12
       TabOrder = 11
     end
@@ -577,7 +574,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataField = 'celular'
       DataSource = dsPadrao
       CharCase = ecNormal
-      EditMask = '99 99999-9999;0;_'
+      EditMask = '00 00000-0000;0;_'
       MaxLength = 13
       TabOrder = 12
     end
@@ -597,7 +594,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       Caption = 'Responsável'
       ClientHeight = 105
       ClientWidth = 1212
-      TabOrder = 15
+      TabOrder = 16
       object Label15: TLabel
         Left = 16
         Height = 20
@@ -654,7 +651,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'cpf_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '999.999.999-99;0;_'
+        EditMask = '000.000.000-00;0;_'
         MaxLength = 14
         TabOrder = 2
         OnExit = DBEdit15Exit
@@ -695,8 +692,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'celular_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '99 99999-9999;0;_'
-        MaxLength = 13
+        EditMask = '(00) 00000-0000;0;_'
+        MaxLength = 15
         TabOrder = 5
       end
       object Label23: TLabel
@@ -708,7 +705,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         ParentColor = False
       end
       object DBEdit18: TDBEdit
-        Left = 514
+        Left = 512
         Height = 28
         Top = 78
         Width = 143
@@ -716,8 +713,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'telefone_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '99 99999-9999;0;_'
-        MaxLength = 13
+        EditMask = '00 0000-0000;0;_'
+        MaxLength = 12
         TabOrder = 6
       end
       object DBEdit13: TDBEdit
@@ -754,7 +751,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       CharCase = ecNormal
       EditMask = '99:99;0;_'
       MaxLength = 5
-      TabOrder = 2
+      TabOrder = 15
       TabStop = False
       Visible = False
     end
@@ -797,9 +794,28 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       DataSource = dsPadrao
       CharCase = ecNormal
       MaxLength = 0
-      TabOrder = 3
+      TabOrder = 17
       TabStop = False
       Visible = False
+    end
+    object Label26: TLabel
+      Left = 989
+      Height = 20
+      Top = 1
+      Width = 108
+      Caption = 'Dia do Venc.'
+      ParentColor = False
+    end
+    object dbeNome1: TDBEdit
+      Left = 989
+      Height = 28
+      Top = 25
+      Width = 100
+      DataField = 'dia_vencimento'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 2
     end
   end
   inherited dsPadrao: TDataSource[3]
@@ -964,6 +980,11 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataType = ftString
         Precision = -1
         Size = 90
+      end    
+      item
+        Name = 'dia_vencimento'
+        DataType = ftLargeint
+        Precision = -1
       end>
     AfterInsert = sqlQueryPadraoAfterInsert
     AfterScroll = sqlQueryPadraoAfterScroll
@@ -995,7 +1016,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       '       telefone_responsavel,'
       '       celular_responsavel,'
       '       hora_turma,'
-      '       modalidade'
+      '       modalidade,'
+      '       dia_vencimento'
       'from aluno'
       'where id = :id'
     )
@@ -1005,7 +1027,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
     DeleteSQL.Strings = (
       ''
     )
-    Options = [sqoRefreshUsingSelect]
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -1019,7 +1041,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'id'
       Index = 0
       LookupCache = False
-      ProviderFlags = [pfInWhere, pfInKey, pfRefreshOnInsert]
+      ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = False
       Required = False
     end
@@ -1028,7 +1050,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'nome'
       Index = 1
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 210
@@ -1038,7 +1060,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'data_nascimento'
       Index = 2
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
     end
@@ -1047,7 +1069,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'rua'
       Index = 3
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 180
@@ -1057,7 +1079,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'complemento'
       Index = 4
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 60
@@ -1067,7 +1089,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'bairro'
       Index = 5
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 90
@@ -1077,7 +1099,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'cidade'
       Index = 6
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 150
@@ -1087,7 +1109,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'estado'
       Index = 7
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 6
@@ -1097,7 +1119,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'cep'
       Index = 8
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 24
@@ -1107,7 +1129,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'telefone'
       Index = 9
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 30
@@ -1117,7 +1139,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'celular'
       Index = 10
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 33
@@ -1127,7 +1149,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'nome_pai'
       Index = 11
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 210
@@ -1137,7 +1159,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'nome_mae'
       Index = 12
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 210
@@ -1147,7 +1169,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'data_cadastramento'
       Index = 13
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
     end
@@ -1156,7 +1178,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'data_inativacao'
       Index = 14
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
     end
@@ -1165,7 +1187,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'observacao'
       Index = 15
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 600
@@ -1175,7 +1197,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'fk_motivo_matricula_id'
       Index = 16
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
     end
@@ -1184,7 +1206,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'fk_doenca_pre_existente_id'
       Index = 17
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
     end
@@ -1193,7 +1215,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'adimplente'
       Index = 18
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 3
@@ -1203,7 +1225,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'nome_responsavel'
       Index = 19
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 210
@@ -1213,7 +1235,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'email_responsavel'
       Index = 20
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 120
@@ -1223,7 +1245,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'cpf_responsavel'
       Index = 21
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 33
@@ -1233,7 +1255,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'rg_responsavel'
       Index = 22
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 33
@@ -1243,7 +1265,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'telefone_responsavel'
       Index = 23
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 30
@@ -1253,7 +1275,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'celular_responsavel'
       Index = 24
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 33
@@ -1263,7 +1285,7 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'hora_turma'
       Index = 25
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 12
@@ -1273,10 +1295,19 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
       FieldName = 'modalidade'
       Index = 26
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfRefreshOnInsert]
+      ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
       Size = 90
+    end
+    object sqlQueryPadraodia_vencimento: TLargeintField[27]
+      FieldKind = fkData
+      FieldName = 'dia_vencimento'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
     end
   end
   object imageList: TImageList[5]

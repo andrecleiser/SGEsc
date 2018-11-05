@@ -156,6 +156,7 @@ inherited frmLogin: TfrmLogin
     Height = 28
     Top = 52
     Width = 260
+    CharCase = ecUppercase
     MaxLength = 15
     TabOrder = 1
   end
@@ -180,6 +181,7 @@ inherited frmLogin: TfrmLogin
     Height = 28
     Top = 111
     Width = 260
+    CharCase = ecUppercase
     EchoMode = emPassword
     MaxLength = 15
     PasswordChar = '*'

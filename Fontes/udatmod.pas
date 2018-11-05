@@ -5,7 +5,7 @@ unit uDATMOD;
 interface
 
 uses
-  Classes, SysUtils, mysql57conn, sqldb, db, FileUtil;
+  Classes, SysUtils, mysql57conn, sqldb, db, FileUtil, maskutils;
 
 type
 
@@ -32,6 +32,11 @@ type
     qryLookUpTurmalimite_alunos: TLargeintField;
     qryLookUpTurmaqtd_alunos_turma: TLargeintField;
     qryLookUpTurmavalor_sugerido: TFloatField;
+    qryTurmaObjdescricao: TStringField;
+    qryTurmaObjfk_aluno_id: TLargeintField;
+    qryTurmaObjfk_turma_id: TLargeintField;
+    qryTurmaObjhora_inicio: TStringField;
+    qryTurmaObjnome: TStringField;
     qryUsuarioObj: TSQLQuery;
     qryLookUpPerfilUsuario: TSQLQuery;
     qryLookUpTurma: TSQLQuery;
@@ -40,6 +45,8 @@ type
     sqlTransactionGeral: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure qryTurmaObjhora_inicioGetText(Sender: TField; var aText: string;
+      {%H-}DisplayText: Boolean);
     procedure SQLQueryObjAfterClose(DataSet: TDataSet);
   private
 
@@ -65,6 +72,12 @@ end;
 procedure TDataModuleApp.DataModuleDestroy(Sender: TObject);
 begin
   MySQL57Connection.Connected := false;
+end;
+
+procedure TDataModuleApp.qryTurmaObjhora_inicioGetText(Sender: TField;
+  var aText: string; DisplayText: Boolean);
+begin
+  aText := FormatMaskText('00\:00;0;', Sender.AsString);
 end;
 
 procedure TDataModuleApp.SQLQueryObjAfterClose(DataSet: TDataSet);

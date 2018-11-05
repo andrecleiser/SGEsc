@@ -7,11 +7,12 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, sdflaz, datetimectrls, uDATMOD, uCadastroPadrao,
+  Forms, sdflaz, datetimectrls, lazcontrols, uDATMOD, uCadastroPadrao,
   uPrincipal, uClassUtil, uFinanceiroService, uAlunoService, uFormBase,
-  uconsulta_aluno, uRegistrarFrequencia, uAluno, uFrequenciaService,
-  uLogin, uUsuarioService, uUsuario, uConstantesSistema,
-  uResgistroPagamento, uCadastrarTurma, uTurma_Aluno, uTurmaService, uTurma;
+  uconsulta_aluno, uRegistrarFrequencia, uAluno, uFrequenciaService, uLogin,
+  uUsuarioService, uUsuario, uConstantesSistema, uResgistroPagamento,
+  uCadastrarTurma, uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno,
+  uFichaFinanceira;
 
 {$R *.res}
 
@@ -20,7 +21,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TDataModuleApp, DataModuleApp);
   Application.CreateForm(TfrmLogin, frmLogin);
-  Application.CreateForm(TfrmCadastroTurma, frmCadastroTurma);
   Application.Run;
 end.
 

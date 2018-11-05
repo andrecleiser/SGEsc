@@ -32,6 +32,17 @@ type
     // Aplica as regras de validação referentes à exclusão do aluno.
     class procedure validarExclusao(dataSet: TDataSet);
 
+    // Retorna o úlimo Id do aluno.
+    class function ultimoId(): integer;
+
+    // Retorna a quantidade de turmas do aluno.
+    class function obterTotalTurmas(idAluno: integer): integer;
+
+    // retorna os ids das turmas do aluno
+    class function obterIDsTurmas(idAluno: integer): string;
+
+    // retorna a quantidade de alunos ativos
+    class function totalAlunosAtivos(): integer;
 end;
 
 implementation
@@ -159,6 +170,15 @@ begin
   // Regra de validação 14
   if dataSet.FieldByName('celular_responsavel').AsString.Replace(' ', '').Trim.Length <> 11 then
     raise Exception.Create('O celular do responsável tem que ter 11 dígitos.');
+
+  // Regra de validação 16
+  if (dataSet.FieldByName('dia_vencimento').AsInteger < 1) or
+     (dataSet.FieldByName('dia_vencimento').AsInteger > 31) then
+    raise Exception.Create('O vencimento do aluno deve estar entre 1 e 31.');
+
+  // Regra de validação 17
+  if dataSet.FieldByName('dia_vencimento').IsNull  then
+    raise Exception.Create('O vencimento do aluno tem que ser informado.');
 end;
 
 class procedure TAlunoService.validarExclusao(dataSet: TDataSet);
@@ -166,6 +186,83 @@ begin
   if dataSet.FieldByName('celular_responsavel').IsNull  then
     raise Exception.Create('O celular do responsável tem que ser informado.');
 
+end;
+
+class function TAlunoService.ultimoId(): integer;
+var
+  sqlQuery: TSQLQuery;
+begin
+  sqlQuery := TSQLQuery.Create(nil);
+  sqlQuery.SQLConnection := DataModuleApp.MySQL57Connection;
+  sqlQuery.SQL.Add('select max(id) from aluno');
+  try
+    sqlQuery.Open;
+
+    result := sqlQuery.Fields[0].AsInteger;
+  except
+    sqlQuery.Close;
+    sqlQuery.Free;
+  end;
+end;
+
+// retorna a quantidade de alunos da turma.
+class function TAlunoService.obterTotalTurmas(idAluno: integer): integer;
+var
+  sql: TSQLQuery;
+begin
+  sql := TSQLQuery.Create(nil);
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select count(*) from turma_aluno where fk_aluno_id = ' + idAluno.ToString);
+  try
+    sql.Open;
+    result := sql.Fields[0].AsInteger;
+  finally
+    sql.Close;
+    sql.Free;
+  end;
+end;
+
+// retorna os ids das turmas do aluno
+class function TAlunoService.obterIDsTurmas(idAluno: integer): string;
+var
+  sql: TSQLQuery;
+  listaIds: TStrings;
+begin
+  result := '';
+
+  sql := TSQLQuery.Create(nil);
+  listaIds := TStringList.Create;
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select fk_turma_id from turma_aluno where fk_aluno_id = ' + idAluno.ToString);
+  try
+    sql.Open;
+    while not sql.eof do
+    begin
+      listaIds.Add(sql.Fields[0].AsString);
+      sql.Next;
+    end;
+    result := listaIds.DelimitedText;
+  finally
+    listaIds.Free;
+    sql.Close;
+    sql.Free;
+  end;
+end;
+
+class function TAlunoService.totalAlunosAtivos(): integer;
+var
+  sql: TSQLQuery;
+begin
+  sql := TSQLQuery.Create(nil);
+  sql.SQLConnection := DataModuleApp.MySQL57Connection;
+  sql.SQL.Add('select count(*) from aluno where data_inativacao is not null');
+  try
+    sql.Open;
+    result := sql.Fields[0].AsInteger;
+  finally
+    sql.Close;
+    sql.Free;
+  end;
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//
