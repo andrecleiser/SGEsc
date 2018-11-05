@@ -42,3 +42,22 @@ Implementação do ciclo-4:
 - Frequência - Registro - selecionar turma ao registro
 - Contas a receber - ficha financeira - construir tela
 - Contas a receber - ficha financeira - implementar funcionalidade
+
+Implementação do ciclo-4:Contas a receber - Visualizar todos os adimplentes - análise
+
+- Contas a receber - Visualizar todos os adimplentes - implementar funcionalidade
+- Contas a receber - Visualizar todos os inadimplentes - análise
+- Contas a receber - Visualizar todos os inadimplentes - implementar funcionalidade
+- Consulta de frequência do aluno - análise
+- Consulta de frequência do aluno - construir tela
+- Consulta de frequência do aluno - implementar funcionalidade
+- Contas a receber - Solicitar senha a entrar na ficha financeira - análise
+- Contas a receber - Solicitar senha a entrar na ficha financeira - implementar funcionalidade
+- Cadastro de usuário - modificar modelo de dados físico e lógico, além da história relacionada
+- Cadastro de usuário - incluir perfil ao usuário
+- Cadastrar a turma - implementar modelo de dados lógico e físico
+- Cadastrar a turma - construir a tela
+- Cadastrar a turma - implementar a funcionalidade
+- Cadastrar professor/estagiário - implementar modelo de dados lógico e físico
+- Cadastrar professor/estagiário - construir tela
+- Cadastrar professor/estagiário - implementar a funcionalidade
