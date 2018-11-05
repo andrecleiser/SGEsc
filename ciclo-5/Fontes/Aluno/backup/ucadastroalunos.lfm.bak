@@ -1,0 +1,1466 @@
+inherited frmCadastroAlunos: TfrmCadastroAlunos
+  Left = 19
+  Height = 664
+  Top = 29
+  Width = 1250
+  ActiveControl = dbeNome
+  Caption = 'Cadastro de Aluno'
+  ClientHeight = 664
+  ClientWidth = 1250
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  Position = poWorkAreaCenter
+  inherited pnlBottom: TPanel
+    Height = 46
+    Top = 618
+    Width = 1250
+    ClientHeight = 46
+    ClientWidth = 1250
+    inherited pnlFrmBaseSair: TPanel
+      Left = 1005
+      Height = 44
+      Width = 244
+      ClientHeight = 44
+      ClientWidth = 244
+      inherited btnSair: TBitBtn
+        Left = 2
+        Height = 38
+        Top = 3
+        Width = 204
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+    object btnDesativar: TBitBtn[1]
+      Left = 51
+      Height = 38
+      Top = 3
+      Width = 204
+      Caption = 'Desativar aluno'
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF016094016094016094016094016094016094
+        016094016094016094016094016094016094016094016094016094016094FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01609464DCEE28AADD1380C618
+        8BC21B94BC1D9DBB22A9BC25B3C125B1C122A7BC1E9FBB1A96BB1A91C41788CA
+        2CB0DF6FDFED016094FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00669881E6
+        F42DB2DF1794D81FA8E025B6E82DC5EB35CFEF3EDAF43BD8F234CEEE2FC6EB28
+        B9E822ACE21A9CDA33B7E296EBF6006698FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF006D9E81E6F032B6E21897D822ACE129BAE632CBEF3DD8F746E2FC46E1
+        FD3DD7F635CCEF29BBE825B1E11EA0DB35BAE394EAF0006D9EFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF0175A583E6F033B8E41899D823AFE12ABCE933CBEF
+        3ED8F548E2FC47E1FC3ED7F436CDF02BBEE627B4E31FA4DC36BDE396EBF30175
+        A5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF007DAC80E5F02DB3E01793D81E
+        A8DF25B6E52FC7EE37D4F443E0FC3FDEF937D3F430C7EC28B9E522ACE01B9CD9
+        33B7E291EAF2007DACFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0086B27EE5
+        F02EB1E01691D720A6DF26B6E62DC6EE38D5F540E0FC40DDFA38D1F330C7ED27
+        B7E523ABE01C9BD932B5E190EAF20086B2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF008EB984E8F233B9E2199EDA22B1E22ABEE935CDEF3FD8F64BE3FC49E1
+        FB3ED7F536CEEF2DC1E926B5E31EA7DC39BFE597EBF3008EB9FFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF0095BE81E5F030B6E11896D822AAE028B9E630C7ED
+        3AD6F542E1FC42E0FA39D5F432CAEF29BAE524AFE11E9FDB34BAE294EAF20095
+        BEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF009BC483E6F02FB5E01795D81D
+        A8DF25B7E534CBEE45D9F654E5FD52E3FB44D8F435CBEE28B9E521ACE01B9ED9
+        35BAE494EAF2009BC4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF009FC775E1
+        EF29ABE01B92D835B6E651D0EF70E1F681EBFC8EF0FF8BF0FE81EAFA70E2F751
+        CFEE37BAE6219ADB2DB0E183E6F0009FC7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF009FC7009FC7009FC7009FC7009FC7009FC7009FC7009FC7009F
+        C7009FC7009FC7009FC7009FC7009FC7009FC7009FC7FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF908F8F888888888888908F8FFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF908F8F888888888888908F8FFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2A2A3C3C3C3AC
+        ACACA2A2A3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2A2A3ACACACC3C3C3
+        A2A2A3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFADADADD3D3D2BABABAADADADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAD
+        ADADBABABAD3D3D2ADADADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFB5B5B4E0E1E1C9C8C8B5B5B4FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFB5B5B4C9C8C8E0E1E1B5B5B4FFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBABABAEAEAEAD5D4D4BABABAFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFEFEFEBABABAD5D4D4EAEAEABABABAFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB5B5B4CDCDCDC9
+        C8C8B5B5B4C5C5C5FBFBFBFFFFFFFFFFFFF9F9F9C2C2C2979797DDDDDDCBCBCB
+        D2D2D2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFADADADD5D4D4C6C6C69F9F9FAAAAAABBBBBBBBBBBBAAAAAAA2A2A2CC
+        CCCCEDEDEDB0B0B0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFEDEDEDB3B3B3DFDFDFE9E9E9E1E1E1DDDDDDDCDC
+        DCE3E3E3EEEEEEE3E3E3B5B5B5EEEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE9E9E9BEBEBEC8C8C8
+        D2D2D2D4D4D4D4D4D4D4D4D4CBCBCBBFBFBFEBEBEBFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFBFBFBD8D8D8C2C2C2BBBBBBBCBCBCC3C3C3D9D9D9FBFBFBFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      }
+      OnClick = btnDesativarClick
+      TabOrder = 1
+    end
+    object btnTurma: TBitBtn[2]
+      Left = 274
+      Height = 38
+      Top = 3
+      Width = 204
+      Caption = 'Relacionar à turma'
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000936645936645
+        936645936745936745936745936744936744936645895E3A8158327B522B774F
+        26764E24744C23744C23764E24784F277C522B815832895E3A936745FFFFFFFF
+        FFFF946745E3CAADE3CAADE4CAADE3CBADE2CAACCAAF8EA07F598C693F906A3D
+        A98356B89365C5A173A07B4EE0DFDEE0DFDEA17B4EC8A375BC9769AC875A936D
+        407F582DAD977DE2DAD1956945E4CBAEE4CBAEA0734898693FB790677E592EA6
+        8154C19E70D2AF82D6B486D9B789DAB88AA88456EAEAEAEAEAEAA88456DAB88A
+        D9B789D7B587D4B183C5A174AA8557815C34976946E5CDB1E5CDB1E6C396D6AA
+        709C6F458C683DB99567DDBB8EDDBB8EDDBB8EDDBB8EDDBB8EAB8758F3F3F3F3
+        F3F3AB8758DDBB8EDDBB8EDDBB8EDDBB8EDDBB8EB99668856339986A46E5CFB3
+        E5CFB3FDE8CFF4D9B8A87D52C3A8868A6434CEAC7EDFBE91DFBE91DFBE91DFBE
+        91AD895AFAFAFAFAFAFAAD895ADFBE91DFBE91DFBE91DFBE91CDAB7E8A6434C4
+        B4A09A6B47E6D1B6E6D1B6E6D0B5E6D0B6E6D0B6E6CFB69D7C54967041D9B98B
+        E1C194E1C194E1C194AF8B5DFFFFFFFFFFFFAF8B5DE1C194E1C194E1C194D9B8
+        8B9670419A7D59FEFEFE9A6C48E7D2B9E7D2B9A0734898693FB9926BE7D2B9E3
+        CEB49B784D946E3DD2B083E3C396E3C396B18D5EBBBBBBBBBBBBB18D5EE3C396
+        E3C396D2B083946E3D815728F6F3EFFFFFFF9C6E48E7D4BDE7D4BDE6C396D6AA
+        709C6F46E7D4BDE7D4BDAF7E589565398E6534BE9B6CDDBD90B08C5C88BBEA88
+        BBEAB28E5EDDBD90BE9B6C936D3DB497739C6C46FFFFFFFFFFFF9F6E49E8D7C0
+        E8D7C0FDE8CFF4D9B8A87D53E8D6C0E8D6C1E8D7C1E8D7C0DDCAB0B1A3907585
+        8E5A7D9A597C995B7D9B597C9974838DAEA08ADCC7AEE8D6C09F6F48FFFFFFFF
+        FFFFA06F4AE9D9C4E9D9C4E9D9C3E9D9C4E9D9C4E9D9C4E9D9C4E9D9C4E9D9C4
+        DAD0C1B5BABB7A9FC17DAEDB78ABDA76A9D86193C06E98BDB4BABADACFC1E9D8
+        C3A0704AFFFFFFFFFFFFA2714BEBDAC7EBDAC7A0734898693FBA946EEADBC7EA
+        DBC7DCC4ADDAC2AA95A0AA7B9AB791BEE78DBEEB89BCEA87BAE975A8D65A8CBB
+        7296B69EADB8EADBC6A1704AFFFFFFFFFFFFA3724BEBDCCAEBDCCAE6C396D6AA
+        709D7046EBDECAECDDCAAF7F5AA7744D59779481ADD4ACCFF091C0EB88BBEA88
+        BBEA88BBEA72A4D35F90BC6083A4E7DBC8A4724BFFFFFFFFFFFFA5744BEBDFCF
+        EBDFCFFDE8CFF4D9B8A87D53ECE0CFECE0CFECDFCEDCD1C12A364E86B2D9BCD9
+        F397C4EC89BCEA88BBEA88BBEA87BAE95E8AB51A2034D7CCBFA6734CFFFFFFFF
+        FFFFA8744CEDE1D2EDE1D2EDE1D1ECE1D1ECE1D1EDE1D2EDE1D2EDE1D1D5CCC0
+        18192B779ABEBCD7F0A0C9EE8ABCEB88BBEA88BBEA85B7E6597FA80E0E20CFC6
+        BBA7744CFFFFFFFFFFFFA9754DEEE4D5EEE4D5A0734898693FBB9772EEE3D5EE
+        E3D5DFCBB8C6B7A718182A19192A96A9C19ABAD98BBBE987BAE985B7E66D94BE
+        0E0E200E0E21CFC7BCA9754DFFFFFFFFFFFFAA774EEFE6D8EFE6D8E6C396D6AA
+        709D7047EFE6D8EFE6D8B0805B9669491717292B2B3B0F0F211010224E66847F
+        AED96A90B90E0E200E0E200F0F22D2CAC0AA774EFFFFFFFFFFFFAD784FEFE8DC
+        EFE8DCFDE8CFF4D9B8A87D53EFE8DCEFE8DCEFE8DCDDD7CE232A3F2B2C3D1717
+        281010220E0E200E0E200E0E200E0E20101023161A2ED8D1C9AD784FFFFFFFFF
+        FFFFAF794FF0EBDFF0EBDFF0EBDFF0EADFF0EADFF0EADFF0EADFF0EADFE9E5DB
+        6D7A8A2224363636453E3E4C1010220E0E200E0E200E0E20101022505969E6E0
+        D5AF784FFFFFFFFFFFFFAF7A50F1ECE1F1ECE1A0734898693FBB9975F1ECE2F1
+        ECE2E1D2C2DECEBDBDB4AB21203116182B3637461616270E0E200E0F21121325
+        191A2AC6C6C3EFEADFAF7950FFFFFFFFFFFFB17B51F1EEE5F1EEE5E6C396D6AA
+        709D7047F1EDE4F2EDE5B0805CA9754EA6734D8C6C58565B671E243814162914
+        172B1E2539444957886955EDE9E1F1EDE4B17A50FFFFFFFFFFFFB27C51F2EFE7
+        F2EFE7FDE8CFF4D9B8A87E54F1EFE7F2EFE7F3EFE7F2EFE7F1EFE7F1EEE5ECE9
+        E2E0DDD8DBD8D2DBD8D2E0DDD7E9E7E0F1EEE6F1EFE6F1EFE6B27C51FFFFFFFF
+        FFFFB37D52F3F0E8F3F0E8F3F1E9F2F0E9F2F0E9F2F1E9F3F1E9F3F0E9F2F1E9
+        F2F1E9F2F0E8F3F0E8F3F0E9F3F1E9F3F1E9F2F1E9F2F0E9F2F0E9F2F1E8F2F1
+        E8B47C51FFFFFFFFFFFFB57D52F3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3
+        F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EA
+        F3F1EAF3F1EAF3F1EAB47C51FFFFFFFFFFFFB57D52B57D52B57D52B57D52B57D
+        52B57D52B57D52B57D52B57E52B57E52B57D52B57D52B57D52B57D52B57D52B5
+        7D52B57D52B57D52B57D52B57D52B57D52B57D52FFFFFFFFFFFF
+      }
+      OnClick = btnTurmaClick
+      TabOrder = 2
+    end
+  end
+  inherited pnlNav: TPanel
+    Height = 42
+    Width = 1250
+    ClientHeight = 42
+    ClientWidth = 1250
+    inherited dbNav: TDBNavigator
+      Height = 40
+      Width = 1248
+      ClientHeight = 36
+      ClientWidth = 1244
+    end
+  end
+  object Panel1: TPanel[2]
+    Left = 0
+    Height = 576
+    Top = 42
+    Width = 1250
+    Align = alClient
+    ClientHeight = 576
+    ClientWidth = 1250
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 8
+      Height = 20
+      Top = 1
+      Width = 59
+      Caption = 'Código'
+      ParentColor = False
+    end
+    object DBEdit3: TDBEdit
+      Left = 752
+      Height = 28
+      Top = 132
+      Width = 104
+      CustomEditMask = True
+      DataField = 'cep'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '00000-000;0;_'
+      MaxLength = 9
+      TabOrder = 10
+    end
+    object DBEdit2: TDBEdit
+      Left = 186
+      Height = 28
+      Top = 80
+      Width = 485
+      DataField = 'rua'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 5
+    end
+    object dbeNome: TDBEdit
+      Left = 101
+      Height = 28
+      Top = 25
+      Width = 868
+      DataField = 'nome'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 1
+    end
+    object DBDateEdit1: TDBDateEdit
+      Left = 8
+      Height = 28
+      Top = 81
+      Width = 172
+      CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+      DefaultToday = True
+      DateOrder = doNone
+      DateFormat = 'dd/mm/yyyy'
+      ButtonWidth = 29
+      NumGlyphs = 1
+      MaxLength = 10
+      TabOrder = 4
+      DataField = 'data_nascimento'
+      DataSource = dsPadrao
+    end
+    object Label2: TLabel
+      Left = 101
+      Height = 20
+      Top = 1
+      Width = 50
+      Caption = 'Nome'
+      ParentColor = False
+    end
+    object DBEdit5: TDBEdit
+      Left = 8
+      Height = 28
+      Top = 25
+      Width = 84
+      DataField = 'id'
+      DataSource = dsPadrao
+      ReadOnly = True
+      CharCase = ecNormal
+      Color = clSilver
+      MaxLength = 0
+      TabOrder = 0
+      TabStop = False
+    end
+    object Label3: TLabel
+      Left = 8
+      Height = 20
+      Top = 57
+      Width = 172
+      Caption = 'Data de nascimento'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 186
+      Height = 20
+      Top = 56
+      Width = 292
+      Caption = 'Endereço (Rua, Avenida, Estrada)'
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 923
+      Height = 20
+      Top = 56
+      Width = 51
+      Caption = 'Bairro'
+      ParentColor = False
+    end
+    object Label6: TLabel
+      Left = 8
+      Height = 20
+      Top = 112
+      Width = 59
+      Caption = 'Cidade'
+      ParentColor = False
+    end
+    object DBEdit6: TDBEdit
+      Left = 8
+      Height = 28
+      Top = 131
+      Width = 656
+      DataField = 'cidade'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 8
+    end
+    object DBComboBox1: TDBComboBox
+      Left = 675
+      Height = 28
+      Top = 131
+      Width = 58
+      AutoDropDown = True
+      AutoComplete = True
+      CharCase = ecUppercase
+      DataField = 'estado'
+      DataSource = dsPadrao
+      ItemHeight = 20
+      Items.Strings = (
+        'AC'
+        'AL'
+        'AM'
+        'AP'
+        'BA'
+        'CE'
+        'DF'
+        'ES'
+        'GO'
+        'MA'
+        'MG'
+        'MS'
+        'MT'
+        'PA'
+        'PB'
+        'PE'
+        'PI'
+        'PR'
+        'RJ'
+        'RN'
+        'RO'
+        'RR'
+        'RS'
+        'SC'
+        'SE'
+        'SP'
+        'TO'
+      )
+      MaxLength = 2
+      Sorted = True
+      Style = csDropDownList
+      TabOrder = 9
+    end
+    object Label7: TLabel
+      Left = 675
+      Height = 20
+      Top = 112
+      Width = 58
+      Caption = 'Estado'
+      ParentColor = False
+    end
+    object Label8: TLabel
+      Left = 752
+      Height = 20
+      Top = 112
+      Width = 33
+      Caption = 'CEP'
+      ParentColor = False
+    end
+    object GroupBox1: TGroupBox
+      Left = 8
+      Height = 136
+      Top = 160
+      Width = 1216
+      Caption = 'Filiação'
+      ClientHeight = 111
+      ClientWidth = 1212
+      TabOrder = 13
+      object Label11: TLabel
+        Left = 12
+        Height = 20
+        Top = 2
+        Width = 25
+        Caption = 'Pai'
+        ParentColor = False
+      end
+      object DBEdit9: TDBEdit
+        Left = 12
+        Height = 28
+        Top = 26
+        Width = 1150
+        DataField = 'nome_pai'
+        DataSource = dsPadrao
+        CharCase = ecUppercase
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object Label12: TLabel
+        Left = 12
+        Height = 20
+        Top = 56
+        Width = 34
+        Caption = 'Mãe'
+        ParentColor = False
+      end
+      object DBEdit10: TDBEdit
+        Left = 12
+        Height = 28
+        Top = 80
+        Width = 1150
+        DataField = 'nome_mae'
+        DataSource = dsPadrao
+        CharCase = ecUppercase
+        MaxLength = 0
+        TabOrder = 1
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 8
+      Height = 134
+      Top = 298
+      Width = 1216
+      Caption = 'Anamnese'
+      ClientHeight = 109
+      ClientWidth = 1212
+      TabOrder = 14
+      object Label13: TLabel
+        Left = 12
+        Height = 20
+        Top = 3
+        Width = 56
+        Caption = 'Motivo'
+        ParentColor = False
+      end
+      object Label14: TLabel
+        Left = 12
+        Height = 20
+        Top = 58
+        Width = 184
+        Caption = 'Doença pré-existente'
+        ParentColor = False
+      end
+      object lblObservacao: TLabel
+        Left = 621
+        Height = 20
+        Top = 0
+        Width = 381
+        Caption = 'Observação - 0 caracteres digitados de 200.'
+        ParentColor = False
+      end
+      object dblMotivo_Matricula: TDBLookupComboBox
+        Left = 12
+        Height = 28
+        Top = 26
+        Width = 549
+        AutoComplete = True
+        AutoDropDown = True
+        DataField = 'fk_motivo_matricula_id'
+        DataSource = dsPadrao
+        KeyField = 'id'
+        ListField = 'descricao'
+        ListFieldIndex = 0
+        ListSource = DataModuleApp.dsMotivo_Matricula
+        LookupCache = False
+        Sorted = True
+        TabOrder = 0
+      end
+      object dblDoenca_Pre_Existente: TDBLookupComboBox
+        Left = 12
+        Height = 28
+        Top = 81
+        Width = 549
+        AutoComplete = True
+        AutoDropDown = True
+        Color = clWhite
+        DataField = 'fk_doenca_pre_existente_id'
+        DataSource = dsPadrao
+        KeyField = 'id'
+        ListField = 'Nome'
+        ListFieldIndex = 0
+        ListSource = DataModuleApp.dsDoenca_Pre_Existente
+        LookupCache = False
+        Sorted = True
+        TabOrder = 1
+      end
+      object DBMemo1: TDBMemo
+        Left = 621
+        Height = 83
+        Top = 26
+        Width = 549
+        CharCase = ecUppercase
+        DataField = 'observacao'
+        DataSource = dsPadrao
+        MaxLength = 200
+        OnChange = DBMemo1Change
+        TabOrder = 2
+      end
+    end
+    object DBEdit11: TDBEdit
+      Left = 675
+      Height = 28
+      Top = 80
+      Width = 239
+      DataField = 'complemento'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 6
+    end
+    object Label16: TLabel
+      Left = 675
+      Height = 20
+      Top = 56
+      Width = 120
+      Caption = 'Complemento'
+      ParentColor = False
+    end
+    object Label17: TLabel
+      Left = 1112
+      Height = 20
+      Top = 1
+      Width = 113
+      Caption = 'Dt. matrícula'
+      ParentColor = False
+    end
+    object DBEdit12: TDBEdit
+      Left = 1111
+      Height = 28
+      Top = 25
+      Width = 116
+      DataField = 'data_cadastramento'
+      DataSource = dsPadrao
+      ReadOnly = True
+      CharCase = ecNormal
+      Color = clSilver
+      MaxLength = 0
+      TabOrder = 3
+      TabStop = False
+    end
+    object Label9: TLabel
+      Left = 867
+      Height = 20
+      Top = 112
+      Width = 70
+      Caption = 'Telefone'
+      ParentColor = False
+    end
+    object DBEdit7: TDBEdit
+      Left = 867
+      Height = 28
+      Top = 131
+      Width = 173
+      CustomEditMask = True
+      DataField = 'telefone'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '00 0000-0000;0;_'
+      MaxLength = 12
+      TabOrder = 11
+    end
+    object DBEdit8: TDBEdit
+      Left = 1054
+      Height = 28
+      Top = 131
+      Width = 173
+      CustomEditMask = True
+      DataField = 'celular'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '00 00000-0000;0;_'
+      MaxLength = 13
+      TabOrder = 12
+    end
+    object Label10: TLabel
+      Left = 1054
+      Height = 20
+      Top = 112
+      Width = 60
+      Caption = 'Celular'
+      ParentColor = False
+    end
+    object GroupBox3: TGroupBox
+      Left = 8
+      Height = 130
+      Top = 434
+      Width = 1216
+      Caption = 'Responsável'
+      ClientHeight = 105
+      ClientWidth = 1212
+      TabOrder = 16
+      object Label15: TLabel
+        Left = 16
+        Height = 20
+        Top = 2
+        Width = 50
+        Caption = 'Nome'
+        ParentColor = False
+      end
+      object DBEdit1: TDBEdit
+        Left = 16
+        Height = 28
+        Top = 24
+        Width = 641
+        DataField = 'nome_responsavel'
+        DataSource = dsPadrao
+        CharCase = ecUppercase
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object Label19: TLabel
+        Left = 671
+        Height = 20
+        Top = 2
+        Width = 55
+        Caption = 'e-mail'
+        ParentColor = False
+      end
+      object DBEdit14: TDBEdit
+        Left = 670
+        Height = 28
+        Top = 24
+        Width = 500
+        DataField = 'email_responsavel'
+        DataSource = dsPadrao
+        CharCase = ecLowerCase
+        MaxLength = 0
+        TabOrder = 1
+        OnExit = DBEdit14Exit
+      end
+      object Label20: TLabel
+        Left = 16
+        Height = 20
+        Top = 57
+        Width = 46
+        Caption = 'C.P.F.'
+        ParentColor = False
+      end
+      object DBEdit15: TDBEdit
+        Left = 16
+        Height = 28
+        Top = 78
+        Width = 151
+        CustomEditMask = True
+        DataField = 'cpf_responsavel'
+        DataSource = dsPadrao
+        CharCase = ecNormal
+        EditMask = '000.000.000-00;0;_'
+        MaxLength = 14
+        TabOrder = 2
+        OnExit = DBEdit15Exit
+      end
+      object Label21: TLabel
+        Left = 183
+        Height = 20
+        Top = 57
+        Width = 37
+        Caption = 'R.G.'
+        ParentColor = False
+      end
+      object DBEdit16: TDBEdit
+        Left = 183
+        Height = 28
+        Top = 78
+        Width = 151
+        DataField = 'rg_responsavel'
+        DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 3
+      end
+      object Label22: TLabel
+        Left = 348
+        Height = 20
+        Top = 57
+        Width = 60
+        Caption = 'Celular'
+        ParentColor = False
+      end
+      object DBEdit17: TDBEdit
+        Left = 348
+        Height = 28
+        Top = 78
+        Width = 158
+        CustomEditMask = True
+        DataField = 'celular_responsavel'
+        DataSource = dsPadrao
+        CharCase = ecNormal
+        EditMask = '(00) 00000-0000;0;_'
+        MaxLength = 15
+        TabOrder = 5
+      end
+      object Label23: TLabel
+        Left = 514
+        Height = 20
+        Top = 57
+        Width = 70
+        Caption = 'Telefone'
+        ParentColor = False
+      end
+      object DBEdit18: TDBEdit
+        Left = 512
+        Height = 28
+        Top = 78
+        Width = 143
+        CustomEditMask = True
+        DataField = 'telefone_responsavel'
+        DataSource = dsPadrao
+        CharCase = ecNormal
+        EditMask = '00 0000-0000;0;_'
+        MaxLength = 12
+        TabOrder = 6
+      end
+      object DBEdit13: TDBEdit
+        Left = 1051
+        Height = 28
+        Top = 77
+        Width = 116
+        DataField = 'data_inativacao'
+        DataSource = dsPadrao
+        ReadOnly = True
+        CharCase = ecNormal
+        Color = clSilver
+        MaxLength = 0
+        TabOrder = 4
+        TabStop = False
+      end
+      object Label18: TLabel
+        Left = 1051
+        Height = 20
+        Top = 53
+        Width = 119
+        Caption = 'Dt. inativação'
+        ParentColor = False
+      end
+    end
+    object DBEdit19: TDBEdit
+      Left = 704
+      Height = 28
+      Top = 183
+      Width = 74
+      CustomEditMask = True
+      DataField = 'hora_turma'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      EditMask = '99:99;0;_'
+      MaxLength = 5
+      TabOrder = 15
+      TabStop = False
+      Visible = False
+    end
+    object DBEdit4: TDBEdit
+      Left = 923
+      Height = 28
+      Top = 80
+      Width = 304
+      DataField = 'bairro'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 7
+    end
+    object Label24: TLabel
+      Left = 704
+      Height = 20
+      Top = 160
+      Width = 62
+      Caption = 'Horário'
+      ParentColor = False
+      Visible = False
+    end
+    object Label25: TLabel
+      Left = 783
+      Height = 20
+      Top = 160
+      Width = 88
+      Caption = 'Professora'
+      ParentColor = False
+      Visible = False
+    end
+    object DBEdit20: TDBEdit
+      Left = 783
+      Height = 28
+      Top = 183
+      Width = 350
+      CustomEditMask = True
+      DataField = 'modalidade'
+      DataSource = dsPadrao
+      CharCase = ecNormal
+      MaxLength = 0
+      TabOrder = 17
+      TabStop = False
+      Visible = False
+    end
+    object Label26: TLabel
+      Left = 989
+      Height = 20
+      Top = 1
+      Width = 108
+      Caption = 'Dia do Venc.'
+      ParentColor = False
+    end
+    object dbeNome1: TDBEdit
+      Left = 989
+      Height = 28
+      Top = 25
+      Width = 100
+      DataField = 'dia_vencimento'
+      DataSource = dsPadrao
+      CharCase = ecUppercase
+      MaxLength = 0
+      TabOrder = 2
+    end
+  end
+  inherited dsPadrao: TDataSource[3]
+    OnStateChange = dsPadraoStateChange
+    left = 336
+    top = 50
+  end
+  inherited sqlQueryPadrao: TSQLQuery[4]
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'data_nascimento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'rua'
+        DataType = ftString
+        Precision = -1
+        Size = 180
+      end    
+      item
+        Name = 'complemento'
+        DataType = ftString
+        Precision = -1
+        Size = 60
+      end    
+      item
+        Name = 'bairro'
+        DataType = ftString
+        Precision = -1
+        Size = 90
+      end    
+      item
+        Name = 'cidade'
+        DataType = ftString
+        Precision = -1
+        Size = 150
+      end    
+      item
+        Name = 'estado'
+        DataType = ftString
+        Precision = -1
+        Size = 6
+      end    
+      item
+        Name = 'cep'
+        DataType = ftString
+        Precision = -1
+        Size = 24
+      end    
+      item
+        Name = 'telefone'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'celular'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end    
+      item
+        Name = 'nome_pai'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'nome_mae'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'data_cadastramento'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'data_inativacao'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'observacao'
+        DataType = ftString
+        Precision = -1
+        Size = 600
+      end    
+      item
+        Name = 'fk_motivo_matricula_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'fk_doenca_pre_existente_id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'adimplente'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'nome_responsavel'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end    
+      item
+        Name = 'email_responsavel'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'cpf_responsavel'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end    
+      item
+        Name = 'rg_responsavel'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end    
+      item
+        Name = 'telefone_responsavel'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'celular_responsavel'
+        DataType = ftString
+        Precision = -1
+        Size = 33
+      end    
+      item
+        Name = 'hora_turma'
+        DataType = ftString
+        Precision = -1
+        Size = 12
+      end    
+      item
+        Name = 'modalidade'
+        DataType = ftString
+        Precision = -1
+        Size = 90
+      end    
+      item
+        Name = 'dia_vencimento'
+        DataType = ftLargeint
+        Precision = -1
+      end>
+    AfterInsert = sqlQueryPadraoAfterInsert
+    AfterScroll = sqlQueryPadraoAfterScroll
+    BeforePost = sqlQueryPadraoBeforePost
+    SQL.Strings = (
+      'select id,'
+      '       nome,'
+      '       data_nascimento,'
+      '       rua,'
+      '       complemento,'
+      '       bairro,'
+      '       cidade,'
+      '       estado,'
+      '       cep,'
+      '       telefone,'
+      '       celular,'
+      '       nome_pai,'
+      '       nome_mae,'
+      '       data_cadastramento,'
+      '       data_inativacao,'
+      '       observacao,'
+      '       fk_motivo_matricula_id,'
+      '       fk_doenca_pre_existente_id,'
+      '       adimplente,'
+      '       nome_responsavel,'
+      '       email_responsavel,'
+      '       cpf_responsavel,'
+      '       rg_responsavel,'
+      '       telefone_responsavel,'
+      '       celular_responsavel,'
+      '       hora_turma,'
+      '       modalidade,'
+      '       dia_vencimento'
+      'from aluno'
+      'where id = :id'
+    )
+    UpdateSQL.Strings = (
+      ''
+    )
+    DeleteSQL.Strings = (
+      ''
+    )
+    Options = []
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptInput
+      end>
+    left = 376
+    top = 50
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraonome: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraodata_nascimento: TDateField[2]
+      FieldKind = fkData
+      FieldName = 'data_nascimento'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraorua: TStringField[3]
+      FieldKind = fkData
+      FieldName = 'rua'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object sqlQueryPadraocomplemento: TStringField[4]
+      FieldKind = fkData
+      FieldName = 'complemento'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object sqlQueryPadraobairro: TStringField[5]
+      FieldKind = fkData
+      FieldName = 'bairro'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object sqlQueryPadraocidade: TStringField[6]
+      FieldKind = fkData
+      FieldName = 'cidade'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 150
+    end
+    object sqlQueryPadraoestado: TStringField[7]
+      FieldKind = fkData
+      FieldName = 'estado'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object sqlQueryPadraocep: TStringField[8]
+      FieldKind = fkData
+      FieldName = 'cep'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 24
+    end
+    object sqlQueryPadraotelefone: TStringField[9]
+      FieldKind = fkData
+      FieldName = 'telefone'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object sqlQueryPadraocelular: TStringField[10]
+      FieldKind = fkData
+      FieldName = 'celular'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraonome_pai: TStringField[11]
+      FieldKind = fkData
+      FieldName = 'nome_pai'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraonome_mae: TStringField[12]
+      FieldKind = fkData
+      FieldName = 'nome_mae'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraodata_cadastramento: TDateField[13]
+      FieldKind = fkData
+      FieldName = 'data_cadastramento'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraodata_inativacao: TDateField[14]
+      FieldKind = fkData
+      FieldName = 'data_inativacao'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraoobservacao: TStringField[15]
+      FieldKind = fkData
+      FieldName = 'observacao'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 600
+    end
+    object sqlQueryPadraofk_motivo_matricula_id: TLargeintField[16]
+      FieldKind = fkData
+      FieldName = 'fk_motivo_matricula_id'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraofk_doenca_pre_existente_id: TLargeintField[17]
+      FieldKind = fkData
+      FieldName = 'fk_doenca_pre_existente_id'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraoadimplente: TStringField[18]
+      FieldKind = fkData
+      FieldName = 'adimplente'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object sqlQueryPadraonome_responsavel: TStringField[19]
+      FieldKind = fkData
+      FieldName = 'nome_responsavel'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 210
+    end
+    object sqlQueryPadraoemail_responsavel: TStringField[20]
+      FieldKind = fkData
+      FieldName = 'email_responsavel'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object sqlQueryPadraocpf_responsavel: TStringField[21]
+      FieldKind = fkData
+      FieldName = 'cpf_responsavel'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraorg_responsavel: TStringField[22]
+      FieldKind = fkData
+      FieldName = 'rg_responsavel'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraotelefone_responsavel: TStringField[23]
+      FieldKind = fkData
+      FieldName = 'telefone_responsavel'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object sqlQueryPadraocelular_responsavel: TStringField[24]
+      FieldKind = fkData
+      FieldName = 'celular_responsavel'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 33
+    end
+    object sqlQueryPadraohora_turma: TStringField[25]
+      FieldKind = fkData
+      FieldName = 'hora_turma'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 12
+    end
+    object sqlQueryPadraomodalidade: TStringField[26]
+      FieldKind = fkData
+      FieldName = 'modalidade'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object sqlQueryPadraodia_vencimento: TLargeintField[27]
+      FieldKind = fkData
+      FieldName = 'dia_vencimento'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object imageList: TImageList[5]
+    Height = 24
+    Width = 24
+    left = 405
+    top = 728
+    Bitmap = {
+      4C69020000001800000018000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FBFBFBFFD8D8D8FFC2C2C2FFBBBBBBFFBCBC
+      BCFFC3C3C3FFD9D9D9FFFBFBFBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00E9E9E9FFBEBEBEFFC8C8C8FFD2D2D2FFD4D4D4FFD4D4
+      D4FFD4D4D4FFCBCBCBFFBFBFBFFFEBEBEBFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00EDEDEDFFB3B3B3FFDFDFDFFFE9E9E9FFE1E1E1FFDDDDDDFFDCDC
+      DCFFE3E3E3FFEEEEEEFFE3E3E3FFB5B5B5FFEEEEEEFFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00ADADADFFD5D4D4FFC6C6C6FF9F9F9FFFAAAAAAFFBBBBBBFFBBBB
+      BBFFAAAAAAFFA2A2A2FFCCCCCCFFEDEDEDFFB0B0B0FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00B5B5B4FFCDCDCDFFC9C8C8FFB5B5B4FFC5C5C5FFFBFBFBFFFFFFFF00FFFF
+      FF00F9F9F9FFC2C2C2FF979797FFDDDDDDFFCBCBCBFFD2D2D2FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00BABABAFFEAEAEAFFD5D4D4FFBABABAFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FEFEFEFFBABABAFFD5D4D4FFEAEAEAFFBABABAFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00B5B5B4FFE0E1E1FFC9C8C8FFB5B5B4FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00B5B5B4FFC9C8C8FFE0E1E1FFB5B5B4FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00ADADADFFD3D3D2FFBABABAFFADADADFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00ADADADFFBABABAFFD3D3D2FFADADADFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00A2A2A3FFC3C3C3FFACACACFFA2A2A3FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00A2A2A3FFACACACFFC3C3C3FFA2A2A3FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009FC7FF75E1
+      EFFF29ABE0FF1B92D8FF35B6E6FF51D0EFFF70E1F6FF81EBFCFF8EF0FFFF8BF0
+      FEFF81EAFAFF70E2F7FF51CFEEFF37BAE6FF219ADBFF2DB0E1FF83E6F0FF009F
+      C7FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009BC4FF83E6
+      F0FF2FB5E0FF1795D8FF1DA8DFFF25B7E5FF34CBEEFF45D9F6FF54E5FDFF52E3
+      FBFF44D8F4FF35CBEEFF28B9E5FF21ACE0FF1B9ED9FF35BAE4FF94EAF2FF009B
+      C4FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000095BEFF81E5
+      F0FF30B6E1FF1896D8FF22AAE0FF28B9E6FF30C7EDFF3AD6F5FF42E1FCFF42E0
+      FAFF39D5F4FF32CAEFFF29BAE5FF24AFE1FF1E9FDBFF34BAE2FF94EAF2FF0095
+      BEFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00008EB9FF84E8
+      F2FF33B9E2FF199EDAFF22B1E2FF2ABEE9FF35CDEFFF3FD8F6FF4BE3FCFF49E1
+      FBFF3ED7F5FF36CEEFFF2DC1E9FF26B5E3FF1EA7DCFF39BFE5FF97EBF3FF008E
+      B9FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000086B2FF7EE5
+      F0FF2EB1E0FF1691D7FF20A6DFFF26B6E6FF2DC6EEFF38D5F5FF40E0FCFF40DD
+      FAFF38D1F3FF30C7EDFF27B7E5FF23ABE0FF1C9BD9FF32B5E1FF90EAF2FF0086
+      B2FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00007DACFF80E5
+      F0FF2DB3E0FF1793D8FF1EA8DFFF25B6E5FF2FC7EEFF37D4F4FF43E0FCFF3FDE
+      F9FF37D3F4FF30C7ECFF28B9E5FF22ACE0FF1B9CD9FF33B7E2FF91EAF2FF007D
+      ACFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000175A5FF83E6
+      F0FF33B8E4FF1899D8FF23AFE1FF2ABCE9FF33CBEFFF3ED8F5FF48E2FCFF47E1
+      FCFF3ED7F4FF36CDF0FF2BBEE6FF27B4E3FF1FA4DCFF36BDE3FF96EBF3FF0175
+      A5FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006D9EFF81E6
+      F0FF32B6E2FF1897D8FF22ACE1FF29BAE6FF32CBEFFF3DD8F7FF46E2FCFF46E1
+      FDFF3DD7F6FF35CCEFFF29BBE8FF25B1E1FF1EA0DBFF35BAE3FF94EAF0FF006D
+      9EFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006698FF81E6
+      F4FF2DB2DFFF1794D8FF1FA8E0FF25B6E8FF2DC5EBFF35CFEFFF3EDAF4FF3BD8
+      F2FF34CEEEFF2FC6EBFF28B9E8FF22ACE2FF1A9CDAFF33B7E2FF96EBF6FF0066
+      98FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00016094FF64DC
+      EEFF28AADDFF1380C6FF188BC2FF1B94BCFF1D9DBBFF22A9BCFF25B3C1FF25B1
+      C1FF22A7BCFF1E9FBBFF1A96BBFF1A91C4FF1788CAFF2CB0DFFF6FDFEDFF0160
+      94FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FF0160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FBFBFBFFD8D8D8FFC2C2C2FFBBBBBBFFBCBC
+      BCFFC3C3C3FFD9D9D9FFFBFBFBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00E9E9E9FFBEBEBEFFC8C8C8FFD2D2D2FFD4D4D4FFD4D4
+      D4FFD4D4D4FFCBCBCBFFBFBFBFFFEBEBEBFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00EDEDEDFFB3B3B3FFDFDFDFFFE9E9E9FFE1E1E1FFDDDDDDFFDCDC
+      DCFFE3E3E3FFEEEEEEFFE3E3E3FFB5B5B5FFEEEEEEFFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00ADADADFFD5D4D4FFC6C6C6FF9F9F9FFFAAAAAAFFBBBBBBFFBBBB
+      BBFFAAAAAAFFA2A2A2FFCCCCCCFFEDEDEDFFB0B0B0FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00B5B5B4FFCDCDCDFFC9C8C8FFB5B5B4FFC5C5C5FFFBFBFBFFFFFFFF00FFFF
+      FF00F9F9F9FFC2C2C2FF979797FFDDDDDDFFCBCBCBFFD2D2D2FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00ADADADFFD3D3D2FFBABABAFFADADADFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FEFEFEFFBABABAFFD5D4D4FFEAEAEAFFBABABAFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00A2A2A3FFC3C3C3FFACACACFFA2A2A3FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00B5B5B4FFC9C8C8FFE0E1E1FFB5B5B4FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00989899FFB4B4B4FFA09F9FFF989899FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00ADADADFFBABABAFFD3D3D2FFADADADFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00A2A2A3FFACACACFFC3C3C3FFA2A2A3FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFEFFFFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00989899FFA09F9FFFB4B4B4FF989899FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00908F8FFF888888FF888888FF908F8FFFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009F
+      C7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FF009FC7FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009FC7FF75E1
+      EFFF29ABE0FF1B92D8FF35B6E6FF51D0EFFF70E1F6FF81EBFCFF8EF0FFFF8BF0
+      FEFF81EAFAFF70E2F7FF51CFEEFF37BAE6FF219ADBFF2DB0E1FF83E6F0FF009F
+      C7FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00009BC4FF83E6
+      F0FF2FB5E0FF1795D8FF1DA8DFFF25B7E5FF34CBEEFF45D9F6FF54E5FDFF52E3
+      FBFF44D8F4FF35CBEEFF28B9E5FF21ACE0FF1B9ED9FF35BAE4FF94EAF2FF009B
+      C4FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000095BEFF81E5
+      F0FF30B6E1FF1896D8FF22AAE0FF28B9E6FF30C7EDFF3AD6F5FF42E1FCFF42E0
+      FAFF39D5F4FF32CAEFFF29BAE5FF24AFE1FF1E9FDBFF34BAE2FF94EAF2FF0095
+      BEFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00008EB9FF84E8
+      F2FF33B9E2FF199EDAFF22B1E2FF2ABEE9FF35CDEFFF3FD8F6FF4BE3FCFF49E1
+      FBFF3ED7F5FF36CEEFFF2DC1E9FF26B5E3FF1EA7DCFF39BFE5FF97EBF3FF008E
+      B9FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000086B2FF7EE5
+      F0FF2EB1E0FF1691D7FF20A6DFFF26B6E6FF2DC6EEFF38D5F5FF40E0FCFF40DD
+      FAFF38D1F3FF30C7EDFF27B7E5FF23ABE0FF1C9BD9FF32B5E1FF90EAF2FF0086
+      B2FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00007DACFF80E5
+      F0FF2DB3E0FF1793D8FF1EA8DFFF25B6E5FF2FC7EEFF37D4F4FF43E0FCFF3FDE
+      F9FF37D3F4FF30C7ECFF28B9E5FF22ACE0FF1B9CD9FF33B7E2FF91EAF2FF007D
+      ACFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000175A5FF83E6
+      F0FF33B8E4FF1899D8FF23AFE1FF2ABCE9FF33CBEFFF3ED8F5FF48E2FCFF47E1
+      FCFF3ED7F4FF36CDF0FF2BBEE6FF27B4E3FF1FA4DCFF36BDE3FF96EBF3FF0175
+      A5FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006D9EFF81E6
+      F0FF32B6E2FF1897D8FF22ACE1FF29BAE6FF32CBEFFF3DD8F7FF46E2FCFF46E1
+      FDFF3DD7F6FF35CCEFFF29BBE8FF25B1E1FF1EA0DBFF35BAE3FF94EAF0FF006D
+      9EFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00006698FF81E6
+      F4FF2DB2DFFF1794D8FF1FA8E0FF25B6E8FF2DC5EBFF35CFEFFF3EDAF4FF3BD8
+      F2FF34CEEEFF2FC6EBFF28B9E8FF22ACE2FF1A9CDAFF33B7E2FF96EBF6FF0066
+      98FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00016094FF64DC
+      EEFF28AADDFF1380C6FF188BC2FF1B94BCFF1D9DBBFF22A9BCFF25B3C1FF25B1
+      C1FF22A7BCFF1E9FBBFF1A96BBFF1A91C4FF1788CAFF2CB0DFFF6FDFEDFF0160
+      94FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FF0160
+      94FF016094FF016094FF016094FF016094FF016094FF016094FF016094FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00
+    }
+  end
+end
