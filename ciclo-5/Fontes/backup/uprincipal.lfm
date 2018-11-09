@@ -236,6 +236,10 @@ object frmPrincipal: TfrmPrincipal
         }
         OnClick = MenuItemRegistrarFrequenciaClick
       end
+      object MenuItem14: TMenuItem
+        Caption = 'Visualizar frequência do aluno'
+        OnClick = MenuItem14Click
+      end
     end
     object MenuItem7: TMenuItem
       Caption = 'Turma'
