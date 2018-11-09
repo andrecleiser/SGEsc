@@ -12,7 +12,6 @@ object frmPrincipal: TfrmPrincipal
   DesignTimePPI = 120
   Menu = mainMenu
   OnClose = FormClose
-  OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.8.2.0'
@@ -37,7 +36,7 @@ object frmPrincipal: TfrmPrincipal
       end    
       item
         BidiMode = bdRightToLeft
-        Text = 'Versão: ciclo-4'
+        Text = 'Versão: ciclo-5'
         Width = 50
       end>
     ParentFont = False
@@ -236,6 +235,10 @@ object frmPrincipal: TfrmPrincipal
           7D52B57D52B57D52B57D52B57D52B57D52B57D52FFFFFFFFFFFF
         }
         OnClick = MenuItemRegistrarFrequenciaClick
+      end
+      object MenuItem14: TMenuItem
+        Caption = 'Visualizar frequência do aluno'
+        OnClick = MenuItem14Click
       end
     end
     object MenuItem7: TMenuItem

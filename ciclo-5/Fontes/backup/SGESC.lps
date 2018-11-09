@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="62">
+    <Units Count="63">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -19,9 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="uDATMOD"/>
-        <EditorIndex Value="10"/>
-        <TopLine Value="4"/>
-        <CursorPos X="99" Y="15"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="64"/>
+        <CursorPos X="57" Y="80"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -44,11 +44,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPrincipal"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="107"/>
-        <CursorPos Y="135"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="95"/>
+        <CursorPos Y="110"/>
         <UsageCount Value="201"/>
+        <Bookmarks Count="1">
+          <Item0 Y="110" ID="1"/>
+        </Bookmarks>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -74,11 +76,10 @@
         <Filename Value="Service\ualunoservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uAlunoService"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="13"/>
-        <CursorPos X="3" Y="14"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="106"/>
+        <CursorPos X="81" Y="119"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="Repositorio\uformbase.pas"/>
@@ -88,9 +89,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFormBase"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="2"/>
-        <CursorPos X="99" Y="13"/>
-        <UsageCount Value="185"/>
+        <CursorPos X="16" Y="9"/>
+        <UsageCount Value="189"/>
       </Unit7>
       <Unit8>
         <Filename Value="Turma\uconsulta_turma.pas"/>
@@ -98,11 +98,10 @@
         <ComponentName Value="frmConsultaTurma"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="66"/>
-        <CursorPos Y="82"/>
-        <UsageCount Value="184"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="69"/>
+        <CursorPos X="40" Y="82"/>
+        <UsageCount Value="188"/>
       </Unit8>
       <Unit9>
         <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
@@ -111,15 +110,15 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uRegistrarFrequencia"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="73"/>
-        <CursorPos X="16" Y="82"/>
-        <UsageCount Value="183"/>
-        <Bookmarks Count="2">
+        <EditorIndex Value="1"/>
+        <TopLine Value="40"/>
+        <CursorPos X="18" Y="49"/>
+        <UsageCount Value="187"/>
+        <Bookmarks Count="1">
           <Item0 Y="116" ID="2"/>
-          <Item1 X="7" Y="90" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="Model\ualuno.pas"/>
@@ -128,7 +127,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="20"/>
         <CursorPos X="84" Y="31"/>
-        <UsageCount Value="178"/>
+        <UsageCount Value="182"/>
       </Unit10>
       <Unit11>
         <Filename Value="Service\ufrequenciaservice.pas"/>
@@ -137,7 +136,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="12"/>
         <CursorPos X="20" Y="27"/>
-        <UsageCount Value="169"/>
+        <UsageCount Value="173"/>
       </Unit11>
       <Unit12>
         <Filename Value="Recursos\ulogin.pas"/>
@@ -149,7 +148,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="66" Y="8"/>
-        <UsageCount Value="136"/>
+        <UsageCount Value="140"/>
       </Unit12>
       <Unit13>
         <Filename Value="Service\uusuarioservice.pas"/>
@@ -158,7 +157,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="46" Y="36"/>
-        <UsageCount Value="135"/>
+        <UsageCount Value="139"/>
       </Unit13>
       <Unit14>
         <Filename Value="Model\uusuario.pas"/>
@@ -167,7 +166,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="47"/>
         <CursorPos X="15" Y="47"/>
-        <UsageCount Value="135"/>
+        <UsageCount Value="139"/>
       </Unit14>
       <Unit15>
         <Filename Value="Recursos\uconstantessistema.pas"/>
@@ -175,7 +174,7 @@
         <UnitName Value="uConstantesSistema"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="122"/>
-        <UsageCount Value="111"/>
+        <UsageCount Value="115"/>
       </Unit15>
       <Unit16>
         <Filename Value="Financeiro\uresgistropagamento.pas"/>
@@ -184,11 +183,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uResgistroPagamento"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="156"/>
         <CursorPos X="73" Y="160"/>
-        <UsageCount Value="110"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="114"/>
       </Unit16>
       <Unit17>
         <Filename Value="Turma\ucadastrarturma.pas"/>
@@ -200,7 +198,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="47"/>
         <CursorPos X="26" Y="57"/>
-        <UsageCount Value="108"/>
+        <UsageCount Value="112"/>
       </Unit17>
       <Unit18>
         <Filename Value="Turma\uturma_aluno.pas"/>
@@ -210,8 +208,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uTurma_Aluno"/>
         <TopLine Value="2"/>
-        <CursorPos X="12" Y="5"/>
-        <UsageCount Value="107"/>
+        <CursorPos X="46" Y="7"/>
+        <UsageCount Value="111"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -221,10 +219,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroAlunos"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="219"/>
-        <CursorPos X="3" Y="223"/>
-        <UsageCount Value="105"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="189"/>
+        <CursorPos X="132" Y="210"/>
+        <UsageCount Value="109"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
@@ -236,17 +234,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="76"/>
         <CursorPos Y="91"/>
-        <UsageCount Value="105"/>
+        <UsageCount Value="109"/>
       </Unit20>
       <Unit21>
         <Filename Value="Service\uturmaservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTurmaService"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="13"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
         <CursorPos Y="173"/>
-        <UsageCount Value="98"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="102"/>
       </Unit21>
       <Unit22>
         <Filename Value="Model\uturma.pas"/>
@@ -255,7 +252,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="58" Y="53"/>
-        <UsageCount Value="98"/>
+        <UsageCount Value="102"/>
       </Unit22>
       <Unit23>
         <Filename Value="Service\uselecionarturmaaluno.pas"/>
@@ -266,7 +263,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="41" Y="23"/>
-        <UsageCount Value="56"/>
+        <UsageCount Value="60"/>
       </Unit23>
       <Unit24>
         <Filename Value="Financeiro\ufichafinanceira.pas"/>
@@ -275,10 +272,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFichaFinanceira"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="83"/>
-        <CursorPos X="90" Y="88"/>
-        <UsageCount Value="43"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="77"/>
+        <CursorPos X="25" Y="85"/>
+        <UsageCount Value="47"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit24>
@@ -515,11 +512,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroUsuario"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos Y="30"/>
-        <UsageCount Value="14"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="15"/>
       </Unit54>
       <Unit55>
         <Filename Value="C:\Lazarus\lcl\include\bitbtn.inc"/>
@@ -573,127 +569,134 @@
         <CursorPos Y="66"/>
         <UsageCount Value="10"/>
       </Unit61>
+      <Unit62>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVisualizarFrequencia"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="72"/>
+        <CursorPos X="29" Y="74"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit62>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="82" Column="61" TopLine="80"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="46" Column="79" TopLine="32"/>
       </Position1>
       <Position2>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="84" Column="61" TopLine="82"/>
+        <Filename Value="udatmod.pas"/>
+        <Caret Line="19" Column="69" TopLine="4"/>
       </Position2>
       <Position3>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="149" Column="82" TopLine="140"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="45" Column="17" TopLine="27"/>
       </Position3>
       <Position4>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="14" Column="73" TopLine="7"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="48" Column="17" TopLine="27"/>
       </Position4>
       <Position5>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="33" Column="88" TopLine="20"/>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="37" Column="38" TopLine="23"/>
       </Position5>
       <Position6>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="14" Column="20"/>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="38" Column="38" TopLine="24"/>
       </Position6>
       <Position7>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="138" Column="53" TopLine="125"/>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="111" Column="13" TopLine="106"/>
       </Position7>
       <Position8>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="14" Column="20"/>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="62" Column="65" TopLine="40"/>
       </Position8>
       <Position9>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="149" Column="35" TopLine="136"/>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="110" TopLine="95"/>
       </Position9>
       <Position10>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="14" Column="20"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="64" Column="64" TopLine="47"/>
       </Position10>
       <Position11>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="33" Column="89" TopLine="20"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="59" Column="73" TopLine="47"/>
       </Position11>
       <Position12>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="14" Column="20"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="60" Column="33" TopLine="47"/>
       </Position12>
       <Position13>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="138" Column="53" TopLine="125"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="67" Column="70" TopLine="47"/>
       </Position13>
       <Position14>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="14" Column="20"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="67" Column="75" TopLine="60"/>
       </Position14>
       <Position15>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="149" Column="93" TopLine="136"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="9" Column="79" TopLine="52"/>
       </Position15>
       <Position16>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="33" Column="66" TopLine="33"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="35" Column="51" TopLine="23"/>
       </Position16>
       <Position17>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="84" Column="16" TopLine="84"/>
+        <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
+        <Caret Line="88" Column="88" TopLine="73"/>
       </Position17>
       <Position18>
-        <Filename Value="Service\ualunoservice.pas"/>
-        <Caret Line="42" Column="34" TopLine="33"/>
+        <Filename Value="Frequencia\uregistrarfrequencia.pas"/>
+        <Caret Line="77" Column="3" TopLine="73"/>
       </Position18>
       <Position19>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="95" Column="19" TopLine="75"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="49" Column="34" TopLine="42"/>
       </Position19>
       <Position20>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="93" Column="36" TopLine="86"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="48" Column="34" TopLine="41"/>
       </Position20>
       <Position21>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="49" Column="34" TopLine="42"/>
       </Position21>
       <Position22>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="98" Column="34" TopLine="85"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="76" Column="45" TopLine="68"/>
       </Position22>
       <Position23>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="91" Column="53" TopLine="78"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="77" Column="45" TopLine="69"/>
       </Position23>
       <Position24>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="101" Column="14" TopLine="93"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="71" TopLine="58"/>
       </Position24>
       <Position25>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="109" Column="64" TopLine="96"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="102" TopLine="83"/>
       </Position25>
       <Position26>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="21" Column="20" TopLine="8"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="56" TopLine="56"/>
       </Position26>
       <Position27>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="148" Column="35" TopLine="135"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="55" TopLine="55"/>
       </Position27>
       <Position28>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="99" Column="51" TopLine="92"/>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <Caret Line="56" TopLine="56"/>
       </Position28>
-      <Position29>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="109" TopLine="92"/>
-      </Position29>
-      <Position30>
-        <Filename Value="Financeiro\ufichafinanceira.pas"/>
-        <Caret Line="93" TopLine="83"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

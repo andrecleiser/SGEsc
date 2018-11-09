@@ -42,7 +42,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="25">
+    <Units Count="26">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -206,6 +206,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFichaFinanceira"/>
       </Unit24>
+      <Unit25>
+        <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVisualizarFrequencia"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit25>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
