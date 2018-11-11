@@ -392,7 +392,6 @@ inherited frmVisualizarFrequencia: TfrmVisualizarFrequencia
     top = 177
   end
   object sqlFrequencia: TSQLQuery[5]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'data_frequencia'
