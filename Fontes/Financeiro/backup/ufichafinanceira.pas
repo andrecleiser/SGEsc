@@ -90,8 +90,8 @@ procedure TfrmFichaFinanceira.rgAdimplenteClick(Sender: TObject);
 begin
   sqlAluno.Filtered := (rgAdimplente.ItemIndex > 0);
   case rgAdimplente.ItemIndex of
-    1: sqlAluno.Filter := 'not adimplente';
-    2: sqlAluno.Filter := 'adimplente';
+    1: sqlAluno.Filter := 'adimplente';
+    2: sqlAluno.Filter := 'not adimplente';
   end;
 end;
 

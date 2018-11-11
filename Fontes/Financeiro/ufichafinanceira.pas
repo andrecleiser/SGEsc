@@ -56,7 +56,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure rgAdimplenteClick(Sender: TObject);
-    procedure sqlAlunoCalcFields(DataSet: TDataSet);
+    procedure sqlAlunoCalcFields({%H-}DataSet: TDataSet);
   private
 
   public

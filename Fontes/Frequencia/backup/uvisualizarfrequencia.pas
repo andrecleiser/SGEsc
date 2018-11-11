@@ -144,6 +144,7 @@ begin
   validarAluno(codigoAluno);
 
   sqlTurmaAluno.Close;
+  sqlFrequencia.Close;
 
   sqlTurmaAluno.ServerFilter := 'f.fk_aluno_id = ' + codigoAluno.Trim;
   sqlTurmaAluno.Open;

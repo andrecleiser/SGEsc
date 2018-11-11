@@ -12,7 +12,7 @@ uses
   uconsulta_aluno, uRegistrarFrequencia, uAluno, uFrequenciaService, uLogin,
   uUsuarioService, uUsuario, uConstantesSistema, uResgistroPagamento,
   uCadastrarTurma, uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno,
-  uFichaFinanceira;
+  uFichaFinanceira, uvisualizarfrequencia;
 
 {$R *.res}
 
