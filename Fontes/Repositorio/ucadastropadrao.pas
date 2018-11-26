@@ -64,6 +64,7 @@ uses
 {**************************** Métodos public ***************************}
 procedure TfrmCadastroPadrao.FormCreate(Sender: TObject);
 begin
+  inherited;
   // ALGUNS FORMS PODEM NÃO USAR ESTE EVENTO PARA CONTROLAR A ABERTURA DO DATASET
   // CONSIDERAR ISSO EM IMPLEMENTAÇÕES FUTURAS
   sqlQueryPadrao.Close;

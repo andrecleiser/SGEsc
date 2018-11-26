@@ -692,8 +692,8 @@ inherited frmCadastroAlunos: TfrmCadastroAlunos
         DataField = 'celular_responsavel'
         DataSource = dsPadrao
         CharCase = ecNormal
-        EditMask = '(00) 00000-0000;0;_'
-        MaxLength = 15
+        EditMask = '00 00000-0000;0;_'
+        MaxLength = 13
         TabOrder = 5
       end
       object Label23: TLabel

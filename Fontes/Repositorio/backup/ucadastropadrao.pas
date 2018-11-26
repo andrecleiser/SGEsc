@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, DbCtrls, Buttons, LCLType, uFormBase, BufDataset, maskutils;
+  ExtCtrls, DbCtrls, Buttons, LCLType, uFormBase, BufDataset;
 
 type
 
@@ -29,8 +29,6 @@ type
     procedure sqlQueryPadraoUpdateError(Sender: TObject;
       {%H-}DataSet: TCustomBufDataset; E: EUpdateError; UpdateKind: TUpdateKind;
       var Response: TResolverResponse);
-    procedure mostrarHoraFormatada(Sender: TField; var aText: string;
-      {%H-}DisplayText: Boolean);
 
   private
     fTabela: String;
@@ -140,13 +138,6 @@ begin
   else Self.Caption := captionForm;
   end;
 end;
-
-procedure TfrmCadastroPadrao.mostrarHoraFormatada(Sender: TField;
-  var aText: string; DisplayText: Boolean);
-begin
-  aText := FormatMaskText('00\:00;0;', Sender.AsString);
-end;
-
 
 {**************************** Métodos protected ***************************}
 

@@ -69,6 +69,7 @@ end;
 
 procedure TfrmCadastroTurma.FormShow(Sender: TObject);
 begin
+  inherited;
   DataModuleApp.qryLookUpProfessor.Open;
   sqlQueryPadrao.Open;
   captionForm := 'Cadastro de turma';

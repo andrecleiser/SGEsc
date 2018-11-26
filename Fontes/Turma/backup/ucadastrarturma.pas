@@ -41,6 +41,7 @@ type
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+    procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
 
   public
@@ -53,7 +54,7 @@ var
 implementation
 
 uses
-  uDATMOD;
+  uDATMOD, uTurmaService;
 
 {$R *.lfm}
 
@@ -77,6 +78,13 @@ procedure TfrmCadastroTurma.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
   sqlQueryPadraocontrolar_horario.AsString := 'S';
+end;
+
+procedure TfrmCadastroTurma.sqlQueryPadraoBeforePost(DataSet: TDataSet);
+begin
+  TTurmaService.validarTurma(DataSet);
+
+  inherited;
 end;
 
 end.

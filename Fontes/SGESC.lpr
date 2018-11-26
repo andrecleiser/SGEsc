@@ -10,9 +10,9 @@ uses
   Forms, sdflaz, datetimectrls, lazcontrols, uDATMOD, uCadastroPadrao,
   uPrincipal, uClassUtil, uFinanceiroService, uAlunoService, uFormBase,
   uconsulta_aluno, uRegistrarFrequencia, uAluno, uFrequenciaService, uLogin,
-  uUsuarioService, uUsuario, uConstantesSistema, uResgistroPagamento,
-  uCadastrarTurma, uTurma_Aluno, uTurmaService, uTurma, uselecionarturmaaluno,
-  uFichaFinanceira, uvisualizarfrequencia;
+  uUsuarioService, uUsuario, uConstantesSistema, uCadastroUsuario,
+  uResgistroPagamento, uCadastrarTurma, uTurma_Aluno, uTurmaService, uTurma,
+  uselecionarturmaaluno, uFichaFinanceira, uvisualizarfrequencia;
 
 {$R *.res}
 

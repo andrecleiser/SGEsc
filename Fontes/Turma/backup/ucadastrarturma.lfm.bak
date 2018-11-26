@@ -297,6 +297,7 @@ inherited frmCadastroTurma: TfrmCadastroTurma
         Precision = -1
       end>
     AfterInsert = sqlQueryPadraoAfterInsert
+    BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (
       'select id,'
       '       descricao,'

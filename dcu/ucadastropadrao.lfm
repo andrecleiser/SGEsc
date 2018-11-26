@@ -3,7 +3,6 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
   Height = 593
   Top = 65
   Width = 1177
-  BorderIcons = [biSystemMenu]
   Caption = 'Form cadastro padão'
   ClientHeight = 593
   ClientWidth = 1177
@@ -49,8 +48,8 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 100
-      ClientHeight = 45
-      ClientWidth = 1175
+      ClientHeight = 41
+      ClientWidth = 1171
       ConfirmDelete = False
       DataSource = dsPadrao
       Flat = True

@@ -6,12 +6,11 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-Buttons, StdCtrls, uFormBase, LCLType, uUsuario;
+Buttons, StdCtrls, LCLType, uFormBase;
 
 type
 
   { TfrmLogin }
-
   TfrmLogin = class(TfrmBase)
     btnSair1: TBitBtn;
     edtLogin: TEdit;
@@ -31,13 +30,12 @@ type
 
 var
   frmLogin: TfrmLogin;
-  usuario: TUsuario;
 
 
 implementation
 
 uses
-  uUsuarioService, uPrincipal;
+  uUsuario, uUsuarioService, uPrincipal;
 
 {$R *.lfm}
 

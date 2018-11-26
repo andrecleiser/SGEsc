@@ -8,7 +8,7 @@ object DataModuleApp: TDataModuleApp
   Width = 1310
   PPI = 120
   object MySQL57Connection: TMySQL57Connection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     DatabaseName = 'sgesc'
     KeepConnection = False
@@ -26,7 +26,7 @@ object DataModuleApp: TDataModuleApp
     top = 30
   end
   object sqlTransactionGeral: TSQLTransaction
-    Active = True
+    Active = False
     Action = caNone
     Database = MySQL57Connection
     left = 120
@@ -224,30 +224,10 @@ object DataModuleApp: TDataModuleApp
     left = 80
     top = 168
   end
-  object qryLookUpPerfilUsuario: TSQLQuery
-    PacketRecords = -1
-    FieldDefs = <>
-    Database = MySQL57Connection
-    Transaction = sqlTransactionGeral
-    SQL.Strings = (
-      'select *'
-      'from perfil_usuario'
-      'order by nome'
-    )
-    Options = [sqoKeepOpenOnCommit]
-    Params = <>
-    left = 632
-    top = 152
-  end
-  object dsqryLookUpPerfilUsuario: TDataSource
-    DataSet = qryLookUpPerfilUsuario
-    left = 592
-    top = 152
-  end
   object dsqryLookUpTurma: TDataSource
     DataSet = qryLookUpTurma
     left = 592
-    top = 224
+    top = 152
   end
   object qryLookUpTurma: TSQLQuery
     FieldDefs = <    
@@ -298,7 +278,7 @@ object DataModuleApp: TDataModuleApp
     )
     Params = <>
     left = 632
-    top = 224
+    top = 152
     object qryLookUpTurmaid: TLargeintField
       FieldKind = fkData
       FieldName = 'id'
@@ -353,7 +333,7 @@ object DataModuleApp: TDataModuleApp
     AutoEdit = False
     DataSet = qryLookUpProfessor
     left = 592
-    top = 301
+    top = 229
   end
   object qryLookUpProfessor: TSQLQuery
     FieldDefs = <    
@@ -382,7 +362,7 @@ object DataModuleApp: TDataModuleApp
     )
     Params = <>
     left = 632
-    top = 301
+    top = 229
   end
   object qryTurmaObj: TSQLQuery
     FieldDefs = <    
@@ -510,11 +490,11 @@ object DataModuleApp: TDataModuleApp
     )
     Params = <>
     left = 632
-    top = 384
+    top = 312
   end
   object dsLookUpAluno: TDataSource
     DataSet = qryLookUpAluno
     left = 592
-    top = 384
+    top = 312
   end
 end

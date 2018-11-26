@@ -6,13 +6,13 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
   Caption = 'Cadastro de usuário'
   ClientHeight = 270
   ClientWidth = 819
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   inherited pnlBottom: TPanel
     Top = 214
     Width = 819
     ClientWidth = 819
-    TabOrder = 6
     inherited pnlFrmBaseSair: TPanel
       Left = 605
       inherited btnSair: TBitBtn
@@ -37,7 +37,6 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     ClientWidth = 819
     inherited dbNav: TDBNavigator
       Width = 817
-      ClientHeight = 41
       ClientWidth = 813
     end
   end
@@ -50,7 +49,7 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     DataSource = dsPadrao
     CharCase = ecUppercase
     MaxLength = 0
-    TabOrder = 1
+    TabOrder = 2
   end
   object Label1: TLabel[3]
     Left = 17
@@ -68,7 +67,7 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     Caption = 'Ativo'
     DataField = 'ativo'
     DataSource = dsPadrao
-    TabOrder = 5
+    TabOrder = 3
     ValueChecked = 'S'
     ValueUnchecked = 'N'
   end
@@ -89,9 +88,31 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     DataSource = dsPadrao
     CharCase = ecNormal
     MaxLength = 0
-    TabOrder = 2
+    TabOrder = 4
   end
-  object Label4: TLabel[7]
+  object DBLookupComboBox1: TDBLookupComboBox[7]
+    Left = 16
+    Height = 28
+    Top = 137
+    Width = 518
+    DataField = 'fk_perfil_usuario_id'
+    DataSource = dsPadrao
+    KeyField = 'id'
+    ListField = 'nome'
+    ListFieldIndex = 0
+    ListSource = DataModuleApp.qryLookUpPerfilUsuario
+    LookupCache = False
+    TabOrder = 5
+  end
+  object Label3: TLabel[8]
+    Left = 17
+    Height = 20
+    Top = 114
+    Width = 43
+    Caption = 'Perfil'
+    ParentColor = False
+  end
+  object Label4: TLabel[9]
     Left = 549
     Height = 20
     Top = 114
@@ -99,7 +120,7 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     Caption = 'Senha'
     ParentColor = False
   end
-  object dbeSenha: TDBEdit[8]
+  object dbeSenha: TDBEdit[10]
     Left = 549
     Height = 28
     Top = 136
@@ -109,36 +130,16 @@ inherited frmCadastroUsuario: TfrmCadastroUsuario
     CharCase = ecUppercase
     MaxLength = 0
     PasswordChar = '*'
-    TabOrder = 4
+    TabOrder = 6
   end
-  object DBRadioGroup1: TDBRadioGroup[9]
-    Left = 17
-    Height = 51
-    Top = 114
-    Width = 519
-    Caption = 'Perfil'
-    Columns = 3
-    DataField = 'fk_perfil_usuario_id'
-    DataSource = dsPadrao
-    Items.Strings = (
-      'Usuário'
-      'Gerente'
-      'Administrador'
-    )
-    TabOrder = 3
-    Values.Strings = (
-      '2'
-      '1'
-      '3'
-    )
-  end
-  inherited dsPadrao: TDataSource[10]
+  inherited dsPadrao: TDataSource[11]
     top = 4
   end
-  inherited sqlQueryPadrao: TSQLQuery[11]
+  inherited sqlQueryPadrao: TSQLQuery[12]
     FieldDefs = <    
       item
         Name = 'id'
+        Attributes = [faHiddenCol]
         DataType = ftLargeint
         Precision = -1
       end    

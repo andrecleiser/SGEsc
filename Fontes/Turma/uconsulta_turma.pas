@@ -48,6 +48,7 @@ uses
 
 procedure TfrmConsultaTurma.FormShow(Sender: TObject);
 begin
+  inherited;
   DataModuleApp.qryLookUpTurma.Open;
   dblTurma.ItemIndex := 0;
   DataModuleApp.qryTurmaObj.ServerFiltered:=true;

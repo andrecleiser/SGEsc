@@ -72,6 +72,7 @@ end;
 
 procedure TfrmGerenciarTurma.FormShow(Sender: TObject);
 begin
+  inherited;
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
 

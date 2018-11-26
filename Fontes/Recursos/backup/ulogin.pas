@@ -6,12 +6,11 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-Buttons, StdCtrls, uFormBase, LCLType, uUsuario;
+Buttons, StdCtrls, LCLType, uUsuario, uFormBase;
 
 type
 
   { TfrmLogin }
-
   TfrmLogin = class(TfrmBase)
     btnSair1: TBitBtn;
     edtLogin: TEdit;

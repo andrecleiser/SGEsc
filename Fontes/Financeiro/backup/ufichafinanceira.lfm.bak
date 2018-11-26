@@ -576,7 +576,6 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     end
   end
   object sqlAluno: TSQLQuery[7]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'

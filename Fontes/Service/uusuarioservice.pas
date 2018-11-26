@@ -47,7 +47,6 @@ begin
 
     // Regra de validação 03
     if DecodeStringBase64(FieldByName('senha').AsString) <> pusuario.senha then
-//    if FieldByName('senha').AsString <> pusuario.senha then
       raise Exception.Create('Senha informada não é válida.');
 
     // Atualizo obj "usuario" com os dados obtidos

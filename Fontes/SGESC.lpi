@@ -42,7 +42,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="26">
+    <Units Count="27">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -213,6 +213,14 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit25>
+      <Unit26>
+        <Filename Value="Recursos\ucadastrousuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroUsuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroUsuario"/>
+      </Unit26>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

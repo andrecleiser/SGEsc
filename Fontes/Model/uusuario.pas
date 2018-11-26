@@ -8,23 +8,27 @@ interface
 uses
   Classes, SysUtils, db;
 
+
 type
+  TPerfil = (gpAdministrador = 3, gpGerente = 1, gpUsuario = 2);
+  TGrupoPerfil = set of TPerfil;
 
   TUsuario = class
   private
     fid    : integer;
     flogin : string;
     fnome  : string;
-    fperfil: integer;
+    fperfil: TGrupoPerfil;
     fsenha : string;
     fativo : string;
 
+    function obterPerfil(pperfil: integer): TGrupoPerfil;
   public
 
     property id    : integer read fid     write fid    ;
     property login : string  read flogin  write flogin ;
     property nome  : string  read fnome   write fnome  ;
-    property perfil: integer read fperfil write fperfil;
+    property perfil: TGrupoPerfil read fperfil write fperfil;
     property senha : string  read fsenha  write fsenha ;
     property ativo : string  read fativo  write fativo ;
 
@@ -48,6 +52,15 @@ type
 
 
   end;
+
+var
+  usuario: TUsuario;
+
+const
+  PERFIL_GERENTE = 1;
+  PERFIL_USUARIO = 2;
+  PERFIL_ADMINISTRADOR = 3;
+
 
 implementation
 
@@ -77,7 +90,7 @@ begin
   fid     := pid;
   flogin  := plogin;
   fnome   := pnome;
-  fperfil := pperfil;
+  fperfil := obterPerfil(pperfil);
   fsenha  := psenha;
   fativo  := pativo;
 end;
@@ -87,9 +100,18 @@ begin
   fid     := dataSetUsuario.FieldByName('id').AsInteger;
   flogin  := dataSetUsuario.FieldByName('login').AsString;
   fnome   := dataSetUsuario.FieldByName('nome').AsString;
-  fperfil := dataSetUsuario.FieldByName('fk_perfil_usuario_id').AsInteger;
+  fperfil := obterPerfil(dataSetUsuario.FieldByName('fk_perfil_usuario_id').AsInteger);
   fsenha  := dataSetUsuario.FieldByName('senha').AsString;
   fativo  := dataSetUsuario.FieldByName('ativo').AsString;
+end;
+
+function TUsuario.obterPerfil(pperfil: integer): TGrupoPerfil;
+begin
+  case pperfil of
+    PERFIL_ADMINISTRADOR: result := [gpAdministrador, gpGerente, gpUsuario];
+    PERFIL_GERENTE: result := [gpGerente, gpUsuario];
+    PERFIL_USUARIO: result := [gpUsuario];
+  end;
 end;
 
 end.

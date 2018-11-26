@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  Menus, LCLType, DBGrids, ComCtrls;
+  Menus, LCLType, DBGrids, ComCtrls, StdCtrls, DateUtils;
 
 type
 
@@ -57,7 +57,7 @@ var
 implementation
 
 uses
-    uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uLogin,
+    uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uUsuario,
     uconsulta_turma, uconsulta_aluno, {uCadastrarTurma, }uTurma_Aluno,
     uResgistroPagamento, uFichaFinanceira, uvisualizarfrequencia;
 
@@ -97,6 +97,7 @@ procedure TfrmPrincipal.MenuItem13Click(Sender: TObject);
 begin
   with TfrmFichaFinanceira.Create(Application) do
   try
+    perfilAcessoPermitido := gpGerente;
     ShowModal;
   finally
     Free;

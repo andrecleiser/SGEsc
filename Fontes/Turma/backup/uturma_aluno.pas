@@ -23,6 +23,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure afterScrollTurma(DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     afterScrollLookUpTurma: TDataSetNotifyEvent;
@@ -71,6 +72,7 @@ end;
 
 procedure TfrmGerenciarTurma.FormShow(Sender: TObject);
 begin
+  inherited;
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
 
@@ -91,6 +93,12 @@ begin
                         dbLookupComboBoxTurma.ListSource.DataSet.FieldByName('limite_alunos').AsString +
                         ' |  Quantidade de alunos matriculados: ' +
                         dbLookupComboBoxTurma.ListSource.DataSet.FieldByName('qtd_alunos_turma').AsString;
+end;
+
+procedure TfrmGerenciarTurma.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+  sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := idAluno;
 end;
 
 procedure TfrmGerenciarTurma.sqlQueryPadraoBeforePost(DataSet: TDataSet);

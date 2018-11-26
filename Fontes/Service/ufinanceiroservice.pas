@@ -18,7 +18,7 @@ type
 
     // retorna a quantidade de alunos inadimplentes
     class function totalAlunoInadimplente(): integer;
-    class function estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer): boolean;
+    class function estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer; considerarTurma: boolean = false): boolean;
     class function alunoAdimplente(aluno: TAluno; idTurma: integer): boolean;
   end;
 
@@ -145,7 +145,7 @@ begin
 end;
 
 //******************** MÉTODOS PRIVADOS ********************//
-class function TFinanceiroService.estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer): boolean;
+class function TFinanceiroService.estaInadimplente(idAluno: integer; idTurma: integer; dia_vencimento: integer; considerarTurma: boolean = false): boolean;
 var
   sql: TSQLQuery;
   vencimento: TDateTime;
@@ -160,9 +160,12 @@ begin
   sql.SQLConnection := DataModuleApp.MySQL57Connection;
   sql.SQL.Add('select max(mes), ano');
   sql.SQL.Add('from pagamento');
-  sql.SQL.Add('where ano = year(current_date())');
+  sql.SQL.Add('where ano <= year(current_date())');
   sql.SQL.Add('  and fk_aluno_id = ' + idAluno.ToString());
-  sql.SQL.Add('  and fk_turma_id = ' + idTurma.ToString());
+
+  // Considera a turma no controle do pagamento
+  if considerarTurma then
+    sql.SQL.Add('  and fk_turma_id = ' + idTurma.ToString());
 
   try
     sql.Open;
@@ -181,8 +184,9 @@ begin
   end;
 
   vencimento := EncodeDate(YearOf(Today()), MonthOf(Today()), dia_vencimento);
-  // Pagamento no mês anterior e dia corrente menor do que o dia do vencimento do aluno
-  result := result or ( result and (DaysBetween(Today(), vencimento) > 0));
+  // Se não existir pagamento algum ou existir pagamento, mas não ao mês anterior
+  // o aluno estará inadimplente.
+  result := result and (Trunc(Today()) > (Trunc(vencimento)));
 end;
 
 end.

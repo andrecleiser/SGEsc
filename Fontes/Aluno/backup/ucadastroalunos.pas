@@ -228,13 +228,11 @@ begin
     else
       id := sqlQueryPadraoId.AsInteger;
 
-    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;
     sqlQueryPadrao.Edit;
     idAluno := id;
     ShowModal;
   finally
-    sqlQueryPadrao.ServerFilter := '';
     Free;
   end;
 end;

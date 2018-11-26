@@ -296,6 +296,7 @@ object frmPrincipal: TfrmPrincipal
           52B57D52B57D52B57D52B57E52B57E52B57D52B57D52B57D52B57D52B57D52B5
           7D52B57D52B57D52B57D52B57D52B57D52B57D52FFFFFFFFFFFF
         }
+        Visible = False
         OnClick = MenuItem14Click
       end
     end

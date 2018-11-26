@@ -1,7 +1,7 @@
 object frmBase: TfrmBase
-  Left = 100
+  Left = 149
   Height = 762
-  Top = 67
+  Top = 108
   Width = 1609
   BorderIcons = [biSystemMenu]
   Caption = 'Form base'
@@ -11,6 +11,8 @@ object frmBase: TfrmBase
   DesignTimePPI = 120
   Font.Height = -17
   Font.Name = 'Verdana'
+  OnCreate = FormCreate
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.8.2.0'
   object pnlBottom: TPanel

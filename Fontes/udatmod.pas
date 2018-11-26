@@ -14,7 +14,6 @@ type
   TDataModuleApp = class(TDataModule)
     dsLookUpAluno: TDataSource;
     dsqryLookUpTurma: TDataSource;
-    dsqryLookUpPerfilUsuario: TDataSource;
     dsMotivo_Matricula: TDataSource;
     dsDoenca_Pre_Existente: TDataSource;
     dsqryLookUpProfessor: TDataSource;
@@ -26,6 +25,8 @@ type
     qryLookUpDoenca_Pre_Existente: TSQLQuery;
     qryLookUpMotivo_Matriculadescricao: TStringField;
     qryLookUpMotivo_Matriculaid: TLargeintField;
+    qryLookUpPerfilUsuarioid: TLargeintField;
+    qryLookUpPerfilUsuarionome: TStringField;
     qryLookUpProfessor: TSQLQuery;
     qryLookUpTurmadescricao: TStringField;
     qryLookUpTurmaid: TLargeintField;
@@ -38,7 +39,6 @@ type
     qryTurmaObjhora_inicio: TStringField;
     qryTurmaObjnome: TStringField;
     qryUsuarioObj: TSQLQuery;
-    qryLookUpPerfilUsuario: TSQLQuery;
     qryLookUpTurma: TSQLQuery;
     qryTurmaObj: TSQLQuery;
     qryLookUpAluno: TSQLQuery;
