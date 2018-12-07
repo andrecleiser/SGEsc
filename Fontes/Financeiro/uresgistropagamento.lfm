@@ -439,6 +439,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
   end
   inherited dsPadrao: TDataSource[4]
     OnStateChange = dsPadraoStateChange
+    left = 8
   end
   inherited sqlQueryPadrao: TSQLQuery[5]
     FieldDefs = <    

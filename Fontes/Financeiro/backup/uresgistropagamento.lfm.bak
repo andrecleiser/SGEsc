@@ -1,6 +1,6 @@
 inherited frmRegistrarPagamento: TfrmRegistrarPagamento
-  Left = 100
-  Top = 100
+  Left = 2412
+  Top = 154
   Width = 961
   ActiveControl = edtCodigoAluno
   Caption = 'Registro de pagamento'

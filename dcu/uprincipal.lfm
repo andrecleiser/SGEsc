@@ -296,7 +296,6 @@ object frmPrincipal: TfrmPrincipal
           52B57D52B57D52B57D52B57E52B57E52B57D52B57D52B57D52B57D52B57D52B5
           7D52B57D52B57D52B57D52B57D52B57D52B57D52FFFFFFFFFFFF
         }
-        Visible = False
         OnClick = MenuItem14Click
       end
     end
@@ -304,7 +303,12 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Turma'
       object MenuItem8: TMenuItem
         Caption = 'Cadastrar'
-        OnClick = MenuItem8Click
+        object MenuItem15: TMenuItem
+          Caption = 'Turma'
+        end
+        object MenuItem16: TMenuItem
+          Caption = 'Professor'
+        end
       end
       object MenuItem9: TMenuItem
         Caption = 'Relacionar aluno'

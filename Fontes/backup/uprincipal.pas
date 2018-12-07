@@ -20,6 +20,8 @@ type
     MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -136,6 +138,7 @@ procedure TfrmPrincipal.MenuItem6Click(Sender: TObject);
 begin
   with TfrmCadastroUsuario.Create(Application) do
   try
+    perfilAcessoPermitido := gpAdministrador;
     ShowModal;
   finally
     Free;
@@ -144,7 +147,6 @@ end;
 
 procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
 begin
-  Application.MessageBox('Funcionalidade a ser implementada.', 'INFORMAÇÃO');
 end;
 
 procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);

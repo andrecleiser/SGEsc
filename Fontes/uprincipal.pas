@@ -20,6 +20,8 @@ type
     MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -41,7 +43,6 @@ type
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
-    procedure MenuItem8Click(Sender: TObject);
     procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
@@ -141,11 +142,6 @@ begin
   finally
     Free;
   end;
-end;
-
-procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
-begin
-  Application.MessageBox('Funcionalidade a ser implementada.', 'INFORMAÇÃO');
 end;
 
 procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);

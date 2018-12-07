@@ -149,6 +149,11 @@ class function TFinanceiroService.estaInadimplente(idAluno: integer; idTurma: in
 var
   sql: TSQLQuery;
   vencimento: TDateTime;
+  vencido: boolean;
+  pagamentoMesAnterior: boolean;
+  pagamentoMesCorrente: boolean;
+  semPagamento: boolean;
+  dataVencida: boolean;
 begin
   // Sem dia de vencimento será considerado inadimplente
 
@@ -160,7 +165,7 @@ begin
   sql.SQLConnection := DataModuleApp.MySQL57Connection;
   sql.SQL.Add('select max(mes), ano');
   sql.SQL.Add('from pagamento');
-  sql.SQL.Add('where ano = year(current_date())');
+  sql.SQL.Add('where ano <= year(current_date())');
   sql.SQL.Add('  and fk_aluno_id = ' + idAluno.ToString());
 
   // Considera a turma no controle do pagamento
@@ -171,22 +176,38 @@ begin
     sql.Open;
 
     // Pagamento encontrado no ano/mês antetior ao mês corrente.
-    result := (sql.IsEmpty) or
-              ( (not sql.IsEmpty) and
-                (not (
-                       (sql.Fields[1].AsInteger = YearOf( IncMonth(Today(), -1) )) and
-                       (sql.Fields[0].AsInteger >= MonthOf( IncMonth(Today(), -1) ))
-                     ))
-                 );
+    semPagamento := (sql.IsEmpty);
+
+    pagamentoMesAnterior := (not sql.IsEmpty) and
+                            (
+                              (sql.Fields[1].AsInteger = YearOf( IncMonth(Today, -1) )) and
+                              (sql.Fields[0].AsInteger = MonthOf( IncMonth(Today, -1) ))
+                            );
+
+    pagamentoMesCorrente := (not sql.IsEmpty) and
+                            (
+                              (sql.Fields[1].AsInteger = YearOf( Today )) and
+                              (sql.Fields[0].AsInteger >= MonthOf( Today ))
+                            );
+
   finally
     sql.Close;
     sql.Free;
   end;
 
   vencimento := EncodeDate(YearOf(Today()), MonthOf(Today()), dia_vencimento);
+  dataVencida := CompareDate(Today, vencimento) > 0;
+  vencido:=true;
+
   // Se não existir pagamento algum ou existir pagamento, mas não ao mês anterior
   // o aluno estará inadimplente.
-  result := (not result) and (Trunc(Today()) > (Trunc(vencimento)));
+  if (pagamentoMesAnterior) and (not dataVencida) then
+    vencido := false;
+
+  if pagamentoMesCorrente then
+    vencido := false;
+
+  result := vencido;
 end;
 
 end.

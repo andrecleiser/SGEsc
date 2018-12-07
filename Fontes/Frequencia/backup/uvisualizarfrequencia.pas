@@ -14,6 +14,7 @@ type
   { TfrmVisualizarFrequencia }
 
   TfrmVisualizarFrequencia = class(TfrmBase)
+    btnExportar: TBitBtn;
     btnConsultarAlunoPorNome: TBitBtn;
     btnFrequencia: TBitBtn;
     btnConsultarTurmas: TBitBtn;
@@ -40,9 +41,11 @@ type
     sqlTurmaAlunodescricao: TStringField;
     sqlTurmaAlunofk_turma_id: TLargeintField;
     sqlTurmaAlunohora_inicio: TStringField;
+    procedure btnExportarClick(Sender: TObject);
     procedure btnFrequenciaClick(Sender: TObject);
     procedure btnConsultarTurmasClick(Sender: TObject);
     procedure btnConsultarAlunoPorNomeClick(Sender: TObject);
+    procedure dblkpTurmaChange(Sender: TObject);
     procedure dtpInicioButtonClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure sqlFrequenciahora_frequenciaGetText(Sender: TField;
@@ -77,6 +80,11 @@ begin
     edtCodigoAluno.Text:=codigoAluno.ToString;
     btnConsultarTurmas.Click;
   end;
+end;
+
+procedure TfrmVisualizarFrequencia.dblkpTurmaChange(Sender: TObject);
+begin
+  sqlFrequencia.Close;
 end;
 
 procedure TfrmVisualizarFrequencia.dtpInicioButtonClick(Sender: TObject);
@@ -131,6 +139,41 @@ begin
 
   sqlFrequencia.ServerFiltered:=true;
   sqlFrequencia.Open;
+end;
+
+procedure TfrmVisualizarFrequencia.btnExportarClick(Sender: TObject);
+var
+  dados: TStrings;
+begin
+  if sqlFrequencia.IsEmpty then
+    raise Exception.Create('Não há dados para exportar.');
+
+  dados := TStringList.Create;
+
+  try
+     dados.Add('Aluno: "' + lblNomeAluno.Caption + '"');
+     dados.Add('Período: "' + dtpInicio.Caption + ' a ' + dtpFim.Caption + '"');
+     dados.Add('Turma: "' + dblkpTurma.Caption '"');
+     dados.Add(' ');
+     dados.Add('Dia Hora');
+     sqlFrequencia.First;
+     while not sqlFrequencia.EOF do
+     begin
+       dados.Add(sqlFrequenciadata_frequencia.AsString + ' ' + sqlFrequenciahora_frequencia.DisplayText);
+       sqlFrequencia.Next;
+     end;
+
+     try
+       dados.SaveToFile('Frequência aluno ' + lblNomeAluno.Caption + '.csv');
+     except
+       on EFCreateError do
+         raise Exception.Create('Verifique se existe um arquivo exportado ao aluno selecionado aberto. Isto pode impedir a geração de um novo arquivo.');
+     end;
+     Application.MessageBox('Dados da frequência exportados ao arquivo. Abra-o em um programa de plainha eletrônica para manipular suas informação.', 'EXPORTAR FREQUÊNCIA');
+  finally
+    sqlFrequencia.First;
+    dados.Free;
+  end;
 end;
 
 procedure TfrmVisualizarFrequencia.btnConsultarTurmasClick(
