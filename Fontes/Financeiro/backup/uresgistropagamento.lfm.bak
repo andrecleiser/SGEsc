@@ -439,6 +439,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
   end
   inherited dsPadrao: TDataSource[4]
     OnStateChange = dsPadraoStateChange
+    left = 8
   end
   inherited sqlQueryPadrao: TSQLQuery[5]
     FieldDefs = <    
@@ -512,7 +513,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       'from    pagamento p'
       #9'inner join turma t on (p.fk_turma_id = t.id)'
       'where   p.fk_aluno_id = :idAluno'
-      'order by t.descricao, p.ano, p.mes'
+      'order by p.ano, p.mes, t.descricao'
     )
     InsertSQL.Strings = (
       'insert into pagamento(id, fk_aluno_id, fk_turma_id, valor, ano, mes, observacao, data_pagamento)'

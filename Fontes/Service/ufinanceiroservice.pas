@@ -78,8 +78,8 @@ begin
     raise Exception.Create('Ano do pagamento inválido.');
 
   // Regra de validação 11
-  if dataSet.FieldByName('ano').AsFloat >= (YearOf(IncYear(Today(), 1))) then
-    raise Exception.Create('O ano do pagamento não pode ser superior ao corrente.');
+{  if dataSet.FieldByName('ano').AsFloat >= (YearOf(IncYear(Today(), 1))) then
+    raise Exception.Create('O ano do pagamento não pode ser superior ao corrente.');}
 
   // Regra de validação 01
   if (dataSet.State = dsInsert) or

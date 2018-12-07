@@ -152,7 +152,6 @@ var
   vencido: boolean;
   pagamentoMesAnterior: boolean;
   pagamentoMesCorrente: boolean;
-  semPagamento: boolean;
   dataVencida: boolean;
 begin
   // Sem dia de vencimento será considerado inadimplente
@@ -174,9 +173,6 @@ begin
 
   try
     sql.Open;
-
-    // Pagamento encontrado no ano/mês antetior ao mês corrente.
-    semPagamento := (sql.IsEmpty);
 
     pagamentoMesAnterior := (not sql.IsEmpty) and
                             (
