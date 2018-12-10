@@ -22,7 +22,6 @@ type
     lblTextoConsulta: TLabel;
     Panel1: TPanel;
     pnlEditar: TPanel;
-    StaticText1: TStaticText;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
@@ -30,6 +29,8 @@ type
     procedure FormShow(Sender: TObject);
   private
     fCodigoAluno: integer;
+    procedure habilitarBotoes;
+    procedure abrirTurmas;
   public
     class function abrirConsultaTurma(): integer;
   end;
@@ -46,12 +47,23 @@ uses
 
 { TfrmConsultaTurma }
 
+procedure TfrmConsultaTurma.abrirTurmas;
+begin
+  DataModuleApp.qryLookUpTurma.Open;
+  dblTurma.ItemIndex := 0;
+end;
+
 procedure TfrmConsultaTurma.FormShow(Sender: TObject);
 begin
   inherited;
-  DataModuleApp.qryLookUpTurma.Open;
-  dblTurma.ItemIndex := 0;
+  abrirTurmas;
   DataModuleApp.qryTurmaObj.ServerFiltered:=true;
+end;
+
+procedure TfrmConsultaTurma.habilitarBotoes;
+begin
+  btnEditar.Enabled := DataModuleApp.qryTurmaObj.Active and (not DataModuleApp.qryTurmaObj.IsEmpty);
+  btnExcluir.Enabled := DataModuleApp.qryTurmaObj.Active and (not DataModuleApp.qryTurmaObj.IsEmpty);
 end;
 
 
@@ -84,12 +96,10 @@ begin
     raise Exception.Create('Informe a turma!');
 
   DataModuleApp.qryTurmaObj.Close;
-  DataModuleApp.qryTurmaObj.ServerFilter := 'fk_turma_id = ' + VarToStr(dblTurma.KeyValue);
+  DataModuleApp.qryTurmaObj.ServerFilter := 'fk_turma_id = ' + VarToStr(DataModuleApp.qryLookUpTurmaid.AsString);
   DataModuleApp.qryTurmaObj.Open;
 
-  btnEditar.Enabled := not DataModuleApp.qryTurmaObj.IsEmpty;
-  btnExcluir.Enabled := not DataModuleApp.qryTurmaObj.IsEmpty;
-
+  habilitarBotoes;
   if DataModuleApp.qryTurmaObj.IsEmpty then
     raise Exception.Create('Não existem alunos relacionados à turma.');
 end;
@@ -98,11 +108,17 @@ procedure TfrmConsultaTurma.btnEditarClick(Sender: TObject);
 begin
   with TfrmGerenciarTurma.Create(Application) do
   try
-    sqlQueryPadrao.ServerFilter := 'fk_turma_id = ' + dsTurma_Aluno.DataSet.FieldByName('fk_turma_id').AsString + 'fk_aluno_id = ' + dsTurma_Aluno.DataSet.FieldByName('fk_aluno_id').AsString;
+    chamadoPor := cpConsulta_Turma;
+
+    sqlQueryPadrao.ServerFilter := 'fk_turma_id = ' + DataModuleApp.qryTurmaObjfk_turma_id.AsString;
     sqlQueryPadrao.Open;
+    idTurma := DataModuleApp.qryTurmaObjfk_turma_id.AsInteger;
     ShowModal;
   finally
+    abrirTurmas;
     sqlQueryPadrao.ServerFilter := '';
+    DataModuleApp.qryTurmaObj.Close;
+    habilitarBotoes;
     Free;
   end;
 end;
@@ -111,6 +127,8 @@ procedure TfrmConsultaTurma.btnExcluirClick(Sender: TObject);
 begin
   with dsTurma_Aluno.DataSet do
     TTurmaService.excluirAluno(FieldByName('fk_aluno_id').AsInteger, FieldByName('fk_turma_id').AsInteger);
+  DataModuleApp.qryTurmaObj.Close;
+  habilitarBotoes;
 end;
 
 end.

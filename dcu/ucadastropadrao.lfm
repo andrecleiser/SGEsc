@@ -49,8 +49,8 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 100
-      ClientHeight = 41
-      ClientWidth = 1171
+      ClientHeight = 45
+      ClientWidth = 1175
       ConfirmDelete = False
       DataSource = dsPadrao
       Flat = True

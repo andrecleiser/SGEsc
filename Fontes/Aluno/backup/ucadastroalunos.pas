@@ -222,17 +222,21 @@ var
 begin
   with TfrmGerenciarTurma.Create(Application) do
   try
+    chamadoPor := cpCadastroAluno;
+
     // Na inclusão, deverá ser obtido o último id inserido
     if sqlQueryPadraoId.IsNull then
       id := TAlunoService.ultimoId()
     else
       id := sqlQueryPadraoId.AsInteger;
 
+    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;
     sqlQueryPadrao.Edit;
     idAluno := id;
     ShowModal;
   finally
+    sqlQueryPadrao.ServerFilter := '';
     Free;
   end;
 end;

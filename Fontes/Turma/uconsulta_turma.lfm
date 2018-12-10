@@ -102,7 +102,6 @@ inherited frmConsultaTurma: TfrmConsultaTurma
         ShowHint = True
         Spacing = 20
         TabOrder = 0
-        Visible = False
       end
     end
     object btnExcluir: TBitBtn[2]
@@ -277,12 +276,13 @@ inherited frmConsultaTurma: TfrmConsultaTurma
       ListFieldIndex = 0
       ListSource = DataModuleApp.dsqryLookUpTurma
       LookupCache = False
+      ScrollListDataset = True
       TabOrder = 1
     end
   end
   object DBGrid1: TDBGrid[2]
     Left = 0
-    Height = 438
+    Height = 464
     Top = 81
     Width = 773
     Align = alClient
@@ -294,7 +294,7 @@ inherited frmConsultaTurma: TfrmConsultaTurma
       end    
       item
         Title.Caption = 'nome'
-        Width = 680
+        Width = 650
         FieldName = 'nome'
       end>
     DataSource = dsTurma_Aluno
@@ -305,23 +305,7 @@ inherited frmConsultaTurma: TfrmConsultaTurma
     TitleFont.Height = -17
     TitleFont.Name = 'Verdana'
   end
-  object StaticText1: TStaticText[3]
-    Left = 0
-    Height = 26
-    Top = 519
-    Width = 773
-    Align = alBottom
-    Alignment = taCenter
-    BorderStyle = sbsSingle
-    Caption = 'SEM RESTRIÇÃO'
-    Font.Color = clGreen
-    Font.Height = -17
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 3
-  end
-  object dsTurma_Aluno: TDataSource[4]
+  object dsTurma_Aluno: TDataSource[3]
     AutoEdit = False
     DataSet = DataModuleApp.qryTurmaObj
     left = 48

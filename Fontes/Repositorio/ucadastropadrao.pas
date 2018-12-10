@@ -77,8 +77,8 @@ end;
 
 procedure TfrmCadastroPadrao.FormShow(Sender: TObject);
 begin
-  inherited;
   Self.Caption := fcaptionForm;
+  inherited;
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterDelete(DataSet: TDataSet);
@@ -121,7 +121,10 @@ begin
     raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
   end
   else
+  begin
+    DataSet.CancelUpdates;
     raise Exception.Create(TUtil.mensagemErro(E));
+  end;
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);

@@ -10,8 +10,8 @@ uses
 
 
 type
-//  TPerfil =
-  TGrupoPerfil = set of (gpAdministrador = 3, gpGerente = 1, gpUsuario = 2);
+  TPerfil = (gpAdministrador = 3, gpGerente = 1, gpUsuario = 2);
+  TGrupoPerfil = set of TPerfil;
 
   TUsuario = class
   private

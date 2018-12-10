@@ -21,6 +21,7 @@ type
     procedure dsPadraoStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure sqlQueryPadraoAfterDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
@@ -74,6 +75,12 @@ begin
   sqlQueryPadrao.Close;
 end;
 
+procedure TfrmCadastroPadrao.FormShow(Sender: TObject);
+begin
+  Self.Caption := fcaptionForm;
+  inherited;
+end;
+
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterDelete(DataSet: TDataSet);
 begin
   salvarDadosDataSet;
@@ -114,7 +121,11 @@ begin
     raise Exception.Create('Registro não pode ser excluído porque está relacionado a outra funcionalidade.');
   end
   else
+  begin
+    Response := rrAbort;
+    DataSet.Cancel;
     raise Exception.Create(TUtil.mensagemErro(E));
+  end;
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterPost(DataSet: TDataSet);

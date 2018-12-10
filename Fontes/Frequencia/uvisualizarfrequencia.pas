@@ -63,7 +63,7 @@ var
 implementation
 
 uses
-  uDATMOD, uconsulta_aluno, uAluno, uAlunoService;
+  uconsulta_aluno, uAluno, uAlunoService;
 
 {$R *.lfm}
 

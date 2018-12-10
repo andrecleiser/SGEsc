@@ -153,7 +153,7 @@ begin
   try
      dados.Add('Aluno: "' + lblNomeAluno.Caption + '"');
      dados.Add('Período: "' + dtpInicio.Caption + ' a ' + dtpFim.Caption + '"');
-     dados.Add('Turma: "' + dblkpTurma.Caption '"');
+     dados.Add('Turma: "' + dblkpTurma.Caption + '"');
      dados.Add(' ');
      dados.Add('Dia Hora');
      sqlFrequencia.First;

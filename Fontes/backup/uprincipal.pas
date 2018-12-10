@@ -28,7 +28,6 @@ type
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
     MenuItem8: TMenuItem;
-    MenuItem9: TMenuItem;
     MenuItemRegistrarFrequencia: TMenuItem;
     menuItemCadastros: TMenuItem;
     menuItemSair: TMenuItem;
@@ -45,7 +44,6 @@ type
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
-    procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
   private
@@ -163,19 +161,6 @@ begin
     perfilAcessoPermitido := gpAdministrador;
     ShowModal;
   finally
-    Free;
-  end;
-end;
-
-procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);
-begin
-  with TfrmGerenciarTurma.Create(Application) do
-  try
-    sqlQueryPadrao.ServerFilter := 'fk_turma_id = -1';
-    sqlQueryPadrao.Open;
-    ShowModal;
-  finally
-    sqlQueryPadrao.ServerFilter := '';
     Free;
   end;
 end;

@@ -10,8 +10,9 @@ uses
 
 type
 
-  { TfrmGerenciarTurma }
+  TChamadoPor = (cpCadastroAluno, cpConsulta_Turma);
 
+  { TfrmGerenciarTurma }
   TfrmGerenciarTurma = class(TfrmCadastroPadrao)
     DBLookupComboBoxAluno: TDBLookupComboBox;
     dbLookupComboBoxTurma: TDBLookupComboBox;
@@ -23,14 +24,20 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure afterScrollTurma(DataSet: TDataSet);
+    procedure sqlQueryPadraoAfterEdit(DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
   private
     afterScrollLookUpTurma: TDataSetNotifyEvent;
     fidAluno: integer;
+    fidTurma: integer;
+    fchamadoPor: TChamadoPor;
+    procedure atualizarCampo;
 
   public
     property idAluno: integer read fidAluno write fidAluno;
+    property idTurma: integer read fidTurma write fidTurma;
+    property chamadoPor: TChamadoPor read fchamadoPor write fchamadoPor;
 
   end;
 
@@ -45,7 +52,6 @@ uses
 {$R *.lfm}
 
 { TfrmGerenciarTurma }
-
 procedure TfrmGerenciarTurma.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
@@ -75,13 +81,7 @@ begin
   inherited;
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
-
-  if (fidAluno > 0) and (dsPadrao.State in [dsEdit, dsInsert]) then
-  begin
-    DBLookupComboBoxAluno.KeyValue := idAluno;
-    sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := idAluno;
-    DBLookupComboBoxAluno.Enabled:=false;
-  end;
+//  if (fidAluno > 0) and (dsPadrao.State in [dsEdit, dsInsert]) then
 end;
 
 procedure TfrmGerenciarTurma.afterScrollTurma(DataSet: TDataSet);
@@ -95,16 +95,38 @@ begin
                         dbLookupComboBoxTurma.ListSource.DataSet.FieldByName('qtd_alunos_turma').AsString;
 end;
 
+procedure TfrmGerenciarTurma.sqlQueryPadraoAfterEdit(DataSet: TDataSet);
+begin
+  inherited;
+  atualizarCampo;
+end;
+
 procedure TfrmGerenciarTurma.sqlQueryPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := idAluno;
+  atualizarCampo;
 end;
 
 procedure TfrmGerenciarTurma.sqlQueryPadraoBeforePost(DataSet: TDataSet);
 begin
   TTurmaService.validarTurmaAluno(DataSet);
   inherited;
+end;
+
+procedure TfrmGerenciarTurma.atualizarCampo;
+begin
+  case fchamadoPor of
+    cpCadastroAluno:  begin
+                        DBLookupComboBoxAluno.KeyValue := idAluno;
+                        sqlQueryPadrao.FieldByName('fk_aluno_id').AsInteger := idAluno;
+                        DBLookupComboBoxAluno.Enabled:=false;
+                      end;
+    cpConsulta_Turma: begin
+                        dbLookupComboBoxTurma.KeyValue := idTurma;
+                        sqlQueryPadrao.FieldByName('fk_turma_id').AsInteger := idTurma;
+                        dbLookupComboBoxTurma.Enabled:=false;
+                      end;
+  end;
 end;
 
 end.

@@ -120,6 +120,7 @@ inherited frmGerenciarTurma: TfrmGerenciarTurma
         DataType = ftLargeint
         Precision = -1
       end>
+    AfterEdit = sqlQueryPadraoAfterEdit
     AfterInsert = sqlQueryPadraoAfterInsert
     BeforePost = sqlQueryPadraoBeforePost
     SQL.Strings = (

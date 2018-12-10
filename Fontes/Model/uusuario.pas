@@ -10,7 +10,7 @@ uses
 
 
 type
-  TPerfil = (gpAdministrador = 3, gpGerente = 1, gpUsuario = 2);
+  TPerfil = (gpGerente = 1, gpUsuario = 2, gpAdministrador = 3);
   TGrupoPerfil = set of TPerfil;
 
   TUsuario = class
