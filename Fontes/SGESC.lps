@@ -43,7 +43,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPrincipal"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="51"/>
         <CursorPos X="67" Y="77"/>
@@ -191,7 +190,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastrarTurma"/>
-        <TopLine Value="71"/>
+        <TopLine Value="74"/>
         <CursorPos X="39" Y="78"/>
         <UsageCount Value="139"/>
         <Loaded Value="True"/>
@@ -250,27 +249,20 @@
         <UsageCount Value="129"/>
       </Unit22>
       <Unit23>
-        <Filename Value="Service\uselecionarturmaaluno.pas"/>
-        <ComponentName Value="frmSelecionarTurmasAluno"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="41"/>
-        <UsageCount Value="84"/>
-      </Unit23>
-      <Unit24>
         <Filename Value="Financeiro\ufichafinanceira.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmFichaFinanceira"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFichaFinanceira"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="108"/>
         <CursorPos Y="110"/>
         <UsageCount Value="74"/>
-      </Unit24>
-      <Unit25>
+        <Loaded Value="True"/>
+      </Unit23>
+      <Unit24>
         <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmVisualizarFrequencia"/>
@@ -280,8 +272,8 @@
         <TopLine Value="150"/>
         <CursorPos X="60" Y="152"/>
         <UsageCount Value="50"/>
-      </Unit25>
-      <Unit26>
+      </Unit24>
+      <Unit25>
         <Filename Value="Recursos\ucadastrousuario.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadastroUsuario"/>
@@ -292,329 +284,8 @@
         <TopLine Value="60"/>
         <CursorPos X="45" Y="60"/>
         <UsageCount Value="32"/>
-      </Unit26>
-      <Unit27>
-        <Filename Value="Cadastros\ucadastroalunos.pas"/>
-        <ComponentName Value="frmCadastroAlunos"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadastroAlunos"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="164" Y="3"/>
-        <UsageCount Value="133"/>
-      </Unit27>
-      <Unit28>
-        <Filename Value="Cadastros\ucadastrousuario.pas"/>
-        <ComponentName Value="frmCadastroUsuario"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadastroUsuario"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="70"/>
-        <CursorPos X="102" Y="88"/>
-        <UsageCount Value="44"/>
-      </Unit28>
-      <Unit29>
-        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.pas"/>
-        <ComponentName Value="frmCadastroResponsavelFinanceiro"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadastroResponsavelFinanceiro"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="43"/>
-        <CursorPos X="35" Y="43"/>
-        <UsageCount Value="77"/>
-      </Unit29>
-      <Unit30>
-        <Filename Value="Service\uresponsavelservice.pas"/>
-        <UnitName Value="uResponsavelService"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="13" Y="22"/>
-        <UsageCount Value="56"/>
-      </Unit30>
-      <Unit31>
-        <Filename Value="Cadastros\ucadaluno.pas"/>
-        <ComponentName Value="frmCadAluno"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadAluno"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="35" Y="7"/>
-        <UsageCount Value="35"/>
-      </Unit31>
-      <Unit32>
-        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1555"/>
-        <CursorPos Y="1573"/>
-        <UsageCount Value="10"/>
-      </Unit32>
-      <Unit33>
-        <Filename Value="..\..\..\Lazarus\lcl\forms.pp"/>
-        <UnitName Value="Forms"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="47"/>
-        <CursorPos X="25" Y="69"/>
-        <UsageCount Value="3"/>
-      </Unit33>
-      <Unit34>
-        <Filename Value="..\..\..\Lazarus\lcl\lclstrconsts.pas"/>
-        <UnitName Value="LCLStrConsts"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="254"/>
-        <CursorPos X="52" Y="259"/>
-        <UsageCount Value="3"/>
-      </Unit34>
-      <Unit35>
-        <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="82" Y="9"/>
-        <UsageCount Value="3"/>
-      </Unit35>
-      <Unit36>
-        <Filename Value="C:\Lazarus\lcl\lclstrconsts.pas"/>
-        <UnitName Value="LCLStrConsts"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="439"/>
-        <CursorPos X="29" Y="50"/>
-        <UsageCount Value="5"/>
-      </Unit36>
-      <Unit37>
-        <Filename Value="Cadastros\ucadastroalunos.lfm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="10"/>
-        <CursorPos X="17" Y="20"/>
-        <UsageCount Value="6"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit37>
-      <Unit38>
-        <Filename Value="Repositorio\ucadastropadrao.lfm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos Y="21"/>
-        <UsageCount Value="6"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit38>
-      <Unit39>
-        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.lfm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos X="18" Y="18"/>
-        <UsageCount Value="6"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit39>
-      <Unit40>
-        <Filename Value="C:\Lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2237"/>
-        <CursorPos Y="2253"/>
-        <UsageCount Value="3"/>
-      </Unit40>
-      <Unit41>
-        <Filename Value="C:\Lazarus\lcl\include\customform.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2937"/>
-        <CursorPos Y="2953"/>
-        <UsageCount Value="5"/>
-      </Unit41>
-      <Unit42>
-        <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32object.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="389"/>
-        <CursorPos Y="423"/>
-        <UsageCount Value="2"/>
-      </Unit42>
-      <Unit43>
-        <Filename Value="C:\Lazarus\lcl\include\application.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="208"/>
-        <CursorPos Y="232"/>
-        <UsageCount Value="9"/>
-      </Unit43>
-      <Unit44>
-        <Filename Value="C:\Lazarus\lcl\include\customedit.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="75"/>
-        <CursorPos Y="100"/>
-        <UsageCount Value="3"/>
-      </Unit44>
-      <Unit45>
-        <Filename Value="C:\Lazarus\lcl\comctrls.pp"/>
-        <UnitName Value="ComCtrls"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="612"/>
-        <CursorPos X="14" Y="634"/>
-        <UsageCount Value="10"/>
-      </Unit45>
-      <Unit46>
-        <Filename Value="C:\Lazarus\lcl\lclrescache.pas"/>
-        <UnitName Value="LCLResCache"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="202"/>
-        <CursorPos X="15" Y="205"/>
-        <UsageCount Value="1"/>
-      </Unit46>
-      <Unit47>
-        <Filename Value="C:\Lazarus\lcl\include\wincontrol.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="5376"/>
-        <CursorPos Y="5398"/>
-        <UsageCount Value="3"/>
-      </Unit47>
-      <Unit48>
-        <Filename Value="C:\Lazarus\lcl\forms.pp"/>
-        <UnitName Value="Forms"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="730"/>
-        <CursorPos X="38" Y="743"/>
-        <UsageCount Value="3"/>
-      </Unit48>
-      <Unit49>
-        <Filename Value="C:\Lazarus\lcl\include\dbcustomnavigator.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="376"/>
-        <CursorPos Y="399"/>
-        <UsageCount Value="2"/>
-      </Unit49>
-      <Unit50>
-        <Filename Value="C:\Lazarus\lcl\include\speedbutton.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="895"/>
-        <CursorPos Y="920"/>
-        <UsageCount Value="2"/>
-      </Unit50>
-      <Unit51>
-        <Filename Value="C:\Lazarus\lcl\lclmessageglue.pas"/>
-        <UnitName Value="LCLMessageGlue"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="106"/>
-        <CursorPos Y="123"/>
-        <UsageCount Value="3"/>
-      </Unit51>
-      <Unit52>
-        <Filename Value="C:\Lazarus\lcl\lclclasses.pp"/>
-        <UnitName Value="LCLClasses"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="130"/>
-        <CursorPos Y="154"/>
-        <UsageCount Value="2"/>
-      </Unit52>
-      <Unit53>
-        <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32callback.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2610"/>
-        <CursorPos Y="2633"/>
-        <UsageCount Value="3"/>
-      </Unit53>
-      <Unit54>
-        <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32winapi.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2594"/>
-        <CursorPos Y="2618"/>
-        <UsageCount Value="2"/>
-      </Unit54>
-      <Unit55>
-        <Filename Value="C:\Lazarus\fpc\3.0.4\source\packages\fcl-db\src\base\db.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="38"/>
-        <CursorPos X="39" Y="62"/>
-        <UsageCount Value="5"/>
-      </Unit55>
-      <Unit56>
-        <Filename Value="C:\Lazarus\lcl\include\bitbtn.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="37"/>
-        <CursorPos X="3" Y="46"/>
-        <UsageCount Value="3"/>
-      </Unit56>
-      <Unit57>
-        <Filename Value="C:\Lazarus\lcl\include\buttoncontrol.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="5"/>
-        <CursorPos Y="22"/>
-        <UsageCount Value="3"/>
-      </Unit57>
-      <Unit58>
-        <Filename Value="C:\Lazarus\lcl\include\buttons.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="153"/>
-        <CursorPos Y="170"/>
-        <UsageCount Value="3"/>
-      </Unit58>
-      <Unit59>
-        <Filename Value="..\..\..\Lazarus\components\lazutils\maps.pp"/>
-        <UnitName Value="Maps"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="128"/>
-        <CursorPos X="10" Y="154"/>
-        <UsageCount Value="9"/>
-      </Unit59>
-      <Unit60>
-        <Filename Value="Turma\uturma_aluno.lfm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="13"/>
-        <CursorPos X="20" Y="28"/>
-        <UsageCount Value="9"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit60>
-      <Unit61>
-        <Filename Value="Recursos\ucadastrousuario.lfm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="85"/>
-        <CursorPos X="38" Y="88"/>
-        <UsageCount Value="20"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit61>
-      <Unit62>
-        <Filename Value="..\..\..\Lazarus\lcl\include\customcheckbox.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="53"/>
-        <CursorPos Y="66"/>
-        <UsageCount Value="9"/>
-      </Unit62>
-      <Unit63>
-        <Filename Value="C:\Lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos X="39" Y="7"/>
-        <UsageCount Value="13"/>
-      </Unit63>
-      <Unit64>
-        <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="376"/>
-        <CursorPos X="95" Y="391"/>
-        <UsageCount Value="11"/>
-      </Unit64>
-      <Unit65>
-        <Filename Value="..\..\..\Lazarus\lcl\include\customform.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="923"/>
-        <CursorPos Y="940"/>
-        <UsageCount Value="13"/>
-      </Unit65>
-      <Unit66>
-        <Filename Value="..\..\..\Lazarus\lcl\include\wincontrol.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="4394"/>
-        <CursorPos Y="4409"/>
-        <UsageCount Value="10"/>
-      </Unit66>
-      <Unit67>
-        <Filename Value="..\..\..\Lazarus\components\turbopower_ipro\iphtml.pas"/>
-        <UnitName Value="IpHtml"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="12323"/>
-        <CursorPos X="58" Y="12330"/>
-        <UsageCount Value="10"/>
-      </Unit67>
-      <Unit68>
-        <Filename Value="Turma\ucadastrarturma.lfm"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit68>
-      <Unit69>
+      </Unit25>
+      <Unit26>
         <Filename Value="Turma\ucad_professor.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadastroProfessor"/>
@@ -626,14 +297,8 @@
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
-      </Unit69>
-      <Unit70>
-        <Filename Value="Service\uprofessorservice.pas"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="32" Y="3"/>
-        <UsageCount Value="20"/>
-      </Unit70>
-      <Unit71>
+      </Unit26>
+      <Unit27>
         <Filename Value="Turma\uselecionarturmaaluno.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
@@ -642,6 +307,342 @@
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
         <UsageCount Value="23"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="Service\uselecionarturmaaluno.pas"/>
+        <ComponentName Value="frmSelecionarTurmasAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="41"/>
+        <UsageCount Value="84"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="Cadastros\ucadastroalunos.pas"/>
+        <ComponentName Value="frmCadastroAlunos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroAlunos"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="164" Y="3"/>
+        <UsageCount Value="133"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="Cadastros\ucadastrousuario.pas"/>
+        <ComponentName Value="frmCadastroUsuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroUsuario"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="70"/>
+        <CursorPos X="102" Y="88"/>
+        <UsageCount Value="44"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.pas"/>
+        <ComponentName Value="frmCadastroResponsavelFinanceiro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroResponsavelFinanceiro"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="43"/>
+        <CursorPos X="35" Y="43"/>
+        <UsageCount Value="77"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="Service\uresponsavelservice.pas"/>
+        <UnitName Value="uResponsavelService"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="13" Y="22"/>
+        <UsageCount Value="56"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="Cadastros\ucadaluno.pas"/>
+        <ComponentName Value="frmCadAluno"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadAluno"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="35" Y="7"/>
+        <UsageCount Value="35"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1555"/>
+        <CursorPos Y="1573"/>
+        <UsageCount Value="10"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\..\..\Lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="47"/>
+        <CursorPos X="25" Y="69"/>
+        <UsageCount Value="3"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="..\..\..\Lazarus\lcl\lclstrconsts.pas"/>
+        <UnitName Value="LCLStrConsts"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="254"/>
+        <CursorPos X="52" Y="259"/>
+        <UsageCount Value="3"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="82" Y="9"/>
+        <UsageCount Value="3"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="C:\Lazarus\lcl\lclstrconsts.pas"/>
+        <UnitName Value="LCLStrConsts"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="439"/>
+        <CursorPos X="29" Y="50"/>
+        <UsageCount Value="5"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="Cadastros\ucadastroalunos.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="17" Y="20"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="Repositorio\ucadastropadrao.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos Y="21"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="18" Y="18"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="C:\Lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2237"/>
+        <CursorPos Y="2253"/>
+        <UsageCount Value="3"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="C:\Lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2937"/>
+        <CursorPos Y="2953"/>
+        <UsageCount Value="5"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32object.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="389"/>
+        <CursorPos Y="423"/>
+        <UsageCount Value="2"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="C:\Lazarus\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="208"/>
+        <CursorPos Y="232"/>
+        <UsageCount Value="9"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="C:\Lazarus\lcl\include\customedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="75"/>
+        <CursorPos Y="100"/>
+        <UsageCount Value="3"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="C:\Lazarus\lcl\comctrls.pp"/>
+        <UnitName Value="ComCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="612"/>
+        <CursorPos X="14" Y="634"/>
+        <UsageCount Value="10"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="C:\Lazarus\lcl\lclrescache.pas"/>
+        <UnitName Value="LCLResCache"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="202"/>
+        <CursorPos X="15" Y="205"/>
+        <UsageCount Value="1"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="C:\Lazarus\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5376"/>
+        <CursorPos Y="5398"/>
+        <UsageCount Value="3"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="C:\Lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="730"/>
+        <CursorPos X="38" Y="743"/>
+        <UsageCount Value="3"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="C:\Lazarus\lcl\include\dbcustomnavigator.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="376"/>
+        <CursorPos Y="399"/>
+        <UsageCount Value="2"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="C:\Lazarus\lcl\include\speedbutton.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="895"/>
+        <CursorPos Y="920"/>
+        <UsageCount Value="2"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="C:\Lazarus\lcl\lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="106"/>
+        <CursorPos Y="123"/>
+        <UsageCount Value="3"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="C:\Lazarus\lcl\lclclasses.pp"/>
+        <UnitName Value="LCLClasses"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="130"/>
+        <CursorPos Y="154"/>
+        <UsageCount Value="2"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2610"/>
+        <CursorPos Y="2633"/>
+        <UsageCount Value="3"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32winapi.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2594"/>
+        <CursorPos Y="2618"/>
+        <UsageCount Value="2"/>
+      </Unit56>
+      <Unit57>
+        <Filename Value="C:\Lazarus\fpc\3.0.4\source\packages\fcl-db\src\base\db.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="38"/>
+        <CursorPos X="39" Y="62"/>
+        <UsageCount Value="5"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="C:\Lazarus\lcl\include\bitbtn.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="37"/>
+        <CursorPos X="3" Y="46"/>
+        <UsageCount Value="3"/>
+      </Unit58>
+      <Unit59>
+        <Filename Value="C:\Lazarus\lcl\include\buttoncontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="3"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="C:\Lazarus\lcl\include\buttons.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="153"/>
+        <CursorPos Y="170"/>
+        <UsageCount Value="3"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="..\..\..\Lazarus\components\lazutils\maps.pp"/>
+        <UnitName Value="Maps"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="128"/>
+        <CursorPos X="10" Y="154"/>
+        <UsageCount Value="9"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="Turma\uturma_aluno.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="20" Y="28"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="Recursos\ucadastrousuario.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="85"/>
+        <CursorPos X="38" Y="88"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="..\..\..\Lazarus\lcl\include\customcheckbox.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos Y="66"/>
+        <UsageCount Value="9"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="C:\Lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="39" Y="7"/>
+        <UsageCount Value="13"/>
+      </Unit65>
+      <Unit66>
+        <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="376"/>
+        <CursorPos X="95" Y="391"/>
+        <UsageCount Value="11"/>
+      </Unit66>
+      <Unit67>
+        <Filename Value="..\..\..\Lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="923"/>
+        <CursorPos Y="940"/>
+        <UsageCount Value="13"/>
+      </Unit67>
+      <Unit68>
+        <Filename Value="..\..\..\Lazarus\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4394"/>
+        <CursorPos Y="4409"/>
+        <UsageCount Value="10"/>
+      </Unit68>
+      <Unit69>
+        <Filename Value="..\..\..\Lazarus\components\turbopower_ipro\iphtml.pas"/>
+        <UnitName Value="IpHtml"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12323"/>
+        <CursorPos X="58" Y="12330"/>
+        <UsageCount Value="10"/>
+      </Unit69>
+      <Unit70>
+        <Filename Value="Turma\ucadastrarturma.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit70>
+      <Unit71>
+        <Filename Value="Service\uprofessorservice.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="32" Y="3"/>
+        <UsageCount Value="20"/>
       </Unit71>
     </Units>
     <JumpHistory Count="17" HistoryIndex="16">

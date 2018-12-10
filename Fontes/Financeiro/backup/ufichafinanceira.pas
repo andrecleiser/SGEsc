@@ -77,6 +77,7 @@ uses
 
 procedure TfrmFichaFinanceira.FormShow(Sender: TObject);
 begin
+  inherited;
   sqlAluno.Open;
   sqlAlunoPagamentos.Open;
   sqlFaturamento.Open;
@@ -117,6 +118,7 @@ end;
 
 procedure TfrmFichaFinanceira.FormCreate(Sender: TObject);
 begin
+  inherited;
   sqlFaturamento.Close;
   sqlAlunoPagamentos.Close;
   sqlAluno.Close;
