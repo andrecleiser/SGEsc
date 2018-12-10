@@ -43,7 +43,7 @@ Implementação do ciclo-4:
 - Contas a receber - ficha financeira - construir tela
 - Contas a receber - ficha financeira - implementar funcionalidade
 
-Implementação do ciclo-4:Contas a receber - Visualizar todos os adimplentes - análise
+Implementação do ciclo-5:
 
 - Contas a receber - Visualizar todos os adimplentes - implementar funcionalidade
 - Contas a receber - Visualizar todos os inadimplentes - análise
