@@ -11,6 +11,7 @@ inherited frmCadastroPadrao: TfrmCadastroPadrao
   Font.Quality = fqDraft
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnShow = FormShow
   inherited pnlBottom: TPanel
     Top = 537
     Width = 1177

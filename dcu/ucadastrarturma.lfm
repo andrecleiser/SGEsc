@@ -7,6 +7,7 @@ inherited frmCadastroTurma: TfrmCadastroTurma
   ClientHeight = 598
   ClientWidth = 562
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   inherited pnlBottom: TPanel
     Top = 542
@@ -27,7 +28,6 @@ inherited frmCadastroTurma: TfrmCadastroTurma
     ClientWidth = 562
     inherited dbNav: TDBNavigator
       Width = 560
-      ClientHeight = 41
       ClientWidth = 556
     end
   end
@@ -130,10 +130,10 @@ inherited frmCadastroTurma: TfrmCadastroTurma
       ParentColor = False
     end
     object DBEdit2: TDBEdit
-      Left = 124
+      Left = 128
       Height = 28
       Top = 170
-      Width = 55
+      Width = 65
       CustomEditMask = True
       DataField = 'hora_fim'
       DataSource = dsPadrao
@@ -146,7 +146,7 @@ inherited frmCadastroTurma: TfrmCadastroTurma
       Left = 13
       Height = 28
       Top = 170
-      Width = 55
+      Width = 65
       CustomEditMask = True
       DataField = 'hora_inicio'
       DataSource = dsPadrao
@@ -345,7 +345,7 @@ inherited frmCadastroTurma: TfrmCadastroTurma
       ProviderFlags = [pfInUpdate]
       ReadOnly = False
       Required = False
-      EditMask = '00:00;1_'
+      EditMask = '00:00;0_'
       Size = 12
     end
     object sqlQueryPadraohora_fim: TStringField[5]

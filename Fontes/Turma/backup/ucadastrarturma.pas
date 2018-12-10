@@ -39,6 +39,7 @@ type
     sqlQueryPadraolimite_alunos: TLargeintField;
     sqlQueryPadraovalor_sugerido: TFloatField;
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sqlQueryPadraoAfterInsert(DataSet: TDataSet);
     procedure sqlQueryPadraoBeforePost(DataSet: TDataSet);
@@ -67,11 +68,18 @@ begin
   DataModuleApp.qryLookUpProfessor.Close;
 end;
 
+procedure TfrmCadastroTurma.FormCreate(Sender: TObject);
+begin
+  inherited;
+  sqlQueryPadrao.Open;
+end;
+
 procedure TfrmCadastroTurma.FormShow(Sender: TObject);
 begin
+  captionForm := 'Cadastro de turma';
+  inherited;
   DataModuleApp.qryLookUpProfessor.Open;
   sqlQueryPadrao.Open;
-  captionForm := 'Cadastro de turma';
 end;
 
 procedure TfrmCadastroTurma.sqlQueryPadraoAfterInsert(DataSet: TDataSet);

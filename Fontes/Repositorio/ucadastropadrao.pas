@@ -21,6 +21,7 @@ type
     procedure dsPadraoStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure sqlQueryPadraoAfterDelete({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterEdit({%H-}DataSet: TDataSet);
     procedure sqlQueryPadraoAfterInsert({%H-}DataSet: TDataSet);
@@ -72,6 +73,12 @@ end;
 procedure TfrmCadastroPadrao.FormDestroy(Sender: TObject);
 begin
   sqlQueryPadrao.Close;
+end;
+
+procedure TfrmCadastroPadrao.FormShow(Sender: TObject);
+begin
+  inherited;
+  Self.Caption := fcaptionForm;
 end;
 
 procedure TfrmCadastroPadrao.sqlQueryPadraoAfterDelete(DataSet: TDataSet);

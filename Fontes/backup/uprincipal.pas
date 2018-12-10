@@ -40,10 +40,11 @@ type
     procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem14Click(Sender: TObject);
+    procedure MenuItem15Click(Sender: TObject);
+    procedure MenuItem16Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
-    procedure MenuItem8Click(Sender: TObject);
     procedure MenuItem9Click(Sender: TObject);
     procedure MenuItemRegistrarFrequenciaClick(Sender: TObject);
     procedure menuItemSairClick(Sender: TObject);
@@ -60,8 +61,9 @@ implementation
 
 uses
     uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uUsuario,
-    uconsulta_turma, uconsulta_aluno, {uCadastrarTurma, }uTurma_Aluno,
-    uResgistroPagamento, uFichaFinanceira, uvisualizarfrequencia;
+    uconsulta_turma, uconsulta_aluno, uCadastrarTurma, uTurma_Aluno,
+    uResgistroPagamento, uFichaFinanceira, uvisualizarfrequencia,
+    ucad_professor;
 
 {$R *.lfm}
 
@@ -116,6 +118,26 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.MenuItem15Click(Sender: TObject);
+begin
+  with TfrmCadastroTurma.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem16Click(Sender: TObject);
+begin
+  with TfrmCadastroProfessor.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;
+end;
+
 procedure TfrmPrincipal.MenuItem1Click(Sender: TObject);
 begin
   TfrmConsultaAluno.abrirConsultaAluno([ccEditar]);
@@ -143,10 +165,6 @@ begin
   finally
     Free;
   end;
-end;
-
-procedure TfrmPrincipal.MenuItem8Click(Sender: TObject);
-begin
 end;
 
 procedure TfrmPrincipal.MenuItem9Click(Sender: TObject);

@@ -40,6 +40,8 @@ type
     procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem14Click(Sender: TObject);
+    procedure MenuItem15Click(Sender: TObject);
+    procedure MenuItem16Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
@@ -59,8 +61,9 @@ implementation
 
 uses
     uCadastroAlunos, uRegistrarFrequencia, uCadastroUsuario, uUsuario,
-    uconsulta_turma, uconsulta_aluno, {uCadastrarTurma, }uTurma_Aluno,
-    uResgistroPagamento, uFichaFinanceira, uvisualizarfrequencia;
+    uconsulta_turma, uconsulta_aluno, uCadastrarTurma, uTurma_Aluno,
+    uResgistroPagamento, uFichaFinanceira, uvisualizarfrequencia,
+    ucad_professor;
 
 {$R *.lfm}
 
@@ -108,6 +111,26 @@ end;
 procedure TfrmPrincipal.MenuItem14Click(Sender: TObject);
 begin
   with TfrmVisualizarFrequencia.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem15Click(Sender: TObject);
+begin
+  with TfrmCadastroTurma.Create(Application) do
+  try
+    ShowModal;
+  finally
+    Free;
+  end;
+end;
+
+procedure TfrmPrincipal.MenuItem16Click(Sender: TObject);
+begin
+  with TfrmCadastroProfessor.Create(Application) do
   try
     ShowModal;
   finally

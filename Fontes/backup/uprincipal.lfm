@@ -303,12 +303,13 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Turma'
       object MenuItem8: TMenuItem
         Caption = 'Cadastrar'
-        OnClick = MenuItem8Click
         object MenuItem15: TMenuItem
           Caption = 'Turma'
+          OnClick = MenuItem15Click
         end
         object MenuItem16: TMenuItem
           Caption = 'Professor'
+          OnClick = MenuItem16Click
         end
       end
       object MenuItem9: TMenuItem

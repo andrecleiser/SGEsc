@@ -1,0 +1,166 @@
+inherited frmCadastroProfessor: TfrmCadastroProfessor
+  Left = 523
+  Height = 650
+  Top = 149
+  Width = 833
+  Caption = 'Cadastro de professor'
+  ClientHeight = 650
+  ClientWidth = 833
+  OnCreate = FormCreate
+  OnShow = FormShow
+  inherited pnlBottom: TPanel
+    Top = 594
+    Width = 833
+    ClientWidth = 833
+    TabOrder = 3
+    inherited pnlFrmBaseSair: TPanel
+      Left = 619
+      inherited btnSair: TBitBtn
+        Color = clScrollBar
+        Default = False
+        DefaultCaption = False
+      end
+    end
+  end
+  inherited pnlNav: TPanel
+    Width = 833
+    ClientWidth = 833
+    TabOrder = 2
+    inherited dbNav: TDBNavigator
+      Width = 831
+      ClientWidth = 827
+      ConfirmDelete = True
+    end
+  end
+  object DBEdit1: TDBEdit[2]
+    Left = 24
+    Height = 28
+    Top = 112
+    Width = 100
+    DataField = 'id'
+    DataSource = dsPadrao
+    ReadOnly = True
+    CharCase = ecNormal
+    Color = clSilver
+    MaxLength = 0
+    TabOrder = 0
+    TabStop = False
+  end
+  object dbeNome: TDBEdit[3]
+    Left = 24
+    Height = 28
+    Top = 184
+    Width = 776
+    DataField = 'nome'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 1
+  end
+  object Label1: TLabel[4]
+    Left = 24
+    Height = 20
+    Top = 87
+    Width = 59
+    Caption = 'Código'
+    ParentColor = False
+  end
+  object Label2: TLabel[5]
+    Left = 24
+    Height = 20
+    Top = 160
+    Width = 50
+    Caption = 'Nome'
+    ParentColor = False
+  end
+  object Panel1: TPanel[6]
+    Left = 0
+    Height = 359
+    Top = 235
+    Width = 833
+    Align = alBottom
+    ClientHeight = 359
+    ClientWidth = 833
+    TabOrder = 4
+    object Panel3: TPanel
+      Left = 1
+      Height = 39
+      Top = 1
+      Width = 831
+      Align = alTop
+      BevelInner = bvLowered
+      BevelWidth = 3
+      Caption = 'Professores'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -20
+      Font.Name = 'Verdana'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      TabOrder = 0
+    end
+    object DBGrid1: TDBGrid
+      Left = 1
+      Height = 318
+      Top = 40
+      Width = 831
+      Align = alClient
+      Color = clSkyBlue
+      Columns = <      
+        item
+          Title.Caption = 'Nome'
+          Width = 780
+          FieldName = 'nome'
+        end>
+      DataSource = dsPadrao
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      Scrollbars = ssVertical
+      TabOrder = 1
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Height = -17
+      TitleFont.Name = 'Verdana'
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+    end
+  end
+  inherited dsPadrao: TDataSource[7]
+  end
+  inherited sqlQueryPadrao: TSQLQuery[8]
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'nome'
+        DataType = ftString
+        Precision = -1
+        Size = 210
+      end>
+    BeforePost = sqlQueryPadraoBeforePost
+    SQL.Strings = (
+      'select * from professor order by nome'
+    )
+    object sqlQueryPadraoid: TLargeintField[0]
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey, pfHidden]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlQueryPadraonome: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 210
+    end
+  end
+end

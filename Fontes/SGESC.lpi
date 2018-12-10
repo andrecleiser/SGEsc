@@ -42,7 +42,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="27">
+    <Units Count="28">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -192,35 +192,40 @@
         <UnitName Value="uTurma"/>
       </Unit22>
       <Unit23>
-        <Filename Value="Service\uselecionarturmaaluno.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmSelecionarTurmasAluno"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-      </Unit23>
-      <Unit24>
         <Filename Value="Financeiro\ufichafinanceira.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmFichaFinanceira"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFichaFinanceira"/>
-      </Unit24>
-      <Unit25>
+      </Unit23>
+      <Unit24>
         <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmVisualizarFrequencia"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-      </Unit25>
-      <Unit26>
+      </Unit24>
+      <Unit25>
         <Filename Value="Recursos\ucadastrousuario.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadastroUsuario"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroUsuario"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="Turma\ucad_professor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroProfessor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit26>
+      <Unit27>
+        <Filename Value="Turma\uselecionarturmaaluno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit27>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
