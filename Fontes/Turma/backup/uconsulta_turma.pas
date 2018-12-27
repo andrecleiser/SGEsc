@@ -16,12 +16,16 @@ type
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
     btnExcluir: TBitBtn;
+    dsTurma: TDataSource;
     DBGrid1: TDBGrid;
     dblTurma: TDBLookupComboBox;
     dsTurma_Aluno: TDataSource;
     lblTextoConsulta: TLabel;
     Panel1: TPanel;
     pnlEditar: TPanel;
+    sqlTurma: TSQLQuery;
+    sqlTurmadescricao: TStringField;
+    sqlTurmaid: TLargeintField;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
@@ -49,6 +53,7 @@ uses
 
 procedure TfrmConsultaTurma.abrirTurmas;
 begin
+  sqlTurma
   DataModuleApp.qryLookUpTurma.Open;
   dblTurma.ItemIndex := 0;
 end;
@@ -118,6 +123,7 @@ begin
     abrirTurmas;
     sqlQueryPadrao.ServerFilter := '';
     DataModuleApp.qryTurmaObj.Close;
+    habilitarBotoes;
     Free;
   end;
 end;
@@ -126,7 +132,8 @@ procedure TfrmConsultaTurma.btnExcluirClick(Sender: TObject);
 begin
   with dsTurma_Aluno.DataSet do
     TTurmaService.excluirAluno(FieldByName('fk_aluno_id').AsInteger, FieldByName('fk_turma_id').AsInteger);
-  btnConsultar.Click;
+  DataModuleApp.qryTurmaObj.Close;
+  habilitarBotoes;
 end;
 
 end.

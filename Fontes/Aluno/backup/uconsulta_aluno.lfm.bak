@@ -210,7 +210,7 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       ParentColor = False
     end
     object btnConsultar: TBitBtn
-      Left = 849
+      Left = 893
       Height = 50
       Top = 21
       Width = 50
@@ -278,15 +278,29 @@ inherited frmConsultaAluno: TfrmConsultaAluno
       ShowHint = True
       TabOrder = 1
     end
-    object cbAlunoAtivo: TCheckBox
-      Left = 694
-      Height = 24
-      Top = 43
-      Width = 139
-      Caption = 'Alunos ativos'
-      Checked = True
-      OnChange = cbAlunoAtivoChange
-      State = cbChecked
+    object rgSituacaoAluno: TRadioGroup
+      Left = 674
+      Height = 52
+      Top = 21
+      Width = 210
+      AutoFill = True
+      Caption = 'Mostrar alunos'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 27
+      ClientWidth = 206
+      Columns = 2
+      ItemIndex = 0
+      Items.Strings = (
+        'Ativos'
+        'Inativos'
+      )
+      OnClick = rgSituacaoAlunoClick
       TabOrder = 2
     end
   end

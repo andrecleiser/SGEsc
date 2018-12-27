@@ -81,7 +81,6 @@ begin
   inherited;
   DataModuleApp.qryLookUpTurma.Open;
   DataModuleApp.qryLookUpAluno.Open;
-  atualizarCampo;
 //  if (fidAluno > 0) and (dsPadrao.State in [dsEdit, dsInsert]) then
 end;
 

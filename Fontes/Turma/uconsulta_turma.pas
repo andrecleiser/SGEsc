@@ -16,12 +16,16 @@ type
     btnConsultar: TBitBtn;
     btnEditar: TBitBtn;
     btnExcluir: TBitBtn;
+    dsTurma: TDataSource;
     DBGrid1: TDBGrid;
     dblTurma: TDBLookupComboBox;
     dsTurma_Aluno: TDataSource;
     lblTextoConsulta: TLabel;
     Panel1: TPanel;
     pnlEditar: TPanel;
+    sqlTurma: TSQLQuery;
+    sqlTurmadescricao: TStringField;
+    sqlTurmaid: TLargeintField;
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
@@ -49,7 +53,7 @@ uses
 
 procedure TfrmConsultaTurma.abrirTurmas;
 begin
-  DataModuleApp.qryLookUpTurma.Open;
+  sqlTurma.Open;
   dblTurma.ItemIndex := 0;
 end;
 
@@ -70,7 +74,7 @@ end;
 procedure TfrmConsultaTurma.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
-  DataModuleApp.qryLookUpTurma.Close;
+  sqlTurma.Close;
   DataModuleApp.qryTurmaObj.Close;
   DataModuleApp.qryTurmaObj.ServerFiltered:=false;
 end;
@@ -96,7 +100,7 @@ begin
     raise Exception.Create('Informe a turma!');
 
   DataModuleApp.qryTurmaObj.Close;
-  DataModuleApp.qryTurmaObj.ServerFilter := 'fk_turma_id = ' + VarToStr(DataModuleApp.qryLookUpTurmaid.AsString);
+  DataModuleApp.qryTurmaObj.ServerFilter := 'fk_turma_id = ' + VarToStr(sqlTurmaid.AsString);
   DataModuleApp.qryTurmaObj.Open;
 
   habilitarBotoes;
