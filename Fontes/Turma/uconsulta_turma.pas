@@ -24,8 +24,9 @@ type
     Panel1: TPanel;
     pnlEditar: TPanel;
     sqlTurma: TSQLQuery;
-    sqlTurmadescricao: TStringField;
+    sqlTurmadesc_turma: TStringField;
     sqlTurmaid: TLargeintField;
+
     procedure btnConsultarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);

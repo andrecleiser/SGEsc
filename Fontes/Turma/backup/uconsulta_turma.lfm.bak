@@ -272,7 +272,7 @@ inherited frmConsultaTurma: TfrmConsultaTurma
       AutoComplete = True
       AutoDropDown = True
       KeyField = 'id'
-      ListField = 'descricao'
+      ListField = 'descricao;hora_inicio'
       ListFieldIndex = 0
       ListSource = dsTurma
       LookupCache = False
@@ -327,15 +327,16 @@ inherited frmConsultaTurma: TfrmConsultaTurma
       end    
       item
         Name = 'descricao'
-        DataType = ftString
+        DataType = ftFloat
         Precision = -1
-        Size = 120
       end>
-    Active = True
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
-      'select id, descricao from turma order by descricao'
+      'select id,'
+      '       descricao + '' - '' + concat(substring(hora_inicio, 1, 2), '':'', substring(hora_inicio, 3, 2)) descricao'
+      'from turma'
+      'order by descricao'
     )
     Params = <>
     left = 61
@@ -349,15 +350,17 @@ inherited frmConsultaTurma: TfrmConsultaTurma
       ReadOnly = False
       Required = False
     end
-    object sqlTurmadescricao: TStringField
+    object sqlTurmadescricao: TFloatField
       FieldKind = fkData
       FieldName = 'descricao'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = True
-      Size = 120
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+      Precision = -1
     end
   end
 end
