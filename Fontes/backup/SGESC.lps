@@ -21,7 +21,7 @@
         <UnitName Value="uDATMOD"/>
         <EditorIndex Value="1"/>
         <TopLine Value="58"/>
-        <CursorPos X="15" Y="62"/>
+        <CursorPos X="45" Y="66"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -100,8 +100,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="78"/>
-        <CursorPos X="22" Y="86"/>
+        <TopLine Value="79"/>
+        <CursorPos X="31" Y="80"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -228,7 +228,7 @@
         <ComponentName Value="frmConsultaAluno"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="103"/>
+        <TopLine Value="105"/>
         <CursorPos X="39" Y="106"/>
         <UsageCount Value="151"/>
         <Loaded Value="True"/>
