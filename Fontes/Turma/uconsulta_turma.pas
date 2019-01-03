@@ -32,10 +32,11 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure sqlTurmaAfterScroll(DataSet: TDataSet);
   private
     fCodigoAluno: integer;
+    procedure atualizarDataSetTurmaObj;
     procedure habilitarBotoes;
-    procedure abrirTurmas;
   public
     class function abrirConsultaTurma(): integer;
   end;
@@ -52,17 +53,17 @@ uses
 
 { TfrmConsultaTurma }
 
-procedure TfrmConsultaTurma.abrirTurmas;
-begin
-  sqlTurma.Open;
-  dblTurma.ItemIndex := 0;
-end;
-
 procedure TfrmConsultaTurma.FormShow(Sender: TObject);
 begin
   inherited;
-  abrirTurmas;
+  sqlTurma.Open;
+  dblTurma.ItemIndex := 0;
   DataModuleApp.qryTurmaObj.ServerFiltered:=true;
+end;
+
+procedure TfrmConsultaTurma.sqlTurmaAfterScroll(DataSet: TDataSet);
+begin
+  DataModuleApp.qryTurmaObj.Close;
 end;
 
 procedure TfrmConsultaTurma.habilitarBotoes;
@@ -71,6 +72,11 @@ begin
   btnExcluir.Enabled := DataModuleApp.qryTurmaObj.Active and (not DataModuleApp.qryTurmaObj.IsEmpty);
 end;
 
+procedure TfrmConsultaTurma.atualizarDataSetTurmaObj;
+begin
+  DataModuleApp.qryTurmaObj.Close;
+  DataModuleApp.qryTurmaObj.Open;
+end;
 
 procedure TfrmConsultaTurma.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
@@ -115,14 +121,13 @@ begin
   try
     chamadoPor := cpConsulta_Turma;
 
-    sqlQueryPadrao.ServerFilter := 'fk_turma_id = ' + DataModuleApp.qryTurmaObjfk_turma_id.AsString;
+    sqlQueryPadrao.ServerFilter := 'fk_turma_id = ' + VarToStr(sqlTurmaid.AsString);
     sqlQueryPadrao.Open;
-    idTurma := DataModuleApp.qryTurmaObjfk_turma_id.AsInteger;
+    idTurma := sqlTurmaid.AsInteger;
     ShowModal;
   finally
-    abrirTurmas;
     sqlQueryPadrao.ServerFilter := '';
-    DataModuleApp.qryTurmaObj.Close;
+    atualizarDataSetTurmaObj;
     habilitarBotoes;
     Free;
   end;
@@ -132,7 +137,7 @@ procedure TfrmConsultaTurma.btnExcluirClick(Sender: TObject);
 begin
   with dsTurma_Aluno.DataSet do
     TTurmaService.excluirAluno(FieldByName('fk_aluno_id').AsInteger, FieldByName('fk_turma_id').AsInteger);
-  DataModuleApp.qryTurmaObj.Close;
+  atualizarDataSetTurmaObj;
   habilitarBotoes;
 end;
 

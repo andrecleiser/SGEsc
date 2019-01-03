@@ -228,7 +228,7 @@ begin
     if sqlQueryPadraoId.IsNull then
       id := TAlunoService.ultimoId()
     else
-      id := sqlQueryPadraoId.AsInteger;
+      id := self.sqlQueryPadraoid.AsInteger;
 
     sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;

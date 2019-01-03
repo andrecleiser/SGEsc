@@ -232,10 +232,10 @@ begin
 
     sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;
-    sqlQueryPadrao.Edit;
     idAluno := id;
     ShowModal;
   finally
+    sqlQueryPadrao.Close;
     sqlQueryPadrao.ServerFilter := '';
     Free;
   end;

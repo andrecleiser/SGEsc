@@ -318,7 +318,6 @@ inherited frmConsultaTurma: TfrmConsultaTurma
     top = 40
   end
   object sqlTurma: TSQLQuery[5]
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'id'
@@ -331,11 +330,12 @@ inherited frmConsultaTurma: TfrmConsultaTurma
         Precision = -1
         Size = 144
       end>
+    AfterScroll = sqlTurmaAfterScroll
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
       'select id,'
-      '       concat(descricaO, '' - '', substring(hora_inicio, 1, 2), '':'', substring(hora_inicio, 3, 2)) desc_turma'
+      '       COALESCE(concat(descricao, '' - '', substring(hora_inicio, 1, 2), '':'', substring(hora_inicio, 3, 2)), descricao) desc_turma'
       'from turma'
       'order by 2'
     )

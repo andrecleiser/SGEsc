@@ -3,8 +3,8 @@ object DataModuleApp: TDataModuleApp
   OnDestroy = DataModuleDestroy
   OldCreateOrder = False
   Height = 718
-  HorizontalOffset = 0
-  VerticalOffset = 0
+  HorizontalOffset = 560
+  VerticalOffset = 191
   Width = 1310
   PPI = 120
   object MySQL57Connection: TMySQL57Connection

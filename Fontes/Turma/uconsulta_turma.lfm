@@ -330,6 +330,7 @@ inherited frmConsultaTurma: TfrmConsultaTurma
         Precision = -1
         Size = 144
       end>
+    AfterScroll = sqlTurmaAfterScroll
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral
     SQL.Strings = (
