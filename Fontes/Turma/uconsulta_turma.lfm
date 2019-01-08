@@ -1,5 +1,5 @@
 inherited frmConsultaTurma: TfrmConsultaTurma
-  Left = 2579
+  Left = 10
   Height = 601
   Top = 257
   Width = 773

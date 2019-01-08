@@ -121,11 +121,13 @@ begin
   try
     chamadoPor := cpConsulta_Turma;
 
+    sqlQueryPadrao.ServerFiltered := true;
     sqlQueryPadrao.ServerFilter := 'fk_turma_id = ' + VarToStr(sqlTurmaid.AsString);
     sqlQueryPadrao.Open;
     idTurma := sqlTurmaid.AsInteger;
     ShowModal;
   finally
+    sqlQueryPadrao.ServerFiltered := false;
     sqlQueryPadrao.ServerFilter := '';
     atualizarDataSetTurmaObj;
     habilitarBotoes;

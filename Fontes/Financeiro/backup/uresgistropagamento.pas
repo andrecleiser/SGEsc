@@ -22,6 +22,7 @@ type
     DBGrid1: TDBGrid;
     dblTurma: TDBLookupComboBox;
     DBMemo1: TDBMemo;
+    dbtDescricao_Turma: TDBText;
     edtCodigoAluno: TEdit;
     Label1: TLabel;
     Label2: TLabel;
@@ -132,6 +133,8 @@ procedure TfrmRegistrarPagamento.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
   pnlCampos.Enabled := TDataSource(Sender).State in [dsInsert, dsEdit];
+  dbtDescricao_Turma.Visible := not TDataSource(Sender).State in [dsInsert, dsEdit];
+  dblTurma.Visible := not dbtDescricao_Turma.Visible;
 end;
 
 procedure TfrmRegistrarPagamento.edtCodigoAlunoEnter(Sender: TObject);

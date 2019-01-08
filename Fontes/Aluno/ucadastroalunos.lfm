@@ -1,5 +1,5 @@
 inherited frmCadastroAlunos: TfrmCadastroAlunos
-  Left = 2148
+  Left = 10
   Height = 664
   Top = 144
   Width = 1250

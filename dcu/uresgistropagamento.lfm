@@ -261,33 +261,6 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
       ClientHeight = 164
       ClientWidth = 959
       TabOrder = 0
-      object DBEdit1: TDBEdit
-        Left = 677
-        Height = 28
-        Top = 29
-        Width = 146
-        DataField = 'valor'
-        DataSource = dsPadrao
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 1
-      end
-      object Label3: TLabel
-        Left = 677
-        Height = 20
-        Top = 6
-        Width = 43
-        Caption = 'Valor'
-        ParentColor = False
-      end
-      object Label2: TLabel
-        Left = 13
-        Height = 20
-        Top = 8
-        Width = 53
-        Caption = 'Turma'
-        ParentColor = False
-      end
       object dblTurma: TDBLookupComboBox
         Left = 13
         Height = 28
@@ -304,7 +277,35 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         LookupCache = False
         ParentShowHint = False
         Style = csDropDownList
+        TabOrder = 4
+        Visible = False
+      end
+      object DBEdit1: TDBEdit
+        Left = 677
+        Height = 28
+        Top = 29
+        Width = 146
+        DataField = 'valor'
+        DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
         TabOrder = 0
+      end
+      object Label3: TLabel
+        Left = 677
+        Height = 20
+        Top = 6
+        Width = 43
+        Caption = 'Valor'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 13
+        Height = 20
+        Top = 8
+        Width = 53
+        Caption = 'Turma'
+        ParentColor = False
       end
       object Label4: TLabel
         Left = 887
@@ -331,7 +332,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         DataSource = dsPadrao
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 3
+        TabOrder = 2
       end
       object DBEdit3: TDBEdit
         Left = 830
@@ -342,7 +343,7 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         DataSource = dsPadrao
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 2
+        TabOrder = 1
       end
       object lblObservacao: TLabel
         Left = 13
@@ -361,7 +362,17 @@ inherited frmRegistrarPagamento: TfrmRegistrarPagamento
         DataSource = dsPadrao
         MaxLength = 100
         OnChange = DBMemo1Change
-        TabOrder = 4
+        TabOrder = 3
+      end
+      object dbtDescricao_Turma: TDBText
+        Left = 16
+        Height = 20
+        Top = 33
+        Width = 629
+        AutoSize = False
+        DataField = 'descricao'
+        DataSource = dsPadrao
+        ParentColor = False
       end
     end
     object Panel4: TPanel

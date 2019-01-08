@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, db, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, DbCtrls, Buttons, ComCtrls, StdCtrls, DBExtCtrls, DBGrids, MaskEdit,
-  uCadastroPadrao, uAlunoService, BufDataset;
+  uCadastroPadrao, uAlunoService, BufDataset, Variants;
 
 type
 
@@ -228,14 +228,14 @@ begin
     if sqlQueryPadraoId.IsNull then
       id := TAlunoService.ultimoId()
     else
-      id := sqlQueryPadraoId.AsInteger;
+      id := self.sqlQueryPadraoid.AsInteger;
 
-    sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
+    // sqlQueryPadrao.ServerFilter := 'fk_aluno_id = ' + id.ToString;
     sqlQueryPadrao.Open;
+    sqlQueryPadrao.Locate('fk_aluno_id', VarToStr(id.ToString), [loCaseInsensitive]);
     idAluno := id;
     ShowModal;
   finally
-    sqlQueryPadrao.Close;
     sqlQueryPadrao.ServerFilter := '';
     Free;
   end;

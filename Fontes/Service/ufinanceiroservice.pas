@@ -162,10 +162,10 @@ begin
 
   sql := TSQLQuery.Create(nil);
   sql.SQLConnection := DataModuleApp.MySQL57Connection;
-  sql.SQL.Add('select max(mes), ano');
+  sql.SQL.Add('select mes, ano');
   sql.SQL.Add('from pagamento');
-  sql.SQL.Add('where ano <= year(current_date())');
-  sql.SQL.Add('  and fk_aluno_id = ' + idAluno.ToString());
+  sql.SQL.Add('where fk_aluno_id = ' + idAluno.ToString());
+  sql.SQL.Add('order by ano desc, mes desc limit 2');
 
   // Considera a turma no controle do pagamento
   if considerarTurma then

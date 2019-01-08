@@ -78,11 +78,6 @@ begin
   DataModuleApp.qryTurmaObj.Open;
 end;
 
-procedure TfrmConsultaTurma.fecharDataSetTurmaObj;
-begin
-end;
-
-
 procedure TfrmConsultaTurma.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin

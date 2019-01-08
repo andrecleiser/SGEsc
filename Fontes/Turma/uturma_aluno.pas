@@ -79,7 +79,13 @@ end;
 procedure TfrmGerenciarTurma.FormShow(Sender: TObject);
 begin
   inherited;
-  DataModuleApp.qryLookUpTurma.Open;
+  with DataModuleApp.qryLookUpTurma do
+  begin
+    ServerFiltered := false;
+    ServerFilter := '';
+    Open;
+  end;
+
   DataModuleApp.qryLookUpAluno.Open;
 end;
 
