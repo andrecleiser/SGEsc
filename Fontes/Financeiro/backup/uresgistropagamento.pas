@@ -133,7 +133,7 @@ procedure TfrmRegistrarPagamento.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
   pnlCampos.Enabled := TDataSource(Sender).State in [dsInsert, dsEdit];
-  dbtDescricao_Turma.Visible := not TDataSource(Sender).State in [dsInsert, dsEdit];
+  dbtDescricao_Turma.Visible := not (TDataSource(Sender).State in [dsInsert, dsEdit]);
   dblTurma.Visible := not dbtDescricao_Turma.Visible;
 end;
 

@@ -1,5 +1,5 @@
 inherited frmGerenciarTurma: TfrmGerenciarTurma
-  Left = 2544
+  Left = 624
   Height = 303
   Top = 360
   Width = 659

@@ -1,7 +1,7 @@
 inherited frmGerenciarTurma: TfrmGerenciarTurma
-  Left = 284
+  Left = 2544
   Height = 303
-  Top = 165
+  Top = 360
   Width = 659
   Caption = 'Gerenciamento de turma'
   ClientHeight = 303

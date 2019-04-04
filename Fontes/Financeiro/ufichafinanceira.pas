@@ -16,6 +16,7 @@ type
   TfrmFichaFinanceira = class(TfrmBase)
     Button1: TButton;
     cbMes: TComboBox;
+    cbAno: TComboBox;
     dsFaturamento: TDataSource;
     DBGrid1: TDBGrid;
     dsALunos: TDataSource;
@@ -42,6 +43,8 @@ type
     sqlAlunoid: TLargeintField;
     sqlAlunonome: TStringField;
     sqlAlunoPagamentos: TSQLQuery;
+    sqlAlunoPagamentosano: TLargeintField;
+    sqlAlunoPagamentosdata_pagamento: TDateField;
     sqlAlunoPagamentosdescricao: TStringField;
     sqlAlunoPagamentoshora_inicio: TStringField;
     sqlAlunoPagamentosmes: TLargeintField;
@@ -52,12 +55,15 @@ type
     sqlFaturamentomes_pagamento: TStringField;
     sqlFaturamentovalor: TFloatField;
     procedure Button1Click(Sender: TObject);
+    procedure cbAnoChange(Sender: TObject);
     procedure editButtonFiltroButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure rgAdimplenteClick(Sender: TObject);
     procedure sqlAlunoCalcFields({%H-}DataSet: TDataSet);
   private
+    procedure atualizarFaturamentoPorAno(ano: integer);
+    procedure preencherComboAno();
 
   public
 
@@ -80,11 +86,17 @@ begin
   inherited;
   sqlAluno.Open;
   sqlAlunoPagamentos.Open;
-  sqlFaturamento.Open;
-
-  lblFaturamento.Caption := Format(lblFaturamento.Caption, [YearOf(Today()).ToString()]);
+  preencherComboAno();
   edtTotalAlunosAtivos.Text := TAlunoService.totalAlunosAtivos().ToString();
   edtTotalAlunosInadimplentes.Text := TFinanceiroService.totalAlunoInadimplente().ToString();
+end;
+
+procedure TfrmFichaFinanceira.atualizarFaturamentoPorAno(ano: integer);
+begin
+  sqlFaturamento.Close;
+  sqlFaturamento.Params[0].AsInteger := ano;
+  sqlFaturamento.Open;
+
 end;
 
 procedure TfrmFichaFinanceira.rgAdimplenteClick(Sender: TObject);
@@ -150,6 +162,27 @@ begin
     sqlAlunoPagamentos.ServerFilter := '';
 
   sqlAlunoPagamentos.Open;
+end;
+
+procedure TfrmFichaFinanceira.cbAnoChange(Sender: TObject);
+begin
+  atualizarFaturamentoPorAno(StrToInt(TComboBox(Sender).Text));
+end;
+
+procedure TfrmFichaFinanceira.preencherComboAno();
+var
+  anoCorrente: integer;
+  anoBase: integer;
+begin
+  anoCorrente := YearOf(Today());
+  anoBase := anoCorrente - 20;
+
+  repeat
+    cbAno.Items.Add(anoCorrente.ToString);
+    Dec(anoCorrente);
+  until anoCorrente < anoBase;
+  cbAno.ItemIndex := 0;
+  cbAno.OnChange(cbAno);
 end;
 
 end.

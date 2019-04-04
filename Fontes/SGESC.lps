@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="73">
+    <Units Count="74">
       <Unit0>
         <Filename Value="SGESC.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -19,13 +19,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="uDATMOD"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="63"/>
         <CursorPos X="11" Y="68"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="Repositorio\ucadastropadrao.pas"/>
@@ -67,7 +65,7 @@
         <Filename Value="Service\ufinanceiroservice.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uFinanceiroService"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="159"/>
         <CursorPos X="61" Y="160"/>
         <UsageCount Value="200"/>
@@ -147,7 +145,7 @@
         <UnitName Value="uLogin"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="65"/>
-        <UsageCount Value="187"/>
+        <UsageCount Value="194"/>
       </Unit12>
       <Unit13>
         <Filename Value="Service\uusuarioservice.pas"/>
@@ -156,7 +154,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="42"/>
         <CursorPos Y="57"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="193"/>
       </Unit13>
       <Unit14>
         <Filename Value="Model\uusuario.pas"/>
@@ -164,7 +162,7 @@
         <UnitName Value="uUsuario"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="73" Y="13"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="193"/>
       </Unit14>
       <Unit15>
         <Filename Value="Recursos\uconstantessistema.pas"/>
@@ -172,7 +170,7 @@
         <UnitName Value="uConstantesSistema"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="122"/>
-        <UsageCount Value="162"/>
+        <UsageCount Value="169"/>
       </Unit15>
       <Unit16>
         <Filename Value="Financeiro\uresgistropagamento.pas"/>
@@ -184,9 +182,8 @@
         <EditorIndex Value="5"/>
         <TopLine Value="90"/>
         <CursorPos X="49" Y="105"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="168"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="Turma\ucadastrarturma.pas"/>
@@ -198,7 +195,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="74"/>
         <CursorPos X="39" Y="78"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="166"/>
       </Unit17>
       <Unit18>
         <Filename Value="Turma\uturma_aluno.pas"/>
@@ -210,9 +207,8 @@
         <EditorIndex Value="4"/>
         <TopLine Value="82"/>
         <CursorPos Y="94"/>
-        <UsageCount Value="158"/>
+        <UsageCount Value="165"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="Aluno\ucadastroalunos.pas"/>
@@ -224,7 +220,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="228"/>
         <CursorPos X="3" Y="223"/>
-        <UsageCount Value="156"/>
+        <UsageCount Value="163"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
@@ -233,9 +229,9 @@
         <ComponentName Value="frmConsultaAluno"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="105"/>
+        <TopLine Value="106"/>
         <CursorPos X="39" Y="106"/>
-        <UsageCount Value="156"/>
+        <UsageCount Value="163"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -245,7 +241,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="113"/>
         <CursorPos Y="127"/>
-        <UsageCount Value="149"/>
+        <UsageCount Value="156"/>
         <Loaded Value="True"/>
       </Unit21>
       <Unit22>
@@ -255,7 +251,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="57" Y="48"/>
-        <UsageCount Value="149"/>
+        <UsageCount Value="156"/>
       </Unit22>
       <Unit23>
         <Filename Value="Financeiro\ufichafinanceira.pas"/>
@@ -264,9 +260,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFichaFinanceira"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="29" Y="3"/>
-        <UsageCount Value="94"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="60"/>
+        <CursorPos X="60" Y="75"/>
+        <UsageCount Value="101"/>
+        <Loaded Value="True"/>
       </Unit23>
       <Unit24>
         <Filename Value="Frequencia\uvisualizarfrequencia.pas"/>
@@ -277,7 +276,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="53"/>
         <CursorPos X="3" Y="66"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="77"/>
       </Unit24>
       <Unit25>
         <Filename Value="Recursos\ucadastrousuario.pas"/>
@@ -289,7 +288,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="60"/>
         <CursorPos X="45" Y="60"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="59"/>
       </Unit25>
       <Unit26>
         <Filename Value="Turma\ucad_professor.pas"/>
@@ -300,7 +299,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="40"/>
         <CursorPos X="21" Y="48"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="50"/>
       </Unit26>
       <Unit27>
         <Filename Value="Turma\uselecionarturmaaluno.pas"/>
@@ -310,7 +309,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="50"/>
       </Unit27>
       <Unit28>
         <Filename Value="Service\uselecionarturmaaluno.pas"/>
@@ -319,7 +318,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="41"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="82"/>
       </Unit28>
       <Unit29>
         <Filename Value="Cadastros\ucadastroalunos.pas"/>
@@ -329,7 +328,7 @@
         <UnitName Value="uCadastroAlunos"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="164" Y="3"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="131"/>
       </Unit29>
       <Unit30>
         <Filename Value="Cadastros\ucadastrousuario.pas"/>
@@ -340,7 +339,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos X="102" Y="88"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="42"/>
       </Unit30>
       <Unit31>
         <Filename Value="Cadastros\ucadastroresponsavelfinanceiro.pas"/>
@@ -351,14 +350,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="35" Y="43"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="75"/>
       </Unit31>
       <Unit32>
         <Filename Value="Service\uresponsavelservice.pas"/>
         <UnitName Value="uResponsavelService"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="13" Y="22"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="54"/>
       </Unit32>
       <Unit33>
         <Filename Value="Cadastros\ucadaluno.pas"/>
@@ -368,14 +367,15 @@
         <UnitName Value="uCadAluno"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="35" Y="7"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="33"/>
       </Unit33>
       <Unit34>
         <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1555"/>
-        <CursorPos Y="1573"/>
-        <UsageCount Value="9"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="3506"/>
+        <CursorPos Y="3519"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit34>
       <Unit35>
         <Filename Value="..\..\..\Lazarus\lcl\forms.pp"/>
@@ -383,7 +383,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="733"/>
         <CursorPos X="47" Y="736"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit35>
       <Unit36>
         <Filename Value="..\..\..\Lazarus\lcl\lclstrconsts.pas"/>
@@ -391,13 +391,13 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="254"/>
         <CursorPos X="52" Y="259"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit36>
       <Unit37>
         <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="82" Y="9"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit37>
       <Unit38>
         <Filename Value="C:\Lazarus\lcl\lclstrconsts.pas"/>
@@ -405,14 +405,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="439"/>
         <CursorPos X="29" Y="50"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit38>
       <Unit39>
         <Filename Value="Cadastros\ucadastroalunos.lfm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="17" Y="20"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit39>
       <Unit40>
@@ -420,7 +420,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos Y="21"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit40>
       <Unit41>
@@ -428,7 +428,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="18" Y="18"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit41>
       <Unit42>
@@ -436,35 +436,35 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2237"/>
         <CursorPos Y="2253"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit42>
       <Unit43>
         <Filename Value="C:\Lazarus\lcl\include\customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2937"/>
         <CursorPos Y="2953"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit43>
       <Unit44>
         <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32object.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="389"/>
         <CursorPos Y="423"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="10"/>
       </Unit44>
       <Unit45>
         <Filename Value="C:\Lazarus\lcl\include\application.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="208"/>
         <CursorPos Y="232"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit45>
       <Unit46>
         <Filename Value="C:\Lazarus\lcl\include\customedit.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="75"/>
         <CursorPos Y="100"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit46>
       <Unit47>
         <Filename Value="C:\Lazarus\lcl\comctrls.pp"/>
@@ -472,14 +472,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="612"/>
         <CursorPos X="14" Y="634"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit47>
       <Unit48>
         <Filename Value="C:\Lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5376"/>
         <CursorPos Y="5398"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit48>
       <Unit49>
         <Filename Value="C:\Lazarus\lcl\forms.pp"/>
@@ -487,21 +487,21 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="730"/>
         <CursorPos X="38" Y="743"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit49>
       <Unit50>
         <Filename Value="C:\Lazarus\lcl\include\dbcustomnavigator.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="376"/>
         <CursorPos Y="399"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="10"/>
       </Unit50>
       <Unit51>
         <Filename Value="C:\Lazarus\lcl\include\speedbutton.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="895"/>
         <CursorPos Y="920"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="10"/>
       </Unit51>
       <Unit52>
         <Filename Value="C:\Lazarus\lcl\lclmessageglue.pas"/>
@@ -509,7 +509,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="106"/>
         <CursorPos Y="123"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit52>
       <Unit53>
         <Filename Value="C:\Lazarus\lcl\lclclasses.pp"/>
@@ -517,49 +517,49 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="130"/>
         <CursorPos Y="154"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="10"/>
       </Unit53>
       <Unit54>
         <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32callback.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2610"/>
         <CursorPos Y="2633"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit54>
       <Unit55>
         <Filename Value="C:\Lazarus\lcl\interfaces\win32\win32winapi.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2594"/>
         <CursorPos Y="2618"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="10"/>
       </Unit55>
       <Unit56>
         <Filename Value="C:\Lazarus\fpc\3.0.4\source\packages\fcl-db\src\base\db.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="38"/>
         <CursorPos X="39" Y="62"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit56>
       <Unit57>
         <Filename Value="C:\Lazarus\lcl\include\bitbtn.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="37"/>
         <CursorPos X="3" Y="46"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit57>
       <Unit58>
         <Filename Value="C:\Lazarus\lcl\include\buttoncontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit58>
       <Unit59>
         <Filename Value="C:\Lazarus\lcl\include\buttons.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="153"/>
         <CursorPos Y="170"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit59>
       <Unit60>
         <Filename Value="..\..\..\Lazarus\components\lazutils\maps.pp"/>
@@ -567,14 +567,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="128"/>
         <CursorPos X="10" Y="154"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit60>
       <Unit61>
         <Filename Value="Turma\uturma_aluno.lfm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="20" Y="28"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit61>
       <Unit62>
@@ -582,7 +582,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="85"/>
         <CursorPos X="38" Y="88"/>
-        <UsageCount Value="19"/>
+        <UsageCount Value="18"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit62>
       <Unit63>
@@ -590,35 +590,35 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="53"/>
         <CursorPos Y="66"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit63>
       <Unit64>
         <Filename Value="C:\Lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="39" Y="7"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit64>
       <Unit65>
         <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="376"/>
         <CursorPos X="95" Y="391"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit65>
       <Unit66>
         <Filename Value="..\..\..\Lazarus\lcl\include\customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="923"/>
         <CursorPos Y="940"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit66>
       <Unit67>
         <Filename Value="..\..\..\Lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4394"/>
         <CursorPos Y="4409"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit67>
       <Unit68>
         <Filename Value="..\..\..\Lazarus\components\turbopower_ipro\iphtml.pas"/>
@@ -626,156 +626,123 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="12323"/>
         <CursorPos X="58" Y="12330"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit68>
       <Unit69>
         <Filename Value="Turma\ucadastrarturma.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit69>
       <Unit70>
         <Filename Value="Service\uprofessorservice.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="32" Y="3"/>
-        <UsageCount Value="19"/>
+        <UsageCount Value="18"/>
       </Unit70>
       <Unit71>
         <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="181"/>
         <CursorPos X="23" Y="194"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit71>
       <Unit72>
         <Filename Value="..\..\..\Lazarus\fpc\3.0.4\source\packages\fcl-db\src\base\db.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1612"/>
         <CursorPos X="15" Y="1624"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
       </Unit72>
+      <Unit73>
+        <Filename Value="..\..\..\Lazarus\lcl\interfaces\win32\win32listsl.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="121"/>
+        <CursorPos Y="140"/>
+        <UsageCount Value="10"/>
+      </Unit73>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="20" HistoryIndex="19">
       <Position1>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="235" TopLine="219"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="181" TopLine="158"/>
       </Position1>
       <Position2>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="236" TopLine="219"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="183" Column="23" TopLine="158"/>
       </Position2>
       <Position3>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="237" TopLine="219"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="175" TopLine="159"/>
       </Position3>
       <Position4>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="83" Column="9" TopLine="73"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="176" TopLine="159"/>
       </Position4>
       <Position5>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="140" Column="56" TopLine="113"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="179" TopLine="159"/>
       </Position5>
       <Position6>
-        <Filename Value="Service\ufinanceiroservice.pas"/>
-        <Caret Line="148" Column="50" TopLine="125"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="180" TopLine="159"/>
       </Position6>
       <Position7>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="25" Column="70"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="181" TopLine="159"/>
       </Position7>
       <Position8>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="124" Column="34" TopLine="118"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="179" TopLine="159"/>
       </Position8>
       <Position9>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="61" Column="43" TopLine="47"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="175" TopLine="159"/>
       </Position9>
       <Position10>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="86" Column="43" TopLine="63"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="182" TopLine="159"/>
       </Position10>
       <Position11>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="124" Column="34" TopLine="101"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="167" TopLine="159"/>
       </Position11>
       <Position12>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="61" Column="43" TopLine="47"/>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <Caret Line="3498" TopLine="3484"/>
       </Position12>
       <Position13>
-        <Filename Value="Turma\uconsulta_turma.pas"/>
-        <Caret Line="86" Column="43" TopLine="63"/>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <Caret Line="3501" TopLine="3484"/>
       </Position13>
       <Position14>
-        <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="89" Column="47" TopLine="77"/>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <Caret Line="3502" TopLine="3484"/>
       </Position14>
       <Position15>
-        <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="90" Column="47" TopLine="78"/>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <Caret Line="3503" TopLine="3484"/>
       </Position15>
       <Position16>
-        <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="91" Column="47" TopLine="79"/>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <Caret Line="3498" TopLine="3484"/>
       </Position16>
       <Position17>
-        <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="90" Column="47" TopLine="78"/>
+        <Filename Value="..\..\..\Lazarus\lcl\include\control.inc"/>
+        <Caret Line="3519" TopLine="3506"/>
       </Position17>
       <Position18>
-        <Filename Value="Turma\uturma_aluno.pas"/>
-        <Caret Line="89" Column="47" TopLine="77"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="95" TopLine="79"/>
       </Position18>
       <Position19>
-        <Filename Value="Aluno\ucadastroalunos.pas"/>
-        <Caret Line="225" TopLine="217"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="84" Column="34" TopLine="79"/>
       </Position19>
       <Position20>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="188" Column="19" TopLine="173"/>
+        <Filename Value="Financeiro\ufichafinanceira.pas"/>
+        <Caret Line="85" Column="26" TopLine="80"/>
       </Position20>
-      <Position21>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="70" TopLine="82"/>
-      </Position21>
-      <Position22>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="118" Column="56" TopLine="112"/>
-      </Position22>
-      <Position23>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="107" Column="42" TopLine="96"/>
-      </Position23>
-      <Position24>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="85" Column="35" TopLine="83"/>
-      </Position24>
-      <Position25>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="86" Column="35" TopLine="84"/>
-      </Position25>
-      <Position26>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="85" Column="35" TopLine="83"/>
-      </Position26>
-      <Position27>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="86" Column="35" TopLine="84"/>
-      </Position27>
-      <Position28>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="85" Column="35" TopLine="83"/>
-      </Position28>
-      <Position29>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="86" Column="35" TopLine="84"/>
-      </Position29>
-      <Position30>
-        <Filename Value="Financeiro\uresgistropagamento.pas"/>
-        <Caret Line="136" Column="86" TopLine="122"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

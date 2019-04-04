@@ -1,6 +1,6 @@
 inherited frmFichaFinanceira: TfrmFichaFinanceira
-  Left = 2198
-  Top = 238
+  Left = 240
+  Top = 181
   Width = 1343
   Caption = 'Ficha Financeira'
   ClientWidth = 1343
@@ -20,23 +20,23 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
   end
   object pnlDadosGerais: TPanel[1]
     Left = 0
-    Height = 76
+    Height = 74
     Top = 0
     Width = 1343
     Align = alTop
-    ClientHeight = 76
+    ClientHeight = 74
     ClientWidth = 1343
     TabOrder = 1
     object Label3: TLabel
-      Left = 38
+      Left = 49
       Height = 20
       Top = 16
-      Width = 200
-      Caption = 'Total de alunos ativos: '
+      Width = 129
+      Caption = 'Alunos ativos: '
       ParentColor = False
     end
     object edtTotalAlunosAtivos: TEdit
-      Left = 239
+      Left = 179
       Height = 28
       Top = 8
       Width = 56
@@ -50,7 +50,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       TabOrder = 0
     end
     object edtTotalAlunosInadimplentes: TEdit
-      Left = 580
+      Left = 444
       Height = 28
       Top = 8
       Width = 56
@@ -64,26 +64,26 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       TabOrder = 1
     end
     object Label4: TLabel
-      Left = 308
+      Left = 243
       Height = 20
       Top = 16
-      Width = 271
-      Caption = 'Total de alunos inadimplentes: '
+      Width = 200
+      Caption = 'Alunos inadimplentes: '
       ParentColor = False
     end
     object lblFaturamento: TLabel
-      Left = 666
+      Left = 506
       Height = 20
       Top = 16
-      Width = 289
-      Caption = 'Faturamento mês a mês em %s: '
+      Width = 250
+      Caption = 'Faturamento mês a mês em:'
       ParentColor = False
     end
     object DBGrid1: TDBGrid
-      Left = 984
-      Height = 50
+      Left = 844
+      Height = 60
       Top = 8
-      Width = 307
+      Width = 487
       BorderStyle = bsNone
       Color = clSkyBlue
       Columns = <      
@@ -105,21 +105,31 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       TitleFont.Height = -17
       TitleFont.Name = 'Verdana'
     end
+    object cbAno: TComboBox
+      Left = 759
+      Height = 28
+      Top = 8
+      Width = 75
+      ItemHeight = 20
+      OnChange = cbAnoChange
+      Style = csDropDownList
+      TabOrder = 3
+    end
   end
   object pnlAluno: TPanel[2]
     Left = 0
-    Height = 630
-    Top = 76
-    Width = 758
+    Height = 632
+    Top = 74
+    Width = 652
     Align = alLeft
-    ClientHeight = 630
-    ClientWidth = 758
+    ClientHeight = 632
+    ClientWidth = 652
     TabOrder = 2
     object Label1: TLabel
       Left = 1
       Height = 28
       Top = 1
-      Width = 756
+      Width = 650
       Align = alTop
       Alignment = taCenter
       Caption = 'Alunos ativos'
@@ -136,16 +146,16 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     end
     object dbGridAlunos: TDBGrid
       Left = 1
-      Height = 548
+      Height = 550
       Top = 81
-      Width = 756
+      Width = 650
       Align = alClient
       AutoEdit = False
       BorderStyle = bsNone
       Columns = <      
         item
           Title.Caption = 'Aluno'
-          Width = 510
+          Width = 450
           FieldName = 'nome'
         end      
         item
@@ -179,77 +189,77 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       Left = 1
       Height = 52
       Top = 29
-      Width = 756
+      Width = 650
       Align = alTop
       ClientHeight = 52
-      ClientWidth = 756
+      ClientWidth = 650
       TabOrder = 1
       object editButtonFiltro: TEditButton
         Left = 10
         Height = 28
         Hint = 'Filtrar alunos'
         Top = 11
-        Width = 327
+        Width = 291
         ButtonWidth = 29
         CharCase = ecUppercase
         FocusOnButtonClick = True
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-          FFFFFFFFFFFFF5F5F5DCDBDBC1B7ADB39C83B28F6AAD845AA87D50ADADADADAD
-          ADA87D50AD845AB28F6AB39C83C1B7ADDCDBDBF5F5F5FFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFDEDEDEBF9F7DB28A60B7946FC0A07CC8A885
-          B2916DE9E9E9E9E9E9B2916DC8A885C0A07CB7946FB28A60BF9F7DDEDEDEFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F8C59E76D7B692D8
-          B691D6B38EDCBD96BD9C79FBFBFBFBFBFBBD9C79DCBD96D6B38ED8B691D7B692
-          C59E76F8F8F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFE8D7C6CAA57ECDAC87E7C8A0E8C8A0C8A683AAAAAAAAAAAAC8A683E8C8A0E7
-          C8A0CDAC87CAA57EE8D7C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFF3E9DFDCBC9BD0A67BF0D0A8B6A18D8DC0ED8DC0
-          EDB6A18DF0D0A8D0A67BDCBC9BF3E9DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFDFCFDAB48D
-          5F7C997BAEE07BAEE05F7C99DAB48DEFDFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9C5500BC90
+          00B88A00B58500B18100AE7C00AB7800792700FFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFAF5F03A6EA14A7DB04A7DB03A6EA1FAF5F0FFFFFFFFFFFFFFFFFF
+          FFFFFFA15C00C79D00C49900C09500BD9000B88B00B585007C2B00FFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFBACDE1588CBF80B3E380B3E3588CBFBACDE1FF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFB
-          EFEFEFE8E8E8E6E6E6E5E5E5E5E5E5E5E5E5E5E5E55986B284B6E488BBEA88BB
-          EA84B6E45986B2E5E5E5E5E5E5E5E5E5E5E5E5E6E6E6E8E8E8EFEFEFFBFBFBFF
-          FFFFDADBDCA8B6BF799BB3598FB74684B33A7DAEADADADADADAD3A7DAE164E88
-          98CBF591C4F191C4F198CBF51F4E6D657B315F76295F7629657B3170833F7F8F
-          548E9673AEB2A4DBDBDA64A0C5358FC1369DD636A5F03DABF81997D9E9E9E9E9
-          E9E91997D911182DA1D4FA98CBF598CBF5A1D4FA1316236DA6636DA6636DA663
-          6DA6636DA663699E5B67944E67873E8C9F6745A6D74BB6FE4AB6FD46B3FD53BA
-          FE1A9EEAFCFCFCFCFCFC1A9EEA0E1F3D80A6CA99CCF699CCF680A6CA141F267C
-          BB767CBB767CBB767CBB767CBB7674B16C76B26F79B672759F5FACDBF23DADE9
-          45B3FA5EC4FF5EC4FF21A6F4AAAAAAAAAAAA21A6F41D3B5D47495C5656674E4E
-          5F3B3D4E2A3C378AC8818AC8818AC8818AC8818AC8818AC8817AB87274AA6AC3
-          D9BDFFFFFFCEECFA68C4F039B2EB65CDFF31A6E68DC0ED8DC0ED31A6E63D7BA3
-          2F4663676A7D646675343F445A7D5B97D1877BA2867BA28697D18797D18774AD
-          6C96C18FDDEADBFFFFFFFFFFFFFFFFFFFFFFFFB5E4FA4EBEF2387FAC7BAEE07B
-          AEE0387FAC4BB7E9708DA46262726262727F8C8782B47D4C7F957BAEE07BAEE0
-          4C7F9587BC81CDE3CAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBEEF5CCD8E8A1C4
-          DF255B944A7DB04A7DB0255B949DC0DDD9E2EEF8F9FBFFFFFFFFFFFFEFF6EE3A
-          6EA14A7DB04A7DB03A6EA1EFF6EEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          7A94BE2A599C345B9F4D67A180B3E380B3E34D67A123569A2655982E5E9FFFFF
-          FFFFFFFFBACDE1588CBF80B3E380B3E3588CBFBACDE1FFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF36629F26579B6F9DD188BBEA88BBEA82AEDE2B4886
-          2B5B9CF2F5F9FFFFFFFFFFFF638FBC84B7E588BBEA88BBEA84B7E5638FBCFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6987B424579B3568AA81B3E591
-          C4F198CBF5255497597DAFFFFFFFFFFFFFFFFFFF416B9998CBF591C4F191C4F1
-          98CBF5416B99FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA6B7D12456
-          9A3A6DAC5A8DC898CBF5A1D4FA284F8FAEBFD8FFFFFFFFFFFFFFFFFF1E1E2EA1
-          D4FA98CBF598CBF5A1D4FA1E1E2EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFF7F8FA24579B23569A4073B36FA2D76C9FD3295293FEFEFEFFFFFFFFFF
-          FFFFFFFF2B2B3E80A6CA99CCF699CCF680A6CA2B2B3EFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFF44629A3C6DB13365AA23569A3265A54C6BA1
-          FFFFFFFFFFFFFFFFFFFFFFFF4D4D5D4B4B5C5656674E4E5F3F3F514D4D5DFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8CA4C93C6AAD4D7FC347
-          7ABD2C5CA0B5C5DCFFFFFFFFFFFFFFFFFFFFFFFF9999A35555676D6D7E686878
-          4F4F619999A3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3F6
-          FA8CA8CF4573B14573B18CA8CFFAFCFDFFFFFFFFFFFFFFFFFFFFFFFFF6F6F79E
-          9EA86262726262729E9EA8F6F6F7FFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFA56100C9A000C9A000C9A000C79D00C39A00C09400
+          803000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA86500A56100A15C009C550096
+          4E009046008B3E00853700FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4676A83B6A
+          9B3B6A9B3B6A9B3B6A9B3B6A9B3B6A9B3E6EA3FFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          ACCDD75483B14775A54876A64977A74573A4416FA0406F9F5E8DB990BBD2FFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFF6292BB76A3C7628FBD78A4D17AA6D3729ECC628FBD4D7BAB
+          6090BA74A4C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF35649D618DBB8BB4DF8EB7E28EB7E28E
+          B7E28EB7E284AEDA789FC35384B1D9E5EBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4474A785ACCE99BEE395BC
+          E595BCE595BCE595BCE596BDE59BC0E786AFD83B6AA1C4DCE7FFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB7D3DA5B8BB5
+          85B2D45F8EB99CC2E9A1C5EA9DC2EAA1C5EAA2C5EBB9D5F0A1C5EA3F6FA4C7DC
+          E7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB8
+          D4E7497AAAD6E3EE75A6C85F8EB7A8CAEDBFD8F2AECEEEBFD8F2A9CBEDABCCED
+          A4C8EC406FA5C7DCE7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFF9DC8E321509085B3CE2251906796BEABCEEFB6D3EBACCEEFB6
+          D4E7ABCEEF3968A0AACDEF3B6BA1C1DAE7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2E8EF6D9DC26C9CC18AB7D06393BBB3D3
+          F24B7AADB0D2F332619AB0D2F33A69A099C1DC6392BBFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          84B3CE6292BBB7D7F65987B6B7D7F6245392B1D1E52D5D975282B0FFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFF98979457555352514E4E4B4B49484644434240403F83
+          838398979457555384B2CE6292BBBDDBF92654926897BF5886B4497AAAE8EAE6
+          52514E4E4B4B49484644434240403F83838365615EEBE9E87877757876747775
+          7376747274727041414165615EEBE9E884B2CE6292BBC2DFFB2C5C9685B3CE41
+          414165615EEBE9E87877757876747775737674727472704141416B6763ECEAEA
+          D2CDCCCFCBCACCC9C7CAC5C37573724746456B6763ECEAEA84B2CE6292BBC9E2
+          FB4878A97573724746456B6763ECEAEAD2CDCCCFCBCACCC9C7CAC5C375737247
+          4645716D69EDECEAD5D0CFD2CECCCFCBC9CDC9C77674724D4C4B716D69EDECEA
+          80AFCC5E8FB8D0E4F34271A57674724D4C4B716D69EDECEAD5D0CFD2CECCCFCB
+          C9CDC9C77674724D4C4B77736EEEECECD7D2D1D5D1CFD2CECDD0CCCA77757454
+          525077736EEEECECD7D2D16090B936659E84B2CE77757454525077736EEEECEC
+          D7D2D1D5D1CFD2CECDD0CCCA7775745452507C7673EFEDECDAD5D3D8D2D2D5D1
+          D0D4CFCD7876755B59567C7673EFEDECDAD5D3D8D2D2D5D1D0D4CFCD7876755B
+          59567C7673EFEDECDAD5D3D8D2D2D5D1D0D4CFCD7876755B5956807A75EFEDEC
+          F0EEEEEFEEEDEFEDECEEECECECEAEA635F5C807A75EFEDECF0EEEEEFEEEDEFED
+          ECEEECECECEAEA635F5C807A75EFEDECF0EEEEEFEEEDEFEDECEEECECECEAEA63
+          5F5CAFABA9817B767F79747C767178726E736F6A6F6A66A09E9BAFABA9817B76
+          7F79747C767178726E736F6A6F6A66A09E9BAFABA9817B767F79747C76717872
+          6E736F6A6F6A66A09E9BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         }
         MaxLength = 0
         NumGlyphs = 1
@@ -260,10 +270,10 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         TabOrder = 0
       end
       object rgAdimplente: TRadioGroup
-        Left = 346
+        Left = 314
         Height = 42
         Top = 1
-        Width = 403
+        Width = 328
         AutoFill = True
         ChildSizing.LeftRightSpacing = 6
         ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
@@ -273,7 +283,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
         ClientHeight = 21
-        ClientWidth = 399
+        ClientWidth = 324
         Columns = 3
         Font.CharSet = ANSI_CHARSET
         Font.Height = -13
@@ -293,19 +303,19 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     end
   end
   object pnlAlunoPagamentos: TPanel[3]
-    Left = 758
-    Height = 630
-    Top = 76
-    Width = 585
+    Left = 652
+    Height = 632
+    Top = 74
+    Width = 691
     Align = alClient
-    ClientHeight = 630
-    ClientWidth = 585
+    ClientHeight = 632
+    ClientWidth = 691
     TabOrder = 3
     object Label2: TLabel
       Left = 1
       Height = 28
       Top = 1
-      Width = 583
+      Width = 689
       Align = alTop
       Alignment = taCenter
       Caption = 'Pagamentos do aluno selecionado'
@@ -322,13 +332,23 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     end
     object dbGridAlunosPagamentos: TDBGrid
       Left = 1
-      Height = 548
+      Height = 550
       Top = 81
-      Width = 583
+      Width = 689
       Align = alClient
       AutoEdit = False
       BorderStyle = bsNone
       Columns = <      
+        item
+          Title.Font.CharSet = ANSI_CHARSET
+          Title.Font.Height = -13
+          Title.Font.Name = 'Verdana'
+          Title.Font.Pitch = fpVariable
+          Title.Font.Quality = fqDraft
+          Title.Caption = 'Ano'
+          Width = 50
+          FieldName = 'ano'
+        end      
         item
           Title.Font.CharSet = ANSI_CHARSET
           Title.Font.Height = -13
@@ -368,6 +388,16 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
           Title.Caption = 'Início'
           Width = 50
           FieldName = 'hora_inicio'
+        end      
+        item
+          Title.Font.CharSet = ANSI_CHARSET
+          Title.Font.Height = -13
+          Title.Font.Name = 'Verdana'
+          Title.Font.Pitch = fpVariable
+          Title.Font.Quality = fqDraft
+          Title.Caption = 'Pagamento'
+          Width = 90
+          FieldName = 'data_pagamento'
         end>
       DataSource = dsAlunoPagamentos
       Font.CharSet = ANSI_CHARSET
@@ -391,10 +421,10 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       Left = 1
       Height = 52
       Top = 29
-      Width = 583
+      Width = 689
       Align = alTop
       ClientHeight = 52
-      ClientWidth = 583
+      ClientWidth = 689
       TabOrder = 1
       object Label5: TLabel
         Left = 14
@@ -457,6 +487,7 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
     top = 173
   end
   object sqlAlunoPagamentos: TSQLQuery[6]
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'valor'
@@ -485,6 +516,16 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
         Name = 'mes'
         DataType = ftLargeint
         Precision = -1
+      end    
+      item
+        Name = 'ano'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'data_pagamento'
+        DataType = ftDate
+        Precision = -1
       end>
     Database = DataModuleApp.MySQL57Connection
     Transaction = DataModuleApp.sqlTransactionGeral
@@ -505,11 +546,11 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       '          when p.mes = 10 then ''outubro'''
       '          when p.mes = 11 then ''novembro'''
       '          when p.mes = 12 then ''dezembro'''
-      '       end mes_pagamento, p.mes'
+      '       end mes_pagamento, p.mes, p.ano, p.data_pagamento'
       'from pagamento p'
       '  inner join turma t on (t.id = p.fk_turma_id)'
       'where p.fk_aluno_id = :id'
-      'order by p.mes'
+      'order by p.ano desc, p.mes'
     )
     Params = <    
       item
@@ -569,6 +610,24 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       FieldKind = fkData
       FieldName = 'mes'
       Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlAlunoPagamentosano: TLargeintField
+      FieldKind = fkData
+      FieldName = 'ano'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlAlunoPagamentosdata_pagamento: TDateField
+      FieldKind = fkData
+      FieldName = 'data_pagamento'
+      Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -686,10 +745,16 @@ inherited frmFichaFinanceira: TfrmFichaFinanceira
       '          when p.mes = 12 then ''dezembro'''
       '       end mes_pagamento'
       'from pagamento p'
-      'where p.ano = year(current_date())'
+      'where p.ano = :anoBase'
       'group by p.mes'
     )
-    Params = <>
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'anoBase'
+        ParamType = ptInput
+        Value = '2018'
+      end>
     left = 1106
     top = 11
     object sqlFaturamentovalor: TFloatField
